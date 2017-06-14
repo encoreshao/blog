@@ -1,0 +1,16 @@
+= link_to I18n.t('action.new'), new_admin_tag_path
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= Tag.human_attribute_name(:name)
+        %th= Tag.human_attribute_name(:created_at)
+        %th
+    %tbody
+      - collection.each do |resource|
+        %tr
+          %td= resource.name
+          %td= resource.created_at.strftime('%b %d, %Y')
+          %td
+            = link_to I18n.t('action.edit'), edit_admin_tag_path(resource)
+            = link_to I18n.t('action.destory'), admin_tag_path(resource), method: :DELETE

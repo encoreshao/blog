@@ -1,0 +1,19 @@
+.right
+  = link_to I18n.t('action.new'), new_admin_user_path
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= User.human_attribute_name(:email)
+        %th= UserProfile.human_attribute_name(:name)
+        %th= User.human_attribute_name(:created_at)
+        %th
+    %tbody
+      - collection.each do |resource|
+        %tr
+          %td= resource.email
+          %td= resource.author_name
+          %td= resource.created_at.strftime('%b %d, %Y')
+          %td
+            = link_to I18n.t('action.show'), admin_user_path(resource)
+            = link_to I18n.t('action.edit'), edit_admin_user_path(resource)

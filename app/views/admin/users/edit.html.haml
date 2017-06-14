@@ -1,0 +1,6 @@
+%h2
+  = I18n.t('action.edit')
+  = User.model_name.human
+
+%div
+  = render partial: 'form', locals: { resource: resource, url: admin_user_path(resource) }

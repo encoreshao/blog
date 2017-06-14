@@ -1,0 +1,138 @@
+.post-wrapper
+  / Start: Post Type Image
+  %article#post-481.basic-post.post-picture.post-481.post.type-post.status-publish.format-image.has-post-thumbnail.hentry.category-fashion.tag-fashion-show.tag-photography.post_format-post-format-image
+    .thumbnail
+      / %img.attachment-blog-image.size-blog-image.wp-post-image{src: banner_iamge_url}/
+    .post-inner
+      .post-title
+        %h1
+          = @article.title
+      .meta
+        %span
+          %i.typcn.typcn-calendar
+          = @article.published_date
+        %span.category
+          %i.typcn.typcn-bookmark
+          = @article.category_name(I18n.default_locale)
+        %span
+          %i.typcn.typcn-time
+          Last modified 9 months ago
+      .post-content
+        = raw @article.content
+      %footer.content-footer
+        .tags
+          %i.typcn.typcn-bookmark
+          %label Tags:
+          = succeed "," do
+            %a{href: "http://demo2.themewarrior.com/grateful/tag/fashion-show/", rel: "tag"} Fashion Show
+          %a{href: "http://demo2.themewarrior.com/grateful/tag/photography/", rel: "tag"} Photography
+        / AddThis Button BEGIN
+        .share-buttons
+          .addthis_toolbox.addthis_default_style
+            %h4 Share this Article
+            %a.addthis_button_facebook{"fb:like:layout" => "button_count"}
+              %span.typcn.typcn-social-facebook
+            %a.addthis_button_twitter
+              %span.typcn.typcn-social-twitter
+            %a.addthis_button_google_plusone_share{"g:plusone:size" => "medium"}
+              %span.typcn.typcn-social-google-plus
+            %a.addthis_button_pinterest_share{"pi:pinit:layout" => "horizontal", "pi:pinit:url" => "http://demo2.themewarrior.com/grateful/2015/03/01/breath-of-fresh-air-in-the-morning/"}
+              %span.typcn.typcn-social-pinterest
+            %a.addthis_button_email
+              %span.typcn.typcn-mail
+        :javascript
+          var addthis_config = {"data_track_addressbar":false};
+        %script{:src => "//s7.addthis.com/js/300/addthis_widget.js", type: "text/javascript"}
+        / AddThis Button END
+        #post-nav
+          .post-previous
+            %span.title Previous Post
+            %h3
+              %a{href: "http://demo2.themewarrior.com/grateful/2015/02/28/even-the-celebrities-wanted-to-dress-weather-appropriately-this-week/", :title => "Even the Celebrities Wanted to Dress <strong><em>Weather Appropriately</em></strong> This Week"} Even the Celebrities Wanted to Dress Weather...
+        #related-posts
+          .inner
+            %h3.widget-title= I18n.t('tips.related_posts')
+            %ul
+              - 3.times do |i|
+                %li
+                  .thumbnail
+                    %a
+                      %img.attachment-small-thumb.size-small-thumb.wp-post-image{:src => "/assets/photos/encore.jpg"}/
+                  %a Summer 2014 Style Inspirations Just for You
+                  .meta Aug 12th, 2014
+
+  / End: Post Type Image
+  / Start author bio
+  .single-author.box.clearfix
+    %h3.widget-title= I18n.t('tips.about_the_author')
+    .wrapper
+      .thumbnail
+        %img.avatar.avatar-80.photo{src: "/assets/photos/encore.jpg"}/
+      .info
+        %h5
+          %a{href: root_path}= I18n.t('author')
+        %p My kinda people, my kinda place. There's something special about this place. For wheat is the best food of man. They’re crispy and crunchy the whole year through. As long as we live, it’s you and me baby, There ain’t nothin’ wrong with that.
+        %ul.social-profiles
+          %li
+            %a{href: "#", target: "_blank"}
+              %i.typcn.typcn-social-facebook
+          %li
+            %a{href: "#", target: "_blank"}
+              %i.typcn.typcn-social-twitter
+          %li
+            %a{href: "#", target: "_blank"}
+              %i.typcn.typcn-social-instagram
+          %li
+            %a{href: "#", target: "_blank"}
+              %i.typcn.typcn-social-google-plus
+          %li
+            %a{href: "#", target: "_blank"}
+              %i.typcn.typcn-social-pinterest
+          %li
+            %a{href: "#", target: "_blank"}
+              %i.typcn.typcn-social-youtube
+          %li
+            %a{href: "#", target: "_blank"}
+              %i.typcn.typcn-social-vimeo
+          %li
+            %a{href: "#", target: "_blank"}
+              %i.typcn.typcn-social-linkedin
+    .clearfix
+
+  / End author bio
+  / START: RESPOND
+  #comment-form-widget.comments.box
+    #respond.comment-respond
+      %h3#reply-title.comment-reply-title
+        %h3.widget-title= I18n.t('tips.leave_a_comment')
+        %small
+          %a#cancel-comment-reply-link{href: "/grateful/2015/03/01/breath-of-fresh-air-in-the-morning/#respond", rel: "nofollow", style: "display:none;"} Cancel Reply
+      %form#commentform.comment-form{action: "http://demo2.themewarrior.com/grateful/wp-comments-post.php", method: "post"}
+        .comment-form-wrapper
+          .input.message
+            %label= I18n.t('form.message')
+            %textarea#message{name: "comment"}
+          .input.name
+            %label
+              = I18n.t('form.name')
+              %span.red *
+            %input#input-name.input-s{name: "author", type: "text", value: ""}/
+          .input.email
+            %label
+              = I18n.t('form.email')
+              %span.red *
+            %input#input-email.input-s{name: "email", type: "text", value: ""}/
+          .input.email
+            %label= I18n.t('form.website_url')
+            %input#input-email.input-s{name: "url", type: "text", value: ""}/
+          %p.form-submit
+            %input#submit.submit{name: "submit", type: "submit", value: I18n.t('action.submit')}/
+            %input#comment_post_ID{name: "comment_post_ID", type: "hidden", value: "481"}/
+            %input#comment_parent{name: "comment_parent", type: "hidden", value: "0"}/
+        %p{style: "display: none;"}
+          %input#akismet_comment_nonce{name: "akismet_comment_nonce", type: "hidden", value: "e61be4e3a7"}/
+        %p{style: "display: none;"}
+          %input#ak_js{name: "ak_js", type: "hidden", value: "79"}/
+    / #respond
+  / END: RESPOND
+.clearfix

@@ -1,0 +1,40 @@
+!!! 5
+%html
+  %head
+    %title= I18n.t('title')
+    %meta{ charset: 'utf-8' }
+    %meta{ content: 'width=device-width, initial-scale=1.0', name: 'viewport' }
+    %meta{ author: I18n.t('author') }
+
+    = stylesheet_link_tag 'application', :media => "all", 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+    / Le HTML5 shim, for IE6-8 support of HTML5 elements
+    /[if lt IE 9]
+      %script{ src: 'http://html5shim.googlecode.com/svn/trunk/html5.js' }
+
+    = yield :head
+    = csrf_meta_tags
+
+  %body{class: "home blog wpb-js-composer js-comp-ver-5.0.1 vc_responsive"}
+    .highlight-line
+    %section.container
+      %a.menu-trigger{:href => "#leftcontent"}
+      #leftcontent
+        = render 'shared/sidebar'
+      .before
+      #rightcontent
+        = yield
+
+      .clearfix
+      .clearfix
+
+    .bg-area.clearfix
+      .container
+        .bg-left
+          .before
+          .after
+
+    %a#scroll-top{:href => "#top", :style => "display: block;"}
+      %span.typcn.typcn-arrow-up
+    .highlight-line

@@ -1,0 +1,40 @@
+body.admin {
+	main h2 {
+		text-align: center;
+		height: 60px;
+		line-height: 60px;
+	}
+	.form-group {
+		.form-inline select {
+			width: 100px;
+		}
+		label.radio_buttons {
+			width: 100px;
+		}
+		span.radio label {
+			cursor: pointer;
+			width: 100px;
+			input {
+				margin-right: 10px;
+			}
+		}
+		> .control-label {
+			width: 10%;
+			text-align: right;
+			margin-right: 5%;
+			vertical-align: top;
+		}
+		> .form-control, .form-inline {
+			display: inline-block;
+			width: 40%;
+		}
+		span.help-block {
+			margin-left: 10px;
+			color: red;
+		}
+		&.content .form-control {
+			margin-left: -4px;
+			width: 80%;
+		}
+	}
+}

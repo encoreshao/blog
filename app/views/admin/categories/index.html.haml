@@ -1,0 +1,22 @@
+= link_to I18n.t('action.new'), new_admin_category_path
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= Category.human_attribute_name(:name_zh)
+        %th= Category.human_attribute_name(:name_en)
+        %th= Category.human_attribute_name(:permalink)
+        %th= Category.human_attribute_name(:articles_count)
+        %th= Category.human_attribute_name(:created_at)
+        %th
+    %tbody
+      - collection.each do |resource|
+        %tr
+          %td= resource.name_zh
+          %td= resource.name_en
+          %td= resource.permalink
+          %td= resource.articles_count
+          %td= resource.created_at.strftime('%b %d, %Y')
+          %td
+            = link_to I18n.t('action.edit'), edit_admin_category_path(resource)
+            = link_to I18n.t('action.destory'), admin_category_path(resource), method: :DELETE

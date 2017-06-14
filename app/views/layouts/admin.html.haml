@@ -1,0 +1,25 @@
+!!! 5
+%html
+  %head
+    %title= I18n.t('title')
+    %meta{ charset: 'utf-8' }
+    %meta{ content: 'width=device-width, initial-scale=1.0', name: 'viewport' }
+
+    = stylesheet_link_tag 'admin', :media => "all", 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'admin', 'data-turbolinks-track': 'reload'
+
+    / Le HTML5 shim, for IE6-8 support of HTML5 elements
+    /[if lt IE 9]
+      %script{ src: 'http://html5shim.googlecode.com/svn/trunk/html5.js' }
+
+    = yield :head
+    = csrf_meta_tags
+
+  %body{class: 'admin'}
+    = render 'admin/shared/header'
+    .container
+      .row
+        %nav.col-md-2.bg-faded
+          = render 'admin/shared/sidebar'
+        %main.col-sm-10.pt-3{:role => "main"}
+          = yield

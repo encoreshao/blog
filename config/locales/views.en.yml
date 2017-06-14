@@ -1,0 +1,49 @@
+en:
+  title: Blog - ICMOC
+  author: Encore Shao
+  tips:
+    about_the_author: About The Author
+    tags: Tags
+    latest_tweets: Latest Tweets
+    recent_posts: Recent Posts
+    related_posts: Related Posts
+    post_format: Post Format
+    leave_a_comment: Leave a Comment
+    follow_me_on_twitter: Follow me on Twitter
+    notes: This is my personal blog where I share a lot of stuffs about life and work everything I do in between. (encore.shao@gmail.com)
+  navigation:
+    title: Navigation
+    home: Home
+    about: About
+    life: Life
+    travel: Travel
+    fashion: Fashion
+    friendly_links: Friendly Links
+  format:
+    image: Image
+    gallery: Gallery
+    video: Video
+    audio: Audio
+    status: Status
+    quote: Quote
+    chat: Chat
+    link: Link
+  form:
+    name: Name
+    email: E-mail
+    website_url: Website URL
+    message: Message
+  action:
+    new: New
+    create: Create
+    edit: Edit
+    update: Update
+    destory: Destory
+    show: Show
+    search: Search
+    back: Back
+    logout: Logout
+    read_more: Read More
+    older_posts: Older Posts
+    newer_posts: Newer Posts
+    submit: Submit

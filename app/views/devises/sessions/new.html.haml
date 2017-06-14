@@ -1,0 +1,12 @@
+%h2 Log in
+
+= simple_form_for resource, as: resource_name, url: session_path(resource_name), html: { class: 'horizontal_form', validate: true } do |f|
+  = f.input :email
+  = f.password :password
+
+  - if devise_mapping.rememberable?
+    = f.input :remember_me, as: :checkbox_button
+
+  = f.submit I18n.t('actions.signin')
+
+= render "devises/shared/links"

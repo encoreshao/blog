@@ -1,0 +1,49 @@
+zh:
+  title: 博客 - ICMOC
+  author: 邵壮
+  tips:
+    about_the_author: 关于作者
+    tags: 标签
+    latest_tweets: 最近发表
+    recent_posts: 最近回复
+    related_posts: 相关帖子
+    post_format: 帖子格式
+    leave_a_comment: 留言
+    follow_me_on_twitter: 在Twitter上关注作者
+    notes: 邵壮 - 分享使我快乐! 以快乐的心态去迎接美好的世界. I want share something to you! (encore.shao[at]gmail.com)
+  navigation:
+    title: 站点导航
+    home: 主页
+    about: 关于
+    life: 生活
+    travel: 旅行
+    fashion: 时尚
+    friendly_links: 友情链接
+  format:
+    image: 图片
+    gallery: 画廊
+    video: 视频
+    audio: 音频
+    status: 状态
+    quote: 引用
+    chat: 闲谈
+    link: 链接
+  form:
+    name: 昵称
+    email: 邮箱
+    website_url: 链接
+    message: 内容
+  action:
+    new: 新建
+    create: 创建
+    edit: 编辑
+    update: 更新
+    destory: 删除
+    show: 查看
+    search: 查询
+    back: 返回
+    logout: 退出
+    read_more: 阅读全文
+    older_posts: 上一页
+    newer_posts: 下一页
+    submit: 提交

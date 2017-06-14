@@ -1,0 +1,14 @@
+%h2
+  = I18n.t('action.show')
+  = resource.model_name.human
+
+= link_to I18n.t('action.back'), admin_articles_path
+
+
+.jumbotron
+  %h1= resource.title
+  .author
+    = resource.author_name
+    %strong= resource.category_name(I18n.default_locale)
+  %br
+  %p.lead= raw resource.content

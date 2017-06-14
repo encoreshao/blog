@@ -1,0 +1,15 @@
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= Comment.human_attribute_name(:user_id)
+        %th= Comment.human_attribute_name(:content)
+        %th= Comment.human_attribute_name(:created_at)
+        %th
+    %tbody
+      - collection.each do |resource|
+        %tr
+          %td= resource.user.try(:name)
+          %td= resource.content
+          %td= resource.created_at.strftime('%b %d, %Y')
+          %td

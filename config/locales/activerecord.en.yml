@@ -1,0 +1,48 @@
+en:
+  activerecord:
+    models:
+      user: User
+      article: Article
+      category: Category
+      tag: Tag
+      comment: Comment
+    attributes:
+      user:
+        email: Email
+        password: Password
+        author_name: Author
+        created_at: Created At
+      user_profile:
+        name: Name
+        avatar: Avatar
+        link: Link
+        created_at: Created At
+      article:
+        title: Title
+        permalink: Permalink
+        category_id: Category
+        category: Category
+        user_id: Author
+        user: Author
+        last_reviewed_at: Last Reviewed At
+        is_published: Is Published
+        published_at: Published At
+        content: Content
+        created_at: Created At
+        reprinted_source: Reprinted Source
+        reprinted_link: Reprinted Link
+      category:
+        name_zh: ZH
+        name_en: EN
+        permalink: Permalink
+        article_count: Articles Count
+        created_at: Created At
+      tag:
+        name: Name
+        created_at: Created At
+      comment:
+        user_id: Author
+        user: Author
+        link: Link
+        content: Content
+        created_at: Created At

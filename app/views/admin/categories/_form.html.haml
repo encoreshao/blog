@@ -1,0 +1,9 @@
+= simple_form_for resource, url: url, html: { class: 'horizontal_form', validate: true } do |f|
+  = f.error_notification
+  = f.input :name_zh, required: true
+  = f.input :name_en, required: true
+  = f.input :permalink, required: true
+
+  .form-group.string
+    %label.control-label
+    = f.submit class: 'btn btn-primary'

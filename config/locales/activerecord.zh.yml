@@ -1,0 +1,48 @@
+zh:
+  activerecord:
+    models:
+      user: 用户
+      article: 文章
+      category: 分类
+      tag: 标签
+      comment: 留言
+    attributes:
+      user:
+        email: 邮箱
+        password: 密码
+        author_name: 作者
+        created_at: 创建时间
+      user_profile:
+        name: 名字
+        avatar: 头像
+        link: 链接
+        created_at: 创建时间
+      article:
+        title: 标题
+        permalink: 链接
+        category_id: 分类
+        category: 分类
+        user_id: 作者
+        user: 作者
+        last_reviewed_at: 最后预览时间
+        is_published: 是否发布
+        published_at: 发布日期
+        content: 内容
+        created_at: 创建时间
+        reprinted_source: 转载自
+        reprinted_link: 转载链接
+      category:
+        name_zh: 中文
+        name_en: 英文
+        permalink: 链接
+        articles_count: 文章数
+        created_at: 创建时间
+      tag:
+        name: 名称
+        created_at: 创建时间
+      comment:
+        user_id: 作者
+        user: 作者
+        link: 链接
+        content: 内容
+        created_at: 创建时间

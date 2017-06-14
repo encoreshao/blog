@@ -1,0 +1,18 @@
+%nav.navbar.navbar-expand-md.navbar-inverse.bg-inverse
+  .container
+    %a.navbar-brand{href: root_path}= I18n.t('title')
+    %button.navbar-toggler{"aria-controls" => "navbars", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbars", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+
+    #navbars.collapse.navbar-collapse
+      %ul.navbar-nav.mr-auto
+        = admin_sidebar(User, admin_users_path)
+        = admin_sidebar(Article, admin_articles_path)
+        = admin_sidebar(Category, admin_categories_path)
+        = admin_sidebar(Tag, admin_tags_path)
+        = admin_sidebar(Comment, admin_comments_path)
+        %li.nav-item
+          = link_to I18n.t('action.logout'), destroy_user_session_path, class: 'nav-link', method: :DELETE
+      %form.form-inline.mt-2.mt-md-0
+        %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "#{I18n.t('action.search')}......", :type => "text"}/
+        %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"}= I18n.t('action.search')
