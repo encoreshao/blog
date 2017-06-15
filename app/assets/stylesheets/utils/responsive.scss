@@ -3,11 +3,11 @@
       width: 1000px;
   }
 
-  #rightcontent {
+  #content-wrappers {
       width: 66%;
   }
 
-  #leftcontent {
+  #sidebar-wrappers {
       width: 28%;
   }
 
@@ -78,7 +78,7 @@
     display: none;
   }
 
-  .jPanelMenu-panel #leftcontent {
+  .jPanelMenu-panel #sidebar-wrappers {
     width: 100%;
     margin-right: 0;
     height: auto !important;
@@ -127,7 +127,7 @@
     margin-bottom: 0;
   }
 
-  #rightcontent {
+  #content-wrappers {
     width: 100%;
   }
 
@@ -140,6 +140,7 @@
   #main-header,
   .sidebar-widgets {
     padding: 20px 30px;
+    clear: both;
   }
 
   body.admin-bar  .sidebar-widgets {

@@ -19,12 +19,12 @@
   %body{class: "home blog wpb-js-composer js-comp-ver-5.0.1 vc_responsive"}
     .highlight-line
     %section.container
-      %a.menu-trigger{:href => "#leftcontent"}
-      #leftcontent
-        = render 'shared/sidebar'
-      .before
-      #rightcontent
+      %a.menu-trigger{:href => "#sidebar-wrappers"}
+      #content-wrappers
         = yield
+      .before
+      #sidebar-wrappers
+        = render 'shared/sidebar'
 
       .clearfix
       .clearfix

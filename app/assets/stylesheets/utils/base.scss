@@ -238,14 +238,14 @@ h6 {
   background-color: transparent !important;
 }
 
-.jPanelMenu-panel #leftcontent {
+.jPanelMenu-panel #sidebar-wrappers {
 }
 
 #jPanelMenu-menu {
   display: none;
 }
 
-#leftcontent {
+#sidebar-wrappers {
   padding: 40px 40px 40px 0;
   position: relative;
   z-index: 10000;
@@ -259,7 +259,7 @@ h6 {
   left: -100%;
   z-index: -1;
   height: inherit !important;
-  right: 75%;
+  right: 32%;
   box-shadow: 0 0 2px 3px rgba(0,0,0,.03),0 1px 5px rgba(0,0,0,.1);
 }
 
@@ -281,6 +281,8 @@ h6 {
 #logo {
   text-align: center;
   margin-bottom: 30px;
+  font-size: 2em;
+  line-height: 2em;
 }
 
 #logo h2.site-title {
@@ -296,17 +298,17 @@ h6 {
   margin-top: 5px;
 }
 
-#leftcontent {
+#sidebar-wrappers {
   color: #555;
-  float: left;
+  float: right;
   width: 25%;
   line-height: 140%;
-  margin-right: 4%;
+  margin-left: 4%;
 }
 
-#rightcontent {
+#content-wrappers {
   float: left;
-  width: 69%;
+  width: 60%;
   max-width: 900px;
   min-height: 100px;
   padding-top: 20px;
@@ -601,7 +603,7 @@ article .thumbnail {
   width: 65%;
 }
 
-#leftcontent .widget .meta,
+#sidebar-wrappers .widget .meta,
 #jPanelMenu-menu .widget .meta {
   font-size: 9px !important;
   text-align: left;
@@ -623,7 +625,7 @@ article .thumbnail {
   position: relative;
 }
 
-#leftcontent .widget-title label,
+#sidebar-wrappers .widget-title label,
 #jPanelMenu-menu h3.widget-title label {
   background-color: #fff;
   display: inline-block;
@@ -632,7 +634,7 @@ article .thumbnail {
   z-index: 1;
 }
 
-#leftcontent .widget-title:after,
+#sidebar-wrappers .widget-title:after,
 #jPanelMenu-menu h3.widget-title:after {
   height: 1px;
   content: '';
@@ -654,7 +656,7 @@ article .thumbnail {
   font-size: 11px;
 }
 
-#rightcontent .widget-title {
+#content-wrappers .widget-title {
   text-align: left;
   margin-top: 0;
   padding: 0 !important;
@@ -832,7 +834,7 @@ body.single .post-wrapper article.hentry {
   margin-bottom: 0;
 }
 
-#rightcontent article.sticky label.sticky {
+#content-wrappers article.sticky label.sticky {
   display: inline-block;
   background: #8Bc34a;
   font-size: 11px;
@@ -851,7 +853,7 @@ body.single .post-wrapper article.hentry {
   background-color: #efefef;
 }
 
-#rightcontent article.hentry .read-more {
+#content-wrappers article.hentry .read-more {
   font-family: 'Open Sans';
   font-weight: 400;
   font-size: 12px;
@@ -866,14 +868,14 @@ body.single .post-wrapper article.hentry {
   transition: .25s;
 }
 
-#rightcontent article.hentry .read-more a {
+#content-wrappers article.hentry .read-more a {
   display: inline-block;
   color: #333;
   line-height: 20px;
   padding: 10px 35px;
   border: 1px solid #555;
 }
-#rightcontent article.hentry .read-more a:hover {
+#content-wrappers article.hentry .read-more a:hover {
   background-color: rgba(220, 220, 220, .8);
 }
 

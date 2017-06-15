@@ -68,7 +68,7 @@
   $('.video-holder, .fb_iframe_widget').fitVids()
   # jPanelMenu
   # jPM = $.jPanelMenu(
-  #   menu: '#leftcontent'
+  #   menu: '#sidebar-wrappers'
   #   trigger: '.menu-trigger'
   #   duration: 300
   #   direction: 'left'
@@ -108,7 +108,7 @@
     false
 
   # Sticky Article
-  $('#rightcontent article.sticky .post-title h3').before '<label class="sticky">' + _warrior.sticky_text + '</label>'
+  $('#content-wrappers article.sticky .post-title h3').before '<label class="sticky">' + _warrior.sticky_text + '</label>'
   # prettyPhoto
 
   $('dl.gallery-item dt a[href*=".jpg"], dl.gallery-item dt a[href*=".png"], dl.gallery-item dt a[href*=".gif"]').attr 'rel', 'prettyPhoto["gallery"]'
@@ -129,7 +129,7 @@
     verticalOffset: 10
 
   $(window).scroll ->
-    menu = jQuery('#leftcontent')
+    menu = jQuery('#sidebar-wrappers')
     pos = menu.offset()
 
     if $(this).scrollTop() > pos.top + menu.height()

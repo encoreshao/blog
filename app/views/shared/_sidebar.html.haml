@@ -1,7 +1,6 @@
 %header#main-header
   #logo.wow.fadeIn.center.animated
     = link_to root_path do
-      // %img{:src => "/assets/photos/encore.jpg"}/
       = I18n.t('title')
 
 .sidebar-widgets
@@ -103,5 +102,6 @@
     %p
       - time_range = '2017'
       - time_range += " - #{Time.now.year}" if Time.now.year > 2017
-      Copyright #{time_range} #{I18n.t('title')}.
+      Copyright #{time_range} 
+      #{I18n.t('title')}.
     %br
