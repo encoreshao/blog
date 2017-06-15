@@ -6,7 +6,7 @@
 #  - Should be minor enough to claim CC0 for my changes.
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 
-zh-CN:
+zh:
   devise:
     confirmations:
       confirmed: "成功验证您的帐号。您现已登录。"
@@ -51,6 +51,7 @@ zh-CN:
       update_needs_confirmation: "信息更新成功，但我们需要验证您的新电子邮件地址，请检查邮箱（包括垃圾邮箱），并点击该链接激活您的帐号。"
       updated: "帐号资料更新成功。"
     sessions:
+      login: 登录
       signed_in: "登录成功。"
       signed_out: "退出成功。"
       already_signed_out: "已经退出成功。"

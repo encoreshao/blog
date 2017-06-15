@@ -259,7 +259,7 @@ h6 {
   left: -100%;
   z-index: -1;
   height: inherit !important;
-  right: 32%;
+  left: 32%;
   box-shadow: 0 0 2px 3px rgba(0,0,0,.03),0 1px 5px rgba(0,0,0,.1);
 }
 
@@ -300,15 +300,15 @@ h6 {
 
 #sidebar-wrappers {
   color: #555;
-  float: right;
+  float: left;
   width: 25%;
   line-height: 140%;
   margin-left: 4%;
 }
 
 #content-wrappers {
-  float: left;
-  width: 60%;
+  float: right;
+  width: 69%;
   max-width: 900px;
   min-height: 100px;
   padding-top: 20px;

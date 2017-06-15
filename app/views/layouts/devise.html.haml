@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %title= I18n.t('title')
+    %title= "#{I18n.t('title')} - ADMIN"
     %meta{ charset: 'utf-8' }
     %meta{ content: 'width=device-width, initial-scale=1.0', name: 'viewport' }
 
@@ -16,6 +16,13 @@
 
   %body.devise
     .container
-      .thumbnail
-        %img.attachment-blog-image.size-blog-image.wp-post-image{src: banner_iamge_url}/
       = yield
+
+      %footer
+        %p= link_to I18n.t('title'), root_path
+        %p
+          - time_range = '2017'
+          - time_range += " - #{Time.now.year}" if Time.now.year > 2017
+          Copyright #{time_range} 
+          #{I18n.t('title')}
+        %br

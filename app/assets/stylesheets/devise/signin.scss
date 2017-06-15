@@ -1,43 +1,46 @@
 body.devise {
-  padding: 20px;
-  background-color: white;
+  background-color: #efefef;
   text-align: center;
-}
+  height: 100%;
 
-.thumbnail img {
-  height: 200px;
-}
+  display: -webkit-box;  /* 老版本语法: Safari,  iOS, Android browser, older WebKit browsers.  */
+  display: -moz-box;    /* 老版本语法: Firefox (buggy) */ 
+  display: -ms-flexbox;  /* 混合版本语法: IE 10 */
+  display: -webkit-flex;  /* 新版本语法： Chrome 21+ */
+  display: flex;       /* 新版本语法： Opera 12.1, Firefox 22+ */
 
-.form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-}
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-  margin-bottom: 10px;
-}
-.form-signin .checkbox {
-  font-weight: normal;
-}
-.form-signin .form-control {
-  position: relative;
-  height: auto;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px;
-}
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
+  /*垂直居中*/  
+  /*老版本语法*/
+  -webkit-box-align: center; 
+  -moz-box-align: center;
+  /*混合版本语法*/
+  -ms-flex-align: center; 
+  /*新版本语法*/
+  -webkit-align-items: center;
+  align-items: center;
+
+  /*水平居中*/
+  /*老版本语法*/
+  -webkit-box-pack: center; 
+  -moz-box-pack: center; 
+  /*混合版本语法*/
+  -ms-flex-pack: center; 
+  /*新版本语法*/
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;  /* needed for Firefox */
+
+  .container {
+    width: 100%;
+    background-color: white;
+    border: 10px solid #efefef;
+    border-radius: 20px;
+    padding: 100px 0;
+    footer {
+      margin-top: 5%;
+    }
+    .btn.btn-primary {
+      cursor: pointer;
+    }
+  }
+} 
