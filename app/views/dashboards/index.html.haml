@@ -9,16 +9,16 @@
             = link_to article.title, article_path(article.params), target: '_blank'
         .meta
           %span
-            %i.typcn.typcn-user
+            %i.fa.fa-user
             = article.user && article.user.author_name
           %span
-            %i.typcn.typcn-calendar
+            %i.fa.fa-calendar
             = article.published_date
-          %span.category
-            %i.typcn.typcn-bookmark
+          %span
+            %i.fa.fa-flag
             = article.category_name(I18n.default_locale)
           %span
-            %i.typcn.typcn-time
+            %i.fa.fa-eye
             = article.last_reviewed_date
         .post-content
           %p
