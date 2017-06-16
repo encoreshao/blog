@@ -1,4 +1,7 @@
-class ArticleTag < ApplicationRecord
+class ArticlesTag < ApplicationRecord
+	validates :article_id, :tag_id, presence: true
+	validates_uniqueness_of :article_id, scope: [:tag_id]
+
   belongs_to :article
   belongs_to :tag
 end

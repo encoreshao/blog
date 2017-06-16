@@ -1,10 +1,14 @@
 class Article < ApplicationRecord
+  validates :title, :permalink, :user_id, :category_id, :content, presence: true
+
   belongs_to :user, optional: true
   belongs_to :category, optional: true, counter_cache: true
 
-  scope :published, -> { where(is_published: true) }
+  # has_many :article_tags
+  # has_many :tags, through: :article_tags
+  has_and_belongs_to_many :tags
 
-  validates :title, :permalink, :user_id, :category_id, :content, presence: true
+  scope :published, -> { where(is_published: true) }
 
   def author_name
     user.try(:name)

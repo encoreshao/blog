@@ -29,11 +29,11 @@ body {
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
-  border: 3px solid #ededed;
+  border: 2px solid teal;
 }
 
 .highlight-line {
-  border-top: 3px solid #ededed;
+  border-top: 2px solid teal;
   display: block;
 }
 
@@ -253,14 +253,15 @@ h6 {
 
 .before {
   bottom: 0;
-  background: #fff;
+  background: teal;
   position: absolute;
   top: 0;
   left: -100%;
   z-index: -1;
   height: inherit !important;
-  left: 32%;
-  box-shadow: 0 0 2px 3px rgba(0,0,0,.03),0 1px 5px rgba(0,0,0,.1);
+  left: 28%;
+  // box-shadow: 0 0 2px 3px rgba(0,0,0,.03),0 1px 5px rgba(0,0,0,.1);
+  box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.03), 0 0px 0px rgba(0, 0, 0, 0.1);
 }
 
 .before:after {
@@ -303,7 +304,6 @@ h6 {
   float: left;
   width: 25%;
   line-height: 140%;
-  margin-left: 4%;
 }
 
 #content-wrappers {

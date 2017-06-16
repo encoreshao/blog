@@ -1,6 +1,6 @@
-class CreateArticleTags < ActiveRecord::Migration[5.1]
+class CreateArticlesTags < ActiveRecord::Migration[5.1]
   def change
-    create_table :article_tags do |t|
+    create_table :articles_tags do |t|
       t.references :article, foreign_key: true
       t.references :tag, foreign_key: true
 

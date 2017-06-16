@@ -8,6 +8,10 @@
   = f.input :is_published, as: :radio_buttons
   = f.input :reprinted_source
   = f.input :reprinted_link
+  
+  - unless resource.new_record?
+    = f.input :tags, input_html: { value: resource.tags.map(&:name).join(', ') }
+
   .form-group.string.content
     %label.control-label.string.optional= f.label :content
     .form-control

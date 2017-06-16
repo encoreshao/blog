@@ -31,6 +31,7 @@ zh:
         created_at: 创建时间
         reprinted_source: 转载自
         reprinted_link: 转载链接
+        tags: 标签
       category:
         name_zh: 中文
         name_en: 英文

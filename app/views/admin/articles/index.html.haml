@@ -20,16 +20,9 @@
           %td= resource.published_date
           %td= resource.last_reviewed_date
           %td
-            .btn-group
-              %button.btn.btn-primary{:type => "button"} Action
-              %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-                %span.caret
-                %span.sr-only Toggle Dropdown
-              %ul.dropdown-menu
-                %li
-                  = link_to I18n.t('action.show'), resource_path(resource)
-                %li
-                  = link_to I18n.t('action.edit'), edit_admin_article_path(resource)
+            = link_to I18n.t('action.show'), resource_path(resource)
+            = link_to I18n.t('action.edit'), edit_admin_article_path(resource)
+            = link_to I18n.t('action.destory'), admin_article_path(resource), method: :DELETE
 
 
 

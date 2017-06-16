@@ -2,7 +2,7 @@
   / Start: Post Type Image
   %article#post-481.basic-post.post-picture.post-481.post.type-post.status-publish.format-image.has-post-thumbnail.hentry.category-fashion.tag-fashion-show.tag-photography.post_format-post-format-image
     .thumbnail
-      / %img.attachment-blog-image.size-blog-image.wp-post-image{src: banner_iamge_url}/
+      %img.attachment-blog-image.size-blog-image.wp-post-image{src: banner_iamge_url}/
     .post-inner
       .post-title
         %h1
@@ -16,17 +16,17 @@
           = @article.category_name(I18n.default_locale)
         %span
           %i.typcn.typcn-time
-          Last modified 9 months ago
+          = distance_of_time_in_words(@article.last_reviewed_at || Time.zone.now, Time.zone.now)
       .post-content
         = raw @article.content
       %footer.content-footer
         .tags
           %i.typcn.typcn-bookmark
-          %label Tags:
-          = succeed "," do
-            %a{href: "http://demo2.themewarrior.com/grateful/tag/fashion-show/", rel: "tag"} Fashion Show
-          %a{href: "http://demo2.themewarrior.com/grateful/tag/photography/", rel: "tag"} Photography
-        / AddThis Button BEGIN
+          %label #{I18n.t('tips.tags')}:
+          - @article.tags.each do |tag|
+            = tag.name
+
+        / Add This Button BEGIN
         .share-buttons
           .addthis_toolbox.addthis_default_style
             %h4 Share this Article
@@ -40,9 +40,7 @@
               %span.typcn.typcn-social-pinterest
             %a.addthis_button_email
               %span.typcn.typcn-mail
-        :javascript
-          var addthis_config = {"data_track_addressbar":false};
-        %script{:src => "//s7.addthis.com/js/300/addthis_widget.js", type: "text/javascript"}
+              
         / AddThis Button END
         #post-nav
           .post-previous
