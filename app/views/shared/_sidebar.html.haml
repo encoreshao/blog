@@ -6,7 +6,9 @@
 .sidebar-widgets
   #widget-warrior_about-2.widget.about
     %h3.widget-title
-      %label= I18n.t('tips.about_the_author')
+      %label
+        %i.fa.fa-user
+        = I18n.t('tips.about_the_author')
     .thumbnail
       %img.avatar{alt: I18n.t('author'), src: '/assets/photos/encore.jpg'}/
     %p
@@ -14,58 +16,43 @@
     .social
       %ul
         %li
-          %a{href: "#", target: "_blank"}
-            %i.typcn.typcn-social-facebook
+          %a{href: "https://www.facebook.com/encore.shao", target: "_blank"}
+            %i.fa.fa-facebook
+        %li
+          %a{href: "https://twitter.com/encoreshao", target: "_blank"}
+            %i.fa.fa-twitter
+        %li
+          %a{href: "https://plus.google.com/+EncoreShao", target: "_blank"}
+            %i.fa.fa-google-plus
+        %li
+          %a{href: "https://cn.linkedin.com/in/1encoreshao", target: "_blank"}
+            %i.fa.fa-linkedin
         %li
           %a{href: "#", target: "_blank"}
-            %i.typcn.typcn-social-twitter
+            %i.fa.fa-youtube
         %li
-          %a{href: "#", target: "_blank"}
-            %i.typcn.typcn-social-instagram
-        %li
-          %a{href: "#", target: "_blank"}
-            %i.typcn.typcn-social-google-plus
-        %li
-          %a{href: "#", target: "_blank"}
-            %i.typcn.typcn-social-linkedin
-        %li
-          %a{href: "#", target: "_blank"}
-            %i.typcn.typcn-social-pinterest
-        %li
-          %a{href: "#", target: "_blank"}
-            %i.typcn.typcn-social-flickr
-        %li
-          %a{href: "#", target: "_blank"}
-            %i.typcn.typcn-social-youtube
+          %a{href: "https://github.com/encoreshao", target: "_blank"}
+            %i.fa.fa-github
 
-  #widget-nav_menu-2.widget.widget_nav_menu
+  #widget-nav_menu-2.widget
     %h3.widget-title
-      %label= I18n.t('navigation.title')
+      %label
+        %i.fa.fa-bars
+        = I18n.t('navigation.title')
     .menu-main-menu-container
       %ul#menu-main-menu.menu
-        %li#menu-item-440.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-440
-          %a{href: "http://wp.andrastudio.com/grateful/"}= I18n.t('navigation.home')
-        %li#menu-item-479.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-479
-          %a{href: "http://demo2.themewarrior.com/grateful/about/"}= I18n.t('navigation.about')
-        %li#menu-item-491.menu-item.menu-item-type-taxonomy.menu-item-object-category.menu-item-491
-          %a{href: "http://demo2.themewarrior.com/grateful/category/fashion/"}= I18n.t('navigation.fashion')
-        %li#menu-item-492.menu-item.menu-item-type-taxonomy.menu-item-object-category.menu-item-492
-          %a{href: "http://demo2.themewarrior.com/grateful/category/life/"}= I18n.t('navigation.life')
-        %li#menu-item-493.menu-item.menu-item-type-taxonomy.menu-item-object-category.menu-item-493
-          %a{href: "http://demo2.themewarrior.com/grateful/category/travel/"}= I18n.t('navigation.travel')
-        %li#menu-item-441.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-has-children.menu-item-441
-          %a{href: "#"}= I18n.t('navigation.friendly_links')
-          %ul.sub-menu
-            - friendly_links.each do |name, link|
-              %li#menu-item-495.menu-item.menu-item-type-taxonomy.menu-item-object-post_format.menu-item-495
-                = link_to name, link
+        - ['home', 'about', 'fashion', 'life', 'travel', 'friendly_links'].each do |nav_name|
+          %li
+            %a
+              %i.fa.fa-dot-circle-o
+              = I18n.t('navigation.' + nav_name)
 
   #widget-search-3.widget.widget_search
     .search-box
       %form#search-form{action: root_path, method: "get"}
         %input#search-field{name: "s", type: "text", value: ""}/
         %a.submit{href: "javascript:void(0);", onclick: "jQuery('#search-form').submit();"}
-          %i.typcn.typcn-chevron-right
+          %i.fa.fa-search
 
   - if Comment.count > 0
     #widget-warrior_recent_posts-2.widget.warrior_recent_posts
@@ -93,7 +80,9 @@
 
   #widget-tag_cloud-2.widget.widget_tag_cloud
     %h3.widget-title
-      %label= I18n.t('tips.tags')
+      %label
+        %i.fa.fa-tags
+        = I18n.t('tips.tags')
     .tagcloud
       - full_atricle_tags.each do |tag|
         = link_to tag[0], '', class: 'tag-link-9.tag-link-position-1'
@@ -102,6 +91,6 @@
     %p
       - time_range = '2017'
       - time_range += " - #{Time.now.year}" if Time.now.year > 2017
-      Copyright #{time_range} 
+      Copyright #{time_range}
       #{I18n.t('title')}
     %br

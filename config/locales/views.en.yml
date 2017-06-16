@@ -8,9 +8,11 @@ en:
     recent_posts: Recent Posts
     related_posts: Related Posts
     post_format: Post Format
+    previous_post: PREVIOUS POST
     leave_a_comment: Leave a Comment
+    share_this_article: Share this Article
     follow_me_on_twitter: Follow me on Twitter
-    notes: This is my personal blog where I share a lot of stuffs about life and work everything I do in between. (encore.shao@gmail.com)
+    notes: This is my personal blog where I share a lot of stuffs about life and work everything I do in between.
   navigation:
     title: Navigation
     home: Home

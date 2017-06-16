@@ -9,19 +9,19 @@
           = @article.title
       .meta
         %span
-          %i.typcn.typcn-calendar
+          %i.fa.fa-calendar
           = @article.published_date
-        %span.category
-          %i.typcn.typcn-bookmark
+        %span
+          %i.fa.fa-flag
           = @article.category_name(I18n.default_locale)
         %span
-          %i.typcn.typcn-time
+          %i.fa.fa-eye
           = distance_of_time_in_words(@article.last_reviewed_at || Time.zone.now, Time.zone.now)
       .post-content
         = raw @article.content
       %footer.content-footer
         .tags
-          %i.typcn.typcn-bookmark
+          %i.fa.fa-bookmark
           %label #{I18n.t('tips.tags')}:
           - @article.tags.each do |tag|
             = tag.name
@@ -29,24 +29,25 @@
         / Add This Button BEGIN
         .share-buttons
           .addthis_toolbox.addthis_default_style
-            %h4 Share this Article
+            %h4= I18n.t('tips.share_this_article')
             %a.addthis_button_facebook{"fb:like:layout" => "button_count"}
-              %span.typcn.typcn-social-facebook
+              %span.fa.fa-facebook
             %a.addthis_button_twitter
-              %span.typcn.typcn-social-twitter
+              %span.fa.fa-twitter
             %a.addthis_button_google_plusone_share{"g:plusone:size" => "medium"}
-              %span.typcn.typcn-social-google-plus
+              %span.fa.fa-google-plus
             %a.addthis_button_pinterest_share{"pi:pinit:layout" => "horizontal", "pi:pinit:url" => "http://demo2.themewarrior.com/grateful/2015/03/01/breath-of-fresh-air-in-the-morning/"}
-              %span.typcn.typcn-social-pinterest
+              %span.fa.fa-pinterest
             %a.addthis_button_email
-              %span.typcn.typcn-mail
-              
+              %span.fa.fa-mail
+
         / AddThis Button END
         #post-nav
           .post-previous
-            %span.title Previous Post
+            %span.title= I18n.t('tips.previous_post')
             %h3
-              %a{href: "http://demo2.themewarrior.com/grateful/2015/02/28/even-the-celebrities-wanted-to-dress-weather-appropriately-this-week/", :title => "Even the Celebrities Wanted to Dress <strong><em>Weather Appropriately</em></strong> This Week"} Even the Celebrities Wanted to Dress Weather...
+              %i.fa.fa-angle-double-left
+              = 'Even the Celebrities Wanted to Dress Weather...'
         #related-posts
           .inner
             %h3.widget-title= I18n.t('tips.related_posts')
@@ -62,7 +63,9 @@
   / End: Post Type Image
   / Start author bio
   .single-author.box.clearfix
-    %h3.widget-title= I18n.t('tips.about_the_author')
+    %h3.widget-title
+      %i.fa.fa-user
+      = I18n.t('tips.about_the_author')
     .wrapper
       .thumbnail
         %img.avatar.avatar-80.photo{src: "/assets/photos/encore.jpg"}/
@@ -73,28 +76,28 @@
         %ul.social-profiles
           %li
             %a{href: "#", target: "_blank"}
-              %i.typcn.typcn-social-facebook
+              %i.fa.fa-facebook
           %li
             %a{href: "#", target: "_blank"}
-              %i.typcn.typcn-social-twitter
+              %i.fa.fa-twitter
           %li
             %a{href: "#", target: "_blank"}
-              %i.typcn.typcn-social-instagram
+              %i.fa.fa-instagram
           %li
             %a{href: "#", target: "_blank"}
-              %i.typcn.typcn-social-google-plus
+              %i.fa.fa-google-plus
           %li
             %a{href: "#", target: "_blank"}
-              %i.typcn.typcn-social-pinterest
+              %i.fa.fa-pinterest
           %li
             %a{href: "#", target: "_blank"}
-              %i.typcn.typcn-social-youtube
+              %i.fa.fa-youtube
           %li
             %a{href: "#", target: "_blank"}
-              %i.typcn.typcn-social-vimeo
+              %i.fa.fa-vimeo
           %li
             %a{href: "#", target: "_blank"}
-              %i.typcn.typcn-social-linkedin
+              %i.fa.fa-linkedin
     .clearfix
 
   / End author bio
@@ -102,7 +105,9 @@
   #comment-form-widget.comments.box
     #respond.comment-respond
       %h3#reply-title.comment-reply-title
-        %h3.widget-title= I18n.t('tips.leave_a_comment')
+        %h3.widget-title
+          %i.fa.fa-comments
+          = I18n.t('tips.leave_a_comment')
         %small
           %a#cancel-comment-reply-link{href: "/grateful/2015/03/01/breath-of-fresh-air-in-the-morning/#respond", rel: "nofollow", style: "display:none;"} Cancel Reply
       %form#commentform.comment-form{action: "http://demo2.themewarrior.com/grateful/wp-comments-post.php", method: "post"}
@@ -124,7 +129,7 @@
             %label= I18n.t('form.website_url')
             %input#input-email.input-s{name: "url", type: "text", value: ""}/
           %p.form-submit
-            %input#submit.submit{name: "submit", type: "submit", value: I18n.t('action.submit')}/
+            %input#submit.btn.btn-primary{name: "submit", type: "submit", value: I18n.t('action.submit')}/
             %input#comment_post_ID{name: "comment_post_ID", type: "hidden", value: "481"}/
             %input#comment_parent{name: "comment_parent", type: "hidden", value: "0"}/
         %p{style: "display: none;"}

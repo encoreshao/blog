@@ -20,9 +20,12 @@
           %td= resource.published_date
           %td= resource.last_reviewed_date
           %td
-            = link_to I18n.t('action.show'), resource_path(resource)
-            = link_to I18n.t('action.edit'), edit_admin_article_path(resource)
-            = link_to I18n.t('action.destory'), admin_article_path(resource), method: :DELETE
+            = link_to resource_path(resource) do
+              %i.fa.fa-eye
+            = link_to edit_admin_article_path(resource) do
+              %i.fa.fa-edit
+            = link_to admin_article_path(resource), method: :DELETE do
+              %i.fa.fa-remove
 
 
 

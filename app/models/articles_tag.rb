@@ -8,7 +8,7 @@ end
 
 # == Schema Information
 #
-# Table name: article_tags
+# Table name: articles_tags
 #
 #  id         :integer          not null, primary key
 #  article_id :integer
