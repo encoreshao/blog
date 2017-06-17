@@ -17,6 +17,10 @@
           %span
             %i.fa.fa-flag
             = article.category_name(I18n.default_locale)
+          %span
+            %i.fa.fa-meh-o
+            = I18n.t('tips.viewed_count')
+            = raw "(#{article.view_count})"
         .post-content
           %p
             = raw truncate(strip_tags(article.content), length: 400)

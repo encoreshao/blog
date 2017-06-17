@@ -13,10 +13,14 @@
         %span
           %i.fa.fa-flag
           = @article.category_name(I18n.default_locale)
-        %span
+        %span.btn-action{data: {name: 'up'}}
           %i.fa.fa-thumbs-up
-        %span
+          = I18n.t('action.like')
+          = raw "(<count>#{@article.likes_count}</count>)"
+        %span.btn-action{data: {name: 'down'}}
           %i.fa.fa-thumbs-down
+          = I18n.t('action.dislike')
+          = raw "(<count>#{@article.dislike_count}</count>)"
       .post-content
         = raw @article.content
 
@@ -107,7 +111,7 @@
         %small
           %a#cancel-comment-reply-link{href: "/grateful/2015/03/01/breath-of-fresh-air-in-the-morning/#respond", rel: "nofollow", style: "display:none;"}= I18n.t('action.cancel_reply')
 
-      = form_tag comment_dashboards_path, method: :POST, class: 'comment-form', id: 'commentform' do
+      = form_tag comment_articles_path, method: :POST, class: 'comment-form', id: 'commentform' do
         .comment-form-wrapper
           .input.message
             %label
@@ -127,7 +131,7 @@
             %label= I18n.t('form.website_url')
             %input#input-email.input-s{name: "url", type: "text", value: ""}/
           %p.form-submit
-            = submit_tag I18n.t('action.submit'), class: 'btn btn-primary btn-green', id: 'submit'
+            = submit_tag I18n.t('action.submit'), class: 'btn btn-primary bg-green', id: 'submit'
             %input#comment_post_ID{name: "comment_post_ID", type: "hidden", value: "481"}/
             %input#comment_parent{name: "comment_parent", type: "hidden", value: "0"}/
 

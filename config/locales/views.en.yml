@@ -12,6 +12,7 @@ en:
     leave_a_comment: Leave a Comment
     share_this_article: Share this Article
     follow_me_on_twitter: Follow me on Twitter
+    viewed_count: Viewed Count
     notes: This is my personal blog where I share a lot of stuffs about life and work everything I do in between.
   navigation:
     title: Navigation
@@ -50,3 +51,5 @@ en:
     newer_posts: Newer Posts
     cancel_reply: Cancel Reply
     submit: Submit
+    like: Like
+    dislike: UnLike

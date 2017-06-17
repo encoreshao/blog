@@ -12,6 +12,7 @@ zh:
     leave_a_comment: 留言
     share_this_article: 分享此文章
     follow_me_on_twitter: 在Twitter上关注作者
+    viewed_count: 预览数
     notes: 邵壮 - 分享使我快乐! 以快乐的心态去迎接美好的世界. I want share something to you!
   navigation:
     title: 站点导航
@@ -50,3 +51,5 @@ zh:
     newer_posts: 下一页
     cancel_reply: 撤销回复
     submit: 提交
+    like: 赞
+    dislike: 一般

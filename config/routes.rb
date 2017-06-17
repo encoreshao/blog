@@ -16,7 +16,17 @@ Rails.application.routes.draw do
     root 'dashboards#index'
   end
 
-  get "/:year/:month/:day/:permalink" => "dashboards#show",
+  resources :articles, only: [] do
+    collection do
+      post :comment
+      constraints format: :json do
+        post :like
+        post :dislike
+      end
+    end
+  end
+
+  get "/:year/:month/:day/:permalink" => "articles#show",
       requirements: {
         year: /\d{4}/, month: /\d{1,2}/, day: /\d{1,2}/
       },
@@ -24,13 +34,6 @@ Rails.application.routes.draw do
 
   get "category/:category" => "dashboards#index", as: :categories
   get "tag/:tag" => "dashboards#index", as: :tags
-
-  resources :comments, only: [:create]
-  resources :dashboards, only: [:index, :show] do
-    collection do
-      post :comment
-    end
-  end
 
   root 'dashboards#index'
 end

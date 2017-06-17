@@ -869,8 +869,7 @@ body.single .post-wrapper article.hentry {
   padding: 5%;
 }
 .post-inner:hover {
-  box-shadow: 0 0 10px 1px rgba(0,0,0,.06), 0 1px 10px rgba(0,0,0,.1);
-  background-color: #efefef;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, .1), 0 1px 10px rgba(0, 0, 0, .1);
 }
 
 #content-wrappers article.hentry .read-more {
@@ -2152,4 +2151,5 @@ html[xmlns] .slides {display: block;}
 .no-js .slides > li:first-child {display: block;}
 
 .fa { color: $green; }
-.btn-green { background-color: $green; }
+.bg-green { background-color: $green; }
+.btn-action { cursor: pointer; }

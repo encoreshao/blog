@@ -1,6 +1,4 @@
 class DashboardsController < ApplicationController
-  before_action :verify?, only: [:show, :comment]
-
   def index
     @articles = Article.published.with_categories(category_id).
                 with_tags(tag_id).
@@ -8,24 +6,7 @@ class DashboardsController < ApplicationController
                 order("published_at DESC").page(params[:page])
   end
 
-  def show
-    @article.increment!(:view_count)
-  end
-
-  def comment
-    comment_params = { content: params[:comment] }
-    @article.comments.create(comment_params)
-
-    redirect_to article_path(@article.params)
-  end
-
   protected
-  def verify?
-    @article = Article.find_by(permalink: params[:permalink], published_at: "#{params[:year]}-#{params[:month]}-#{params[:day]}")
-
-    redirect_to '/404' if @article.blank?
-  end
-
   def category_id
     return nil if params[:category].blank?
 
