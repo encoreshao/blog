@@ -2,23 +2,10 @@ class Admin::ArticlesController < AdminController
   defaults resource_class: Article, collection_name: 'articles', instance_name: 'article'
   before_action :associate_tags, only: [:update]
 
-  # def create!
-  # 	tags = params[:article].delete(:tags).split(',').map { |e| e.strip }
-
-  # 	puts params[:article].inspect
-  	
-  # 	resource = Article.new(params[:article])
-  # 	if resource.save
-  # 		redirect_to admin_articles_path
-  # 	else
-  # 		render :new
-  # 	end
-  # end
-
   protected
   def article_params
     params.fetch(:article, {}).permit(
-    	:title, :permalink, :category_id, :user_id, :published_at, 
+    	:title, :permalink, :category_id, :user_id, :published_at,
     	:is_published, :content, :reprinted_source, :reprinted_link,
     	:tags
     )
@@ -27,7 +14,6 @@ class Admin::ArticlesController < AdminController
   def associate_tags
   	tags = params[:article].delete(:tags).split(',').map { |e| e.strip }
 
-  	
   	build_tags(tags, resource)
   end
 

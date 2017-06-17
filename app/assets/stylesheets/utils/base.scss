@@ -623,6 +623,22 @@ article .thumbnail {
   position: relative;
 }
 
+#widget-warrior_about-2 .thumbnail img {
+  border: 2px solid #fff;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  -moz-box-shadow: rgba(0,0,0,0.2) 0px 1px 2px;
+  -webkit-box-shadow: rgba(0,0,0,0.2) 0px 1px 2px;
+  box-shadow: rgba(0,0,0,0.2) 0px 1px 2px;
+  &:hover {
+    border: 2px solid $green;
+    -moz-border-radius: 119px;
+    -webkit-border-radius: 119px;
+    border-radius: 119px;
+  }
+}
+
 #sidebar-wrappers .widget-title label,
 #jPanelMenu-menu h3.widget-title label {
   background-color: #fff;

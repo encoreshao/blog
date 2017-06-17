@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get "category/:category" => "dashboards#index", as: :categories
   get "tag/:tag" => "dashboards#index", as: :tags
 
+  resources :comments, only: [:create]
   resources :dashboards, only: [:index, :show] do
     collection do
       post :comment
