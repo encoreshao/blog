@@ -24,5 +24,6 @@
 //= require utils/jquery.flexslider.min
 //= require utils/jquery.prettyPhoto.min
 //= require utils/jquery.form.min
+//= require utils/comment-reply.min
 //= require utils/functions
 //= require cable.js

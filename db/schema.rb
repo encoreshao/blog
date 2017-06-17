@@ -21,7 +21,9 @@ ActiveRecord::Schema.define(version: 20170608145900) do
     t.text "content"
     t.boolean "is_published", default: false
     t.date "published_at"
-    t.datetime "last_reviewed_at"
+    t.integer "view_count", default: 0
+    t.integer "likes_count", default: 0
+    t.integer "dislike_count", default: 0
     t.string "reprinted_source"
     t.string "reprinted_link"
     t.bigint "category_id"

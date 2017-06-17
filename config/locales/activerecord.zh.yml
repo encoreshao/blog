@@ -24,7 +24,9 @@ zh:
         category: 分类
         user_id: 作者
         user: 作者
-        last_reviewed_at: 最后预览时间
+        likes_count: 喜欢
+        dislike_count: 反感
+        view_count: 预览数
         is_published: 是否发布
         published_at: 发布日期
         content: 内容

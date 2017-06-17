@@ -24,7 +24,9 @@ en:
         category: Category
         user_id: Author
         user: Author
-        last_reviewed_at: Last Reviewed At
+        likes_count: Likes Count
+        dislike_count: Dislike Count
+        view_count: View Count
         is_published: Is Published
         published_at: Published At
         content: Content

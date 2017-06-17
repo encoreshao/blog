@@ -1,6 +1,7 @@
 class Admin::ArticlesController < AdminController
   defaults resource_class: Article, collection_name: 'articles', instance_name: 'article'
   before_action :associate_tags, only: [:update]
+  before_action :parameterize_permalink!, only: [:create, :update]
 
   protected
   def article_params
@@ -9,6 +10,10 @@ class Admin::ArticlesController < AdminController
     	:is_published, :content, :reprinted_source, :reprinted_link,
     	:tags
     )
+  end
+
+  def parameterize_permalink!
+    params[:article][:permalink] = params[:article][:title].parameterize if params[:article][:permalink].blank? && !params[:article][:title].blank?
   end
 
   def associate_tags

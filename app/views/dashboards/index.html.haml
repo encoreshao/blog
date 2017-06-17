@@ -17,16 +17,13 @@
           %span
             %i.fa.fa-flag
             = article.category_name(I18n.default_locale)
-          %span
-            %i.fa.fa-eye
-            = article.last_reviewed_date
         .post-content
           %p
             = raw truncate(strip_tags(article.content), length: 400)
 
         - unless article.tags.empty?
           .tags
-            %i.fa.fa-bookmark
+            %i.fa.fa-tags
             #{I18n.t('tips.tags')}:
             - article.tags.each do |tag|
               = tag.name

@@ -22,7 +22,6 @@ end
   'Chat' => '闲聊',
   'Discussion' => '讨论',
   'Meetup' => '聚会',
-  'Embed' => '代码块',
   'Culture' => '文化',
   'Education' => '教育',
   'Code' => '编码',

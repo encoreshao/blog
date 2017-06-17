@@ -9,7 +9,7 @@ class DashboardsController < ApplicationController
   end
 
   def show
-    @article.update_column(:last_reviewed_at, Time.zone.now)
+    @article.increment!(:view_count)
   end
 
   def comment
@@ -23,7 +23,7 @@ class DashboardsController < ApplicationController
   def verify?
     @article = Article.find_by(permalink: params[:permalink], published_at: "#{params[:year]}-#{params[:month]}-#{params[:day]}")
 
-    redirect_to root_path if @article.blank?
+    redirect_to '/404' if @article.blank?
   end
 
   def category_id

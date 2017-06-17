@@ -42,12 +42,10 @@
         %label= I18n.t('tips.recent_posts')
       .blocks.recent-post-widget
         %ul
-          - Comment.all do |comment|
+          - Comment.all.each do |comment|
             %li.post-481
-              .thumbnail
-                %img.attachment-thumbnail.size-thumbnail.wp-post-image{src: "/assets/photos/encore.jpg"}/
-              .detail
-                %a
+              .clearfix
+                = link_to article_path(comment.commentable.params), title: comment.commentable.title do
                   = comment.commentable.title
                 .meta
                   = comment.created_at.strftime('%B %d, %Y')

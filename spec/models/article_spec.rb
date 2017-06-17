@@ -14,7 +14,9 @@ end
 #  content          :text
 #  is_published     :boolean          default(FALSE)
 #  published_at     :date
-#  last_reviewed_at :datetime
+#  view_count       :integer          default(0)
+#  likes_count      :integer          default(0)
+#  dislike_count    :integer          default(0)
 #  reprinted_source :string
 #  reprinted_link   :string
 #  category_id      :integer

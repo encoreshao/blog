@@ -8,7 +8,6 @@
         %th= Article.human_attribute_name(:user_id)
         %th= Article.human_attribute_name(:is_published)
         %th= Article.human_attribute_name(:published_at)
-        %th= Article.human_attribute_name(:last_reviewed_at)
         %th
     %tbody
       - collection.each do |resource|
@@ -18,14 +17,13 @@
           %td= resource.user.try(:author_name)
           %td= resource.is_published
           %td= resource.published_date
-          %td= resource.last_reviewed_date
           %td
             = link_to resource_path(resource) do
               %i.fa.fa-eye
             = link_to edit_admin_article_path(resource) do
               %i.fa.fa-edit
             = link_to admin_article_path(resource), method: :DELETE do
-              %i.fa.fa-remove
+              %i.fa.fa-trash
 
 
 

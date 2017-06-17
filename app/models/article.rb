@@ -34,10 +34,6 @@ class Article < ApplicationRecord
     category.send("name_#{locale || 'en'}".to_sym)
   end
 
-  def last_reviewed_date
-    last_reviewed_at && last_reviewed_at.strftime('%b %d, %Y')
-  end
-
   def published_date
     published_at && published_at.strftime('%b %d, %Y')
   end
@@ -68,7 +64,9 @@ end
 #  content          :text
 #  is_published     :boolean          default(FALSE)
 #  published_at     :date
-#  last_reviewed_at :datetime
+#  view_count       :integer          default(0)
+#  likes_count      :integer          default(0)
+#  dislike_count    :integer          default(0)
 #  reprinted_source :string
 #  reprinted_link   :string
 #  category_id      :integer

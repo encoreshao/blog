@@ -624,7 +624,7 @@ article .thumbnail {
 }
 
 #widget-warrior_about-2 .thumbnail img {
-  border: 2px solid #fff;
+  border: 2px solid $green;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
@@ -1747,11 +1747,12 @@ form.wpcf7-form .wpcf7-mail-sent-ok {
   color: #333333;
   background-color: #ffffff;
   position: fixed;
-  right: 15px;
-  bottom: 15px;
+  right: 30px;
+  bottom: 30px;
   z-index: 999;
   padding: 0 8px;
   display: none;
+  font-size: 1.5em;
 }
 
 .thumbnail,

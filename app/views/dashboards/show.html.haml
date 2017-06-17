@@ -14,15 +14,16 @@
           %i.fa.fa-flag
           = @article.category_name(I18n.default_locale)
         %span
-          %i.fa.fa-eye
-          = distance_of_time_in_words(@article.last_reviewed_at || Time.zone.now, Time.zone.now)
+          %i.fa.fa-thumbs-up
+        %span
+          %i.fa.fa-thumbs-down
       .post-content
         = raw @article.content
 
       - unless @article.tags.empty?
         %footer.content-footer
           .tags
-            %i.fa.fa-bookmark
+            %i.fa.fa-tags
             %label #{I18n.t('tips.tags')}:
             - @article.tags.each do |tag|
               = tag.name
@@ -30,16 +31,22 @@
         .share-buttons
           .addthis_toolbox.addthis_default_style
             %h4= I18n.t('tips.share_this_article')
-            %a.addthis_button_facebook{"fb:like:layout" => "button_count"}
+            %a.addthis_button_facebook
               %span.fa.fa-facebook
             %a.addthis_button_twitter
               %span.fa.fa-twitter
-            %a.addthis_button_google_plusone_share{"g:plusone:size" => "medium"}
-              %span.fa.fa-google-plus
-            %a.addthis_button_pinterest_share{"pi:pinit:layout" => "horizontal", "pi:pinit:url" => "http://demo2.themewarrior.com/grateful/2015/03/01/breath-of-fresh-air-in-the-morning/"}
-              %span.fa.fa-pinterest
-            %a.addthis_button_email
-              %span.fa.fa-mail
+            %a.addthis_button_weibo
+              %span.fa.fa-weibo
+            %a.addthis_button_weixin
+              %span.fa.fa-weixin
+            %a.addthis_button_tencent_weibo
+              %span.fa.fa-tencent-weibo
+            %a.addthis_button_wechat
+              %span.fa.fa-wechat
+            %a.addthis_button_telegram
+              %span.fa.fa-telegram
+            %a.addthis_button_qq
+              %span.fa.fa-qq
 
         #post-nav
           .post-previous
@@ -55,7 +62,7 @@
                 %li
                   .thumbnail
                     %a
-                      %img.attachment-small-thumb.size-small-thumb.wp-post-image{:src => "/assets/photos/encore.jpg"}/
+                      %img.attachment-small-thumb.size-small-thumb.wp-post-image{src: "/assets/photos/encore.jpg"}/
                   %a Summer 2014 Style Inspirations Just for You
                   .meta Aug 12th, 2014
 
@@ -70,6 +77,25 @@
       = render partial: 'shared/social_links', locals: { class_name: 'social-profiles' }
 
     .clearfix
+
+  #comment-widget.comments.box
+    %h3.widget-title There's #{@article.comments.count} Comments
+    .comments-list
+      %ul
+        - @article.comments.each do |comment|
+          %li#comment-424.comment.byuser.comment-author-themewarrior.bypostauthor.even.thread-even.depth-1
+            .thumbnail
+              %i.fa.fa-user-o{style: "font-size: 5em;"}
+            .comment-detail
+              .author
+                = comment.user.try(:author_name) || 'Anonymous'
+                %span -
+                %time= comment.created_at.strftime('%B %d, %Y')
+              %p= comment.content
+              .reply
+                %a.comment-reply-link{onclick: "return addComment.moveForm( \"comment-424\", \"424\", \"respond\", \"503\" )", rel: "nofollow"} Reply
+
+
 
   / Comment
   #comment-form-widget.comments.box
