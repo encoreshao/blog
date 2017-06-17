@@ -9,10 +9,16 @@
       %label
         %i.fa.fa-user
         = I18n.t('tips.about_the_author')
-    .thumbnail
-      %img.avatar{alt: I18n.t('author'), src: '/assets/photos/encore.jpg'}/
-    %p
-    %p{style: "text-indent: 1em;"}= I18n.t('tips.notes')
+
+    .flip-container{ontouchstart: "this.classList.toggle('hover');"}
+      .flipper
+        .front
+          %span.name Encore Shao
+        .back
+          .back-logo
+          .back-title Encore Shao
+          %p= I18n.t('tips.notes')
+
     .social
       = render partial: 'shared/social_links', locals: { class_name: '' }
 

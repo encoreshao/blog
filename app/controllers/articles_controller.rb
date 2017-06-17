@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
 
   def comment
     comment_params = { content: params[:comment] }
+
     @article.comments.create(comment_params)
 
     redirect_to article_path(@article.params)

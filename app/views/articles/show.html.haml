@@ -87,9 +87,9 @@
     .comments-list
       %ul
         - @article.comments.each do |comment|
-          %li#comment-424.comment.byuser.comment-author-themewarrior.bypostauthor.even.thread-even.depth-1
+          %li.comment.byuser.comment-author-themewarrior.bypostauthor.even.thread-even.depth-1{id: "comment-#{comment.id}"}
             .thumbnail
-              %i.fa.fa-user-o{style: "font-size: 5em;"}
+              %i.fa.fa-user-o{style: "font-size: 4em;"}
             .comment-detail
               .author
                 = comment.user.try(:author_name) || 'Anonymous'
@@ -97,9 +97,7 @@
                 %time= comment.created_at.strftime('%B %d, %Y')
               %p= comment.content
               .reply
-                %a.comment-reply-link{onclick: "return addComment.moveForm( \"comment-424\", \"424\", \"respond\", \"503\" )", rel: "nofollow"} Reply
-
-
+                %a.comment-reply-link{onclick: "return addComment.moveForm( \"comment-#{comment.id}\", \"#{comment.id}\", \"respond\", \"503\" )", rel: "nofollow"} Reply
 
   / Comment
   #comment-form-widget.comments.box
@@ -132,7 +130,7 @@
             %input#input-email.input-s{name: "url", type: "text", value: ""}/
           %p.form-submit
             = submit_tag I18n.t('action.submit'), class: 'btn btn-primary bg-green', id: 'submit'
-            %input#comment_post_ID{name: "comment_post_ID", type: "hidden", value: "481"}/
+            %input#comment_post_ID{name: "comment_post_ID", type: "hidden", value: @article.id}/
             %input#comment_parent{name: "comment_parent", type: "hidden", value: "0"}/
 
         %p{style: "display: none;"}
