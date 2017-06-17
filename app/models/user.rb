@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :rememberable, :trackable, :validatable
 
   has_one :user_profile
+  has_many :comments
   delegate :name, :avatar, :link, to: :user_profile, prefix: "author", allow_nil: true
 
   def self.active_users

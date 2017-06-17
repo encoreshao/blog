@@ -40,6 +40,7 @@ en:
         created_at: Created At
       tag:
         name: Name
+        permalink: Permalink
         created_at: Created At
       comment:
         user_id: Author

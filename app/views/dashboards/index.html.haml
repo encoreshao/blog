@@ -22,11 +22,17 @@
             = article.last_reviewed_date
         .post-content
           %p
-            = raw truncate(article.content, length: 400)
+            = raw truncate(strip_tags(article.content), length: 400)
+
+        - unless article.tags.empty?
+          .tags
+            %i.fa.fa-bookmark
+            #{I18n.t('tips.tags')}:
+            - article.tags.each do |tag|
+              = tag.name
+
         .read-more
           %a{href: article_path(article.params)}= I18n.t('action.read_more')
 
   .page-navigation
-    %a.next{href: "http://demo2.themewarrior.com/grateful/page/2/"}
-      %i.typcn.typcn-arrow-left>
-      = I18n.t('action.newer_posts')
+    = paginate @articles

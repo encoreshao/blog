@@ -7,8 +7,19 @@ class Article < ApplicationRecord
   # has_many :article_tags
   # has_many :tags, through: :article_tags
   has_and_belongs_to_many :tags
+  has_many :comments, as: :commentable
 
   scope :published, -> { where(is_published: true) }
+  scope :with_categories, ->(category_id) {
+    return nil if category_id.blank?
+
+    where(category_id: category_id)
+  }
+  scope :with_tags, ->(tag_id) {
+    return nil if tag_id.blank?
+
+    where(tag_id: tag_id)
+  }
 
   def author_name
     user.try(:name)
@@ -24,6 +35,10 @@ class Article < ApplicationRecord
 
   def published_date
     published_at && published_at.strftime('%b %d, %Y')
+  end
+
+  def tag_names
+    tags.select('name').map(&:name).join(', ')
   end
 
   def params

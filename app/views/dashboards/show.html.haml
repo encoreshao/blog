@@ -1,6 +1,5 @@
 .post-wrapper
-  / Start: Post Type Image
-  %article#post-481.basic-post.post-picture.post-481.post.type-post.status-publish.format-image.has-post-thumbnail.hentry.category-fashion.tag-fashion-show.tag-photography.post_format-post-format-image
+  %article#post-481.basic-post.post-picture.post.type-post.status-publish.format-image.has-post-thumbnail.hentry.category-fashion.tag-fashion-show.tag-photography.post_format-post-format-image
     .thumbnail
       %img.attachment-blog-image.size-blog-image.wp-post-image{src: banner_iamge_url}/
     .post-inner
@@ -19,14 +18,15 @@
           = distance_of_time_in_words(@article.last_reviewed_at || Time.zone.now, Time.zone.now)
       .post-content
         = raw @article.content
-      %footer.content-footer
-        .tags
-          %i.fa.fa-bookmark
-          %label #{I18n.t('tips.tags')}:
-          - @article.tags.each do |tag|
-            = tag.name
 
-        / Add This Button BEGIN
+      - unless @article.tags.empty?
+        %footer.content-footer
+          .tags
+            %i.fa.fa-bookmark
+            %label #{I18n.t('tips.tags')}:
+            - @article.tags.each do |tag|
+              = tag.name
+
         .share-buttons
           .addthis_toolbox.addthis_default_style
             %h4= I18n.t('tips.share_this_article')
@@ -41,7 +41,6 @@
             %a.addthis_button_email
               %span.fa.fa-mail
 
-        / AddThis Button END
         #post-nav
           .post-previous
             %span.title= I18n.t('tips.previous_post')
@@ -60,42 +59,22 @@
                   %a Summer 2014 Style Inspirations Just for You
                   .meta Aug 12th, 2014
 
-  / End: Post Type Image
-  / Start author bio
+  / Author
   .single-author.box.clearfix
     %h3.widget-title
       %i.fa.fa-user
       = I18n.t('tips.about_the_author')
-    .wrapper
+    .wrapper.clearfix
       .thumbnail
         %img.avatar.avatar-80.photo{src: "/assets/photos/encore.jpg"}/
-      .info
-        %h5
-          %a{href: root_path}= I18n.t('author')
-        %p My kinda people, my kinda place. There's something special about this place. For wheat is the best food of man. They’re crispy and crunchy the whole year through. As long as we live, it’s you and me baby, There ain’t nothin’ wrong with that.
-        %ul.social-profiles
-          %li
-            %a{href: "https://www.facebook.com/encore.shao", target: "_blank"}
-              %i.fa.fa-facebook
-          %li
-            %a{href: "https://twitter.com/encoreshao", target: "_blank"}
-              %i.fa.fa-twitter
-          %li
-            %a{href: "https://plus.google.com/+EncoreShao", target: "_blank"}
-              %i.fa.fa-google-plus
-          %li
-            %a{href: "https://cn.linkedin.com/in/1encoreshao", target: "_blank"}
-              %i.fa.fa-linkedin
-          %li
-            %a{href: "#", target: "_blank"}
-              %i.fa.fa-youtube
-          %li
-            %a{href: "https://github.com/encoreshao", target: "_blank"}
-              %i.fa.fa-github
+      .info.clearfix{style: 'width: 100%;'}
+        = I18n.t('tips.notes')
+
+      = render partial: 'shared/social_links', locals: { class_name: 'social-profiles' }
+
     .clearfix
 
-  / End author bio
-  / START: RESPOND
+  / Comment
   #comment-form-widget.comments.box
     #respond.comment-respond
       %h3#reply-title.comment-reply-title
@@ -103,11 +82,14 @@
           %i.fa.fa-comments
           = I18n.t('tips.leave_a_comment')
         %small
-          %a#cancel-comment-reply-link{href: "/grateful/2015/03/01/breath-of-fresh-air-in-the-morning/#respond", rel: "nofollow", style: "display:none;"} Cancel Reply
-      %form#commentform.comment-form{action: "http://demo2.themewarrior.com/grateful/wp-comments-post.php", method: "post"}
+          %a#cancel-comment-reply-link{href: "/grateful/2015/03/01/breath-of-fresh-air-in-the-morning/#respond", rel: "nofollow", style: "display:none;"}= I18n.t('action.cancel_reply')
+
+      = form_tag comment_dashboards_path, method: :POST, class: 'comment-form', id: 'commentform' do
         .comment-form-wrapper
           .input.message
-            %label= I18n.t('form.message')
+            %label
+              = I18n.t('form.message')
+              %span.red *
             %textarea#message{name: "comment"}
           .input.name
             %label
@@ -117,19 +99,19 @@
           .input.email
             %label
               = I18n.t('form.email')
-              %span.red *
             %input#input-email.input-s{name: "email", type: "text", value: ""}/
           .input.email
             %label= I18n.t('form.website_url')
             %input#input-email.input-s{name: "url", type: "text", value: ""}/
           %p.form-submit
-            %input#submit.btn.btn-primary{name: "submit", type: "submit", value: I18n.t('action.submit')}/
+            = submit_tag I18n.t('action.submit'), class: 'btn btn-primary btn-green', id: 'submit'
             %input#comment_post_ID{name: "comment_post_ID", type: "hidden", value: "481"}/
             %input#comment_parent{name: "comment_parent", type: "hidden", value: "0"}/
+
         %p{style: "display: none;"}
-          %input#akismet_comment_nonce{name: "akismet_comment_nonce", type: "hidden", value: "e61be4e3a7"}/
-        %p{style: "display: none;"}
-          %input#ak_js{name: "ak_js", type: "hidden", value: "79"}/
-    / #respond
-  / END: RESPOND
+          %input{name: "permalink", type: "hidden", value: @article.permalink}/
+          %input{name: "year", type: "hidden", value: @article.published_at.year}/
+          %input{name: "month", type: "hidden", value: @article.published_at.month}/
+          %input{name: "day", type: "hidden", value: @article.published_at.day}/
+
 .clearfix

@@ -6,10 +6,15 @@
 = link_to I18n.t('action.edit'), edit_admin_article_path(resource)
 
 .jumbotron
-  %h1= resource.title
+  %h2= resource.title
   .author
+    %strong Author:
     = resource.author_name
-    %strong= resource.category_name(I18n.default_locale)
+    %strong Category:
+    = resource.category_name(I18n.default_locale)
   %br
-  %p.lead= raw resource.content
-  %p= resource.tags.map &:name
+  %div.lead= raw resource.content
+  %br
+  %div
+    %strong Tags:
+    = resource.tag_names

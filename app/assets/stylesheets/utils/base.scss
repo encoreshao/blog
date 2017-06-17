@@ -23,17 +23,17 @@ If you want to add or modify the styles please do it from the custom.css file in
 
 body {
   background: white;
-  font: 16px/190% 'Playfair Display', Georgia, serif;
+  font: 15px/200% 'Open Sans', Georgia, serif;
   color: #2a2a2a;
   font-weight: 400;
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
-  border: 2px solid teal;
+  border: 2px solid $green;
 }
 
 .highlight-line {
-  border-top: 2px solid teal;
+  border-top: 2px solid $green;
   display: block;
 }
 
@@ -253,7 +253,7 @@ h6 {
 
 .before {
   bottom: 0;
-  background: teal;
+  background: $green;
   position: absolute;
   top: 0;
   left: -100%;
@@ -569,9 +569,7 @@ article .thumbnail {
   letter-spacing: 1px;
   line-height: 1;
   text-transform: uppercase;
-  margin: 0 5px 10px 0;
   padding: 5px;
-  border: 1px solid #c0c0c0;
 }
 
 .recent-post-widget ul li,
@@ -639,7 +637,7 @@ article .thumbnail {
   height: 1px;
   content: '';
   margin-top: 2px;
-  border-top: 1px solid #aaa;
+  border-top: 1px solid $green;
   position: absolute;
   top: 50%;
   left: 0;
@@ -690,6 +688,12 @@ article .thumbnail {
   font-size: 22px;
 }
 
+ul.menu li {
+  margin: 5px 0;
+  i {
+    margin-right: 20px;
+  }
+}
 /* Article */
 #main-carousel-slider {
   margin-bottom: 30px;
@@ -857,7 +861,7 @@ body.single .post-wrapper article.hentry {
   font-family: 'Open Sans';
   font-weight: 400;
   font-size: 12px;
-  color: #333;
+  color: $green;
   letter-spacing: 1px;
   text-align: center;
   text-transform: uppercase;
@@ -873,7 +877,7 @@ body.single .post-wrapper article.hentry {
   color: #333;
   line-height: 20px;
   padding: 10px 35px;
-  border: 1px solid #555;
+  border: 1px solid $green;
 }
 #content-wrappers article.hentry .read-more a:hover {
   background-color: rgba(220, 220, 220, .8);
@@ -882,16 +886,16 @@ body.single .post-wrapper article.hentry {
 div.tags {
   font-size: .85em;
   text-align: center;
-  margin: 50px auto;
+  margin: 20px auto;
 }
 
 div.tags:before {
   display: block;
-  width: 50px;
+  width: 100px;
   content: '';
   text-align: center;
   margin: 0 auto 10px auto;
-  border-top: 5px solid #ddd;
+  border-top: 5px solid $green;
 }
 
 div.tags i.typcn {
@@ -1181,10 +1185,6 @@ body.single-format-quote #post-nav {
   text-transform: uppercase;
 }
 
-.single-author {
-  margin-top: 50px;
-}
-
 .single-author ul.social-profiles {
   margin: 0;
 }
@@ -1443,7 +1443,7 @@ form input[type='submit'] {
   padding: 5px 5px 7px 10px;
   display: block;
   color: #bababa;
-  border: 1px solid #ccc;
+  border: 1px solid $green;
 }
 
 .search-box input[type="text"] {
@@ -1452,9 +1452,9 @@ form input[type='submit'] {
   height: 30px;
   font-size: 12px;
   font-weight: 300;
-  color: #bababa;
+  color: $green;
   letter-spacing: 1px;
-  border-right: solid 1px #ccc;
+  border-right: solid 1px $green;
   margin: 0;
   padding: 0;
   box-shadow: none !important;
@@ -2120,3 +2120,6 @@ html[xmlns] .slides {display: block;}
 /* If you are not using another script, such as Modernizr, make sure you
 * include js that eliminates this class on page load */
 .no-js .slides > li:first-child {display: block;}
+
+.fa { color: $green; }
+.btn-green { background-color: $green; }

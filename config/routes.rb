@@ -19,8 +19,17 @@ Rails.application.routes.draw do
   get "/:year/:month/:day/:permalink" => "dashboards#show",
       requirements: {
         year: /\d{4}/, month: /\d{1,2}/, day: /\d{1,2}/
-        },
-        as: :article
+      },
+      as: :article
+
+  get "category/:category" => "dashboards#index", as: :categories
+  get "tag/:tag" => "dashboards#index", as: :tags
+
+  resources :dashboards, only: [:index, :show] do
+    collection do
+      post :comment
+    end
+  end
 
   root 'dashboards#index'
 end

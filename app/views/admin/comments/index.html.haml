@@ -13,3 +13,7 @@
           %td= resource.content
           %td= resource.created_at.strftime('%b %d, %Y')
           %td
+            = link_to edit_admin_comment_path(resource) do
+              %i.fa.fa-edit
+            = link_to admin_comment_path(resource), method: :DELETE do
+              %i.fa.fa-remove

@@ -5,6 +5,9 @@
 user = User.create(email: 'admin@blog.com', password: '123456')
 UserProfile.create(name: 'Administrator', user: user)
 
+user = User.create(email: 'encore@blog.com', password: '123456')
+UserProfile.create(name: 'Encore Shao', user: user)
+
 {
   'Development' => '编程',
   'Life' => '生活',

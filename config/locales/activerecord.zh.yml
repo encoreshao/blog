@@ -40,6 +40,7 @@ zh:
         created_at: 创建时间
       tag:
         name: 名称
+        permalink: 链接
         created_at: 创建时间
       comment:
         user_id: 作者

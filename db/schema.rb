@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 20170608145900) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
+    t.integer "comment_id"
+    t.integer "node", default: 0
     t.bigint "user_id"
     t.string "commentable_type"
     t.bigint "commentable_id"
@@ -74,6 +76,7 @@ ActiveRecord::Schema.define(version: 20170608145900) do
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
+    t.string "permalink"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

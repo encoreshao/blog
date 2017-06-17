@@ -1,2 +1,11 @@
-%h1 Admin::Tags#show
-%p Find me in app/views/admin/tags/show.html.haml
+%h2
+  = I18n.t('action.show')
+  = resource.model_name.human
+
+= link_to I18n.t('action.back'), admin_tags_path
+= link_to I18n.t('action.edit'), edit_admin_tag_path(resource)
+
+.jumbotron
+  %h2= resource.name
+  %br
+  %div= resource.permalink
