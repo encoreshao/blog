@@ -16,6 +16,13 @@
     .social
       = render partial: 'shared/social_links', locals: { class_name: '' }
 
+  #widget-search-3.widget.widget_search
+    .search-box
+      %form#search-form{action: root_path, method: "get"}
+        %input#search-field{name: "q", type: "text", value: ""}/
+        %a.submit{href: "javascript:void(0);", onclick: "jQuery('#search-form').submit();"}
+          %i.fa.fa-search
+
   #widget-nav_menu-2.widget
     %h3.widget-title
       %label
@@ -28,13 +35,6 @@
             = link_to categories_path(category: category[1]) do
               %i.fa.fa-dot-circle-o
               = category[0]
-
-  #widget-search-3.widget.widget_search
-    .search-box
-      %form#search-form{action: root_path, method: "get"}
-        %input#search-field{name: "s", type: "text", value: ""}/
-        %a.submit{href: "javascript:void(0);", onclick: "jQuery('#search-form').submit();"}
-          %i.fa.fa-search
 
   - if Comment.count > 0
     #widget-warrior_recent_posts-2.widget.warrior_recent_posts
@@ -51,11 +51,6 @@
                   = comment.commentable.title
                 .meta
                   = comment.created_at.strftime('%B %d, %Y')
-
-  #widget-text-2.widget.widget_text
-    .textwidget
-      %a{href: "#"}
-        %img{src: "http://placehold.it/250x250/eeeeee/555555&text=Banner+Image"}/
 
   #widget-tag_cloud-2.widget.widget_tag_cloud
     %h3.widget-title

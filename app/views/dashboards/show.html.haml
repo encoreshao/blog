@@ -61,14 +61,11 @@
 
   / Author
   .single-author.box.clearfix
-    %h3.widget-title
-      %i.fa.fa-user
-      = I18n.t('tips.about_the_author')
     .wrapper.clearfix
       .thumbnail
         %img.avatar.avatar-80.photo{src: "/assets/photos/encore.jpg"}/
-      .info.clearfix{style: 'width: 100%;'}
-        = I18n.t('tips.notes')
+      .info.clearfix{style: 'width: 100%;margin-bottom: 20px;'}
+        Hey, I'm Encore Shao, a developer from Shanghai, China. I create websites and web based applications from the ground up. If you want to find out more about me, you can follow me on Twitter or Google Plus.
 
       = render partial: 'shared/social_links', locals: { class_name: 'social-profiles' }
 

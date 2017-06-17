@@ -4,6 +4,7 @@ class DashboardsController < ApplicationController
   def index
     @articles = Article.published.with_categories(category_id).
                 with_tags(tag_id).
+                with_keywords(params[:q]).
                 order("published_at DESC").page(params[:page])
   end
 

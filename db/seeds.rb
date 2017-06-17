@@ -2,14 +2,16 @@
 
 # rake db:drop && rake db:create && rake db:migrate && rake db:seed && annotate
 
-user = User.create(email: 'admin@blog.com', password: '123456')
-UserProfile.create(name: 'Administrator', user: user)
-
-user = User.create(email: 'encore@blog.com', password: '123456')
-UserProfile.create(name: 'Encore Shao', user: user)
+[
+  { email: 'admin@blog.com', name: 'Administrator' },
+  { email: 'encore@blog.com', name: 'Encore Shao' }
+].each do |option|
+  user = User.create(email: option[:email], password: '123456')
+  UserProfile.create(name: option[:name], user: user)
+end
 
 {
-  'Development' => '编程',
+  'Development' => '开发',
   'Life' => '生活',
   'Music' => '音乐',
   'Travel' => '旅游',
@@ -22,7 +24,12 @@ UserProfile.create(name: 'Encore Shao', user: user)
   'Meetup' => '聚会',
   'Embed' => '代码块',
   'Culture' => '文化',
-  'Education' => '教育'
+  'Education' => '教育',
+  'Code' => '编码',
+  'Design' => '设计',
+  'Business' => '商业',
+  'Mobile' => '手机',
+  'Social' => 'Social'
 }.each do |name_en, name_zh|
   Category.find_or_create_by(name_en: name_en, permalink: name_en.downcase, name_zh: name_zh)
 end

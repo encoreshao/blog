@@ -20,6 +20,11 @@ class Article < ApplicationRecord
 
     where(tag_id: tag_id)
   }
+  scope :with_keywords, ->(keyword) {
+    return nil if keyword.blank?
+
+    where("LOWER(title) ILIKE ?", "%#{keyword.downcase}%")
+  }
 
   def author_name
     user.try(:name)
