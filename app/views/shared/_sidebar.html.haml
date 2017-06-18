@@ -45,7 +45,9 @@
   - if Comment.count > 0
     #widget-warrior_recent_posts-2.widget.warrior_recent_posts
       %h3.widget-title
-        %label= I18n.t('tips.recent_posts')
+        %label
+          %i.fa.fa-comments-o
+          = I18n.t('tips.recent_posts')
       .blocks.recent-post-widget
         %ul
           - top_ten_comments.each do |comment|
