@@ -48,7 +48,7 @@
         %label= I18n.t('tips.recent_posts')
       .blocks.recent-post-widget
         %ul
-          - Comment.all.each do |comment|
+          - top_ten_comments.each do |comment|
             %li.post-481
               .clearfix
                 = link_to article_path(comment.commentable.params), title: comment.commentable.title do
