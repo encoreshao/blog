@@ -76,28 +76,42 @@
       .thumbnail
         %img.avatar.avatar-80.photo{src: "/assets/photos/encore.jpg"}/
       .info.clearfix{style: 'width: 100%;margin-bottom: 20px;'}
-        Hey, I'm Encore Shao, a developer from Shanghai, China. I create websites and web based applications from the ground up. If you want to find out more about me, you can follow me on Twitter or Google Plus.
+        = I18n.t('tips.note2')
 
       = render partial: 'shared/social_links', locals: { class_name: 'social-profiles' }
 
     .clearfix
 
-  #comment-widget.comments.box
-    %h3.widget-title There's #{@article.comments.count} Comments
-    .comments-list
-      %ul
-        - @article.comments.parent_comments.each do |comment|
-          %li.comment.byuser.comment-author-themewarrior.bypostauthor.even.thread-even.depth-1{id: "comment-#{comment.id}"}
-            .thumbnail
-              %i.fa.fa-user-o{style: "font-size: 4em;"}
-            .comment-detail
-              .author
-                = comment.name || 'Anonymous'
-                %span -
-                %time= comment.created_at.strftime('%B %d, %Y')
-              %p= comment.content
-              .reply
-                %a.comment-reply-link{onclick: "return addComment.moveForm( \"comment-#{comment.id}\", \"#{comment.id}\", \"respond\", \"#{comment.id}\" )", rel: "nofollow"} Reply
+  - if @article.comments.count > 0
+    #comment-widget.comments.box
+      %h3.widget-title There's #{@article.comments.count} Comments
+      .comments-list
+        %ul
+          - @article.comments.parent_comments.each do |comment|
+            %li.comment.byuser.comment-author-themewarrior.bypostauthor.even.thread-even.depth-1{id: "comment-#{comment.id}"}
+              .thumbnail
+                %i.fa.fa-user-o{style: "font-size: 4em;"}
+              .comment-detail
+                .author
+                  = comment.name || 'Anonymous'
+                  %span -
+                  %time= comment.created_at.strftime('%B %d, %Y')
+                %p= comment.content
+                .reply
+                  %a.comment-reply-link.fa.fa-commenting{onclick: "return addComment.moveForm( \"comment-#{comment.id}\", \"#{comment.id}\", \"respond\", \"#{comment.comment_parent}\" )", rel: "nofollow"}= I18n.t('action.reply')
+
+            - unless (depth2_comment = comment.comment).nil?
+              %li.comment.byuser.comment-author-themewarrior.bypostauthor.even.thread-even.depth-2{id: "comment-#{depth2_comment.id}"}
+                .thumbnail
+                  %i.fa.fa-user-o{style: "font-size: 4em;"}
+                .comment-detail
+                  .author
+                    = depth2_comment.name || 'Anonymous'
+                    %span -
+                    %time= depth2_comment.created_at.strftime('%B %d, %Y')
+                  %p= depth2_comment.content
+                  .reply
+                    %a.comment-reply-link.fa.fa-commenting{onclick: "return addComment.moveForm( \"comment-#{depth2_comment.id}\", \"#{depth2_comment.id}\", \"respond\", \"#{depth2_comment.comment_parent}\" )", rel: "nofollow"}= I18n.t('action.reply')
 
   / Comment
   #comment-form-widget.comments.box
@@ -107,7 +121,7 @@
           %i.fa.fa-comments
           = I18n.t('tips.leave_a_comment')
         %small
-          %a#cancel-comment-reply-link{rel: "nofollow", style: "display:none;"}= I18n.t('action.cancel_reply')
+          %a#cancel-comment-reply-link.fa.fa-retweet{rel: "nofollow", style: "display:none;"}= I18n.t('action.cancel_reply')
 
       = form_tag comment_articles_path, method: :POST, class: 'comment-form', id: 'commentform' do
         .comment-form-wrapper

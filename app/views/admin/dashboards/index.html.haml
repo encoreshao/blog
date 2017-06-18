@@ -1,17 +1,33 @@
 %section.row.text-center.placeholders
   .col-6.col-sm-3.placeholder
-    %img.img-fluid.rounded-circle{height: '80', src: "data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=", width: '80'}/
-    %h4= User.model_name.human
-    .text-muted= User.count
+    %i.fa.fa-users
+    %h4
+      = link_to admin_users_path do
+        = User.model_name.human
+        (
+        = User.count
+        )
   .col-6.col-sm-3.placeholder
-    %img.img-fluid.rounded-circle{height: '80', src: "data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=", width: '80'}/
-    %h4= Article.model_name.human
-    %span.text-muted= Article.count
+    %i.fa.fa-book
+    %h4
+      = link_to admin_articles_path do
+        = Article.model_name.human
+        (
+        = Article.count
+        )
   .col-6.col-sm-3.placeholder
-    %img.img-fluid.rounded-circle{height: '80', src: "data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=", width: '80'}/
-    %h4= Category.model_name.human
-    %span.text-muted= Category.count
+    %i.fa.fa-building
+    %h4
+      = link_to admin_categories_path do
+        = Category.model_name.human
+        (
+        = Category.count
+        )
   .col-6.col-sm-3.placeholder
-    %img.img-fluid.rounded-circle{height: '80', src: "data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=", width: '80'}/
-    %h4= Tag.model_name.human
-    %span.text-muted= Tag.count
+    %i.fa.fa-tags
+    %h4
+      = link_to admin_tags_path do
+        = Tag.model_name.human
+        (
+        = Tag.count
+        )

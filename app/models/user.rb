@@ -1,14 +1,14 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable :recoverable, :registerable
-  devise :database_authenticatable, :rememberable, :trackable, :validatable
+  # :lockable, :timeoutable and :omniauthable :recoverable, :registerable
+  devise :database_authenticatable, :rememberable, :trackable, :validatable, :confirmable
 
-  has_one :user_profile
   has_many :comments
-  delegate :name, :avatar, :link, to: :user_profile, prefix: "author", allow_nil: true
+
+  mount_uploader :avatar, AvatarUploader
 
   def self.active_users
-    preload([:user_profile]).map { |e| [e.author_name, e.id] }
+    select('name, id').map { |e| [e.name, e.id] }
   end
 end
 
@@ -27,6 +27,14 @@ end
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
+#  name                   :string
+#  is_admin               :boolean          default(FALSE)
+#  avatar                 :string
+#  link                   :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #

@@ -5,17 +5,21 @@
     %thead
       %tr
         %th= User.human_attribute_name(:email)
-        %th= UserProfile.human_attribute_name(:name)
+        %th= User.human_attribute_name(:name)
+        %th= User.human_attribute_name(:link)
         %th= User.human_attribute_name(:created_at)
         %th
     %tbody
       - collection.each do |resource|
         %tr
           %td= resource.email
-          %td= resource.author_name
+          %td= resource.name
+          %td= resource.link
           %td= resource.created_at.strftime('%b %d, %Y')
           %td
             = link_to admin_user_path(resource) do
               %i.fa.fa-eye
+              = I18n.t('action.show')
             = link_to edit_admin_user_path(resource) do
               %i.fa.fa-edit
+              = I18n.t('action.edit')

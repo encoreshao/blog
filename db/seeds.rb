@@ -3,11 +3,11 @@
 # rake db:drop && rake db:create && rake db:migrate && rake db:seed && annotate
 
 [
-  { email: 'admin@blog.com', name: 'Administrator' },
-  { email: 'encore@blog.com', name: 'Encore Shao' }
+  { email: 'admin@blog.com', name: 'Administrator', password: '123456' },
+  { email: 'encore@blog.com', name: 'Encore Shao', password: '123456' }
 ].each do |option|
-  user = User.create(email: option[:email], password: '123456')
-  UserProfile.create(name: option[:name], user: user)
+  user = User.create(option)
+  user.confirm
 end
 
 {

@@ -22,6 +22,7 @@ end
 #  name             :string
 #  email            :string
 #  link             :string
+#  remote_ip        :inet
 #  user_id          :integer
 #  commentable_type :string
 #  commentable_id   :integer

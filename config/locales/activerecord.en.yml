@@ -12,7 +12,6 @@ en:
         password: Password
         author_name: Author
         created_at: Created At
-      user_profile:
         name: Name
         avatar: Avatar
         link: Link

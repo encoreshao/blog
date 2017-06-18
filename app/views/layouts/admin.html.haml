@@ -20,6 +20,7 @@
     .container
       .row
         %nav.col-md-2.bg-faded
-          = render 'admin/shared/sidebar'
+          %ul.nav.nav-pills.flex-column.pt-2
+            = render 'admin/shared/sidebar'
         %main.col-sm-10.pt-3{:role => "main"}
           = yield

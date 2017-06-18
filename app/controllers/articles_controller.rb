@@ -6,15 +6,6 @@ class ArticlesController < ApplicationController
   end
 
   def comment
-    comment_params = {
-      content: params[:comment][:content],
-      name: params[:comment][:name],
-      link: params[:comment][:link],
-      email: params[:comment][:email],
-      comment_parent: params[:comment][:comment_parent],
-      comment_id: params[:comment_id]
-    }
-
     @article.comments.create(comment_params)
     redirect_to article_path(@article.params)
   end
@@ -42,5 +33,19 @@ class ArticlesController < ApplicationController
     @article = Article.find_by(permalink: params[:permalink], published_at: "#{params[:year]}-#{params[:month]}-#{params[:day]}")
 
     redirect_to '/404' if @article.blank?
+  end
+
+  def comment_params
+    params_comment = {
+      content: params[:comment][:content],
+      name: params[:comment][:name],
+      link: params[:comment][:link],
+      email: params[:comment][:email],
+      comment_parent: params[:comment][:comment_parent],
+      comment_id: params[:comment_id],
+      remote_ip: request.remote_ip
+    }
+
+    params_comment.delete_if { |k, v| v.blank? }
   end
 end

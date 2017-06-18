@@ -1,6 +1,6 @@
-%ul.nav.nav-pills.flex-column.pt-2
-  = admin_sidebar(User, admin_users_path)
-  = admin_sidebar(Article, admin_articles_path)
-  = admin_sidebar(Category, admin_categories_path)
-  = admin_sidebar(Tag, admin_tags_path)
-  = admin_sidebar(Comment, admin_comments_path)
+= raw admin_sidebar('dashboards', admin_root_path)
+= raw admin_sidebar('users', admin_users_path)
+= raw admin_sidebar('articles', admin_articles_path)
+= raw admin_sidebar('categories', admin_categories_path)
+= raw admin_sidebar('tags', admin_tags_path)
+= raw admin_sidebar('comments', admin_comments_path)

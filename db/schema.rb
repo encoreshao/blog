@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20170608145900) do
     t.string "name"
     t.string "email"
     t.string "link"
+    t.inet "remote_ip"
     t.bigint "user_id"
     t.string "commentable_type"
     t.bigint "commentable_id"
@@ -86,16 +87,6 @@ ActiveRecord::Schema.define(version: 20170608145900) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "user_profiles", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "name"
-    t.string "avatar"
-    t.string "link"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_profiles_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -107,8 +98,17 @@ ActiveRecord::Schema.define(version: 20170608145900) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.string "name"
+    t.boolean "is_admin", default: false
+    t.string "avatar"
+    t.string "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -118,5 +118,4 @@ ActiveRecord::Schema.define(version: 20170608145900) do
   add_foreign_key "articles_tags", "articles"
   add_foreign_key "articles_tags", "tags"
   add_foreign_key "comments", "users"
-  add_foreign_key "user_profiles", "users"
 end

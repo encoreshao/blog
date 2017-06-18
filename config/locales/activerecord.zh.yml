@@ -12,7 +12,6 @@ zh:
         password: 密码
         author_name: 作者
         created_at: 创建时间
-      user_profile:
         name: 名字
         avatar: 头像
         link: 链接

@@ -1,7 +1,9 @@
 = simple_form_for resource, url: url, html: { class: 'horizontal_form', validate: true } do |f|
   = f.error_notification
+  = f.input :name
   = f.input :email, required: true
   = f.input :password, required: true
+  = f.input :link
 
   .form-group.string
     %label.control-label

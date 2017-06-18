@@ -7,6 +7,7 @@ class CreateComments < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :email
       t.string :link
+      t.inet   :remote_ip
       t.references :user, foreign_key: true
       t.references :commentable, polymorphic: true, index: true
 

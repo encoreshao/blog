@@ -1,6 +1,9 @@
 en:
   title: Blog - ICMOC
+  site_title: Blog - ICMOC - Encore Shao - Ruby On Rails
   author: Encore Shao
+  keywords: Blog, Encore Shao, Ruby On Rails, Shanghai, China, ICMOC, icmoc.com
+  description: I am a web developer and use Ruby on Rails to build Web applications in China. Have a idea? Contact me (encore.shao@gmail.com)!
   tips:
     about_the_author: About The Author
     tags: Tags
@@ -14,9 +17,11 @@ en:
     follow_me_on_twitter: Follow me on Twitter
     viewed_count: Viewed Count
     notes: This is my personal blog where I share a lot of stuffs about life and work everything I do in between.
+    note2: Hey, I'm Encore Shao, a developer from Shanghai, China. I create websites and web based applications. If you have a idea, Please contact me! - (encore.shao[at]gmail.com)
   navigation:
     title: Navigation
     home: Home
+    dashboards: Dashboard
     about: About
     life: Life
     travel: Travel
@@ -49,6 +54,7 @@ en:
     read_more: Read More
     older_posts: Older Posts
     newer_posts: Newer Posts
+    reply: Reply
     cancel_reply: Cancel Reply
     submit: Submit
     like: Like

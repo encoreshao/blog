@@ -1,10 +1,14 @@
 !!! 5
 %html
   %head
-    %title= I18n.t('title')
     %meta{ charset: 'utf-8' }
     %meta{ content: 'width=device-width, initial-scale=1.0', name: 'viewport' }
-    %meta{ author: I18n.t('author') }
+    %meta{ 'http-equiv' => 'X-UA-Compatible', content: 'IE=edge' }
+
+    %title= I18n.t('site_title')
+    %meta{ name: 'author', content: I18n.t('author') }
+    %meta{ name: 'keywords', content: I18n.t('keywords') }
+    %meta{ name: 'description', content: I18n.t('description') }
 
     = stylesheet_link_tag 'application', :media => "all", 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
