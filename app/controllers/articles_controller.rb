@@ -6,10 +6,16 @@ class ArticlesController < ApplicationController
   end
 
   def comment
-    comment_params = { content: params[:comment] }
+    comment_params = {
+      content: params[:comment][:content],
+      name: params[:comment][:name],
+      link: params[:comment][:link],
+      email: params[:comment][:email],
+      comment_parent: params[:comment][:comment_parent],
+      comment_id: params[:comment_id]
+    }
 
     @article.comments.create(comment_params)
-
     redirect_to article_path(@article.params)
   end
 

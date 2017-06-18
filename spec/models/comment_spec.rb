@@ -11,7 +11,10 @@ end
 #  id               :integer          not null, primary key
 #  content          :text
 #  comment_id       :integer
-#  node             :integer          default(0)
+#  comment_parent   :integer          default(0)
+#  name             :string
+#  email            :string
+#  link             :string
 #  user_id          :integer
 #  commentable_type :string
 #  commentable_id   :integer

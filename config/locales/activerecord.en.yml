@@ -45,8 +45,13 @@ en:
         permalink: Permalink
         created_at: Created At
       comment:
-        user_id: Author
-        user: Author
+        id: ID
+        type: Type
+        user_id: Name
+        user: Name
+        name: Name
+        email: Email
         link: Link
+        comment_parent: Parent
         content: Content
-        created_at: Created At
+        created_at: Comment At

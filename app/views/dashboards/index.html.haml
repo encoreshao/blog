@@ -9,7 +9,7 @@
             = link_to article.title, article_path(article.params), target: '_blank'
         .meta
           %span
-            %i.fa.fa-user
+            %i.fa.fa-user-o
             = article.user && article.user.author_name
           %span
             %i.fa.fa-calendar
@@ -21,6 +21,10 @@
             %i.fa.fa-meh-o
             = I18n.t('tips.viewed_count')
             = raw "(#{article.view_count})"
+          %span
+            %i.fa.fa-thumbs-up
+            = I18n.t('action.like')
+            = raw "(#{article.likes_count})"
         .post-content
           %p
             = raw truncate(strip_tags(article.content), length: 400)

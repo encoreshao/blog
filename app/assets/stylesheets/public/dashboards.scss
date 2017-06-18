@@ -4,16 +4,16 @@
   -o-perspective: 1000;
   perspective: 1000;
 
-  border: 1px solid #ccc;
+  border: 1px solid $green;
 }
 
-  .flip-container:hover .flipper,
-  .flip-container.hover .flipper {
-    -webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -o-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-  }
+.flip-container:hover .flipper,
+.flip-container.hover .flipper {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
 
 .flip-container, .front, .back {
   width: 100%;

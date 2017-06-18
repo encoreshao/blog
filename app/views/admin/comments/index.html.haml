@@ -2,18 +2,23 @@
   %table.table.table-striped
     %thead
       %tr
-        %th= Comment.human_attribute_name(:user_id)
+        %th= Comment.human_attribute_name(:id)
+        %th= Comment.human_attribute_name(:name)
+        %th= Comment.human_attribute_name(:type)
+        %th= Comment.human_attribute_name(:comment_parent)
         %th= Comment.human_attribute_name(:content)
         %th= Comment.human_attribute_name(:created_at)
         %th
     %tbody
       - collection.each do |resource|
         %tr
-          %td= resource.user.try(:name)
+          %td= resource.id
+          %td= resource.name
+          %td= resource.commentable_type
+          %td= resource.comment_parent
           %td= resource.content
           %td= resource.created_at.strftime('%b %d, %Y')
           %td
-            = link_to edit_admin_comment_path(resource) do
-              %i.fa.fa-edit
             = link_to admin_comment_path(resource), method: :DELETE do
               %i.fa.fa-remove
+              = I18n.t('action.destory')

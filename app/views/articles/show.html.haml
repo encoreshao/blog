@@ -86,18 +86,18 @@
     %h3.widget-title There's #{@article.comments.count} Comments
     .comments-list
       %ul
-        - @article.comments.each do |comment|
+        - @article.comments.parent_comments.each do |comment|
           %li.comment.byuser.comment-author-themewarrior.bypostauthor.even.thread-even.depth-1{id: "comment-#{comment.id}"}
             .thumbnail
               %i.fa.fa-user-o{style: "font-size: 4em;"}
             .comment-detail
               .author
-                = comment.user.try(:author_name) || 'Anonymous'
+                = comment.name || 'Anonymous'
                 %span -
                 %time= comment.created_at.strftime('%B %d, %Y')
               %p= comment.content
               .reply
-                %a.comment-reply-link{onclick: "return addComment.moveForm( \"comment-#{comment.id}\", \"#{comment.id}\", \"respond\", \"503\" )", rel: "nofollow"} Reply
+                %a.comment-reply-link{onclick: "return addComment.moveForm( \"comment-#{comment.id}\", \"#{comment.id}\", \"respond\", \"#{comment.id}\" )", rel: "nofollow"} Reply
 
   / Comment
   #comment-form-widget.comments.box
@@ -107,7 +107,7 @@
           %i.fa.fa-comments
           = I18n.t('tips.leave_a_comment')
         %small
-          %a#cancel-comment-reply-link{href: "/grateful/2015/03/01/breath-of-fresh-air-in-the-morning/#respond", rel: "nofollow", style: "display:none;"}= I18n.t('action.cancel_reply')
+          %a#cancel-comment-reply-link{rel: "nofollow", style: "display:none;"}= I18n.t('action.cancel_reply')
 
       = form_tag comment_articles_path, method: :POST, class: 'comment-form', id: 'commentform' do
         .comment-form-wrapper
@@ -115,23 +115,23 @@
             %label
               = I18n.t('form.message')
               %span.red *
-            %textarea#message{name: "comment"}
+            %textarea#message{name: "comment[content]"}
           .input.name
             %label
               = I18n.t('form.name')
               %span.red *
-            %input#input-name.input-s{name: "author", type: "text", value: ""}/
+            %input#input-name.input-s{name: "comment[name]", type: "text"}/
           .input.email
             %label
               = I18n.t('form.email')
-            %input#input-email.input-s{name: "email", type: "text", value: ""}/
+            %input#input-email.input-s{name: "comment[email]", type: "text"}/
           .input.email
             %label= I18n.t('form.website_url')
-            %input#input-email.input-s{name: "url", type: "text", value: ""}/
+            %input#input-email.input-s{name: "comment[link]", type: "text"}/
           %p.form-submit
             = submit_tag I18n.t('action.submit'), class: 'btn btn-primary bg-green', id: 'submit'
-            %input#comment_post_ID{name: "comment_post_ID", type: "hidden", value: @article.id}/
-            %input#comment_parent{name: "comment_parent", type: "hidden", value: "0"}/
+            %input#comment_id{name: "comment_id", type: "hidden"}/
+            %input#comment_parent{name: "comment[comment_parent]", type: "hidden", value: "0"}/
 
         %p{style: "display: none;"}
           %input{name: "permalink", type: "hidden", value: @article.permalink}/

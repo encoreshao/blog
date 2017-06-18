@@ -45,8 +45,13 @@ zh:
         permalink: 链接
         created_at: 创建时间
       comment:
-        user_id: 作者
-        user: 作者
+        id: 编号
+        type: 类型
+        user_id: 名称
+        user: 名称
+        name: 名称
+        email: 邮箱
         link: 链接
+        comment_parent: 父类
         content: 内容
-        created_at: 创建时间
+        created_at: 留言时间

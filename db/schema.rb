@@ -55,7 +55,10 @@ ActiveRecord::Schema.define(version: 20170608145900) do
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.integer "comment_id"
-    t.integer "node", default: 0
+    t.integer "comment_parent", default: 0
+    t.string "name"
+    t.string "email"
+    t.string "link"
     t.bigint "user_id"
     t.string "commentable_type"
     t.bigint "commentable_id"

@@ -7,7 +7,8 @@
  * http://markdalgleish.mit-license.org
  */
 
-;(function($, window, document, undefined) {
+;
+(function($, window, document, undefined) {
 
   var pluginName = 'stellar',
     defaults = {
@@ -27,19 +28,25 @@
 
     scrollProperty = {
       scroll: {
-        getLeft: function($elem) { return $elem.scrollLeft(); },
+        getLeft: function($elem) {
+          return $elem.scrollLeft(); },
         setLeft: function($elem, val) { $elem.scrollLeft(val); },
 
-        getTop: function($elem) { return $elem.scrollTop(); },
+        getTop: function($elem) {
+          return $elem.scrollTop(); },
         setTop: function($elem, val) { $elem.scrollTop(val); }
       },
       position: {
-        getLeft: function($elem) { return parseInt($elem.css('left'), 10) * -1; },
-        getTop: function($elem) { return parseInt($elem.css('top'), 10) * -1; }
+        getLeft: function($elem) {
+          return parseInt($elem.css('left'), 10) * -1; },
+        getTop: function($elem) {
+          return parseInt($elem.css('top'), 10) * -1; }
       },
       margin: {
-        getLeft: function($elem) { return parseInt($elem.css('margin-left'), 10) * -1; },
-        getTop: function($elem) { return parseInt($elem.css('margin-top'), 10) * -1; }
+        getLeft: function($elem) {
+          return parseInt($elem.css('margin-left'), 10) * -1; },
+        getTop: function($elem) {
+          return parseInt($elem.css('margin-top'), 10) * -1; }
       },
       transform: {
         getLeft: function($elem) {
@@ -116,11 +123,11 @@
     ),
 
     requestAnimFrame = (
-      window.requestAnimationFrame       ||
+      window.requestAnimationFrame ||
       window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame    ||
-      window.oRequestAnimationFrame      ||
-      window.msRequestAnimationFrame     ||
+      window.mozRequestAnimationFrame ||
+      window.oRequestAnimationFrame ||
+      window.msRequestAnimationFrame ||
       function(callback) {
         setTimeout(callback, 1000 / 60);
       }
@@ -158,7 +165,7 @@
       if (this.element === document.body) this.element = window;
       this.$scrollElement = $(this.element);
       this.$element = (this.element === window ? $('body') : this.$scrollElement);
-      this.$viewportElement = (this.options.viewportElement !== undefined ? $(this.options.viewportElement) : (this.$scrollElement[0] === window || this.options.scrollProperty === 'scroll' ? this.$scrollElement : this.$scrollElement.parent()) );
+      this.$viewportElement = (this.options.viewportElement !== undefined ? $(this.options.viewportElement) : (this.$scrollElement[0] === window || this.options.scrollProperty === 'scroll' ? this.$scrollElement : this.$scrollElement.parent()));
     },
     _defineGetters: function() {
       var self = this,
@@ -371,7 +378,7 @@
       $backgroundElements = this.$element.find('[data-stellar-background-ratio]');
 
       if (this.$element.data('stellar-background-ratio')) {
-                $backgroundElements = $backgroundElements.add(this.$element);
+        $backgroundElements = $backgroundElements.add(this.$element);
       }
 
       $backgroundElements.each(function() {
@@ -625,16 +632,16 @@
     }
   };
 
-  $.fn[pluginName] = function (options) {
+  $.fn[pluginName] = function(options) {
     var args = arguments;
     if (options === undefined || typeof options === 'object') {
-      return this.each(function () {
+      return this.each(function() {
         if (!$.data(this, 'plugin_' + pluginName)) {
           $.data(this, 'plugin_' + pluginName, new Plugin(this, options));
         }
       });
     } else if (typeof options === 'string' && options[0] !== '_' && options !== 'init') {
-      return this.each(function () {
+      return this.each(function() {
         var instance = $.data(this, 'plugin_' + pluginName);
         if (instance instanceof Plugin && typeof instance[options] === 'function') {
           instance[options].apply(instance, Array.prototype.slice.call(args, 1));
