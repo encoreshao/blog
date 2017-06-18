@@ -1,2 +1,7 @@
-%h1 Admin::Categories#show
-%p Find me in app/views/admin/categories/show.html.haml
+= link_to I18n.t('action.back'), admin_categories_path
+= link_to I18n.t('action.edit'), edit_admin_category_path(resource)
+
+.jumbotron
+  %div= resource.name_en
+  %br
+  %div= resource.name_zh

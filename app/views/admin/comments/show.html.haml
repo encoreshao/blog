@@ -1,2 +1,9 @@
-%h1 Admin::Comments#show
-%p Find me in app/views/admin/comments/show.html.haml
+= link_to I18n.t('action.back'), admin_comments_path
+= link_to I18n.t('action.edit'), edit_admin_comment_path(resource)
+
+.jumbotron
+  %h2= resource.commentable.try(:title)
+  %br
+  %div= resource.name
+  %div= resource.email
+  %div= resource.link

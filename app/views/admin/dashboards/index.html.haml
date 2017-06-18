@@ -1,5 +1,5 @@
 %section.row.text-center.placeholders
-  .col-6.col-sm-3.placeholder
+  .col-6.col-sm-2.placeholder
     %i.fa.fa-users
     %h4
       = link_to admin_users_path do
@@ -7,7 +7,7 @@
         (
         = User.count
         )
-  .col-6.col-sm-3.placeholder
+  .col-6.col-sm-2.placeholder
     %i.fa.fa-book
     %h4
       = link_to admin_articles_path do
@@ -15,7 +15,7 @@
         (
         = Article.count
         )
-  .col-6.col-sm-3.placeholder
+  .col-6.col-sm-2.placeholder
     %i.fa.fa-building
     %h4
       = link_to admin_categories_path do
@@ -23,11 +23,20 @@
         (
         = Category.count
         )
-  .col-6.col-sm-3.placeholder
+  .col-6.col-sm-2.placeholder
     %i.fa.fa-tags
     %h4
       = link_to admin_tags_path do
         = Tag.model_name.human
         (
         = Tag.count
+        )
+
+  .col-6.col-sm-2.placeholder
+    %i.fa.fa-comments
+    %h4
+      = link_to admin_comments_path do
+        = Comment.model_name.human
+        (
+        = Comment.count
         )

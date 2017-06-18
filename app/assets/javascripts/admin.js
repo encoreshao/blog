@@ -21,9 +21,4 @@
 //= require bootstrap
 //= require utils/load_kindeditor
 //= require utils/popper.min
-//= require admin/articles
-//= require admin/tags
-//= require admin/comments
-//= require admin/users
-//= require admin/categories
 //= require cable
