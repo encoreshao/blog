@@ -848,7 +848,7 @@ ul.flex-direction-nav li a.flex-next:after {
   clear: both;
   width: 100%;
   background: #fff;
-  padding: 50px 15%;
+  padding: 20px 10%;
   margin-bottom: 30px;
 }
 
@@ -1349,13 +1349,12 @@ p.moderate {
 .comments-list ul li .thumbnail,
 .user-detail .thumbnail {
   float: left;
-  width: 80px;
+  width: 60px;
   height: 80px;
-  margin-right: 20px;
 }
 
 .comment-detail {
-  margin-left: 100px;
+  margin-left: 1px;
 }
 
 li.pingback .comment-detail {

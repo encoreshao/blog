@@ -90,10 +90,10 @@
           - @article.comments.parent_comments.each do |comment|
             %li.comment.byuser.comment-author-themewarrior.bypostauthor.even.thread-even.depth-1{id: "comment-#{comment.id}"}
               .thumbnail
-                %i.fa.fa-user-o{style: "font-size: 4em;"}
+                %i.fa.fa-user-o
               .comment-detail
                 .author
-                  = comment.name || 'Anonymous'
+                  = comment.user_name
                   %span -
                   %time= comment.created_at.strftime('%B %d, %Y')
                 %p= comment.content
@@ -103,15 +103,15 @@
             - unless (depth2_comment = comment.comment).nil?
               %li.comment.byuser.comment-author-themewarrior.bypostauthor.even.thread-even.depth-2{id: "comment-#{depth2_comment.id}"}
                 .thumbnail
-                  %i.fa.fa-user-o{style: "font-size: 4em;"}
+                  %i.fa.fa-user-o
                 .comment-detail
                   .author
-                    = depth2_comment.name || 'Anonymous'
+                    = depth2_comment.user_name
                     %span -
                     %time= depth2_comment.created_at.strftime('%B %d, %Y')
                   %p= depth2_comment.content
                   .reply
-                    %a.comment-reply-link.fa.fa-commenting{onclick: "return addComment.moveForm( \"comment-#{depth2_comment.id}\", \"#{depth2_comment.id}\", \"respond\", \"#{depth2_comment.comment_parent}\" )", rel: "nofollow"}= I18n.t('action.reply')
+                    %a.comment-reply-link.fa.fa-commenting{onclick: "return addComment.moveForm( \"comment-#{depth2_comment.id}\", \"#{depth2_comment.id}\", \"respond\", \"#{depth2_comment.id}\" )", rel: "nofollow"}= I18n.t('action.reply')
 
   / Comment
   #comment-form-widget.comments.box
@@ -123,17 +123,18 @@
         %small
           %a#cancel-comment-reply-link.fa.fa-retweet{rel: "nofollow", style: "display:none;"}= I18n.t('action.cancel_reply')
 
-      = form_tag comment_articles_path, method: :POST, class: 'comment-form', id: 'commentform' do
+      = form_tag comment_articles_path, method: :POST, class: 'comment-form', id: 'commentForm' do
         .comment-form-wrapper
           .input.message
             %label
               = I18n.t('form.message')
               %span.red *
-            %textarea#message{name: "comment[content]"}
+            %textarea#message{name: "comment[content]", required: true}
           .input.name
             %label
               = I18n.t('form.name')
-            %input#input-name.input-s{name: "comment[name]", type: "text"}/
+              %span.red *
+            %input#input-name.input-s{name: "comment[name]", type: "text", required: true}/
           .input.email
             %label
               = I18n.t('form.email')

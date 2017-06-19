@@ -51,6 +51,7 @@
   background: url('/assets/photos/encore.jpg') 0 0 no-repeat;
   z-index: 2;
   background-size: contain;
+  // border-radius: 100%;
 }
 
 .back {
@@ -111,4 +112,8 @@
   padding: 0 20px;
   font-family: arial;
   line-height: 2em;
+}
+
+.comment .fa-user-o {
+  font-size: 3em;
 }

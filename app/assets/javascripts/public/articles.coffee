@@ -29,4 +29,6 @@
 
     $.ajax ajaxOptions
 
+  $("#commentForm").validate()
+
 ) jQuery

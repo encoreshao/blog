@@ -9,6 +9,10 @@ class Comment < ApplicationRecord
              optional: true
 
   scope :parent_comments, -> { where('comment_parent = ?', 0) }
+
+  def user_name
+    name || 'Anonymous'
+  end
 end
 
 # == Schema Information
