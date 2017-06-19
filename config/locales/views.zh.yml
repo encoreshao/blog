@@ -12,7 +12,7 @@ zh:
     related_posts: 相关帖子
     post_format: 帖子格式
     previous_post: 上一篇
-    leave_a_comment: 留言
+    leave_a_comment: 发表评论
     share_this_article: 分享此文章
     follow_me_on_twitter: 在Twitter上关注作者
     viewed_count: 预览数
@@ -37,10 +37,11 @@ zh:
     chat: 闲谈
     link: 链接
   form:
-    name: 昵称
-    email: 邮箱
-    website_url: 链接
-    message: 内容
+    tips: 电子邮件地址不会被公开, 必填项已用*标注
+    name: 姓名
+    email: 电子邮件
+    website_url: 站点
+    message: 评论
   action:
     new: 新建
     create: 创建

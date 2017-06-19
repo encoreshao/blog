@@ -125,6 +125,8 @@
 
       = form_tag comment_articles_path, method: :POST, class: 'comment-form', id: 'commentForm' do
         .comment-form-wrapper
+          .clearfix
+            %label= I18n.t('form.tips')
           .input.message
             %label
               = I18n.t('form.message')
@@ -138,7 +140,8 @@
           .input.email
             %label
               = I18n.t('form.email')
-            %input#input-email.input-s{name: "comment[email]", type: "text"}/
+              %span.red *
+            %input#input-email.input-s{name: "comment[email]", type: "text", required: true}/
           .input.email
             %label= I18n.t('form.website_url')
             %input#input-email.input-s{name: "comment[link]", type: "text"}/

@@ -5,16 +5,5 @@
 = link_to I18n.t('action.back'), admin_articles_path
 = link_to I18n.t('action.edit'), edit_admin_article_path(resource)
 
-.jumbotron
-  %h2= resource.title
-  .author
-    %strong Author:
-    = resource.author_name
-    %strong Category:
-    = resource.category_name(I18n.default_locale)
-  %br
-  %div.lead= raw resource.content
-  %br
-  %div
-    %strong Tags:
-    = resource.tag_names
+.clearfix
+  %iframe{src: article_path(@article.params), width: '100%', height: '1000px'}

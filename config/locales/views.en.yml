@@ -37,6 +37,7 @@ en:
     chat: Chat
     link: Link
   form:
+    tips: The e-mail address is not public, * must be entered
     name: Name
     email: E-mail
     website_url: Website URL
