@@ -2,13 +2,12 @@ class Comment < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :commentable, polymorphic: true
 
-  belongs_to :comment,
-             class_name: 'Comment',
-             primary_key: 'id',
-             foreign_key: 'comment_id',
-             optional: true
+  has_many :comments,
+           class_name: 'Comment',
+           primary_key: 'id',
+           foreign_key: 'comment_id'
 
-  scope :parent_comments, -> { where('comment_parent = ?', 0) }
+  scope :parent_comments, -> { where('comment_id IS NULL') }
 
   def user_name
     name || 'Anonymous'

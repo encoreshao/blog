@@ -88,9 +88,10 @@
       .comments-list
         %ul
           - @article.comments.parent_comments.each do |comment|
-            %li.comment.byuser.comment-author-themewarrior.bypostauthor.even.thread-even.depth-1{id: "comment-#{comment.id}"}
+            %li.comment.depth-0{id: "comment-#{comment.id}"}
               .thumbnail
-                %i.fa.fa-user-o
+                %div.media.avatar-48
+                  %h1= comment.user_name.first.upcase
               .comment-detail
                 .author
                   = comment.user_name
@@ -98,20 +99,27 @@
                   %time= comment.created_at.strftime('%B %d, %Y')
                 %p= comment.content
                 .reply
-                  %a.comment-reply-link.fa.fa-commenting{onclick: "return addComment.moveForm( \"comment-#{comment.id}\", \"#{comment.id}\", \"respond\", \"#{comment.comment_parent}\" )", rel: "nofollow"}= I18n.t('action.reply')
+                  %a.comment-reply-link.fa.fa-commenting{onclick: "return addComment.moveForm( \"comment-#{comment.id}\", \"#{comment.comment_parent + 1}\", \"respond\", \"#{comment.id}\" )", rel: "nofollow"}= I18n.t('action.reply')
 
-            - unless (depth2_comment = comment.comment).nil?
-              %li.comment.byuser.comment-author-themewarrior.bypostauthor.even.thread-even.depth-2{id: "comment-#{depth2_comment.id}"}
-                .thumbnail
-                  %i.fa.fa-user-o
-                .comment-detail
-                  .author
-                    = depth2_comment.user_name
-                    %span -
-                    %time= depth2_comment.created_at.strftime('%B %d, %Y')
-                  %p= depth2_comment.content
-                  .reply
-                    %a.comment-reply-link.fa.fa-commenting{onclick: "return addComment.moveForm( \"comment-#{depth2_comment.id}\", \"#{depth2_comment.id}\", \"respond\", \"#{depth2_comment.id}\" )", rel: "nofollow"}= I18n.t('action.reply')
+            - comments = comment.comments
+            - while !(comments).empty?
+              - comments.each do |depth_comment|
+                %li.comment.depth-more{id: "comment-#{depth_comment.id}"}
+                  .thumbnail
+                    %div.media.avatar-48
+                      %h1= depth_comment.user_name.first.upcase
+                  .comment-detail
+                    .author
+                      = depth_comment.user_name
+                      %span -
+                      %time= depth_comment.created_at.strftime('%B %d, %Y')
+                    %p
+                      = raw "@#{comment.user_name}: "
+                      = depth_comment.content
+                    .reply
+                      %a.comment-reply-link.fa.fa-commenting{onclick: "return addComment.moveForm( \"comment-#{depth_comment.id}\", \"#{depth_comment.comment_parent + 1}\", \"respond\", \"#{depth_comment.id}\" )", rel: "nofollow"}= I18n.t('action.reply')
+
+                - comments = depth_comment.comments
 
   / Comment
   #comment-form-widget.comments.box
@@ -146,7 +154,7 @@
             %label= I18n.t('form.website_url')
             %input#input-email.input-s{name: "comment[link]", type: "text"}/
           %p.form-submit
-            = submit_tag I18n.t('action.submit'), class: 'btn btn-primary bg-green', id: 'submit'
+            = submit_tag I18n.t('form.submit'), class: 'btn btn-primary bg-green', id: 'submit'
             %input#comment_id{name: "comment_id", type: "hidden"}/
             %input#comment_parent{name: "comment[comment_parent]", type: "hidden", value: "0"}/
 

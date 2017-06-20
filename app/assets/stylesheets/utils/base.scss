@@ -1330,7 +1330,7 @@ p.moderate {
 .comments-list ul li {
   list-style: none;
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .comments-list ul li:after {
@@ -1338,12 +1338,15 @@ p.moderate {
 }
 
 .comments-list ul.comment-response {
-  margin-top: 30px;
-  margin-left: 100px;
+  margin-left: 80px;
 }
 
 .comments-list ul.comment-response li {
-  margin-bottom: 30px;
+  margin-bottom: 10px
+}
+
+.comments-list ul.comment-response li.depth-more {
+  margin-left: 10px
 }
 
 .comments-list ul li .thumbnail,
@@ -1422,7 +1425,7 @@ a#cancel-comment-reply-link {
 
 .input.message textarea {
   width: 100%;
-  min-height: 160px;
+  min-height: 100px;
 }
 
 .input label {
@@ -2243,4 +2246,26 @@ html[xmlns] .slides {
 
 .btn-action {
   cursor: pointer;
+}
+
+.media.avatar-48 {
+  width: 48px;
+  height: 48px;
+  border-radius: 120px;
+  background-color: rgba(68, 157, 68, .8);
+  color: #FFFFFF;
+  font-size: 2em;
+
+  display: -webkit-box; 
+  display: -moz-box; 
+  display: -ms-flexbox; 
+  display: -webkit-flex; 
+  display: flex; 
+  justify-content:center;
+
+  -webkit-box-align: center;
+  -moz-box-align: center; 
+  -ms-flex-align: center; 
+  -webkit-align-items: center; 
+  align-items: center;
 }

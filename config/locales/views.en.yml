@@ -7,6 +7,7 @@ en:
   tips:
     about_the_author: About The Author
     tags: Tags
+    wechat: WeChat
     latest_tweets: Latest Tweets
     recent_posts: Recent Posts
     related_posts: Related Posts
@@ -37,11 +38,12 @@ en:
     chat: Chat
     link: Link
   form:
-    tips: The e-mail address is not public, * must be entered
+    tips: Your email address will not be published. * must be entered!
     name: Name
     email: E-mail
     website_url: Website URL
     message: Message
+    submit: Post Comment
   action:
     new: New
     create: Create

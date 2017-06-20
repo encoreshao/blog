@@ -67,6 +67,14 @@
       - full_atricle_tags.each do |tag|
         = link_to tag[0], tags_path(tag: tag[1])
 
+  #widget-wechat.widget
+    %h3.widget-title
+      %label
+        %i.fa.fa-wechat
+        = I18n.t('tips.wechat')
+    .blocks
+      %img.avatar.avatar-80.photo{src: "/assets/photos/wechat.jpg"}/
+
   %footer#footer
     %p
       - time_range = '2017'

@@ -7,6 +7,7 @@ zh:
   tips:
     about_the_author: 关于作者
     tags: 热门标签
+    wechat: 微信号
     latest_tweets: 最近发表
     recent_posts: 最近回复
     related_posts: 相关帖子
@@ -17,7 +18,7 @@ zh:
     follow_me_on_twitter: 在Twitter上关注作者
     viewed_count: 预览数
     notes: 邵壮 - 分享使我快乐! 以快乐的心态去迎接美好的世界. I want share something to you!
-    note2: 嗨，邵壮 --- 是一名生活在中国上海的开发者. 我可以帮助您创建网站和基于网络的应用程序. 如果您有任何想法可以联系我喔. - (encore.shao[at]gmail.com)
+    note2: Hey，{邵壮} 是一名生活在中国上海的开发者. 我可以帮助您创建网站和基于网络的应用程序. 如果您有任何想法可以联系我喔. - (encore.shao[at]gmail.com)
   navigation:
     title: 站点导航
     home: 主页
@@ -42,6 +43,7 @@ zh:
     email: 电子邮件
     website_url: 站点
     message: 评论
+    submit: 发表评论
   action:
     new: 新建
     create: 创建

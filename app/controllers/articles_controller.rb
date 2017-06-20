@@ -41,8 +41,8 @@ class ArticlesController < ApplicationController
       name: params[:comment][:name],
       link: params[:comment][:link],
       email: params[:comment][:email],
-      comment_parent: params[:comment][:comment_parent],
-      comment_id: params[:comment_id],
+      comment_parent: params[:comment][:comment_parent].to_i,
+      comment_id: params[:comment_id].blank? ? nil : params[:comment_id],
       remote_ip: request.remote_ip
     }
 
