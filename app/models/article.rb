@@ -22,7 +22,8 @@ class Article < ApplicationRecord
   scope :with_keywords, ->(keyword) {
     return nil if keyword.blank?
 
-    where("LOWER(title) ILIKE ?", "%#{keyword.downcase}%")
+    criteria = ActiveRecord::Base.send(:sanitize_sql, keyword)
+    where("title ILIKE ?", "%#{criteria}%")
   }
 
   def author_name
