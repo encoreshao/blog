@@ -151,8 +151,8 @@
               %span.red *
             %input#input-email.input-s{name: "comment[email]", type: "text", required: true}/
           .input.email
-            %label= I18n.t('form.website_url')
-            %input#input-email.input-s{name: "comment[link]", type: "text"}/
+            %label= I18n.t('form.url')
+            %input#input-url.input-s{name: "comment[link]", type: "text"}/
           %p.form-submit
             = submit_tag I18n.t('form.submit'), class: 'btn btn-primary bg-green', id: 'submit'
             %input#comment_id{name: "comment_id", type: "hidden"}/

@@ -41,7 +41,7 @@ en:
     tips: Your email address will not be published. * must be entered!
     name: Name
     email: E-mail
-    website_url: Website URL
+    url: URL
     message: Message
     submit: Post Comment
   action:
