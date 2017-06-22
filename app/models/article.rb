@@ -23,7 +23,7 @@ class Article < ApplicationRecord
     return nil if keyword.blank?
 
     criteria = ActiveRecord::Base.send(:sanitize_sql, keyword)
-    where("title ILIKE ?", "%#{criteria}%")
+    where("LOWER(title) ILIKE LOWER(?)", "%#{criteria}%")
   }
 
   def author_name
