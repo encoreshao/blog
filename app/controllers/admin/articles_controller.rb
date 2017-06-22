@@ -26,7 +26,10 @@ class Admin::ArticlesController < AdminController
   	return if tags.empty?
 
 		tags.each do |name|
-			tag = Tag.find_or_create_by(name: name)
+      tag = Tag.where("LOWER(name) ILIKE LOWER(?)", name).first
+      if tag.nil?
+        tag = Tag.create(name: name, permalink: name.downcase)
+      end
 
 			ArticlesTag.find_or_create_by(article_id: resource.try(:id), tag_id: tag.id) if resource.present?
 		end

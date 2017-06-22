@@ -1,0 +1,19 @@
+- if comment.present?
+  %li.comment.byuser.comment-author-themewarrior.bypostauthor.even.thread-even{id: "comment-#{comment.id}"}
+    .thumbnail
+      %div.media.avatar-48
+        %img{src: gravatar_url(comment.email)}
+    .comment-detail
+      .author
+        = comment.user_name
+        %span -
+        %time= comment.created_at.strftime('%B %d, %Y')
+      %p= comment.content
+      .reply
+        %a.comment-reply-link.fa.fa-commenting{onclick: "return addComment.moveForm( \"comment-#{comment.id}\", \"#{comment.comment_parent + 1}\", \"respond\", \"#{comment.id}\" )", rel: "nofollow"}
+          = I18n.t('action.reply')
+
+  - unless (comments = comment.comments).empty?
+    %ul.depth-more
+      - comments.each do |depth_comment|
+        = render partial: 'comments', locals: { comment: depth_comment }

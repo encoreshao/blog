@@ -1,6 +1,5 @@
 class DashboardsController < ApplicationController
   def index
-    
     @articles = Article.published.with_categories(category_id).
                 with_tags(tag_id).
                 with_keywords(params[:q]).
@@ -12,12 +11,12 @@ class DashboardsController < ApplicationController
   def category_id
     return nil if params[:category].blank?
 
-    Category.find_by(permalink: params[:category]).try(:id)
+    Category.find_by(permalink: params[:category]).try(:id) || ''
   end
 
   def tag_id
     return nil if params[:tag].blank?
 
-    nil
+    Tag.find_by(permalink: params[:tag]).try(:id) || ''
   end
 end

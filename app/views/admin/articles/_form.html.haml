@@ -3,7 +3,7 @@
   = f.input :title, required: true
   = f.input :permalink, required: true
   = f.input :user_id, collection: User.active_users, prompt: true, required: true
-  = f.input :category_id, collection: full_atricle_tags, prompt: true, required: true
+  = f.input :category_id, collection: atricle_categories, prompt: true, required: true
   = f.input :published_at
   = f.input :is_published, as: :radio_buttons
   = f.input :reprinted_source

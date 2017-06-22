@@ -10,14 +10,14 @@ class Article < ApplicationRecord
 
   scope :published, -> { where(is_published: true) }
   scope :with_categories, ->(category_id) {
-    return nil if category_id.blank?
+    return nil if category_id.nil?
 
     where(category_id: category_id)
   }
   scope :with_tags, ->(tag_id) {
-    return nil if tag_id.blank?
+    return nil if tag_id.nil?
 
-    where(tag_id: tag_id)
+    joins(:tags).where("articles_tags.tag_id = ?", tag_id)
   }
   scope :with_keywords, ->(keyword) {
     return nil if keyword.blank?

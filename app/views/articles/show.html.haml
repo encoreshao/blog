@@ -27,10 +27,9 @@
       - unless @article.tags.empty?
         %footer.content-footer
           .tags
-            %i.fa.fa-tags
             %label #{I18n.t('tips.tags')}:
-            - @article.tags.each do |tag|
-              = tag.name
+            %strong= @article.tag_names
+          .tags
 
         .share-buttons
           .addthis_toolbox.addthis_default_style
@@ -41,8 +40,6 @@
               %span.fa.fa-twitter
             %a.addthis_button_weibo
               %span.fa.fa-weibo
-            %a.addthis_button_weixin
-              %span.fa.fa-weixin
             %a.addthis_button_tencent_weibo
               %span.fa.fa-tencent-weibo
             %a.addthis_button_wechat
@@ -88,38 +85,7 @@
       .comments-list
         %ul
           - @article.comments.parent_comments.each do |comment|
-            %li.comment.depth-0{id: "comment-#{comment.id}"}
-              .thumbnail
-                %div.media.avatar-48
-                  %h1= comment.user_name.first.upcase
-              .comment-detail
-                .author
-                  = comment.user_name
-                  %span -
-                  %time= comment.created_at.strftime('%B %d, %Y')
-                %p= comment.content
-                .reply
-                  %a.comment-reply-link.fa.fa-commenting{onclick: "return addComment.moveForm( \"comment-#{comment.id}\", \"#{comment.comment_parent + 1}\", \"respond\", \"#{comment.id}\" )", rel: "nofollow"}= I18n.t('action.reply')
-
-            - comments = comment.comments
-            - while !(comments).empty?
-              - comments.each do |depth_comment|
-                %li.comment.depth-more{id: "comment-#{depth_comment.id}"}
-                  .thumbnail
-                    %div.media.avatar-48
-                      %h1= depth_comment.user_name.first.upcase
-                  .comment-detail
-                    .author
-                      = depth_comment.user_name
-                      %span -
-                      %time= depth_comment.created_at.strftime('%B %d, %Y')
-                    %p
-                      = raw "@#{comment.user_name}: "
-                      = depth_comment.content
-                    .reply
-                      %a.comment-reply-link.fa.fa-commenting{onclick: "return addComment.moveForm( \"comment-#{depth_comment.id}\", \"#{depth_comment.comment_parent + 1}\", \"respond\", \"#{depth_comment.id}\" )", rel: "nofollow"}= I18n.t('action.reply')
-
-                - comments = depth_comment.comments
+            = render partial: 'comments', locals: { comment: comment }
 
   / Comment
   #comment-form-widget.comments.box
@@ -149,10 +115,10 @@
             %label
               = I18n.t('form.email')
               %span.red *
-            %input#input-email.input-s{name: "comment[email]", type: "text", required: true}/
+            %input#input-email.input-s{name: "comment[email]", type: "email", required: true}/
           .input.email
             %label= I18n.t('form.url')
-            %input#input-url.input-s{name: "comment[link]", type: "text"}/
+            %input#input-url.input-s{name: "comment[link]", type: "url"}/
           %p.form-submit
             = submit_tag I18n.t('form.submit'), class: 'btn btn-primary bg-green', id: 'submit'
             %input#comment_id{name: "comment_id", type: "hidden"}/

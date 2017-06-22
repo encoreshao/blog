@@ -1,8 +1,6 @@
 class Tag < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
+  validates :name, :permalink, presence: true, uniqueness: true
 
-  # has_many :article_tags
-  # has_many :articles, through: :article_tags
   has_and_belongs_to_many :tags
 end
 

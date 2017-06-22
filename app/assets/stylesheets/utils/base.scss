@@ -848,7 +848,7 @@ ul.flex-direction-nav li a.flex-next:after {
   clear: both;
   width: 100%;
   background: #fff;
-  padding: 20px 10%;
+  padding: 20px 5%;
   margin-bottom: 30px;
 }
 
@@ -915,12 +915,12 @@ body.single .post-wrapper article.hentry {
 div.tags {
   font-size: .85em;
   text-align: center;
-  margin: 20px auto;
+  margin: 10px auto;
 }
 
 div.tags:before {
   display: block;
-  width: 100px;
+  width: 150px;
   content: '';
   text-align: center;
   margin: 0 auto 10px auto;
@@ -1345,7 +1345,7 @@ p.moderate {
   margin-bottom: 10px
 }
 
-.comments-list ul li.depth-more {
+.comments-list ul.depth-more {
   margin-left: 20px
 }
 
@@ -1367,7 +1367,6 @@ li.pingback .comment-detail {
 .comments-list ul li .author {
   font-size: 1.1em;
   font-weight: 400;
-  margin-bottom: 10px;
 }
 
 .comments-list ul li .author a {
@@ -1580,6 +1579,7 @@ output {
 form input[type="text"],
 form input[type="password"],
 form input[type="email"],
+form input[type="url"],
 form textarea,
 .widget_archive select,
 .widget_categories select,
@@ -2248,7 +2248,7 @@ html[xmlns] .slides {
   cursor: pointer;
 }
 
-.media.avatar-48 {
+.media.avatar-48, .media.avatar-48 img {
   width: 48px;
   height: 48px;
   border-radius: 120px;
