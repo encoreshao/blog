@@ -19,6 +19,7 @@ zh:
     viewed_count: 预览数
     notes: 邵壮 - 分享使我快乐! 以快乐的心态去迎接美好的世界. I want share something to you!
     note2: Hey，{邵壮} 是一名生活在中国上海的开发者. 我可以帮助您创建网站和基于网络的应用程序. 如果您有任何想法可以联系我喔. - (encore.shao[at]gmail.com)
+    comments: 共有 %{count} 条留言
   navigation:
     title: 站点导航
     home: 主页

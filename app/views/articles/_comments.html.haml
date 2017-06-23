@@ -10,7 +10,7 @@
         %time= comment.created_at.strftime('%B %d, %Y')
       %p= comment.content
       .reply
-        %a.comment-reply-link.fa.fa-commenting{onclick: "return addComment.moveForm( \"comment-#{comment.id}\", \"#{comment.comment_parent + 1}\", \"respond\", \"#{comment.id}\" )", rel: "nofollow"}
+        %a.comment-reply-link{onclick: "return addComment.moveForm( \"comment-#{comment.id}\", \"#{comment.comment_parent + 1}\", \"respond\", \"#{comment.id}\" )", rel: "nofollow"}
           = I18n.t('action.reply')
 
   - unless (comments = comment.comments).empty?

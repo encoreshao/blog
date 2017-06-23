@@ -80,7 +80,7 @@
 
   - if @article.comments.count > 0
     #comment-widget.comments.box
-      %h3.widget-title There's #{@article.comments.count} Comments
+      %h3.widget-title= I18n.t('tips.comments', count: @article.comments.count)
       .comments-list
         %ul
           - @article.comments.parent_comments.each do |comment|
