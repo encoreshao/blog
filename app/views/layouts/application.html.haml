@@ -11,11 +11,6 @@
     %meta{ name: 'description', content: I18n.t('description') }
 
     = stylesheet_link_tag 'application', :media => "all", 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-
-    / Le HTML5 shim, for IE6-8 support of HTML5 elements
-    /[if lt IE 9]
-      %script{ src: 'http://html5shim.googlecode.com/svn/trunk/html5.js' }
 
     = yield :head
     = csrf_meta_tags
@@ -43,3 +38,8 @@
       %span.fa.fa-arrow-up
 
     .highlight-line
+
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    / Le HTML5 shim, for IE6-8 support of HTML5 elements
+    /[if lt IE 9]
+      %script{ src: 'http://html5shim.googlecode.com/svn/trunk/html5.js' }
