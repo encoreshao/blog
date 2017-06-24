@@ -18,3 +18,6 @@
               %i.fa.fa-edit
             = link_to admin_tag_path(resource), method: :DELETE do
               %i.fa.fa-remove
+              
+%nav{:'aria-label' => 'Page navigation'}
+  = paginate collection, views_prefix: 'admin'

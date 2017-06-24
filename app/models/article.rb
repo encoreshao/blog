@@ -35,7 +35,7 @@ class Article < ApplicationRecord
   end
 
   def published_date
-    published_at && published_at.strftime('%b %d, %Y')
+    published_at && published_at.strftime('%Y-%m-%d')
   end
 
   def tag_names

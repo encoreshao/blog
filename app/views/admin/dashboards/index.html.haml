@@ -1,42 +1,43 @@
-%section.row.text-center.placeholders
-  .col-6.col-sm-2.placeholder
-    %i.fa.fa-users
-    %h4
-      = link_to admin_users_path do
-        = User.model_name.human
-        (
-        = User.count
-        )
-  .col-6.col-sm-2.placeholder
-    %i.fa.fa-book
+%section.row.text-center
+  .col-6
     %h4
       = link_to admin_articles_path do
+        %i.fa.fa-book
         = Article.model_name.human
         (
         = Article.count
         )
-  .col-6.col-sm-2.placeholder
-    %i.fa.fa-building
-    %h4
-      = link_to admin_categories_path do
-        = Category.model_name.human
-        (
-        = Category.count
-        )
-  .col-6.col-sm-2.placeholder
-    %i.fa.fa-tags
-    %h4
-      = link_to admin_tags_path do
-        = Tag.model_name.human
-        (
-        = Tag.count
-        )
+  - if admin?
+    .col-6
+      %h4
+        = link_to admin_users_path do
+          %i.fa.fa-users
+          = User.model_name.human
+          (
+          = User.count
+          )
+    .col-6
+      %h4
+        = link_to admin_categories_path do
+          %i.fa.fa-building
+          = Category.model_name.human
+          (
+          = Category.count
+          )
+    .col-6
+      %h4
+        = link_to admin_tags_path do
+          %i.fa.fa-tags
+          = Tag.model_name.human
+          (
+          = Tag.count
+          )
 
-  .col-6.col-sm-2.placeholder
-    %i.fa.fa-comments
-    %h4
-      = link_to admin_comments_path do
-        = Comment.model_name.human
-        (
-        = Comment.count
-        )
+    .col-6
+      %h4
+        = link_to admin_comments_path do
+          %i.fa.fa-comments
+          = Comment.model_name.human
+          (
+          = Comment.count
+          )

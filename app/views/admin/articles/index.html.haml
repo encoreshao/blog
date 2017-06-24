@@ -14,7 +14,7 @@
         %tr
           %td= resource.title
           %td= resource.category.try("name_#{params[:locale] || I18n.default_locale}".to_sym)
-          %td= resource.user.try(:author_name)
+          %td= resource.try(:author_name)
           %td= resource.is_published
           %td= resource.published_date
           %td
@@ -28,5 +28,5 @@
               %i.fa.fa-trash
               = I18n.t('action.destory')
 
-
-
+%nav{:'aria-label' => 'Page navigation'}
+  = paginate collection, views_prefix: 'admin'

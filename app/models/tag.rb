@@ -2,6 +2,13 @@ class Tag < ApplicationRecord
   validates :name, :permalink, presence: true, uniqueness: true
 
   has_and_belongs_to_many :tags
+
+  scope :with_keywords, ->(keyword) {
+    return nil if keyword.blank?
+
+    criteria = ActiveRecord::Base.send(:sanitize_sql, keyword)
+    where("LOWER(name) ILIKE LOWER(?)", "%#{criteria}%")
+  }
 end
 
 # == Schema Information

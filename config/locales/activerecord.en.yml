@@ -16,6 +16,7 @@ en:
         avatar: Avatar
         link: Link
         created_at: Created At
+        is_admin: Admin
       article:
         title: Title
         permalink: Permalink

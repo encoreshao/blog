@@ -34,4 +34,8 @@ class Admin::ArticlesController < AdminController
 			ArticlesTag.find_or_create_by(article_id: resource.try(:id), tag_id: tag.id) if resource.present?
 		end
   end
+
+  def collection
+    @articles ||= end_of_association_chain.with_keywords(params[:name]).page(params[:page])
+  end
 end

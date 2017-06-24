@@ -1,5 +1,7 @@
 module Admin::DashboardsHelper
   def admin_sidebar(nav_class, path)
+    return unless admin? || ['dashboards', 'articles'].include?(nav_class)
+
     class_name = 'nav-link'
     class_name += (nav_class == controller_name) ? ' active' : ''
 

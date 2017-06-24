@@ -23,21 +23,14 @@
     .highlight-line
     %section.container
       %a.menu-trigger{:href => "#sidebar-wrappers"}
-      #content-wrappers
-        = yield
-      .before
       #sidebar-wrappers
         = render 'shared/sidebar'
+      .before
+      #content-wrappers
+        = yield
 
       .clearfix
-      .clearfix
-
-    .bg-area.clearfix
-      .container
-        .bg-left
-          .before
-          .after
-
+      
     %a#scroll-top{:href => "#top", :style => "display: block;"}
       %span.fa.fa-arrow-up
 

@@ -1,9 +1,15 @@
 body {
 	background-color: #efefef;
-  section.placeholders i.fa {
-    font-size: 3em;
+  section i.fa {
+    font-size: 2em;
   }
-  section.placeholders h4 {
+  section h4 {
     margin-top: 1em;
+  }
+  nav.bg-faded {
+  	min-height: 400px;
+  }
+  .nav-pills .nav-link {
+  	font-size: 1em;
   }
 }

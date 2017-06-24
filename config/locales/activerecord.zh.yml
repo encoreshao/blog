@@ -16,6 +16,7 @@ zh:
         avatar: 头像
         link: 链接
         created_at: 创建时间
+        is_admin: 管理员
       article:
         title: 标题
         permalink: 链接

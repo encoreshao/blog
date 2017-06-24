@@ -7,9 +7,24 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+  scope :with_keywords, ->(keyword) {
+    return nil if keyword.blank?
+
+    criteria = ActiveRecord::Base.send(:sanitize_sql, keyword)
+    where("LOWER(name) ILIKE LOWER(?)", "%#{criteria}%")
+  }
+
   def self.active_users
     select('name, id').map { |e| [e.name, e.id] }
   end
+
+ 	def admin?
+ 		!member?
+ 	end
+
+ 	def member?
+ 		!is_admin?
+ 	end
 end
 
 # == Schema Information
