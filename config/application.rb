@@ -38,6 +38,7 @@ module Blog
     config.generators.system_tests = nil
     config.generators do |g|
       g.template_engine :haml
+      g.fixture_replacement :machinist
     end
   end
 end

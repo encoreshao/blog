@@ -1,10 +1,14 @@
-RSpec.describe ArticleTag do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe ArticlesTag do
+  let (:articles_tag) { ArticlesTag.make! }
+
+  it 'Should be present when create ArticlesTag' do
+    expect(articles_tag.present?).to be_truthy
+  end
 end
 
 # == Schema Information
 #
-# Table name: article_tags
+# Table name: articles_tags
 #
 #  id         :integer          not null, primary key
 #  article_id :integer

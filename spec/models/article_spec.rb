@@ -1,5 +1,9 @@
 RSpec.describe Article do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let (:article) { Article.make! }
+
+  it 'Should be include title when create article' do
+    expect(article.title.present?).to be_truthy
+  end
 end
 
 # == Schema Information

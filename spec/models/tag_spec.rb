@@ -1,5 +1,9 @@
 RSpec.describe Tag do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let (:tag) { Tag.make! }
+
+  it 'Should be include name when create tag' do
+    expect(tag.name.present?).to be_truthy
+  end
 end
 
 # == Schema Information

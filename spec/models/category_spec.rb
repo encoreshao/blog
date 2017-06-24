@@ -1,5 +1,11 @@
 RSpec.describe Category do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let (:category) { Category.make! }
+
+  it 'Should be with all attributes when create Category' do
+    expect(category.name_zh.present?).to be_truthy
+    expect(category.name_en.present?).to be_truthy
+    expect(category.permalink.present?).to be_truthy
+  end
 end
 
 # == Schema Information

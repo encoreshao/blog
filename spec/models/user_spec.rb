@@ -1,5 +1,22 @@
 RSpec.describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let (:user) { User.make!(:info) }
+  let (:admin) { User.make!(:admin) }
+
+  it 'Should be return false when user is member' do
+    expect(user.member?).to be_truthy
+  end
+
+  it 'Should be return false when user is member' do
+    expect(user.admin?).to be_falsey
+  end
+
+  it 'Should be return false when user is admin' do
+    expect(admin.member?).to be_falsey
+  end
+
+  it 'Should be return true when user is admin' do
+    expect(admin.admin?).to be_truthy
+  end
 end
 
 # == Schema Information

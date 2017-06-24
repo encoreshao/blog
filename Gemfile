@@ -51,11 +51,16 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'faker'
-  gem 'rspec-rails'
   gem "capybara"
   gem 'rubocop'
   gem 'annotate'
+end
+
+group :test do
+  gem 'rspec-rails', require: false
+  gem 'ffaker', require: false
+  gem 'database_cleaner', require: false
+  gem 'machinist', require: false
 end
 
 group :development do

@@ -1,5 +1,9 @@
 RSpec.describe Comment do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let (:comment) { Comment.make! }
+
+  it 'Should be with content when create comment' do
+    expect(comment.content.present?).to be_truthy
+  end
 end
 
 # == Schema Information
