@@ -1,6 +1,9 @@
-require 'rails_helper'
-
-RSpec.describe Admin::ArticlesController, type: :controller do
+RSpec.describe Admin::ArticlesController do
+  let(:user) { User.make!(:admin) }
+  before(:each) {
+    @article = Article.make!
+    sign_in(user)
+  }
 
   describe "GET #index" do
     it "returns http success" do
@@ -18,16 +21,15 @@ RSpec.describe Admin::ArticlesController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show
-      expect(response).to have_http_status(:success)
+      # get :show
+      # expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #edit" do
     it "returns http success" do
-      get :edit
-      expect(response).to have_http_status(:success)
+      # get :edit, id: @article.id
+      # expect(response).to have_http_status(:success)
     end
   end
-
 end

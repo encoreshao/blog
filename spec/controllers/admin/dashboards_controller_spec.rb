@@ -1,6 +1,6 @@
-require 'rails_helper'
-
-RSpec.describe Admin::DashboardsController, type: :controller do
+RSpec.describe Admin::DashboardsController do
+  let(:user) { User.make!(:admin) }
+  before(:each) { sign_in(user) }
 
   describe "GET #index" do
     it "returns http success" do
@@ -8,5 +8,4 @@ RSpec.describe Admin::DashboardsController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
-
 end

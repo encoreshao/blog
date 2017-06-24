@@ -1,9 +1,10 @@
 %h2
-  = I18n.t('action.show')
-  = resource.model_name.human
-
-= link_to I18n.t('action.back'), admin_articles_path
-= link_to I18n.t('action.edit'), edit_admin_article_path(resource)
+  = raw @article.title
 
 .clearfix
-  %iframe{src: article_path(@article.params), width: '100%', height: '1000px'}
+  = link_to I18n.t('action.back'), admin_articles_path
+  = link_to I18n.t('action.edit'), edit_admin_article_path(resource)
+
+.clearfix
+  %br
+  = raw @article.content

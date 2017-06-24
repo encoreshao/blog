@@ -741,15 +741,17 @@ article .thumbnail {
 .social {
   font-size: 20px;
   margin-top: 10px;
-}
-
-.social ul {
-  margin: 0;
-}
-
-.social ul li {
-  float: left;
-  margin: 0 7px 7px 0;
+  ul {
+    margin: 0;
+    li {
+      float: left;
+      margin: 0 7px 7px 0;
+      font-size: 1em;
+      &:hover {
+        font-size: 1.1em;
+      }
+    }
+  }
 }
 
 .site-info .social ul li a {
@@ -768,10 +770,9 @@ ul.menu li {
 
 #main-carousel-slider {
   margin-bottom: 30px;
-}
-
-#main-carousel-slider ul.slides {
-  margin: 0;
+  ul.slides {
+    margin: 0;
+  }
 }
 
 #main-carousel-slider,
