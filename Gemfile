@@ -51,7 +51,9 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'faker'
   gem 'rspec-rails'
+  gem "capybara"
   gem 'rubocop'
   gem 'annotate'
 end

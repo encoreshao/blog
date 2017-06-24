@@ -38,6 +38,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.5.1)
+      public_suffix (~> 2.0, >= 2.0.2)
     airbrussh (1.3.0)
       sshkit (>= 1.6.1, != 1.7.0)
     annotate (2.7.2)
@@ -78,6 +80,13 @@ GEM
       capistrano (~> 3.7)
       capistrano-bundler
       puma (~> 3.4)
+    capybara (2.14.3)
+      addressable
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
     carrierwave (1.1.0)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
@@ -102,6 +111,8 @@ GEM
     erubi (1.6.0)
     erubis (2.7.0)
     execjs (2.7.0)
+    faker (1.7.3)
+      i18n (~> 0.5)
     ffi (1.9.18)
     ffi (1.9.18-java)
     ffi (1.9.18-x64-mingw32)
@@ -200,6 +211,7 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.6)
       pry (>= 0.10.4)
+    public_suffix (2.0.5)
     puma (3.9.1)
     puma (3.9.1-java)
     rack (2.0.3)
@@ -326,6 +338,8 @@ GEM
     websocket-driver (0.6.5-java)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    xpath (2.1.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   java
@@ -344,9 +358,11 @@ DEPENDENCIES
   capistrano-rails-console
   capistrano-rvm
   capistrano3-puma
+  capybara
   carrierwave
   coffee-rails (~> 4.2)
   devise
+  faker
   haml-rails
   inherited_resources
   jbuilder (~> 2.5)
