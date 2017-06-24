@@ -47,9 +47,10 @@ zh:
       comment:
         id: 编号
         type: 类型
-        user_id: 名称
-        user: 名称
-        name: 名称
+        title: 文章
+        user_id: 作者
+        user: 作者
+        name: 作者
         email: 邮箱
         link: 链接
         comment_parent: 父类

@@ -47,9 +47,10 @@ en:
       comment:
         id: ID
         type: Type
-        user_id: Name
-        user: Name
-        name: Name
+        title: Title
+        user_id: User
+        user: User
+        name: User
         email: Email
         link: Link
         comment_parent: Parent

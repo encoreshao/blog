@@ -8,6 +8,13 @@ class Comment < ApplicationRecord
            foreign_key: 'comment_id'
 
   scope :parent_comments, -> { where('comment_id IS NULL') }
+  scope :with_keywords, ->(keyword) {
+    return nil if keyword.blank?
+
+    criteria = ActiveRecord::Base.send(:sanitize_sql, keyword)
+    joins('LEFT JOIN articles ON comments.commentable_id = articles.id').
+      where("LOWER(articles.title) ILIKE LOWER(?)", "%#{criteria}%")
+  }
 
   def user_name
     name || 'Anonymous'

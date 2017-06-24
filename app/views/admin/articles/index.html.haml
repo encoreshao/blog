@@ -12,7 +12,7 @@
     %tbody
       - collection.each do |resource|
         %tr
-          %td= resource.title
+          %td= truncate(resource.title, length: 20)
           %td= resource.category.try("name_#{params[:locale] || I18n.default_locale}".to_sym)
           %td= resource.try(:author_name)
           %td= resource.is_published

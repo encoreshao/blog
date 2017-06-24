@@ -1,5 +1,4 @@
 = link_to I18n.t('action.back'), admin_comments_path
-= link_to I18n.t('action.edit'), edit_admin_comment_path(resource)
 
 .jumbotron
   %h2= resource.commentable.try(:title)
@@ -7,3 +6,4 @@
   %div= resource.name
   %div= resource.email
   %div= resource.link
+  %div= resource.content
