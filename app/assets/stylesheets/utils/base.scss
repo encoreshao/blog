@@ -946,14 +946,18 @@ body.single .post-wrapper article.hentry {
 
 #content-wrappers article.hentry .read-more a {
   display: inline-block;
-  color: #333;
+  color: rgba(255, 255, 255, 1);
   line-height: 20px;
   padding: 10px 35px;
   border: 1px solid $green;
+  background-color: $green;
+  font-size: 1em;
 }
 
 #content-wrappers article.hentry .read-more a:hover {
-  background-color: rgba(220, 220, 220, .8);
+  font-size: 1.1em;
+  color: rgba(255, 255, 255, .8);
+  background-color: rgba(68, 157, 68, .8);
 }
 
 div.tags {
@@ -2321,4 +2325,11 @@ html[xmlns] .slides {
 .blocks.wechat {
   margin-bottom: 0px;
   text-align: center;
+}
+
+.btn-primary {
+  background-color: #449d44;
+}
+.btn-primary:hover {
+  background-color: rgba(68, 157, 68, .8);
 }

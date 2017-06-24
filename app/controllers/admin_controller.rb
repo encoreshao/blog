@@ -5,8 +5,12 @@ class AdminController < InheritedResources::Base
   before_action :authenticate_user!
   helper_method :admin?
 
-  private 
+  private
   def admin?
   	current_user.admin?
+  end
+
+  def verify_admin?
+    redirect_to admin_root_path unless admin?
   end
 end

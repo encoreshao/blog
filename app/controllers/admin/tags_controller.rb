@@ -1,6 +1,6 @@
 class Admin::TagsController < AdminController
   defaults resource_class: Tag, collection_name: 'tags', instance_name: 'tag'
-  before_action :admin?
+  before_action :verify_admin?
 
   def update
   	update! { admin_tags_path }

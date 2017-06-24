@@ -1,6 +1,6 @@
 class Admin::CommentsController < AdminController
   defaults resource_class: Comment, collection_name: 'comments', instance_name: 'comment'
-  before_action :admin?
+  before_action :verify_admin?
 
   protected
   def permitted_params

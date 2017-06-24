@@ -1,6 +1,6 @@
 class Admin::UsersController < AdminController
   defaults resource_class: User, collection_name: 'users', instance_name: 'user'
-  before_action :admin?
+  before_action :verify_admin?
 
   protected
   def permitted_params

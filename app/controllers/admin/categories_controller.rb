@@ -1,6 +1,6 @@
 class Admin::CategoriesController < AdminController
   defaults resource_class: Category, collection_name: 'categories', instance_name: 'category'
-  before_action :admin?
+  before_action :verify_admin?
 
   def update
   	update! { admin_categories_path }

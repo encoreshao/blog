@@ -25,11 +25,9 @@ class Admin::ArticlesController < AdminController
   def build_tags(tags, resource)
   	return if tags.empty?
 
-		tags.each do |name|
+    tags.each do |name|
       tag = Tag.where("LOWER(name) ILIKE LOWER(?)", name).first
-      if tag.nil?
-        tag = Tag.create(name: name, permalink: name.downcase)
-      end
+      tag = Tag.create(name: name, permalink: name.downcase) if tag.nil?
 
 			ArticlesTag.find_or_create_by(article_id: resource.try(:id), tag_id: tag.id) if resource.present?
 		end

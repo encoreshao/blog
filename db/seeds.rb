@@ -3,7 +3,7 @@
 # rake db:drop && rake db:create && rake db:migrate && rake db:seed && annotate
 
 [
-  { email: 'admin@blog.com', name: 'Administrator', password: '123456', is_admin: true },
+  { email: 'admin@blog.com', name: '邵壮', password: '123456', is_admin: true },
   { email: 'encore@blog.com', name: 'Encore Shao', password: '123456' }
 ].each do |option|
   user = User.create(option)
