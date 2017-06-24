@@ -144,9 +144,11 @@ div.wrapper {
   background-color: #232323;
 }
 
-.row1, .row3 {
+.row1,
+.row3 {
   height: 15%;
 }
+
 .row2 {
   height: 70%;
 }
@@ -226,8 +228,9 @@ select {
 
 #header #topnav li {
   display: inline;
-  margin-right: 25px;
   text-transform: uppercase;
+  text-align: center;
+  padding: 0 10px;
 }
 
 #header #topnav li.last {
@@ -351,6 +354,7 @@ select {
   padding: 0;
   font-size: 16px;
 }
+
 #not-found-wrappers p a {
   color: #449d44;
 }

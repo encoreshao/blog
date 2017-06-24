@@ -50,13 +50,13 @@
           = I18n.t('tips.recent_posts')
       .blocks.recent-post-widget
         %ul
-          - top_ten_comments.each do |comment|
+          - top_ten_articles_with_top_comments.each do |article|
             %li.post-481
               .clearfix
-                = link_to article_path(comment.commentable.params), title: comment.commentable.title do
-                  = comment.commentable.title
+                = link_to article_path(article.params), title: article.title do
+                  = article.title
                 .meta
-                  = comment.created_at.strftime('%B %d, %Y')
+                  = article.created_at.strftime('%B %d, %Y')
 
   #widget-tag_cloud-2.widget.widget_tag_cloud
     %h3.widget-title
