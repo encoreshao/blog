@@ -2,8 +2,9 @@
 lock "3.8.2"
 
 set :application, "blog"
-# set :repo_url, "."
-set :repository, "."
+set :repo_url, "https://github.com/encoreshao/blog"
+set :rvm_type, :user
+set :rvm_ruby_version, "2.4.1@#{fetch(:application)}"
 
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 # set :local_user, -> { `git config user.name`.chomp }
