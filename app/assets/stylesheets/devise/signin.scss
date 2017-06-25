@@ -1,46 +1,113 @@
-body.devise {
-  background-color: #efefef;
+body { font-size: 1.5em; /* Prevents an IE bug where em's scale out of proportion */ }
+
+a img { border: none; } /* Gets rid of IE's blue borders */
+
+a, a:hover { text-decoration: none; }
+
+/* ---------- CLEARFIX ---------- */
+/* For modern browsers */
+.cf:before,
+.cf:after {
+    content: "";
+    display: table;
+}
+
+.cf:after { clear:both; }
+
+/* For IE 6/7 (trigger hasLayout) */
+.cf { zoom: 1; }
+
+
+/* ---------- GENERAL ---------- */
+.round {
+  border-radius: 0.3125em; /* 5/16 */
+  -moz-border-radius: 0.3125em; /* 5/16 */
+  -webkit-border-radius: 0.3125em; /* 5/16 */
+}
+
+p {
+  margin-bottom: 1.25em; /* 20/16 */
+  color: #9498a1;
+}
+
+.fl { float: left; }
+.fr { float: right; }
+.cb { clear: both; }
+
+
+/* ---------- COLORS ---------- */
+a, a:hover { color: $green; }
+
+/* ---------- BUTTONS ---------- */
+.btn {
+  padding: 10px 40px;
+
+  display: inline-block;
+  text-decoration: none;
+  background-repeat: no-repeat;
+  background-color: $green;
+  border: 1px solid $green;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: rgba(68, 157, 68, .8);
+  border: 1px solid rgba(68, 157, 68, .8);
+}
+
+/* Styling the HTML5 placeholders */
+/* So far they don't work in: IE, Opera 10 and below, Firefox 3.6 and below */
+::-webkit-input-placeholder { color: #858d9c; }
+:-moz-placeholder { color: #858d9c; }
+
+/* ---------- CONTENT BOXES ---------- */
+.information-box, .confirmation-box, .error-box, .warning-box { color: #5a9bab; }
+
+.notices-boxes { text-align: center; }
+
+/* ---------- TOP + HEADER ---------- */
+div#top-bar {
+  background-color: #2a2e36;
+  padding: 0.625em 0; /* 10/16 */
+  padding-left: 3.125em;
+}
+#top-bar a {
+  background-color: #3f4551;
+  color: white;
+  padding: 0.6em 1em;
+}
+
+div#header { padding: 1.25em 0; /* 20/16 */ }
+
+div#header-with-tabs { padding: 1.25em 0 0 0; /* 20/16 */ }
+
+div#login-intro { padding: 0.312em 0 0.312em 3.125em; }
+div#login-intro h1 { text-transform: uppercase; margin: 0.312em 0 0 0; }
+div#login-intro h5 { color: #9498a1; }
+
+/* ---------- CONTENT ---------- */
+div#content {
+  border: 1px solid #eeefef;
+  padding: 2em;
   text-align: center;
-  height: 100%;
+}
 
-  display: -webkit-box;  /* 老版本语法: Safari,  iOS, Android browser, older WebKit browsers.  */
-  display: -moz-box;    /* 老版本语法: Firefox (buggy) */ 
-  display: -ms-flexbox;  /* 混合版本语法: IE 10 */
-  display: -webkit-flex;  /* 新版本语法： Chrome 21+ */
-  display: flex;       /* 新版本语法： Opera 12.1, Firefox 22+ */
+/* ---------- FOOTER ---------- */
+footer {
+  background-color: #efefef;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 0px;
+  padding: 1em;
+  text-align: center;
+}
 
-  /*垂直居中*/  
-  /*老版本语法*/
-  -webkit-box-align: center; 
-  -moz-box-align: center;
-  /*混合版本语法*/
-  -ms-flex-align: center; 
-  /*新版本语法*/
-  -webkit-align-items: center;
-  align-items: center;
+a:hover { text-decoration: none; }
 
-  /*水平居中*/
-  /*老版本语法*/
-  -webkit-box-pack: center; 
-  -moz-box-pack: center; 
-  /*混合版本语法*/
-  -ms-flex-pack: center; 
-  /*新版本语法*/
-  -webkit-justify-content: center;
-  justify-content: center;
-  width: 100%;  /* needed for Firefox */
+.right { float: right; }
 
-  .container {
-    width: 100%;
-    background-color: white;
-    border: 10px solid #efefef;
-    border-radius: 20px;
-    padding: 100px 0;
-    footer {
-      margin-top: 5%;
-    }
-    .btn.btn-primary {
-      cursor: pointer;
-    }
-  }
-} 
+.navbar-brand.active {
+  font-size: 2.0em;
+  text-shadow: 1px 1px #000;
+}
+

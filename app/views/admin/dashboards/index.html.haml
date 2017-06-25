@@ -5,7 +5,7 @@
         %i.fa.fa-book
         = Article.model_name.human
         (
-        = Article.count
+        = Article.with_owner(current_user).count
         )
   - if admin?
     .col-6

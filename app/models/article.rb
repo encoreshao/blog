@@ -25,6 +25,12 @@ class Article < ApplicationRecord
     criteria = ActiveRecord::Base.send(:sanitize_sql, keyword)
     where("LOWER(title) ILIKE LOWER(?)", "%#{criteria}%")
   }
+  scope :with_owner, ->(current_user) {
+    user_id = (current_user.admin? ? nil : current_user.id)
+    return nil if user_id.nil?
+
+    where(user_id: user_id)
+  }
 
   def author_name
     user.try(:name)

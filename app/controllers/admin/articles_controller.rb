@@ -2,6 +2,7 @@ class Admin::ArticlesController < AdminController
   defaults resource_class: Article, collection_name: 'articles', instance_name: 'article'
   before_action :associate_tags, only: [:update]
   before_action :parameterize_permalink!, only: [:create, :update]
+  before_action :verify_permit?, except: [:index, :new]
 
   protected
   def article_params
@@ -34,6 +35,10 @@ class Admin::ArticlesController < AdminController
   end
 
   def collection
-    @articles ||= end_of_association_chain.with_keywords(params[:name]).page(params[:page])
+    @articles ||= end_of_association_chain.with_owner(current_user).with_keywords(params[:name]).page(params[:page])
+  end
+
+  def verify_permit?
+    redirect_to admin_articles_path unless admin? || resource.user_id == current_user.id
   end
 end

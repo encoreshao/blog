@@ -7,8 +7,7 @@
       %ul.navbar-nav.mr-auto
         = render 'admin/shared/sidebar'
         %li.nav-item
-          = link_to 'javascript:void(0)', class: 'nav-link', method: :DELETE do
-            = current_user.name
+          = link_to current_user.name, 'javascript:void(0)', class: 'nav-link'
         %li.nav-item
           = link_to destroy_user_session_path, class: 'nav-link', method: :DELETE do
             %i.fa.fa-sign-out

@@ -1,24 +1,36 @@
-!!! 5
-%html
+!!!
+%html{:lang => "en"}
   %head
     %title= "#{I18n.t('title')} - ADMIN"
-    %meta{ charset: 'utf-8' }
+    %meta{ content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{ content: 'width=device-width, initial-scale=1.0', name: 'viewport' }
 
-    = stylesheet_link_tag 'devise', :media => "all", 'data-turbolinks-track': 'reload'
-
-    = yield :head
+    = stylesheet_link_tag 'devise', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
   %body.devise
-    .container
+    #top-bar
+      = link_to root_path, class: 'round.button' do
+        %i.fa.fa-arrow-left
+        = "网站首页"
+
+    #header
+      .page-full-width.cf
+        #login-intro.fl
+          %h1
+            Login to
+            = link_to t('title'), root_path
+          %h5 Enter your credentials below
+
+    #content
+      .notices-boxes
+        - flash.each do |type, value|
+          %p.error-box= value
       = yield
 
-      %footer
-        %p= link_to I18n.t('title'), root_path
-        %p
-          - time_range = '2017'
-          - time_range += " - #{Time.now.year}" if Time.now.year > 2017
-          Copyright &copy; #{time_range} 
-          #{I18n.t('title')}
-        %br
+    %footer
+      .copyright
+        - time_range = '2017'
+        - time_range += " - #{Time.now.year}" if Time.now.year > 2017
+        Copyright &copy; #{time_range}
+        #{I18n.t('title')}

@@ -1,5 +1,11 @@
 body {
 	background-color: #efefef;
+  .bg-inverse {
+    background-color: $topNav !important;
+  }
+  a, a:hover, .btn {
+    cursor: pointer;
+  }
   section i.fa {
     font-size: 2em;
   }

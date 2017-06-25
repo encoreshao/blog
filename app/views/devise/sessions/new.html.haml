@@ -1,7 +1,3 @@
-%h2= I18n.t('devise.sessions.login')
-%br
-%br
-
 = simple_form_for resource, as: resource_name, url: session_path(resource_name), html: { class: 'horizontal_form', validate: true } do |f|
   = f.input :email
   = f.input :password
