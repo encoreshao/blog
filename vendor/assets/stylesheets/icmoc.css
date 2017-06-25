@@ -8,7 +8,7 @@ body {
   font-size: 13px;
   font-family: Georgia, "Times New Roman", Times, serif;
   color: #919191;
-  background-color: #232323;
+  background-color: rgba(42, 46, 54, 1);
 }
 
 .justify {
@@ -125,7 +125,7 @@ div.wrapper {
 .row1,
 .row1 a {
   color: #C0BAB6;
-  background-color: #333333;
+  background-color: rgba(42, 46, 54, 1);
 }
 
 .row2 {
@@ -141,7 +141,7 @@ div.wrapper {
 .row3,
 .row3 a {
   color: #919191;
-  background-color: #232323;
+  background-color: rgba(42, 46, 54, 1);
 }
 
 .row1,
@@ -220,7 +220,7 @@ select {
   padding: 20px;
   list-style: none;
   color: #C0BAB6;
-  background-color: #232323;
+  background-color: rgba(42, 46, 54, 1);
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
@@ -239,13 +239,13 @@ select {
 
 #header #topnav li a {
   color: #C0BAB6;
-  background-color: #232323;
+  background-color: rgba(42, 46, 54, 1);
 }
 
 #header #topnav li a:hover,
 #header #topnav li.active a {
   color: #449d44;
-  background-color: #232323;
+  background-color: rgba(42, 46, 54, 1);
 }
 
 #container {

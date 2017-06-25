@@ -3,7 +3,10 @@
 
 .clearfix
   = link_to I18n.t('action.back'), admin_articles_path
+  |
   = link_to I18n.t('action.edit'), edit_admin_article_path(resource)
+  |
+  = link_to I18n.t('action.new'), new_admin_article_path
 
 .clearfix
   %br

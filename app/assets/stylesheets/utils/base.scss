@@ -1795,10 +1795,14 @@ form.wpcf7-form .wpcf7-mail-sent-ok {
   width: 100%;
   content: '';
 }
+.page-navigation ul.pagination li {
+  list-style: none;
 
+}
 .page-navigation a {
   display: inline-block;
   cursor: pointer;
+  color: $green;
 }
 
 .page-navigation a.prev {
@@ -2332,4 +2336,7 @@ html[xmlns] .slides {
 }
 .btn-primary:hover {
   background-color: rgba(68, 157, 68, .8);
+}
+.comments.box {
+  margin-bottom: 0px;
 }

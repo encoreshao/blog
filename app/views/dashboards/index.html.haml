@@ -1,8 +1,8 @@
-.post-wrapper
+.post-wrapper.clearfix
   - @articles.each do |article|
     %article#post-481.basic-post.post-picture.post-481.post.type-post.status-publish.format-image.has-post-thumbnail.hentry.category-fashion.tag-fashion-show.tag-photography.post_format-post-format-image
-      .thumbnail
-        %img.attachment-blog-image.size-blog-image.wp-post-image{src: banner_iamge_url}/
+      / .thumbnail
+      / %img.attachment-blog-image.size-blog-image.wp-post-image{src: banner_iamge_url}/
       .post-inner
         .post-title
           %h3
@@ -39,5 +39,5 @@
         .read-more
           %a{href: article_path(article.params)}= I18n.t('action.read_more')
 
-  .page-navigation
-    = paginate @articles
+.page-navigation.clearfix
+  = paginate @articles

@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
                 with_tags(tag_id).
                 with_keywords(params[:q]).
                 order("published_at DESC").
-                page(params[:page])
+                page(params[:page]).per(10)
   end
 
   protected

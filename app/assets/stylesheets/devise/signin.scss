@@ -66,7 +66,7 @@ a, a:hover { color: $green; }
 
 /* ---------- TOP + HEADER ---------- */
 div#top-bar {
-  background-color: #2a2e36;
+  background-color: $topNav;
   padding: 0.625em 0; /* 10/16 */
   padding-left: 3.125em;
 }
@@ -93,13 +93,14 @@ div#content {
 
 /* ---------- FOOTER ---------- */
 footer {
-  background-color: #efefef;
+  background-color: $topNav;
   width: 100%;
   text-align: center;
   position: fixed;
   bottom: 0px;
   padding: 1em;
   text-align: center;
+  color: white;
 }
 
 a:hover { text-decoration: none; }
