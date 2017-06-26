@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/Macrow/rails_kindeditor.git
+  revision: 00fb549580d1d135cb7a896360d4795e1ef930e1
+  specs:
+    rails_kindeditor (0.5.0)
+      carrierwave
+      mini_magick
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -174,7 +182,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_magick (4.7.0)
+    mini_magick (4.7.2)
     mini_portile2 (2.1.0)
     minitest (5.10.2)
     multi_json (1.12.1)
@@ -235,9 +243,6 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    rails_kindeditor (0.5.0)
-      carrierwave
-      mini_magick
     railties (5.1.1)
       actionpack (= 5.1.1)
       activesupport (= 5.1.1)
@@ -377,7 +382,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.7)
   rails (~> 5.1.1)
-  rails_kindeditor
+  rails_kindeditor!
   rspec-rails
   rubocop
   sass-rails

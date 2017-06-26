@@ -24,7 +24,7 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'devise'
 gem 'carrierwave'
-gem 'rails_kindeditor'
+gem 'rails_kindeditor', git: 'https://github.com/Macrow/rails_kindeditor.git'
 gem 'simple_form'
 gem 'inherited_resources'
 gem 'kaminari'
@@ -54,10 +54,10 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails', require: false
-  gem 'ffaker', require: false
-  gem 'database_cleaner', require: false
-  gem 'machinist', require: false
+  gem 'rspec-rails'
+  gem 'ffaker'
+  gem 'database_cleaner'
+  gem 'machinist'
 end
 
 group :development do
@@ -69,12 +69,12 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'sprockets'
 
-  gem 'capistrano', require: false
-  gem 'capistrano-rails', require: false
-  gem 'capistrano-rvm', require: false
-  gem 'capistrano-rails-console', require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano3-puma', require: false
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano-rails-console'
+  gem 'capistrano-bundler'
+  gem 'capistrano3-puma'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
