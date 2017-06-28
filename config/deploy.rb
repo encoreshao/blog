@@ -47,6 +47,10 @@ set :assets_roles, [:web, :app]
 # RAILS_GROUPS env value for the assets:precompile task. Default to nil.
 set :rails_assets_groups, :assets
 
+# SSHKit.config.output_verbosity = :debug
+SSHKit.config.command_map[:rake]  = "bundle exec rake"
+# SSHKit.config.command_map[:rails] = "bundle exec rails"
+
 set :puma_threads,    [1, 4]
 set :puma_workers,    1
 set :puma_bind,       "unix:#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"

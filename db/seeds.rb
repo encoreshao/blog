@@ -6,7 +6,9 @@
   { email: 'admin@blog.com', name: '邵壮', password: '123456', is_admin: true },
   { email: 'encore@blog.com', name: 'Encore Shao', password: '123456' }
 ].each do |option|
-  User.create(option)
+  user = User.new(option)
+  user.skip_confirmation!
+  user.save!
 end
 
 {
