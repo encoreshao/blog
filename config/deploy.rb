@@ -31,6 +31,22 @@ set :use_sudo,        false
 set :deploy_via,      :copy
 set :deploy_to,       "/var/www/production/#{fetch(:application)}"
 
+# Defaults to :db role
+set :migration_role, :app
+
+# Defaults to the primary :db server
+set :migration_servers, -> { primary(fetch(:migration_role)) }
+
+# Defaults to false
+# Skip migration if files in db/migrate were not modified
+set :conditionally_migrate, true
+
+# Defaults to [:web]
+set :assets_roles, [:web, :app]
+
+# RAILS_GROUPS env value for the assets:precompile task. Default to nil.
+set :rails_assets_groups, :assets
+
 set :puma_threads,    [1, 4]
 set :puma_workers,    1
 set :puma_bind,       "unix:#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
