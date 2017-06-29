@@ -19,10 +19,9 @@
     = yield :head
     = csrf_meta_tags
 
-  %body{class: "home blog wpb-js-composer js-comp-ver-5.0.1 vc_responsive"}
+  %body{class: "home blog wpb-js-composer js-comp-ver-5.0.1 vc_responsive #{'mobile' if mobile_device?}"}
     .highlight-line
     %section.container
-      %a.menu-trigger{:href => "#sidebar-wrappers"}
       #sidebar-wrappers
         = render 'shared/sidebar'
       .before
@@ -30,7 +29,7 @@
         = yield
 
       .clearfix
-      
+
     %a#scroll-top{:href => "#top", :style => "display: block;"}
       %span.fa.fa-arrow-up
 

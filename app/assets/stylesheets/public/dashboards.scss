@@ -48,9 +48,9 @@
 }
 
 .front {
-  background: url('/assets/photos/encore.jpg') 0 0 no-repeat;
+  background: url('photos/encore.jpg') 0 0 no-repeat;
   z-index: 2;
-  background-size: contain;
+  background-size: cover;
   // border-radius: 100%;
 }
 
@@ -115,4 +115,51 @@
 
 .comment .fa-user-o {
   font-size: 3em;
+}
+
+.mobile {
+  .highlight-line {
+    display: none;
+  }
+  #sidebar-wrappers {
+    width: 100%;
+    padding: 0px;
+  }
+  .sidebar-widgets {
+    margin-top: 0px;
+    #widget-warrior_about-2, #widget-search-3, #widget-warrior_recent_posts-2, #widget-tag_cloud-2, #widget-wechat, footer {
+      display: none;
+    }
+    #widget-nav_menu-2 {
+      margin-bottom: 5px;
+      .widget-title {
+        margin-bottom: 10px;
+      }
+      #menu-main-menu {
+        li {
+          float: left;
+          margin-left: 10px;
+          ul.menu li i {
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+  #main-header #logo {
+    width: 100%;
+    text-align: center;
+  }
+
+  #content-wrappers {
+    .post-title h3 {
+      font-size: 1.2em !important;
+    }
+  }
+
+  .single-author .thumbnail {
+    height: 100px;
+    position: relative;
+    width: 100%;
+  }
 }
