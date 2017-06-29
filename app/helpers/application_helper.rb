@@ -1,14 +1,18 @@
 module ApplicationHelper
   def random_banner_image
-    = content_tag :img, src: "photos/banner-00#{1+rand(6)}.jpg", class: 'attachment-blog-image size-blog-image wp-post-image'
+    image_tag("photos/banner-00#{1+rand(6)}.jpg", class: 'attachment-blog-image size-blog-image wp-post-image')
   end
 
   def author_thumb_image
-    = content_tag :img, src: "photos/encore.jpg", class: 'attachment-small-thumb size-small-thumb wp-post-image'
+    image_tag("photos/encore.jpg", class: 'attachment-small-thumb size-small-thumb wp-post-image')
   end
 
   def author_avatar
-    = content_tag :img, src: "photos/encore.jpg", class: 'avatar avatar-80 photo'
+    image_tag("photos/encore.jpg", class: 'avatar avatar-80 photo')
+  end
+
+  def wechat_image
+    image_tag("photos/wechat200x200.png", class: 'avatar avatar-80 photo')
   end
 
   def widget_categories
