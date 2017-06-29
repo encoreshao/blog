@@ -1,7 +1,7 @@
 .post-wrapper
   %article#post-481.basic-post.post-picture.post.type-post.status-publish.format-image.has-post-thumbnail.hentry.category-fashion.tag-fashion-show.tag-photography.post_format-post-format-image
     .thumbnail
-      %img.attachment-blog-image.size-blog-image.wp-post-image{src: banner_iamge_url}/
+      = random_banner_iamge
     .post-inner
       .post-title
         %h1
@@ -61,8 +61,7 @@
               - 3.times do |i|
                 %li
                   .thumbnail
-                    %a
-                      %img.attachment-small-thumb.size-small-thumb.wp-post-image{src: "/assets/photos/encore.jpg"}/
+                    %a= author_thumb_image
                   %a Summer 2014 Style Inspirations Just for You
                   .meta Aug 12th, 2014
 
@@ -70,7 +69,7 @@
   .single-author.box.clearfix
     .wrapper.clearfix
       .thumbnail
-        %img.avatar.avatar-80.photo{src: "/assets/photos/encore.jpg"}/
+        = auther_avatar
       .info.clearfix{style: 'width: 100%;margin-bottom: 20px;'}
         = I18n.t('tips.note2')
 
