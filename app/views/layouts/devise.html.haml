@@ -8,9 +8,9 @@
     = stylesheet_link_tag 'devise', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
-  %body.devise
+  %body{class: "devise #{'mobile' if mobile_device?}"}
     #top-bar
-      = link_to root_path, class: 'round.button' do
+      = link_to root_path do
         %i.fa.fa-arrow-left
         = "网站首页"
 

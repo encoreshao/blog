@@ -117,7 +117,7 @@
   font-size: 3em;
 }
 
-.mobile {
+body.mobile {
   .highlight-line {
     display: none;
   }
@@ -127,7 +127,12 @@
   }
   .sidebar-widgets {
     margin-top: 0px;
-    #widget-warrior_about-2, #widget-search-3, #widget-warrior_recent_posts-2, #widget-tag_cloud-2, #widget-wechat, footer {
+    #widget-warrior_about-2, 
+    #widget-search-3, 
+    #widget-warrior_recent_posts-2, 
+    #widget-tag_cloud-2, 
+    #widget-wechat, 
+    footer {
       display: none;
     }
     #widget-nav_menu-2 {
@@ -146,6 +151,9 @@
       }
     }
   }
+  #main-header {
+    padding: 10px 20px;
+  }
   #main-header #logo {
     width: 100%;
     text-align: center;
@@ -161,5 +169,11 @@
     height: 100px;
     position: relative;
     width: 100%;
+    img {
+      left: 34%;
+    }
+  }
+  .post-content {
+    word-break: break-word;
   }
 }

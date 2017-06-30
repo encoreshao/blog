@@ -12,10 +12,15 @@ body {
   section h4 {
     margin-top: 1em;
   }
-  nav.bg-faded {
-  	min-height: 400px;
-  }
   .nav-pills .nav-link {
   	font-size: 1em;
+  }
+}
+body.mobile {
+  nav.navbar .container {
+    margin: auto 20px;
+  }
+  .flex-column.pt-2 {
+    display: none;
   }
 }

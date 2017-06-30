@@ -15,7 +15,7 @@
     = yield :head
     = csrf_meta_tags
 
-  %body{class: 'admin'}
+  %body{class: "admin #{'mobile' if mobile_device?}"}
     = render 'admin/shared/header'
     .container
       .row

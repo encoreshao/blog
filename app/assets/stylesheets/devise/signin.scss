@@ -71,7 +71,6 @@ div#top-bar {
   padding-left: 3.125em;
 }
 #top-bar a {
-  background-color: #3f4551;
   color: white;
   padding: 0.6em 1em;
 }
@@ -112,3 +111,31 @@ a:hover { text-decoration: none; }
   text-shadow: 1px 1px #000;
 }
 
+
+body.mobile {
+  h1, .h1 {
+    font-size: 1em;
+  }
+  #top-bar {
+    padding: 0px;
+    font-size: .7em;
+    line-height: 2em;
+    height: 2em;
+  }
+  #header {
+    padding: 0px;
+  }
+  .notices-boxes {
+    font-size: .6em;
+  }
+  label.control-label {
+    width: 20% !important;
+  }
+  .form-inline, .form-control {
+    width: 60% !important;
+  }
+  footer {
+    position: relative;
+    font-size: .7em;
+  }
+}
