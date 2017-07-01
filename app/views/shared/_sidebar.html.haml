@@ -62,7 +62,7 @@
     %h3.widget-title
       %label
         %i.fa.fa-tags
-        = I18n.t('tips.tags')
+        = I18n.t('tips.hot_tags')
     .tagcloud
       - full_atricle_tags.each do |tag|
         = link_to tag[0], tags_path(tag: tag[1])

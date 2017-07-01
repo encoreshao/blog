@@ -8,7 +8,8 @@ zh:
     welcome: Hey, %{author}!!!
     admin_notes: 简洁、直观、让你更专注于自己的写作事业.
     about_the_author: 关于作者
-    tags: 热门标签
+    tags: 标签
+    hot_tags: 热门标签
     wechat: 微信号
     latest_tweets: 最近发表
     recent_posts: 最近回复

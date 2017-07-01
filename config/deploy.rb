@@ -77,7 +77,6 @@ namespace :deploy do
   desc 'Initial Deploy'
   task :initial do
     on roles(:app) do
-      before 'deploy:restart', 'deploy:initial'
       invoke 'deploy'
     end
   end
