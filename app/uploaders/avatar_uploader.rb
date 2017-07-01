@@ -54,7 +54,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # 打水印的位置可以是’Center’, ‘NorthWest’, ‘North’, ‘NorthEast’, ‘West’, ‘Center’, ‘East’, ‘SouthWest’, ‘South’, ‘SouthEast’
   def add_text!
     text      = (model.name || 'ICMOC')
-    color     = '#1476ff'
+    color     = '#0aa4d3'
     position  = 'SouthEast'
 
     manipulate! do |image|
