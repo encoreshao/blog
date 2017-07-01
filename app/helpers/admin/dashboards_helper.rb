@@ -6,9 +6,9 @@ module Admin::DashboardsHelper
     class_name += (nav_class == controller_name) ? ' active' : ''
 
     content_tag :li, class: 'nav-item' do
-      content_tag :a, class: class_name, href: path do
+      content_tag :a, class: class_name, title: table_human_name(nav_class), href: path do
         content_tag :i, class: icon_name(nav_class) do
-          " " + table_human_name(nav_class)
+          " " + table_human_name(nav_class) if class_name.match(/active/)
         end
       end
     end

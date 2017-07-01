@@ -11,7 +11,8 @@ body.admin, body.devise {
 		}
 		span.radio label {
 			cursor: pointer;
-			width: 100px;
+			width: auto;
+			padding: 0 15px;
 			input {
 				margin-right: 10px;
 			}

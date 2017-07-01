@@ -2,19 +2,13 @@ body {
 	background-color: #FFFFFF;
 
   > .container { margin-top: 20px; }
-  .bg-inverse { background-color: $topNav !important; }
+  .bg-inverse { background-color: $topNav; }
 
   a, a:hover, .btn { cursor: pointer; }
 
-  section i.fa { font-size: 2em; }
+  .fa { font-size: 1.2em; }
   section h4 { margin-top: 1em; }
 
-  .nav-pills .nav-link {
-  	font-size: 1em;
-    &.active {
-      color: $siteColor !important;
-    }
-  }
   .right {
     float: right;
     right: 10px;

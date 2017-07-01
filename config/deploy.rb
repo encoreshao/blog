@@ -27,7 +27,6 @@ set :keep_releases, 5
 # Don't change these unless you know what you're doing
 set :pty,             true
 set :use_sudo,        false
-# set :deploy_via,      :remote_cache
 set :deploy_via,      :copy
 set :deploy_to,       "/var/www/production/#{fetch(:application)}"
 
@@ -78,7 +77,7 @@ namespace :deploy do
   desc 'Initial Deploy'
   task :initial do
     on roles(:app) do
-      before 'deploy:restart', 'puma:start'
+      before 'deploy:restart', 'deploy:initial'
       invoke 'deploy'
     end
   end
@@ -87,13 +86,11 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       invoke 'puma:restart'
-      # Rake::Task["puma:restart"].reenable
     end
   end
 
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
-  # after  :finishing,    :restart
 end
 
 # ps aux | grep puma    # Get puma pid

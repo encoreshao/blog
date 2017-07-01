@@ -6,9 +6,10 @@
           %h3
             = link_to article.title, article_path(article.params), target: '_blank'
         .meta
-          %span
-            %i.fa.fa-user-o
-            = article.author_name
+          - unless article.author_name.blank?
+            %span
+              %i.fa.fa-user
+              = article.author_name
           %span
             %i.fa.fa-calendar
             = article.published_date
