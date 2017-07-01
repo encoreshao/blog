@@ -55,7 +55,7 @@
   '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;", rel: 'canonical', target: '_blank', alt: 'Share on Google+' do
               %span.fa.fa-google-plus
 
-      - false
+      - if false
         #post-nav
           .post-previous
             %span.title= I18n.t('tips.previous_post')
@@ -132,7 +132,6 @@
 .clearfix
 
 - content_for :javascript do
-  #fb-root
   :javascript
     (function($){
       typingRotateCarousel();
