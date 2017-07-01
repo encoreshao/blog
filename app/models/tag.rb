@@ -1,7 +1,7 @@
 class Tag < ApplicationRecord
   validates :name, :permalink, presence: true, uniqueness: true
 
-  has_and_belongs_to_many :tags
+  has_and_belongs_to_many :articles
 
   scope :with_keywords, ->(keyword) {
     return nil if keyword.blank?

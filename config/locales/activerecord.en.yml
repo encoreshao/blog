@@ -17,6 +17,7 @@ en:
         link: Link
         created_at: Created At
         is_admin: Admin
+        title: Title
       article:
         title: Title
         permalink: Permalink
@@ -44,6 +45,7 @@ en:
       tag:
         name: Name
         permalink: Permalink
+        articles_count: Articles Count
         created_at: Created At
       comment:
         id: ID

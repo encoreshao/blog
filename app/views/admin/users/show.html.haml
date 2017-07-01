@@ -7,15 +7,10 @@
 
 .table-responsive
   %table.table.table-hover.table-bordered
-    %tr
-      %td= User.human_attribute_name(:name)
-      %td= resource.name
-    %tr
-      %td= User.human_attribute_name(:email)
-      %td= resource.email
-    %tr
-      %td= User.human_attribute_name(:link)
-      %td= resource.link
+    - [:name, :email, :title, :link].each do |attr|
+      %tr
+        %td= User.human_attribute_name(attr)
+        %td= resource.send(attr)
     %tr
       %td= User.human_attribute_name(:avatar)
       %td

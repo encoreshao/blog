@@ -3,16 +3,16 @@ class Admin::UsersController < AdminController
   before_action :verify_admin?
 
   def update
-    if resource.update_without_password(permitted_params)
+    if resource.update_without_password(user_params)
       redirect_to admin_user_path(resource)
     else
-      render :new
+      render :edit
     end
   end
 
   protected
-  def permitted_params
-    params.fetch(:user, {}).permit(:email, :password, :name, :link, :avatar)
+  def user_params
+    params.fetch(:user, {}).permit(:name, :email, :password, :title, :link, :avatar)
   end
 
   def collection

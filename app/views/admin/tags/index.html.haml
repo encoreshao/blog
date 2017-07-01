@@ -8,6 +8,7 @@
       %tr
         %th= Tag.human_attribute_name(:name)
         %th= Tag.human_attribute_name(:permalink)
+        %th= Tag.human_attribute_name(:articles_count)
         %th= Tag.human_attribute_name(:created_at)
         %th
     %tbody
@@ -15,6 +16,7 @@
         %tr
           %td= resource.name
           %td= resource.permalink
+          %td= resource.articles.count
           %td= resource.created_at.strftime('%b %d, %Y')
           %td
             = link_to edit_admin_tag_path(resource) do

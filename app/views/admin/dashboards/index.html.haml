@@ -1,6 +1,6 @@
 .jumbotron.masthead
   .container
     %h1
-      = I18n.t('tips.welcome', author: current_user.name)
+      = I18n.t('tips.welcome', author: current_user.display_name)
     %br
     %h2= I18n.t('tips.admin_notes')

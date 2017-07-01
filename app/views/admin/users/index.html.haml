@@ -9,7 +9,7 @@
         %th= User.human_attribute_name(:email)
         %th= User.human_attribute_name(:name)
         %th= User.human_attribute_name(:is_admin)
-        %th= User.human_attribute_name(:link)
+        %th= User.human_attribute_name(:title)
         %th= User.human_attribute_name(:created_at)
         %th
     %tbody
@@ -18,7 +18,7 @@
           %td= resource.email
           %td= resource.name
           %td= resource.admin? ? 'Yes' : 'No'
-          %td= resource.link
+          %td= resource.title
           %td= resource.created_at.strftime('%b %d, %Y')
           %td
             = link_to admin_user_path(resource) do

@@ -5,7 +5,7 @@ zh:
   keywords: 博客, Encore Shao, 邵壮, Ruby On Rails, 上海, 中国, ICMOC, icmoc.com
   description: 我是一名Web开发人员, 使用Ruby on Rails来构建Web应用程序. 如果你有想法? 联系我(encore.shao@gmail.com)!
   tips:
-    welcome: Hey, %{author}!
+    welcome: Hey, %{author} !
     admin_notes: 简洁、直观、让你更专注于自己的写作事业.
     about_the_author: 关于作者
     tags: 标签

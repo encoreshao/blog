@@ -14,8 +14,15 @@ class User < ApplicationRecord
     where("LOWER(name) ILIKE LOWER(?)", "%#{criteria}%")
   }
 
+  before_create :skip_confirm!
+
   def self.active_users
     select('name, id').map { |e| [e.name, e.id] }
+  end
+
+  def display_name
+    return name unless name.blank?
+    email
   end
 
  	def admin?
@@ -25,6 +32,11 @@ class User < ApplicationRecord
  	def member?
  		!is_admin?
  	end
+
+  def skip_confirm!
+    self.name = nil if name.blank?
+    self.skip_confirmation!
+  end
 end
 
 # == Schema Information
@@ -52,4 +64,5 @@ end
 #  link                   :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  title                  :string
 #

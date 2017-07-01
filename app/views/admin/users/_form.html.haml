@@ -1,9 +1,12 @@
 .table-responsive
   = simple_form_for resource, url: url, html: { class: 'horizontal_form', validate: true } do |f|
     = f.error_notification
+    - unless resource.errors.empty?
+      = resource.errors.full_messages
     = f.input :name
     = f.input :email, required: true
     = f.input :password, required: true
+    = f.input :title
     = f.input :link
     = f.input :avatar, type: :file
     .form-group.string

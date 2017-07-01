@@ -17,6 +17,7 @@ zh:
         link: 链接
         created_at: 创建时间
         is_admin: 管理员
+        title: 头衔
       article:
         title: 标题
         permalink: 链接
@@ -44,6 +45,7 @@ zh:
       tag:
         name: 名称
         permalink: 链接
+        articles_count: 文章数
         created_at: 创建时间
       comment:
         id: 编号
