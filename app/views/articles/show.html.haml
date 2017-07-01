@@ -31,8 +31,8 @@
             %strong= @article.tag_names
 
       .share-buttons
-        = article_url = article_url(@article.params)
-        = article_title = @article.title
+        - article_url = article_url(@article.params)
+        - article_title = @article.title
         .addthis_toolbox.addthis_default_style
           %h4= I18n.t('tips.share_this_article')
           %a.addthis_button_facebook

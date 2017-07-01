@@ -12,7 +12,7 @@
 
     .flip-container{ontouchstart: "this.classList.toggle('hover');"}
       .flipper
-        .front
+        .front{data: {url: image_path('photos/encore.jpg')}}
           %span.name Encore Shao
         .back
           .back-logo
@@ -87,4 +87,6 @@
   :javascript
     (function($){
       window.loadingTagsColor();
+      var author = $(".front");
+      author.css('background-image', 'url(' + author.data('url') + ')').removeData('url');
     })(jQuery)

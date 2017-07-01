@@ -48,7 +48,8 @@
 }
 
 .front {
-  background: url('photos/encore.jpg') 0 0 no-repeat;
+  background-position: 0, 0;
+  background-repeat: no-repeat;
   z-index: 2;
   background-size: cover;
   // border-radius: 100%;
