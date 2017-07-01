@@ -1,6 +1,11 @@
-%h2
+%h2.text-center
   = I18n.t('action.edit')
   = Tag.model_name.human
+
+.right
+  = link_to I18n.t('action.back'), admin_categories_path
+  |
+  = link_to I18n.t('action.new'), new_admin_category_path
 
 %div
   = render partial: 'form', locals: { resource: @tag, url: admin_tag_path(@tag) }

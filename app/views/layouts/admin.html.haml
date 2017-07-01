@@ -18,9 +18,4 @@
   %body{class: "admin #{'mobile' if mobile_device?}"}
     = render 'admin/shared/header'
     .container
-      .row
-        %nav.col-md-2.bg-faded
-          %ul.nav.nav-pills.flex-column.pt-2
-            = render 'admin/shared/sidebar'
-        %main.col-sm-10.pt-3{:role => "main"}
-          = yield
+      = yield

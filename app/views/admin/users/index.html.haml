@@ -1,7 +1,9 @@
 .right
-  = link_to I18n.t('action.new'), new_admin_user_path
+  %nav.navbar
+    = link_to I18n.t('action.new'), new_admin_user_path, class: 'btn btn-primary'
+
 .table-responsive
-  %table.table.table-striped
+  %table.table.table-hover.table-bordered
     %thead
       %tr
         %th= User.human_attribute_name(:email)

@@ -1,9 +1,11 @@
-= link_to I18n.t('action.back'), admin_comments_path
+.right
+  = link_to I18n.t('action.back'), admin_comments_path
 
-.jumbotron
-  %h2= resource.commentable.try(:title)
-  %br
-  %div= resource.name
-  %div= resource.email
-  %div= resource.link
-  %div= resource.content
+.table-responsive
+  .jumbotron
+    %h2= resource.commentable.try(:title)
+    %br
+    %div= resource.name
+    %div= resource.email
+    %div= resource.link
+    %div= resource.content

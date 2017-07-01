@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def wechat_image
-    image_tag("photos/wechat200x200.png", class: 'avatar avatar-80 photo')
+    image_tag("photos/wechat200x200.png", class: 'wechat')
   end
 
   def widget_categories

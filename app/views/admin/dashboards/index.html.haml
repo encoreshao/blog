@@ -1,43 +1,6 @@
-%section.row.text-center
-  .col-6
-    %h4
-      = link_to admin_articles_path do
-        %i.fa.fa-book
-        = Article.model_name.human
-        (
-        = Article.with_owner(current_user).count
-        )
-  - if admin?
-    .col-6
-      %h4
-        = link_to admin_users_path do
-          %i.fa.fa-users
-          = User.model_name.human
-          (
-          = User.count
-          )
-    .col-6
-      %h4
-        = link_to admin_categories_path do
-          %i.fa.fa-building
-          = Category.model_name.human
-          (
-          = Category.count
-          )
-    .col-6
-      %h4
-        = link_to admin_tags_path do
-          %i.fa.fa-tags
-          = Tag.model_name.human
-          (
-          = Tag.count
-          )
-
-    .col-6
-      %h4
-        = link_to admin_comments_path do
-          %i.fa.fa-comments
-          = Comment.model_name.human
-          (
-          = Comment.count
-          )
+.jumbotron.masthead
+  .container
+    %h1
+      = I18n.t('tips.welcome', author: current_user.name)
+    %br
+    %h2= I18n.t('tips.admin_notes')

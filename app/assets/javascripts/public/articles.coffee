@@ -40,6 +40,6 @@
       $(this).addClass 'tags' + rand
       return
     return
-    
+
   loadingTagsColor()
 ) jQuery

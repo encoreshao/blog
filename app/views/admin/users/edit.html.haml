@@ -1,6 +1,10 @@
-%h2
+%h2.text-center
   = I18n.t('action.edit')
   = User.model_name.human
 
-%div
-  = render partial: 'form', locals: { resource: resource, url: admin_user_path(resource) }
+.right
+  = link_to I18n.t('action.back'), admin_users_path
+  |
+  = link_to I18n.t('action.new'), new_admin_user_path
+
+= render partial: 'form', locals: { resource: resource, url: admin_user_path(resource) }

@@ -4,7 +4,7 @@
   -o-perspective: 1000;
   perspective: 1000;
 
-  border: 1px solid $green;
+  border: 1px solid $siteColor;
 }
 
 .flip-container:hover .flipper,
@@ -67,7 +67,7 @@
   font-size: 1.8em;
   display: inline-block;
   background: transparent;
-  color: $green;
+  color: $siteColor;
   font-family: Courier;
   padding: 5px;
   border-radius: 5px;
@@ -91,7 +91,7 @@
 
 .back-title {
   font-weight: bold;
-  color: $green;
+  color: $siteColor;
   position: absolute;
   top: 10%;
   left: 0;
@@ -127,11 +127,11 @@ body.mobile {
   }
   .sidebar-widgets {
     margin-top: 0px;
-    #widget-warrior_about-2, 
-    #widget-search-3, 
-    #widget-warrior_recent_posts-2, 
-    #widget-tag_cloud-2, 
-    #widget-wechat, 
+    #widget-warrior_about-2,
+    #widget-search-3,
+    #widget-warrior_recent_posts-2,
+    #widget-tag_cloud-2,
+    #widget-wechat,
     footer {
       display: none;
     }

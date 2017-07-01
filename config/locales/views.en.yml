@@ -5,6 +5,8 @@ en:
   keywords: Blog, Encore Shao, Ruby On Rails, Shanghai, China, ICMOC, icmoc.com
   description: I am a web developer and use Ruby on Rails to build Web applications in China. Have a idea? Contact me (encore.shao@gmail.com)!
   tips:
+    welcome: Hey, %{author}!!!
+    admin_notes: Simple, intuitive, so that you focus more on their own writing career.
     about_the_author: About The Author
     tags: Tags
     wechat: WeChat

@@ -1,5 +1,5 @@
 .table-responsive
-  %table.table.table-striped
+  %table.table.table-hover.table-bordered
     %thead
       %tr
         %th= Comment.human_attribute_name(:id)
@@ -23,6 +23,6 @@
             = link_to admin_comment_path(resource), method: :DELETE do
               %i.fa.fa-remove
               = I18n.t('action.destory')
-              
+
 %nav{:'aria-label' => 'Page navigation'}
   = paginate collection, views_prefix: 'admin'

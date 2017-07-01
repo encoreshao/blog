@@ -36,7 +36,7 @@ p {
 
 
 /* ---------- COLORS ---------- */
-a, a:hover { color: $green; }
+a, a:hover { color: $siteColor; }
 
 /* ---------- BUTTONS ---------- */
 .btn {
@@ -45,13 +45,13 @@ a, a:hover { color: $green; }
   display: inline-block;
   text-decoration: none;
   background-repeat: no-repeat;
-  background-color: $green;
-  border: 1px solid $green;
+  background-color: $siteColor;
+  border: 1px solid $siteColor;
   cursor: pointer;
 }
 .btn:hover {
-  background-color: rgba(68, 157, 68, .8);
-  border: 1px solid rgba(68, 157, 68, .8);
+  background-color: $siteColorLight;
+  border: 1px solid $siteColorLight;
 }
 
 /* Styling the HTML5 placeholders */

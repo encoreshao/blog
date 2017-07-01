@@ -30,11 +30,11 @@ body {
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
-  border: 2px solid $green;
+  border: 2px solid $siteColor;
 }
 
 .highlight-line {
-  border-top: 2px solid $green;
+  border-top: 2px solid $siteColor;
   display: block;
 }
 
@@ -257,7 +257,7 @@ h6 {
 
 .before {
   bottom: 0;
-  background: $green;
+  background: $siteColor;
   position: absolute;
   top: 0;
   left: -100%;
@@ -579,44 +579,53 @@ article .thumbnail {
   padding: 5px;
 }
 
-.sidebar-widgets .tagcloud .tags0 {
-}
+.sidebar-widgets .tagcloud .tags0 {}
+
 .sidebar-widgets .tagcloud .tags1 {
   color: #C00;
   font-size: 24px;
 }
+
 .sidebar-widgets .tagcloud .tags2 {
   color: #030;
   font-size: 16px;
 }
+
 .sidebar-widgets .tagcloud .tags3 {
   color: #00F;
 }
+
 .sidebar-widgets .tagcloud .tags4 {
   font-size: 16px;
 }
+
 .sidebar-widgets .tagcloud .tags5 {
   color: #C00;
   font-size: 20px;
 }
+
 .sidebar-widgets .tagcloud .tags6 {
   color: #F06;
   font-size: 20px;
 }
+
 .sidebar-widgets .tagcloud .tags7 {
   color: #030;
   font-weight: bold;
   font-size: 18px;
 }
+
 .sidebar-widgets .tagcloud .tags8 {
   color: #F06;
   font-weight: bold;
 }
+
 .sidebar-widgets .tagcloud .tags9 {
   color: #C00;
   font-weight: bold;
   font-size: 16px;
 }
+
 .sidebar-widgets .tagcloud a:hover {
   color: #F00;
   text-decoration: underline;
@@ -674,7 +683,7 @@ article .thumbnail {
 }
 
 #widget-warrior_about-2 .thumbnail img {
-  border: 2px solid $green;
+  border: 2px solid $siteColor;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
@@ -682,7 +691,7 @@ article .thumbnail {
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
   &:hover {
-    border: 2px solid $green;
+    border: 2px solid $siteColor;
     -moz-border-radius: 119px;
     -webkit-border-radius: 119px;
     border-radius: 119px;
@@ -703,7 +712,7 @@ article .thumbnail {
   height: 1px;
   content: '';
   margin-top: 2px;
-  border-top: 1px solid $green;
+  border-top: 1px solid $siteColor;
   position: absolute;
   top: 50%;
   left: 0;
@@ -933,7 +942,7 @@ body.single .post-wrapper article.hentry {
   font-family: 'Open Sans';
   font-weight: 400;
   font-size: 12px;
-  color: $green;
+  color: $siteColor;
   letter-spacing: 1px;
   text-align: center;
   text-transform: uppercase;
@@ -949,15 +958,15 @@ body.single .post-wrapper article.hentry {
   color: rgba(255, 255, 255, 1);
   line-height: 20px;
   padding: 10px 35px;
-  border: 1px solid $green;
-  background-color: $green;
+  border: 1px solid $siteColor;
+  background-color: $siteColor;
   font-size: 1em;
 }
 
 #content-wrappers article.hentry .read-more a:hover {
   font-size: 1.1em;
   color: rgba(255, 255, 255, .8);
-  background-color: rgba(68, 157, 68, .8);
+  background-color: $siteColorLight;
 }
 
 div.tags {
@@ -972,7 +981,7 @@ div.tags:before {
   content: '';
   text-align: center;
   margin: 0 auto 10px auto;
-  border-top: 5px solid $green;
+  border-top: 5px solid $siteColor;
 }
 
 div.tags i.typcn {
@@ -1408,7 +1417,8 @@ p.moderate {
   margin-left: 1px;
 }
 
-.comment-respond .widget-title, .comment-widget .widget-title {
+.comment-respond .widget-title,
+.comment-widget .widget-title {
   margin: 0 0 15px 0;
 }
 
@@ -1544,7 +1554,7 @@ form input[type='submit'] {
   padding: 5px 5px 7px 10px;
   display: block;
   color: #bababa;
-  border: 1px solid $green;
+  border: 1px solid $siteColor;
 }
 
 .search-box input[type="text"] {
@@ -1553,9 +1563,9 @@ form input[type='submit'] {
   height: 30px;
   font-size: 12px;
   font-weight: 300;
-  color: $green;
+  color: $siteColor;
   letter-spacing: 1px;
-  border-right: solid 1px $green;
+  border-right: solid 1px $siteColor;
   margin: 0;
   padding: 0;
   box-shadow: none !important;
@@ -1795,14 +1805,15 @@ form.wpcf7-form .wpcf7-mail-sent-ok {
   width: 100%;
   content: '';
 }
+
 .page-navigation ul.pagination li {
   list-style: none;
-
 }
+
 .page-navigation a {
   display: inline-block;
   cursor: pointer;
-  color: $green;
+  color: $siteColor;
 }
 
 .page-navigation a.prev {
@@ -2293,32 +2304,31 @@ html[xmlns] .slides {
 }
 
 .fa {
-  color: $green;
+  color: $siteColor;
 }
 
 .bg-green {
-  background-color: $green;
+  background-color: $siteColor;
 }
 
 .btn-action {
   cursor: pointer;
 }
 
-.media.avatar-48, .media.avatar-48 img {
+.media.avatar-48,
+.media.avatar-48 img {
   width: 48px;
   height: 48px;
   border-radius: 120px;
-  background-color: rgba(68, 157, 68, .8);
+  background-color: $siteColorLight;
   color: #FFFFFF;
   font-size: 2em;
-
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  justify-content:center;
-
+  justify-content: center;
   -webkit-box-align: center;
   -moz-box-align: center;
   -ms-flex-align: center;
@@ -2332,8 +2342,9 @@ html[xmlns] .slides {
 }
 
 .btn-primary {
-  background-color: #449d44;
+  background-color: $siteColor;
 }
+
 .btn-primary:hover {
-  background-color: rgba(68, 157, 68, .8);
+  background-color: $siteColorLight;
 }

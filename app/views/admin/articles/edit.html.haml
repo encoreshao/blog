@@ -1,6 +1,11 @@
-%h2
+%h2.text-center
   = I18n.t('action.edit')
   = Article.model_name.human
 
-%div
+.right
+  = link_to I18n.t('action.back'), admin_articles_path
+  |
+  = link_to I18n.t('action.new'), new_admin_article_path
+
+.clearfix
   = render partial: 'form', locals: { resource: @article, url: admin_article_path(@article) }

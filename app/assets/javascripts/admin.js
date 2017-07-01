@@ -9,4 +9,5 @@
 //= require bootstrap
 //= require utils/load_kindeditor
 //= require utils/popper.min
+//= require admin/admin
 //= require cable

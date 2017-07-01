@@ -1,6 +1,9 @@
-= link_to I18n.t('action.new'), new_admin_category_path
+.right
+  %nav.navbar
+    = link_to I18n.t('action.new'), new_admin_category_path, class: 'btn btn-primary'
+
 .table-responsive
-  %table.table.table-striped
+  %table.table.table-hover.table-bordered
     %thead
       %tr
         %th= Category.human_attribute_name(:name_zh)
@@ -20,8 +23,10 @@
           %td
             = link_to edit_admin_category_path(resource) do
               %i.fa.fa-edit
+              = I18n.t('action.edit')
             = link_to admin_category_path(resource), method: :DELETE do
               %i.fa.fa-remove
-              
+              = I18n.t('action.destory')
+
 %nav{:'aria-label' => 'Page navigation'}
   = paginate collection, views_prefix: 'admin'

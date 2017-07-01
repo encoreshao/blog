@@ -1,7 +1,23 @@
-= link_to I18n.t('action.back'), admin_users_path
-= link_to I18n.t('action.edit'), edit_admin_user_path(resource)
+.right
+  = link_to I18n.t('action.back'), admin_users_path
+  |
+  = link_to I18n.t('action.edit'), edit_admin_user_path(resource)
+  |
+  = link_to I18n.t('action.new'), edit_admin_user_path
 
-.jumbotron
-  %h2= resource.name
-  %br
-  %div= resource.email
+.table-responsive
+  %table.table.table-hover.table-bordered
+    %tr
+      %td= User.human_attribute_name(:name)
+      %td= resource.name
+    %tr
+      %td= User.human_attribute_name(:email)
+      %td= resource.email
+    %tr
+      %td= User.human_attribute_name(:link)
+      %td= resource.link
+    %tr
+      %td= User.human_attribute_name(:avatar)
+      %td
+        - unless resource.avatar.url.nil?
+          = image_tag resource.avatar.url
