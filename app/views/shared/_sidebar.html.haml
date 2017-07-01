@@ -16,7 +16,7 @@
           %span.name Encore Shao
         .back
           .back-logo
-          .back-title Encore Shao
+          .back-title= I18n.t('author')
           %p= I18n.t('tips.notes')
 
     .social
@@ -82,3 +82,9 @@
       Copyright &copy; #{time_range}
       #{I18n.t('title')}
     %br
+
+- content_for :javascript do
+  :javascript
+    (function($){
+      window.loadingTagsColor();
+    })(jQuery)

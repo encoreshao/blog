@@ -31,15 +31,25 @@
 
   $("#commentForm").validate()
 
+  window.typingRotateCarousel = ->
+    textElement = $('.txt-rotate')
+    return if textElement.length == 0
+
+    options =
+      strings: textElement.data('text')
+      typeSpeed: textElement.data('period')
+
+    new Typed '.txt-rotate', options
+    return
+
   window.loadingTagsColor = ->
-    tags_a = $('.tagcloud a')
-    tags_a.each ->
+    cloudTags = $('.tagcloud a')
+    $.each cloudTags, (_, e)->
       x = 9
       y = 0
       rand = parseInt(Math.random() * (x - y + 1) + y)
-      $(this).addClass 'tags' + rand
+      $(e).addClass 'tags' + rand
       return
     return
 
-  loadingTagsColor()
 ) jQuery

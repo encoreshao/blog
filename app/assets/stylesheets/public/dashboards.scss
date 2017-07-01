@@ -4,7 +4,7 @@
   -o-perspective: 1000;
   perspective: 1000;
 
-  border: 1px solid $siteColor;
+  border: 1px solid transparent;
 }
 
 .flip-container:hover .flipper,
@@ -117,10 +117,29 @@
   font-size: 3em;
 }
 
-body.mobile {
-  .highlight-line {
-    display: none;
+.thumbnail.typing {
+  background-color: #f9f9f9;
+  text-align: center;
+  h1 {
+    font-weight: 200;
+    line-height: 150px;
+    font-size: 2.5em;
+    color: $siteColor;
   }
+}
+
+.typed-cursor {
+  opacity: 1;
+  -webkit-animation: blink 0.7s infinite;
+}
+
+@-webkit-keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+
+body.mobile {
   #sidebar-wrappers {
     width: 100%;
     padding: 0px;
@@ -175,5 +194,12 @@ body.mobile {
   }
   .post-content {
     word-break: break-word;
+  }
+  .thumbnail.typing {
+    height: 80px;
+    h1 {
+      line-height: 80px;
+      font-size: 1.5em;
+    }
   }
 }

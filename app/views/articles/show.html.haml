@@ -1,6 +1,7 @@
 .post-wrapper
   %article#post-481.basic-post.post-picture.post.type-post.status-publish.format-image.has-post-thumbnail.hentry.category-fashion.tag-fashion-show.tag-photography.post_format-post-format-image
-    .thumbnail
+    .thumbnail.typing
+      %h1.typing-carousel.txt-rotate{data: {period: 50, text: ['Hey, are you looking for me?', 'Good, I\'m coming... Guys!']}}
     .post-inner
       .post-title
         %h1
@@ -128,3 +129,9 @@
           %input{name: "day", type: "hidden", value: @article.published_at.day}/
 
 .clearfix
+
+- content_for :javascript do
+  :javascript
+    (function($){
+      typingRotateCarousel();
+    })(jQuery)

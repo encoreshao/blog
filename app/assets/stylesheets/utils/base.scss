@@ -33,11 +33,6 @@ body {
   border: 2px solid $siteColor;
 }
 
-.highlight-line {
-  border-top: 2px solid $siteColor;
-  display: block;
-}
-
 input,
 textarea {
   font: 100% 'Open Sans', Arial, Helvetica, sans-serif;
@@ -257,7 +252,7 @@ h6 {
 
 .before {
   bottom: 0;
-  background: $siteColor;
+  background: transparent;
   position: absolute;
   top: 0;
   left: -100%;
@@ -572,58 +567,61 @@ article .thumbnail {
 
 .sidebar-widgets .tagcloud a {
   display: inline-block;
-  font-size: .8em !important;
+  font-size: .8em;
   letter-spacing: 1px;
   line-height: 1;
   text-transform: uppercase;
   padding: 5px;
 }
 
-.sidebar-widgets .tagcloud .tags0 {}
+.sidebar-widgets .tagcloud {
+  .tags0 {
+    font-size: .6em;
+  }
+  .tags1 {
+    color: #969696;
+    font-size: 1.3em;
+  }
+  .tags2 {
+    color: #030;
+    font-size: .7em;
+  }
 
-.sidebar-widgets .tagcloud .tags1 {
-  color: #C00;
-  font-size: 24px;
-}
+  .tags3 {
+    color: #00F;
+  }
 
-.sidebar-widgets .tagcloud .tags2 {
-  color: #030;
-  font-size: 16px;
-}
+  .tags4 {
+    font-size: .9em;
+  }
 
-.sidebar-widgets .tagcloud .tags3 {
-  color: #00F;
-}
+  .tags5 {
+    color: #C00;
+    font-size: 1em;
+  }
 
-.sidebar-widgets .tagcloud .tags4 {
-  font-size: 16px;
-}
+  .tags6 {
+    color: #F06;
+    font-size: 1.2em;
+  }
 
-.sidebar-widgets .tagcloud .tags5 {
-  color: #C00;
-  font-size: 20px;
-}
+  .tags7 {
+    color: #030;
+    font-weight: bold;
+    font-size: 1.11em;
+  }
 
-.sidebar-widgets .tagcloud .tags6 {
-  color: #F06;
-  font-size: 20px;
-}
+  .tags8 {
+    color: #F06;
+    font-weight: bold;
+    font-size: 1.0001em;
+  }
 
-.sidebar-widgets .tagcloud .tags7 {
-  color: #030;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.sidebar-widgets .tagcloud .tags8 {
-  color: #F06;
-  font-weight: bold;
-}
-
-.sidebar-widgets .tagcloud .tags9 {
-  color: #C00;
-  font-weight: bold;
-  font-size: 16px;
+  .tags9 {
+    color: #C00;
+    font-weight: bold;
+    font-size: 1.0002em;
+  }
 }
 
 .sidebar-widgets .tagcloud a:hover {
@@ -662,7 +660,7 @@ article .thumbnail {
 
 #sidebar-wrappers .widget .meta,
 #jPanelMenu-menu .widget .meta {
-  font-size: 9px !important;
+  font-size: .9em;
   text-align: left;
   margin: 10px 0 0 0;
 }

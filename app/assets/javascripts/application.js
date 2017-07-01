@@ -13,6 +13,7 @@
 //= require utils/jquery.prettyPhoto.min
 //= require utils/jquery.form.min
 //= require utils/jquery.validate.min
+//= require utils/typed.min
 //= require utils/comment-reply.min
 //= require utils/functions
 //= require public/articles
