@@ -1,4 +1,16 @@
 module ApplicationHelper
+  def site_title
+    return I18n.t('site_title') if controller_name == 'dashboards'
+
+    "#{@article.title} - #{I18n.t('site_title')}"
+  end
+
+  def site_description
+    return I18n.t('description') if controller_name == 'dashboards'
+
+    "#{@article.title} - #{I18n.t('site_title')} - #{I18n.t('author')}"
+  end
+
   def random_banner_image
     image_tag("photos/banner-00#{1+rand(6)}.jpg", class: 'attachment-blog-image size-blog-image wp-post-image')
   end

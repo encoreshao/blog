@@ -14,7 +14,8 @@ en:
     recent_posts: Recent Posts
     related_posts: Related Posts
     post_format: Post Format
-    previous_post: PREVIOUS POST
+    previous_post: Previous Post
+    next_post: Next Post
     leave_a_comment: Leave a Comment
     share_this_article: Share this Article
     follow_me_on_twitter: Follow me on Twitter
