@@ -7,8 +7,23 @@
   = link_to I18n.t('action.edit'), edit_admin_article_path(resource)
   |
   = link_to I18n.t('action.new'), new_admin_article_path
+  |
+  = link_to I18n.t('action.preview'), article_path(resource.params)
 
 %br
 
 .table-responsive
-  = raw @article.content
+  .jumbotron
+    = raw @article.content
+
+  - if @article.embed?
+    %table.table.table-hover.table-bordered
+      %tr
+        %td= Article.human_attribute_name(:category_id)
+        %td= @article.category.permalink.titleize
+      %tr
+        %td= Article.human_attribute_name(:embed_link)
+        %td= @article.embed_link
+      %tr
+        %td
+        %td= audio_or_video_of_article(@article)

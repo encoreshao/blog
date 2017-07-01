@@ -34,6 +34,7 @@ en:
         reprinted_source: Reprinted Source
         reprinted_link: Reprinted Link
         tags: Tags
+        embed_link: Embed link
       category:
         name_zh: ZH
         name_en: EN

@@ -40,6 +40,18 @@ class Article < ApplicationRecord
     category.send("name_#{locale || 'en'}".to_sym)
   end
 
+  def embed?
+    category && category.embed?
+  end
+
+  def audio?
+    category.audio?
+  end
+
+  def video?
+    category.video?
+  end
+
   def published_date
     published_at && published_at.strftime('%Y-%m-%d')
   end
@@ -79,4 +91,5 @@ end
 #  user_id          :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  embed_link       :string
 #

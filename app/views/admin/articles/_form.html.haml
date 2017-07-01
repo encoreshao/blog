@@ -8,6 +8,7 @@
     - else
       = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
     = f.input :category_id, collection: atricle_categories, prompt: true, required: true
+    = f.input :embed_link, wrapper_html: { class: "#{'hide' unless resource.embed?}" }
     = f.input :published_at
     = f.input :is_published, as: :radio_buttons
     = f.input :reprinted_source

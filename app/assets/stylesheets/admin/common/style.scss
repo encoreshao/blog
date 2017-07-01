@@ -6,6 +6,7 @@ body.admin, body.devise {
 		.form-inline select {
 			width: 100px;
 		}
+		&.hide { display: none; }
 		label.radio_buttons {
 			width: 100px;
 		}

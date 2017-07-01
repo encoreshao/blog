@@ -42,4 +42,17 @@ module ApplicationHelper
 			'Ekohe' => 'https://ekohe.com'
 		}
 	end
+
+  def audio_or_video_of_article(article)
+    return video_of_article(article) if article.video?
+    return audio_of_article(article) if article.audio?
+  end
+
+  def video_of_article(article)
+    content_tag(:iframe, '', src: article.embed_link, frameborder: 0)
+  end
+
+  def audio_of_article(article)
+    content_tag(:audio, '', controls: true, autoplay: false, loop: true, src: article.embed_link)
+  end
 end

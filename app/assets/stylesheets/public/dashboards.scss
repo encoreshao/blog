@@ -140,6 +140,17 @@
   100% { opacity:1; }
 }
 
+.post-content {
+  &.audio, &.video { text-align: center; }
+  audio, video, iframe {
+    width: 600px;
+    height: 350px;
+    margin: 10px 50px;
+    clear: both;
+  }
+  audio { height: 50px; }
+}
+
 body.mobile {
   #sidebar-wrappers {
     width: 100%;
@@ -201,6 +212,17 @@ body.mobile {
     h1 {
       line-height: 80px;
       font-size: 1.5em;
+    }
+  }
+  .post-inner .meta span {
+    font-size: .8em;
+  }
+  .post-content {
+    audio, video, iframe {
+      width: 300px;
+      height: 200px;
+      margin: 10px 0px;
+      clear: both;
     }
   }
 }

@@ -9,12 +9,14 @@ class Admin::ArticlesController < AdminController
     params.fetch(:article, {}).permit(
     	:title, :permalink, :category_id, :user_id, :published_at,
     	:is_published, :content, :reprinted_source, :reprinted_link,
-    	:tags
+    	:tags, :embed_link
     )
   end
 
   def parameterize_permalink!
-    params[:article][:permalink] = params[:article][:title].parameterize if params[:article][:permalink].blank? && !params[:article][:title].blank?
+    if params[:article][:permalink].blank? && !params[:article][:title].blank?
+      params[:article][:permalink] = params[:article][:title].parameterize
+    end
   end
 
   def associate_tags

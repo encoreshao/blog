@@ -21,8 +21,11 @@
           %i.fa.fa-thumbs-down
           = I18n.t('action.dislike')
           = raw "(<count>#{@article.dislike_count}</count>)"
-      .post-content
+      .post-content{class: @article.category.try(:permalink)}
         = raw @article.content
+
+        - if @article.embed?
+          = audio_or_video_of_article(@article)
 
       - unless @article.tags.empty?
         %footer.content-footer

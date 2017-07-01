@@ -67,7 +67,7 @@ en:
     submit: Submit
     like: Like
     dislike: UnLike
-
+    preview: Preview
   views:
     pagination:
       first: "&laquo; First"
