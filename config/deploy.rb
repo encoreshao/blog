@@ -44,10 +44,10 @@ set :conditionally_migrate, true
 set :assets_roles, [:web, :app]
 
 # RAILS_GROUPS env value for the assets:precompile task. Default to nil.
-set :rails_assets_groups, :assets
+# set :rails_assets_groups, :assets
 
 # SSHKit.config.output_verbosity = :debug
-SSHKit.config.command_map[:rake]  = "bundle exec rake"
+# SSHKit.config.command_map[:rake]  = "bundle exec rake"
 # SSHKit.config.command_map[:rails] = "bundle exec rails"
 
 set :puma_threads,    [1, 4]
@@ -63,17 +63,6 @@ set :puma_worker_timeout, nil
 set :puma_init_active_record, false  # Change to true if using ActiveRecord
 
 namespace :deploy do
-  desc "Make sure local git is in sync with remote."
-  task :check_revision do
-    on roles(:app) do
-      unless `git rev-parse HEAD` == `git rev-parse origin/master`
-        puts "WARNING: HEAD is not the same as origin/master"
-        puts "Run `git push` to sync changes."
-        exit
-      end
-    end
-  end
-
   desc 'Initial Deploy'
   task :initial do
     on roles(:app) do
