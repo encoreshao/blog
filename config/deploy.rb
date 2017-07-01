@@ -12,7 +12,7 @@ set :rvm_ruby_version, "2.4.1@#{fetch(:application)}"
 set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
 
 append :linked_files, "config/database.yml", "config/secrets.yml"
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "public/uploads"
 
 server 'icmoc.com', port: 22, roles: [:web, :app, :db], primary: true
 
