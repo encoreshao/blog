@@ -8,7 +8,7 @@ module Admin::DashboardsHelper
     content_tag :li, class: 'nav-item' do
       content_tag :a, class: class_name, title: table_human_name(nav_class), href: path do
         content_tag :i, class: icon_name(nav_class) do
-          " " + table_human_name(nav_class) if class_name.match(/active/)
+          " " + table_human_name(nav_class) if class_name.match(/active/) || mobile_device?
         end
       end
     end

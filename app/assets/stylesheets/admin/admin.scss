@@ -17,6 +17,13 @@ body {
     float: left;
     right: 10px;
   }
+  .simple_form .form-group > textarea.form-control {
+    width: 70%;
+    height: 200px;
+  }
+  .information-box, .confirmation-box, .error-box, .warning-box {
+    color: $siteColor;
+  }
 }
 body.mobile {
   nav.navbar .container {

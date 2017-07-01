@@ -18,6 +18,7 @@ zh:
         created_at: 创建时间
         is_admin: 管理员
         title: 头衔
+        introduction: 个人简介
       article:
         title: 标题
         permalink: 链接

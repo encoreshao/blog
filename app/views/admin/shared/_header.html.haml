@@ -7,8 +7,10 @@
       %ul.navbar-nav.mr-auto
         = render 'admin/shared/sidebar'
         %li.nav-item
-          = link_to destroy_user_session_path, class: 'nav-link', method: :DELETE do
+          = link_to admin_user_path(current_user), class: 'nav-link' do
             = current_user.display_name
+        %li.nav-item
+          = link_to destroy_user_session_path, class: 'nav-link', method: :DELETE do
             %i.fa.fa-sign-out
       %form.form-inline.my-2.my-lg-0
         %input.form-control.mr-sm-2{placeholder: "#{I18n.t('action.search')}......", type: "text", name: 'name', value: params[:name]}/

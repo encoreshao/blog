@@ -28,9 +28,4 @@
           %p.error-box= value
       = yield
 
-    %footer
-      .copyright
-        - time_range = '2017'
-        - time_range += " - #{Time.now.year}" if Time.now.year > 2017
-        Copyright &copy; #{time_range}
-        #{I18n.t('title')}
+    = render 'shared/footer'

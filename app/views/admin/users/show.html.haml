@@ -1,18 +1,21 @@
 .right
-  = link_to I18n.t('action.back'), admin_users_path
-  |
   = link_to I18n.t('action.edit'), edit_admin_user_path(resource)
-  |
-  = link_to I18n.t('action.new'), edit_admin_user_path
+  - if admin?
+    |
+    = link_to I18n.t('action.back'), admin_users_path
+    |
+    = link_to I18n.t('action.new'), edit_admin_user_path
 
 .table-responsive
   %table.table.table-hover.table-bordered
-    - [:name, :email, :title, :link].each do |attr|
+    - [:name, :email, :title, :link, :introduction].each do |attr|
       %tr
         %td= User.human_attribute_name(attr)
         %td= resource.send(attr)
     %tr
       %td= User.human_attribute_name(:avatar)
-      %td
+      %td{style: ''}
         - unless resource.avatar.url.nil?
           = image_tag resource.avatar.url
+          = image_tag resource.avatar.large.url
+          = image_tag resource.avatar.thumb.url

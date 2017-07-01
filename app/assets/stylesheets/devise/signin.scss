@@ -60,7 +60,7 @@ a, a:hover { color: $siteColor; }
 :-moz-placeholder { color: #858d9c; }
 
 /* ---------- CONTENT BOXES ---------- */
-.information-box, .confirmation-box, .error-box, .warning-box { color: #5a9bab; }
+.information-box, .confirmation-box, .error-box, .warning-box { color: $siteColor; }
 
 .notices-boxes { text-align: center; }
 
@@ -90,18 +90,6 @@ div#content {
   text-align: center;
 }
 
-/* ---------- FOOTER ---------- */
-footer {
-  background-color: $topNav;
-  width: 100%;
-  text-align: center;
-  position: fixed;
-  bottom: 0px;
-  padding: 1em;
-  text-align: center;
-  color: white;
-}
-
 a:hover { text-decoration: none; }
 
 .right { float: right; }
@@ -110,7 +98,6 @@ a:hover { text-decoration: none; }
   font-size: 2.0em;
   text-shadow: 1px 1px #000;
 }
-
 
 body.mobile {
   h1, .h1 {
@@ -133,9 +120,5 @@ body.mobile {
   }
   .form-inline, .form-control {
     width: 60% !important;
-  }
-  footer {
-    position: relative;
-    font-size: .7em;
   }
 }

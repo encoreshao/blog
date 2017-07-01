@@ -3,8 +3,10 @@
   = User.model_name.human
 
 .right
-  = link_to I18n.t('action.back'), admin_users_path
-  |
-  = link_to I18n.t('action.new'), new_admin_user_path
+  = link_to I18n.t('action.show'), admin_user_path(resource)
+  - if admin?
+    = link_to I18n.t('action.back'), admin_users_path
+    |
+    = link_to I18n.t('action.new'), new_admin_user_path
 
 = render partial: 'form', locals: { resource: resource, url: admin_user_path(resource) }

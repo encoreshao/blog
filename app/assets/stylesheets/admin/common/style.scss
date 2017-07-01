@@ -37,4 +37,17 @@ body.admin, body.devise {
 			width: 80%;
 		}
 	}
+  footer {
+    font-size: 1.5em;
+    width: 100%;
+    text-align: center;
+    padding: .8em;
+    color: #2a2e36;
+  }
+}
+
+body.mobile {
+  footer {
+    font-size: .7em;
+  }
 }

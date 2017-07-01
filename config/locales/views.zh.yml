@@ -26,6 +26,7 @@ zh:
     comments: 共有 %{count} 条留言
   navigation:
     title: 站点导航
+    category: 分类
     home: 主页
     dashboards: 首页
     about: 关于

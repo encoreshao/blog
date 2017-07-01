@@ -25,7 +25,8 @@ en:
     note2: Hey, I'm Encore Shao, a developer from Shanghai, China. We create websites and web based applications. If you have a idea, Please contact me! - (encore.shao[at]gmail.com)
     comments: There's %{count} Comments
   navigation:
-    title: Navigation
+    title: Sitemap
+    category: By Category
     home: Home
     dashboards: Dashboard
     about: About

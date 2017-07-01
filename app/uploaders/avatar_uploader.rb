@@ -2,7 +2,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -29,10 +29,15 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
+  version :large do
+    process resize_to_fit: [230, 230]
+    process :add_text!
+  end
+
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process resize_to_fit: [50, 50]
-  # end
+  version :thumb do
+    process resize_to_fit: [100, 100]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
@@ -46,4 +51,30 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+  # 打水印的位置可以是’Center’, ‘NorthWest’, ‘North’, ‘NorthEast’, ‘West’, ‘Center’, ‘East’, ‘SouthWest’, ‘South’, ‘SouthEast’
+  def add_text!
+    text      = (model.name || 'ICMOC')
+    color     = '#1476ff'
+    position  = 'SouthEast'
+
+    manipulate! do |image|
+      image.combine_options do |c|
+        c.gravity position
+        c.fill color
+        c.pointsize '24'
+        c.draw "text 10,10 '#{text}'"
+      end
+      image
+    end
+  end
+
+  def make_watermark(watermark)
+    manipulate! do |img|
+      img = img.composite(MiniMagick::Image.open(watermark, "jpg")) do |c|
+        c.gravity "SouthEast"
+      end
+      img = yield(img) if block_given?
+      img
+    end
+  end
 end

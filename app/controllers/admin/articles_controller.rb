@@ -2,7 +2,7 @@ class Admin::ArticlesController < AdminController
   defaults resource_class: Article, collection_name: 'articles', instance_name: 'article'
   before_action :associate_tags, only: [:update]
   before_action :parameterize_permalink!, only: [:create, :update]
-  before_action :verify_permit?, except: [:index, :new]
+  before_action :verify_permit?, only: [:edit, :update, :show]
 
   protected
   def article_params

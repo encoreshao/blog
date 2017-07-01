@@ -151,6 +151,15 @@
   audio { height: 50px; }
 }
 
+ul.menu li {
+  margin: 5px 0;
+  i { margin-right: 20px; }
+}
+.tagcloud a.active,
+ul.menu li.active {
+  color: $siteColor;
+}
+
 body.mobile {
   #sidebar-wrappers {
     width: 100%;
@@ -168,17 +177,12 @@ body.mobile {
     }
     #widget-nav_menu-2 {
       margin-bottom: 5px;
-      .widget-title {
-        margin-bottom: 10px;
-      }
-      #menu-main-menu {
-        li {
-          float: left;
-          margin-left: 10px;
-          ul.menu li i {
-            margin-right: 5px;
-          }
-        }
+      .widget-title { margin-bottom: 10px; }
+      #menu-main-menu li {
+        float: left;
+        margin-left: 10px;
+        a { text-decoration: underline; }
+        i.fa { display: none; }
       }
     }
   }

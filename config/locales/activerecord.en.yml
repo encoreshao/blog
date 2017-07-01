@@ -18,6 +18,7 @@ en:
         created_at: Created At
         is_admin: Admin
         title: Title
+        introduction: Introduction
       article:
         title: Title
         permalink: Permalink

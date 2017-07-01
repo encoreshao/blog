@@ -676,7 +676,7 @@ article .thumbnail {
   line-height: 100%;
   text-align: center;
   padding: 10px 0 6px 0;
-  margin: 0 0 30px 0;
+  margin: 0 0 20px 0;
   position: relative;
 }
 
@@ -763,13 +763,6 @@ article .thumbnail {
 
 .site-info .social ul li a {
   font-size: 22px;
-}
-
-ul.menu li {
-  margin: 5px 0;
-  i {
-    margin-right: 20px;
-  }
 }
 
 
@@ -2167,32 +2160,13 @@ ul.sub-menu {
   Footer Styles
 ------------------------------*/
 
-#footer {
+footer {
   float: left;
   clear: both;
   width: 100%;
   line-height: 140%;
   margin: 50px 0;
 }
-
-#footer .container div {
-  display: inline-block;
-  font-size: 13px;
-}
-
-#footer .fa-heart {
-  display: block;
-  font-size: 30px;
-  color: #eee;
-  text-align: center;
-  margin: -60px auto 30px auto;
-  padding: 5px 10px;
-}
-
-.developer {
-  float: right;
-}
-
 
 /* WordPress Calendar Widget */
 
