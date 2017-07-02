@@ -21,7 +21,6 @@ class Admin::UsersController < AdminController
   end
 
   def verify_permit?
-    puts resource.inspect
     redirect_to admin_root_path unless admin? || resource.id == current_user.id
   end
 end

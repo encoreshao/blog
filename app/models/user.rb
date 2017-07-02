@@ -15,7 +15,6 @@ class User < ApplicationRecord
   }
 
   before_create :setup_info!
-  before_save :fixing_name!
 
   def self.active_users
     select('name, id').map { |e| [e.name, e.id] }
@@ -37,11 +36,11 @@ class User < ApplicationRecord
 
   def setup_info!
     self.uuid = SecureRandom.uuid.split('-').join
-    self.skip_confirmation!
   end
 
-  def fixing_name!
-    self.name = nil if name.blank?
+  private
+  def confirmation_required?
+    false
   end
 end
 

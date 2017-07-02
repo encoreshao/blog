@@ -1,3 +1,5 @@
+# encoding; utf-8
+
 class AvatarUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
@@ -51,11 +53,12 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
-  # 打水印的位置可以是’Center’, ‘NorthWest’, ‘North’, ‘NorthEast’, ‘West’, ‘Center’, ‘East’, ‘SouthWest’, ‘South’, ‘SouthEast’
+  # 打水印的位置可以是
+  #   'Center', 'NorthWest', 'North', 'NorthEast', 'West', 'Center', 'East', 'SouthWest', 'South', 'SouthEast'
   def add_text!
-    text      = (model.name || 'ICMOC')
+    text      = (model.name || 'ICMOC').force_encoding(Encoding::UTF_8)
     color     = '#0aa4d3'
-    position  = 'SouthEast'
+    position  = 'Center'
 
     manipulate! do |image|
       image.combine_options do |c|
