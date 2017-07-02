@@ -7,8 +7,8 @@ body {
   padding: 0;
   font-size: 13px;
   font-family: Georgia, "Times New Roman", Times, serif;
-  color: #919191;
-  background-color: rgba(42, 46, 54, 1);
+  color: #000000;
+  background-color: rgba(10, 164, 211, 1);
 }
 
 .justify {
@@ -80,34 +80,10 @@ img {
   vertical-align: middle;
 }
 
-.imgholder,
-.imgl,
-.imgr {
-  padding: 4px;
-  border: 1px solid #D6D6D6;
-  text-align: center;
-}
-
-.imgl {
-  float: left;
-  margin: 0 15px 15px 0;
-  clear: left;
-}
-
-.imgr {
-  float: right;
-  margin: 0 0 15px 15px;
-  clear: right;
-}
-
 address,
 article,
-aside,
-figcaption,
-figure,
 footer,
 header,
-hgroup,
 nav,
 section {
   display: block;
@@ -124,24 +100,24 @@ div.wrapper {
 
 .row1,
 .row1 a {
-  color: #C0BAB6;
-  background-color: rgba(42, 46, 54, 1);
+  color: #000000;
+  background-color: rgba(10, 164, 211, 1);
 }
 
 .row2 {
-  color: #979797;
+  color: #000000;
   background-color: #FFFFFF;
 }
 
 .row2 a {
-  color: #FF9900;
+  color: #000000;
   background-color: #FFFFFF;
 }
 
 .row3,
 .row3 a {
-  color: #919191;
-  background-color: rgba(42, 46, 54, 1);
+  color: #000000;
+  background-color: rgba(10, 164, 211, 1);
 }
 
 .row1,
@@ -219,8 +195,8 @@ select {
   margin: 0;
   padding: 20px;
   list-style: none;
-  color: #C0BAB6;
-  background-color: rgba(42, 46, 54, 1);
+  color: #000000;
+  background-color: rgba(10, 164, 211, 1);
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
@@ -238,14 +214,14 @@ select {
 }
 
 #header #topnav li a {
-  color: #C0BAB6;
-  background-color: rgba(42, 46, 54, 1);
+  color: #000000;
+  background-color: rgba(10, 164, 211, 1);
 }
 
 #header #topnav li a:hover,
 #header #topnav li.active a {
-  color: #449d44;
-  background-color: rgba(42, 46, 54, 1);
+  color: #000000;
+  background-color: rgba(10, 164, 211, 1);
 }
 
 #container {
@@ -254,49 +230,6 @@ select {
 
 #container a {
   background-color: transparent;
-}
-
-#container #portfolio,
-#container #gallery {
-  margin-bottom: 30px;
-}
-
-#container .pagination {
-  display: block;
-  width: 100%;
-  text-align: center;
-  clear: both;
-  font-family: Verdana, Geneva, sans-serif;
-}
-
-#container .pagination ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-#container .pagination li {
-  display: inline;
-}
-
-#container .pagination strong {
-  font-weight: normal;
-}
-
-#container .pagination .next {
-  margin: 0;
-}
-
-#container .pagination a,
-#container .pagination .current strong,
-#container .pagination .splitter strong {
-  display: inline-block;
-  padding: 2px 6px;
-  margin: 0 2px 0 0;
-}
-
-#container .pagination a {
-  border: 1px solid #DFDFDF;
 }
 
 #footer {
@@ -308,7 +241,7 @@ select {
   padding: 0;
 }
 
-#not-found-wrappers {
+#content-wrappers {
   display: block;
   width: 100%;
   margin: 20px 0;
@@ -316,49 +249,60 @@ select {
   text-align: center;
 }
 
-#not-found-wrappers .hgroup {
+#content-wrappers .hgroup {
   text-transform: uppercase;
 }
 
-#not-found-wrappers .hgroup h1 {
+#content-wrappers .hgroup h1 {
   margin-bottom: 25px;
   font-size: 80px;
 }
 
-#not-found-wrappers .hgroup h1 span {
+#content-wrappers .hgroup h1 span {
   display: inline-block;
   margin-left: 5px;
   padding: 2px;
-  border: 1px solid #449d44;
+  border: 1px solid white;
   overflow: hidden;
 }
 
-#not-found-wrappers .hgroup h1 span strong {
+#content-wrappers .hgroup h1 span strong {
   display: inline-block;
   padding: 0 20px 20px;
-  border: 1px solid #449d44;
+  border: 1px solid white;
   font-weight: normal;
 }
 
-#not-found-wrappers .hgroup h2 {
+#content-wrappers .hgroup h2 {
   font-size: 60px;
 }
 
-#not-found-wrappers .hgroup h2 span {
+#content-wrappers .hgroup h2 span {
   display: block;
   font-size: 30px;
 }
 
-#not-found-wrappers p {
+#content-wrappers p {
   margin: 25px 0 0 0;
   padding: 0;
   font-size: 16px;
 }
 
-#not-found-wrappers p a {
-  color: #449d44;
+#content-wrappers p a {
+  color: #000000;
 }
 
-#not-found-wrappers p:first-child {
+#content-wrappers p:first-child {
   margin-top: 0;
+}
+
+.author img {
+  margin: 0 20px 20px 0;
+  left: 40%;
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  border: 2px solid #fff;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
 }
