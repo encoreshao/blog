@@ -162,7 +162,7 @@ ul.menu li.active {
 
 footer {
   border-color: #3f3f3f;
-  color: #4f4f4f;
+  color: white;
   .copyright-wrapper {
     background-color: #0f0f0f;
     padding: 15px 0px;
@@ -220,6 +220,7 @@ body.mobile {
   }
   .post-content {
     word-break: break-word;
+    overflow: hidden;
   }
   .thumbnail.typing {
     height: 80px;
