@@ -160,6 +160,16 @@ ul.menu li.active {
   color: $siteColor;
 }
 
+footer {
+  border-color: #3f3f3f;
+  color: #4f4f4f;
+  .copyright-wrapper {
+    background-color: #0f0f0f;
+    padding: 15px 0px;
+    border-color: #363636;
+  }
+}
+
 body.mobile {
   #sidebar-wrappers {
     width: 100%;

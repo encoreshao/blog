@@ -1,6 +1,11 @@
-%footer
-  .copyright
-    - time_range = '2017'
-    - time_range += " - #{Time.zone.now.year}" if Time.zone.now.year > 2017
-    Copyright &copy; #{time_range}
-    #{I18n.t('title')}
+%footer.footer-wrapper
+  .footer-container.container
+  .copyright-wrapper
+    .copyright-container.container
+      .copyright.left
+        - time_range = '2017'
+        - time_range += " - #{Time.zone.now.year}" if Time.zone.now.year > 2017
+        Copyright &copy; #{time_range}
+        #{I18n.t('title')}
+        All Rights Reserved
+      .copyright.right

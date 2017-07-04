@@ -20,6 +20,12 @@
     = csrf_meta_tags
 
   %body{class: "home blog wpb-js-composer js-comp-ver-5.0.1 vc_responsive #{'mobile' if mobile_device?}"}
+    %header.header-wrapper
+      .logo-container.container
+        .logo-wrapper
+          .logo
+
+          .responsive-navigation.dl-menuwrapper{id: 'responsive-navigation'}
     %section.container
       #sidebar-wrappers
         = render 'shared/sidebar'
@@ -28,6 +34,8 @@
         = yield
 
       .clearfix
+
+    = render 'shared/footer'
 
     %a#scroll-top{:href => "#top", :style => "display: block;"}
       %span.fa.fa-arrow-up
