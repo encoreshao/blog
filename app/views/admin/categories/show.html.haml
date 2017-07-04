@@ -1,7 +1,11 @@
-= link_to I18n.t('action.back'), admin_categories_path
-= link_to I18n.t('action.edit'), edit_admin_category_path(resource)
+.right
+  = link_to I18n.t('action.back'), admin_categories_path
+  |
+  = link_to I18n.t('action.edit'), edit_admin_category_path(resource)
 
-.jumbotron
-  %div= resource.name_en
-  %br
-  %div= resource.name_zh
+.table-responsive
+  %table.table.table-hover.table-bordered
+    - [:name_en, :name_zh, :permalink].each do |attr|
+      %tr
+        %td= Category.human_attribute_name(attr)
+        %td= resource.send(attr)

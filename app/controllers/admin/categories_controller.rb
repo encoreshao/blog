@@ -7,8 +7,8 @@ class Admin::CategoriesController < AdminController
   end
 
   protected
-  def permitted_params
-    params.fetch(:category, {}).permit(:name_zh, :name_en)
+  def category_params
+    params.fetch(:category, {}).permit(:name_zh, :name_en, :permalink)
   end
 
   def collection
