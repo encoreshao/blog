@@ -38,5 +38,6 @@
         .read-more
           %a{href: article_path(article.params)}= I18n.t('action.read_more')
 
-.page-navigation.clearfix
-  = paginate @articles
+- if @articles.total_pages > 1
+  .page-navigation.clearfix
+    = paginate @articles
