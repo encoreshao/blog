@@ -1,3 +1,9 @@
+.header-wrapper {
+  height: 20px;
+  width: 100%;
+  background-color: transparent;
+}
+
 .flip-container {
   -webkit-perspective: 1000;
   -moz-perspective: 1000;
@@ -51,8 +57,7 @@
   background-position: 0, 0;
   background-repeat: no-repeat;
   z-index: 2;
-  background-size: cover;
-  // border-radius: 100%;
+  background-size: contain;
 }
 
 .back {
@@ -65,22 +70,22 @@
 }
 
 .front .name {
-  font-size: 1.8em;
-  display: inline-block;
-  background: transparent;
+  font-size: 1.5em;
+  // display: inline-block;
+  // background: transparent;
   color: $siteColor;
-  font-family: Courier;
-  padding: 5px;
-  border-radius: 5px;
+  // font-family: Courier;
+  // padding: 5px;
+  // border-radius: 5px;
   bottom: 15%;
   left: 25%;
   position: absolute;
-  text-shadow: 0.1em 0.1em 0.05em #333;
+  // text-shadow: 0.1em 0.1em 0.05em #333;
 
-  -webkit-transform: rotate(-20deg);
-  -moz-transform: rotate(-20deg);
-  -o-transform: rotate(-20deg);
-  transform: rotate(-20deg);
+  // -webkit-transform: rotate(-20deg);
+  // -moz-transform: rotate(-20deg);
+  // -o-transform: rotate(-20deg);
+  // transform: rotate(-20deg);
 }
 
 .back-logo {
@@ -141,6 +146,7 @@
 }
 
 .post-content {
+  overflow: hidden;
   &.audio, &.video { text-align: center; }
   audio, video, iframe {
     width: 600px;
@@ -161,83 +167,9 @@ ul.menu li.active {
 }
 
 footer {
-  border-color: #3f3f3f;
-  color: white;
+  border-top: 1px solid #555;
+  color: #555;
   .copyright-wrapper {
-    background-color: #0f0f0f;
-    padding: 15px 0px;
-    border-color: #363636;
-  }
-}
-
-body.mobile {
-  #sidebar-wrappers {
-    width: 100%;
-    padding: 0px;
-  }
-  .sidebar-widgets {
-    margin-top: 0px;
-    #widget-warrior_about-2,
-    #widget-search-3,
-    #widget-warrior_recent_posts-2,
-    #widget-tag_cloud-2,
-    #widget-wechat,
-    footer {
-      display: none;
-    }
-    #widget-nav_menu-2 {
-      margin-bottom: 5px;
-      .widget-title { margin-bottom: 10px; }
-      #menu-main-menu li {
-        float: left;
-        margin-left: 10px;
-        a { text-decoration: underline; }
-        i.fa { display: none; }
-      }
-    }
-  }
-  #main-header {
-    padding: 10px 20px;
-  }
-  #main-header #logo {
-    width: 100%;
-    text-align: center;
-  }
-
-  #content-wrappers {
-    .post-title h3 {
-      font-size: 1.2em !important;
-    }
-  }
-
-  .single-author .thumbnail {
-    height: 100px;
-    position: relative;
-    width: 100%;
-    img {
-      left: 34%;
-    }
-  }
-  .post-content {
-    word-break: break-word;
-    overflow: hidden;
-  }
-  .thumbnail.typing {
-    height: 80px;
-    h1 {
-      line-height: 80px;
-      font-size: 1.5em;
-    }
-  }
-  .post-inner .meta span {
-    font-size: .8em;
-  }
-  .post-content {
-    audio, video, iframe {
-      width: 300px;
-      height: 200px;
-      margin: 10px 0px;
-      clear: both;
-    }
+    padding: 30px 0px;
   }
 }

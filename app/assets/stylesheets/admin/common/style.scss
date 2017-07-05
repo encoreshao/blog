@@ -38,11 +38,14 @@ body.admin, body.devise {
 		}
 	}
   footer {
-    font-size: 1.2em;
+    font-size: .8em;
     width: 100%;
     text-align: center;
     padding: .8em;
     color: #2a2e36;
+  }
+  #scroll-top {
+    display: none;
   }
 }
 

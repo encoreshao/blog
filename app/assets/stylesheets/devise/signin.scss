@@ -72,15 +72,19 @@ div#top-bar {
 }
 #top-bar a {
   color: white;
-  padding: 0.6em 1em;
+  padding: 0.6em 0;
 }
 
-div#header { padding: 1.25em 0; /* 20/16 */ }
+div#header { padding: .5em 0; }
 
 div#header-with-tabs { padding: 1.25em 0 0 0; /* 20/16 */ }
 
 div#login-intro { padding: 0.312em 0 0.312em 3.125em; }
-div#login-intro h1 { text-transform: uppercase; margin: 0.312em 0 0 0; }
+div#login-intro h1 {
+  text-transform: uppercase;
+  margin: 0.312em 0 0 0;
+  font-size: 1em;
+}
 div#login-intro h5 { color: #9498a1; }
 
 /* ---------- CONTENT ---------- */
