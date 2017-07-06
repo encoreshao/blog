@@ -209,14 +209,14 @@
   .post-content {
     word-break: break-word;
   }
-  .thumbnail.typing {
+  article .thumbnail.typing {
     height: 80px;
     h1 {
       line-height: 80px;
       font-size: 1.5em;
     }
   }
-  .post-inner .meta span {
+  .post-inner .meta span, footer.footer-wrapper {
     font-size: .8em;
   }
   .post-content {
@@ -225,6 +225,23 @@
       height: 200px;
       margin: 10px 0px;
       clear: both;
+    }
+  }
+  body.devise {
+    #header {
+      padding: 0px;
+    }
+    #header .login-intro h1, #header .login-intro .h1 {
+      font-size: 1em;
+    }
+    #content .notices-boxes {
+      font-size: .6em;
+    }
+    #content form label.control-label {
+      width: 20% !important;
+    }
+    #content form .form-inline, .form-control {
+      width: 60% !important;
     }
   }
 }

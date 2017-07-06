@@ -11,11 +11,10 @@
   %body{class: "devise #{'mobile' if mobile_device?}"}
     #header
       .page-full-width.cf
-        #login-intro.fl
+        #login-intro
           %h1
-            Login to
-            = link_to t('title'), root_path
-          %h5 Enter your credentials below
+            = I18n.t('action.signin')
+            = link_to I18n.t('title'), root_path
 
     #content
       .notices-boxes

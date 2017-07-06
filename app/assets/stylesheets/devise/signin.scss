@@ -75,11 +75,14 @@ div#top-bar {
   padding: 0.6em 0;
 }
 
-div#header { padding: .5em 0; }
+div#header {
+  text-align: center;
+  padding: 1%;
+}
 
 div#header-with-tabs { padding: 1.25em 0 0 0; /* 20/16 */ }
 
-div#login-intro { padding: 0.312em 0 0.312em 3.125em; }
+div#login-intro { padding: 3%; }
 div#login-intro h1 {
   text-transform: uppercase;
   margin: 0.312em 0 0 0;
@@ -89,7 +92,6 @@ div#login-intro h5 { color: #9498a1; }
 
 /* ---------- CONTENT ---------- */
 div#content {
-  border: 1px solid #eeefef;
   padding: 2em;
   text-align: center;
 }
@@ -101,28 +103,4 @@ a:hover { text-decoration: none; }
 .navbar-brand.active {
   font-size: 2.0em;
   text-shadow: 1px 1px #000;
-}
-
-body.mobile {
-  h1, .h1 {
-    font-size: 1em;
-  }
-  #top-bar {
-    padding: 0px;
-    font-size: .7em;
-    line-height: 2em;
-    height: 2em;
-  }
-  #header {
-    padding: 0px;
-  }
-  .notices-boxes {
-    font-size: .6em;
-  }
-  label.control-label {
-    width: 20% !important;
-  }
-  .form-inline, .form-control {
-    width: 60% !important;
-  }
 }
