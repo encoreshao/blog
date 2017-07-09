@@ -9,13 +9,17 @@
     = csrf_meta_tags
 
   %body{class: "devise #{'mobile' if mobile_device?}"}
+    %header.navbar.navbar-light.navbar-toggleable-md.bd-navbar
+      %nav.container
+        #bd-main-nav.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li.nav-item.active
+              %a.nav-item.nav-link{:href => "/", :onclick => "ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');"}= I18n.t('title')
     #header
       .page-full-width.cf
         #login-intro
           %h1
             = I18n.t('action.signin')
-            = link_to I18n.t('title'), root_path
-
     #content
       .notices-boxes
         - flash.each do |type, value|

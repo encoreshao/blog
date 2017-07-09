@@ -754,8 +754,17 @@ article .thumbnail {
       float: left;
       margin: 0 7px 7px 0;
       font-size: 1em;
+      a {
+        padding: 5px;
+        border-radius: 2px;
+      }
       &:hover {
-        font-size: 1.1em;
+        a {
+          background-color: $siteColor;
+        }
+        i.fa {
+          color: white
+        }
       }
     }
   }
