@@ -78,6 +78,5 @@
 - content_for :javascript do
   :javascript
     (function($){
-      var author = $(".front");
-      author.css('background-image', 'url(' + author.data('url') + ')').removeData('url');
+      loadAssetImages($('header.intro-header, .front'));
     })(jQuery)

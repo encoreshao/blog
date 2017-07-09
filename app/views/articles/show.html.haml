@@ -112,25 +112,25 @@
             %label
               = I18n.t('form.name')
               %span.red *
-            %input#input-name.input-s{name: "comment[name]", type: "text", required: true}/
+            %input#input-name.input-s{name: "comment[name]", type: "text", required: true}
           .input.email
             %label
               = I18n.t('form.email')
               %span.red *
-            %input#input-email.input-s{name: "comment[email]", type: "email", required: true}/
+            %input#input-email.input-s{name: "comment[email]", type: "email", required: true}
           .input.email
             %label= I18n.t('form.url')
-            %input#input-url.input-s{name: "comment[link]", type: "url"}/
+            %input#input-url.input-s{name: "comment[link]", type: "url"}
           %p.form-submit
             = submit_tag I18n.t('form.submit'), class: 'btn btn-primary bg-green', id: 'submit'
-            %input#comment_id{name: "comment_id", type: "hidden"}/
-            %input#comment_parent{name: "comment[comment_parent]", type: "hidden", value: "0"}/
+            %input#comment_id{name: "comment_id", type: "hidden"}
+            %input#comment_parent{name: "comment[comment_parent]", type: "hidden", value: "0"}
 
         %p{style: "display: none;"}
-          %input{name: "permalink", type: "hidden", value: @article.permalink}/
-          %input{name: "year", type: "hidden", value: @article.published_at.year}/
-          %input{name: "month", type: "hidden", value: @article.published_at.month}/
-          %input{name: "day", type: "hidden", value: @article.published_at.day}/
+          %input{name: "permalink", type: "hidden", value: @article.permalink}
+          %input{name: "year", type: "hidden", value: @article.published_at.year}
+          %input{name: "month", type: "hidden", value: @article.published_at.month}
+          %input{name: "day", type: "hidden", value: @article.published_at.day}
 
 .clearfix
 

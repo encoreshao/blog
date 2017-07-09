@@ -41,3 +41,9 @@
 - if @articles.total_pages > 1
   .page-navigation.clearfix
     = paginate @articles
+
+- content_for :javascript do
+  :javascript
+    (function($){
+      typingRotateCarousel();
+    })(jQuery)

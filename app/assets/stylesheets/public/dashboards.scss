@@ -1,7 +1,21 @@
-.header-wrapper {
-  height: 20px;
-  width: 100%;
-  background-color: transparent;
+.intro-header {
+  background: no-repeat center center;
+  background-color: gray;
+  background-attachment: scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  margin-bottom: 0;
+  h1 {
+    font-size: 3em;
+  }
+  .site-heading {
+    color: #fff;
+    padding: 80px 0;
+    text-align: center;
+    margin: auto;
+  }
 }
 
 .flip-container {
