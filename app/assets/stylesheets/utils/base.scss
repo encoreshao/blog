@@ -309,7 +309,7 @@ h6 {
   width: 69%;
   max-width: 900px;
   min-height: 100px;
-  padding-top: 20px;
+  padding-top: 50px;
 }
 
 .container {
@@ -1792,7 +1792,6 @@ form.wpcf7-form .wpcf7-mail-sent-ok {
 /* Page Navigation */
 
 .page-navigation {
-  padding: 40px 0;
   text-align: justify;
   list-style-type: none;
   display: block;
@@ -1806,6 +1805,7 @@ form.wpcf7-form .wpcf7-mail-sent-ok {
 
 .page-navigation ul.pagination li {
   list-style: none;
+  margin-right: 5px;
 }
 
 .page-navigation a {
@@ -2324,5 +2324,17 @@ html[xmlns] .slides {
 }
 
 .btn-primary:hover {
+  background-color: $siteColorLight;
+}
+
+.page-navigation ul.pagination li.page-item .page-link {
+  border-radius: 0px;
+  background-color: $siteColor;
+  color: white;
+  border-color: $siteColor;
+}
+
+.page-navigation ul.pagination li.page-item .page-link:hover {
+  color: rgba(255, 255, 255, .8);
   background-color: $siteColorLight;
 }

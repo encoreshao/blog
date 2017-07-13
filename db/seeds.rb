@@ -31,3 +31,16 @@ end
 }.each do |name_en, name_zh|
   Category.find_or_create_by(name_en: name_en, permalink: name_en.downcase, name_zh: name_zh)
 end
+
+# (0..20).each do |i|
+#   options = {
+#     title: "Test - #{i}",
+#     permalink: "test-#{i}",
+#     content: "TEST - CONTENT - #{i}",
+#     is_published: true,
+#     published_at: Time.zone.now.to_date,
+#     category_id: 1,
+#     user_id: User.all.sample.try(:id)
+#   }
+#   Article.create!(options)
+# end
