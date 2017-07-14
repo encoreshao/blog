@@ -6,6 +6,7 @@ zh:
   description: 我是一名Web开发人员, 使用Ruby on Rails来构建Web应用程序. 如果你有想法? 联系我(encore.shao@gmail.com)!
   tips:
     welcome: Hey, %{author} !
+    author: Encore's Blog
     admin_notes: 简洁、直观、让你更专注于自己的写作事业.
     about_the_author: 关于作者
     tags: 标签
@@ -24,6 +25,7 @@ zh:
     notes: Hey guys! I want share something to you. (以快乐的心态去迎接美好的世界).
     note2: 我是一名生活在中国上海的开发者. 可以帮助您创建网站和基于网络的应用程序. 如果您有任何想法可以联系我喔. - (encore.shao[at]gmail.com)
     comments: 共有 %{count} 条留言
+    heading: 今天是 %{date}, 在这美好的时光遇见最美好的你.
   navigation:
     title: 站点导航
     category: 分类

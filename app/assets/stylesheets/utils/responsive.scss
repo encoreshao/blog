@@ -185,14 +185,15 @@
     }
   }
   #main-header {
+    display: none;
     padding: 10px 20px;
+    #logo {
+      width: 100%;
+      text-align: center;
+    }
   }
-  #main-header #logo {
-    width: 100%;
-    text-align: center;
-  }
-
   #content-wrappers {
+    padding-top: 0px;
     .post-title h3 {
       font-size: 1.2em !important;
     }

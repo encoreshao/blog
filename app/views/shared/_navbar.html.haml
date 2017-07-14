@@ -2,5 +2,6 @@
   .container
     .row
       .site-heading
-        %h1 Encore's Blog
-        %span.subheading 一直在努力!
+        %h1= I18n.t('tips.author')
+        %span.subheading
+          = I18n.t('tips.heading', date: Time.now.strftime('%Y-%m-%d'))
