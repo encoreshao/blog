@@ -1,24 +1,18 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Encore's Blog!!!
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby - 2.4.1
+* Rails - 5.1.2
 
-* System dependencies
+### Rouge Themes
 
-* Configuration
+* <% require 'rouge' %>
+* <%= Rouge::Themes::ThankfulEyes.render(:scope => '.highlight') %>
+* <%= Rouge::Themes::Base16.render %>
+* <%= Rouge::Themes::ThankfulEyes.render(scope: '.highlight') %>
+* <%= Rouge::Themes::Monokai.render(scope: '.highlight') %>
+* <%= Rouge::Themes::MonokaiSublime.render(scope: '.highlight') %>
+* <%= Rouge::Themes::Molokai.render(scope: '.highlight') %>
+* <%= Rouge::Themes::Colorful.render(scope: '.highlight') %>
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

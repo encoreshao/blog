@@ -26,7 +26,7 @@ module Blog
     # -- all .rb files in that directory are automatically loaded.
 
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}').to_s]
-    config.i18n.default_locale = :zh
+    config.i18n.default_locale = :en
     config.encoding = 'utf-8'
 
     config.to_prepare do

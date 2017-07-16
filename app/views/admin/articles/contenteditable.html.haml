@@ -1,0 +1,55 @@
+.content
+  .container-fluid
+    #pad-wrapper
+      #editparent
+        #editControls.span12{:style => "text-align:center; padding:5px;"}
+          .btn-group
+            %a.btn{"data-role" => "undo", :href => "#"}
+              %i.icon-undo
+            %a.btn{"data-role" => "redo", :href => "#"}
+              %i.icon-repeat
+          .btn-group
+            %a.btn{"data-role" => "bold", :href => "#"}
+              %b Bold
+            %a.btn{"data-role" => "italic", :href => "#"}
+              %em Italic
+            %a.btn{"data-role" => "underline", :href => "#"}
+              %u
+                %b U
+            %a.btn{"data-role" => "strikeThrough", :href => "#"}
+              %strike abc
+          .btn-group
+            %a.btn{"data-role" => "justifyLeft", :href => "#"}
+              %i.icon-align-left
+            %a.btn{"data-role" => "justifyCenter", :href => "#"}
+              %i.icon-align-center
+            %a.btn{"data-role" => "justifyRight", :href => "#"}
+              %i.icon-align-right
+            %a.btn{"data-role" => "justifyFull", :href => "#"}
+              %i.icon-align-justify
+          .btn-group
+            %a.btn{"data-role" => "indent", :href => "#"}
+              %i.icon-indent-right
+            %a.btn{"data-role" => "outdent", :href => "#"}
+              %i.icon-indent-left
+          .btn-group
+            %a.btn{"data-role" => "insertUnorderedList", :href => "#"}
+              %i.icon-list-ul
+            %a.btn{"data-role" => "insertOrderedList", :href => "#"}
+              %i.icon-list-ol
+          .btn-group
+            %a.btn{"data-role" => "h1", :href => "#"}
+              h
+              %sup 1
+            %a.btn{"data-role" => "h2", :href => "#"}
+              h
+              %sup 2
+            %a.btn{"data-role" => "p", :href => "#"} p
+          .btn-group
+            %a.btn{"data-role" => "subscript", :href => "#"}
+              %i.icon-subscript
+            %a.btn{"data-role" => "superscript", :href => "#"}
+              %i.icon-superscript
+        #editor.span12{:contenteditable => "", :style => ""}
+          %h1 This is a title!
+          %p This is just some example text to start us off

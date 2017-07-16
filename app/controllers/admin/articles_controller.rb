@@ -4,6 +4,9 @@ class Admin::ArticlesController < AdminController
   before_action :parameterize_permalink!, only: [:create, :update]
   before_action :verify_permit?, only: [:edit, :update, :show]
 
+  def contenteditable
+  end
+
   protected
   def article_params
     params.fetch(:article, {}).permit(

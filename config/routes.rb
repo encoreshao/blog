@@ -7,7 +7,11 @@ Rails.application.routes.draw do
 
   namespace :admin, path: '/i/admin' do
     resources :dashboards, only: [:index]
-    resources :articles
+    resources :articles do
+      collection do
+        get :contenteditable
+      end
+    end
     resources :users
     resources :tags
     resources :categories

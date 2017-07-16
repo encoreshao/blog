@@ -31,6 +31,7 @@ gem 'kaminari'
 # gem 'rails-i18n'
 
 gem 'rouge'
+gem 'redcarpet'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
