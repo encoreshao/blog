@@ -2,6 +2,7 @@
   .container
     .row
       .site-heading
-        %h1= I18n.t('tips.author')
+        %h1
+          = link_to I18n.t('tips.author'), root_path
         .subheading
           = I18n.t('tips.heading', date: Time.now.strftime('%Y-%m-%d'))
