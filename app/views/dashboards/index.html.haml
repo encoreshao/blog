@@ -6,24 +6,16 @@
           %h3
             = link_to article.title, article_path(article.params), target: '_blank'
         .meta
-          - unless article.author_name.blank?
-            %span
-              %i.fa.fa-user-o
-              = article.author_name
-          %span
-            %i.fa.fa-calendar
-            = article.published_date
           %span
             %i.fa.fa-cubes
             = article.category_name(I18n.default_locale)
           %span
-            %i.fa.fa-meh-o
-            = I18n.t('tips.viewed_count')
-            = raw "(#{article.view_count})"
-          %span
-            %i.fa.fa-thumbs-up
-            = I18n.t('action.like')
-            = raw "(#{article.likes_count})"
+            %i.fa.fa-calendar
+            = article.published_date
+          - unless article.author_name.blank?
+            %span
+              %i.fa.fa-user-o
+              = article.author_name
         .post-content
           %p
             = raw truncate(strip_tags(article.content), length: 400)

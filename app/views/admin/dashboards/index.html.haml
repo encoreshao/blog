@@ -6,4 +6,4 @@
     %h2= I18n.t('tips.admin_notes')
     %br
     %pre.highlight
-      = raw rouge("def rouge_me\n  puts 'Hey, #{current_user.display_name}!'\nend", 'ruby')
+      = raw rouge("def say_hi!\n  puts 'Hey, #{current_user.display_name}!'\nend", 'ruby')

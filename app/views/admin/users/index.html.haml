@@ -21,12 +21,16 @@
           %td= resource.title
           %td= resource.created_at.strftime('%b %d, %Y')
           %td
-            = link_to admin_user_path(resource) do
-              %i.fa.fa-eye
-              = I18n.t('action.show')
-            = link_to edit_admin_user_path(resource) do
-              %i.fa.fa-edit
-              = I18n.t('action.edit')
+            - if current_user.admin?
+              = link_to admin_user_path(resource) do
+                %i.fa.fa-eye
+                = I18n.t('action.show')
+              = link_to edit_admin_user_path(resource) do
+                %i.fa.fa-edit
+                = I18n.t('action.edit')
+              = link_to admin_user_path(resource), method: :DELETE do
+                %i.fa.fa-remove
+                = I18n.t('action.destory')
 
 %nav{:'aria-label' => 'Page navigation'}
   = paginate collection, views_prefix: 'admin'

@@ -13,6 +13,10 @@
         %span
           %i.fa.fa-cubes
           = @article.category_name(I18n.default_locale)
+        %span
+          %i.fa.fa-meh-o
+          = I18n.t('tips.viewed_count')
+          = raw "(#{@article.view_count})"
         %span.btn-action{data: {name: 'up'}}
           %i.fa.fa-thumbs-up
           = I18n.t('action.like')
