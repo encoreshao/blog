@@ -12,6 +12,8 @@
 /tmp
 /public/uploads
 
+/node_modules
+
 # Ignore editor config
 .DS_Store
 .rbenv-version

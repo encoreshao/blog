@@ -1,5 +1,5 @@
-source 'https://rubygems.org'
-# source 'https://ruby.taobao.org'
+# source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -78,6 +78,9 @@ group :development do
   gem 'capistrano-rails-console'
   gem 'capistrano-bundler'
   gem 'capistrano3-puma'
+
+  gem 'guard-livereload', require: false
+  gem "rack-livereload"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
