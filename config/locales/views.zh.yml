@@ -25,7 +25,8 @@ zh:
     notes: Hey guys, I am a Web developer living in Shanghai, China. We use Ruby on Rails to build web applications!
     note2: 我是一名生活在中国上海的开发者. 可以帮助您创建网站和基于网络的应用程序. 如果您有什么想法可以联系我! - (encore.shao[at]gmail.com)
     comments: 共有 %{count} 条留言
-    heading: 我是一名专注于Web应用程序的软件开发人员。
+    heading: 专注于Web应用程序的软件开发人员
+    side_note_1: Hey, are you looking for this?
   navigation:
     title: 站点导航
     category: 分类
