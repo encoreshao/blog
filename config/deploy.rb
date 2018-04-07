@@ -3,7 +3,7 @@ lock "3.8.2"
 
 set :application, "blog"
 set :repo_url, "https://github.com/encoreshao/#{fetch(:application)}"
-set :rvm_type, :user
+set :rvm_type, :system
 set :rvm_ruby_version, "2.5.0@#{fetch(:application)}"
 
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -18,7 +18,8 @@ server 'icmoc.com', port: 22, roles: [:web, :app, :db], primary: true
 
 ## Defaults:
 # set :scm,           :git
-set :user,          "$USER"
+set :user,          ENV['CAPISTRANO_USER'] || `whoami`.chop
+set :tmp_dir,       "/home/#{fetch(:user)}/tmp"
 set :branch,        :master
 set :format,        :pretty
 set :log_level,     :debug
