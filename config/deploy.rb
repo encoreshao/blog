@@ -2,9 +2,9 @@
 lock "3.8.2"
 
 set :application, "blog"
-set :repo_url, "https://github.com/encoreshao/blog"
+set :repo_url, "https://github.com/encoreshao/#{fetch(:application)}"
 set :rvm_type, :user
-set :rvm_ruby_version, "2.4.1@#{fetch(:application)}"
+set :rvm_ruby_version, "2.5.0@#{fetch(:application)}"
 
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 # set :local_user, -> { `git config user.name`.chomp }
@@ -18,11 +18,11 @@ server 'icmoc.com', port: 22, roles: [:web, :app, :db], primary: true
 
 ## Defaults:
 # set :scm,           :git
-set :user,          'deploy'
+set :user,          "$USER"
 set :branch,        :master
 set :format,        :pretty
 set :log_level,     :debug
-set :keep_releases, 5
+# set :keep_releases, 5
 
 # Don't change these unless you know what you're doing
 set :pty,             true
