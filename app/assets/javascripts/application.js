@@ -17,4 +17,3 @@
 //= require utils/comment-reply.min
 //= require utils/functions
 //= require public/articles
-//= require cable.js

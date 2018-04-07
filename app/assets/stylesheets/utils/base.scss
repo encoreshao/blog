@@ -95,33 +95,33 @@ th {
   text-align: left;
 }
 
-table > thead > tr > th,
-table > tbody > tr > th,
-table > tfoot > tr > th,
-table > thead > tr > td,
-table > tbody > tr > td,
-table > tfoot > tr > td {
+table>thead>tr>th,
+table>tbody>tr>th,
+table>tfoot>tr>th,
+table>thead>tr>td,
+table>tbody>tr>td,
+table>tfoot>tr>td {
   padding: 8px;
   line-height: 1.42857143;
   vertical-align: top;
   border-top: 1px solid #dddddd;
 }
 
-table > thead > tr > th {
+table>thead>tr>th {
   vertical-align: bottom;
   border-bottom: 2px solid #dddddd;
 }
 
-table > caption + thead > tr:first-child > th,
-table > colgroup + thead > tr:first-child > th,
-table > thead:first-child > tr:first-child > th,
-table > caption + thead > tr:first-child > td,
-table > colgroup + thead > tr:first-child > td,
-table > thead:first-child > tr:first-child > td {
+table>caption+thead>tr:first-child>th,
+table>colgroup+thead>tr:first-child>th,
+table>thead:first-child>tr:first-child>th,
+table>caption+thead>tr:first-child>td,
+table>colgroup+thead>tr:first-child>td,
+table>thead:first-child>tr:first-child>td {
   border-top: 0;
 }
 
-table > tbody + tbody {
+table>tbody+tbody {
   border-top: 2px solid #dddddd;
 }
 
@@ -258,8 +258,7 @@ h6 {
   left: -100%;
   z-index: -1;
   height: inherit !important;
-  left: 28%;
-  // box-shadow: 0 0 2px 3px rgba(0,0,0,.03),0 1px 5px rgba(0,0,0,.1);
+  left: 28%; // box-shadow: 0 0 2px 3px rgba(0,0,0,.03),0 1px 5px rgba(0,0,0,.1);
   box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.03), 0 0px 0px rgba(0, 0, 0, 0.1);
 }
 
@@ -334,6 +333,7 @@ article .thumbnail {
 }
 
 
+
 /* Menu Navigations */
 
 .menu-navigation,
@@ -355,8 +355,8 @@ article .thumbnail {
   position: relative;
 }
 
-.menu-navigation ul.main > li > a:before,
-.widget_nav_menu ul.menu > li > a:before {
+.menu-navigation ul.main>li>a:before,
+.widget_nav_menu ul.menu>li>a:before {
   display: inline-block;
   content: '\e0b1';
   font-family: 'typicons';
@@ -483,6 +483,7 @@ article .thumbnail {
   color: #999;
   padding: 10px 20px;
 }
+
 
 
 /* Widgets */
@@ -735,6 +736,7 @@ article .thumbnail {
 }
 
 
+
 /* About Widget */
 
 .widget.about .thumbnail {
@@ -775,6 +777,7 @@ article .thumbnail {
 }
 
 
+
 /* Article */
 
 #main-carousel-slider {
@@ -789,7 +792,7 @@ article .thumbnail {
   position: relative;
 }
 
-#main-carousel-slider > li {
+#main-carousel-slider>li {
   display: none;
 }
 
@@ -1129,6 +1132,7 @@ article.post-quote quote {
 }
 
 
+
 /* Chat */
 
 ul.chat {
@@ -1154,6 +1158,7 @@ ul.chat label {
 ul.chat li.odd {}
 
 
+
 /* Post Tags */
 
 .post-tags span {
@@ -1168,6 +1173,7 @@ ul.chat li.odd {}
 .post-tags span a:hover {
   color: #ad4949;
 }
+
 
 
 /* Related Posts */
@@ -1209,6 +1215,7 @@ ul.chat li.odd {}
   text-align: left;
   margin: 5px 0 0 0;
 }
+
 
 
 /* Post Navigation */
@@ -1322,6 +1329,7 @@ body.single-format-quote #post-nav {
 }
 
 
+
 /* Share Buttons */
 
 .share-buttons {
@@ -1359,6 +1367,7 @@ body.single-format-quote #post-nav {
 #respond {
   margin-bottom: 30px;
 }
+
 
 
 /* Comments */
@@ -1544,6 +1553,7 @@ form input[type='submit'] {
 }
 
 
+
 /* Forms Styles */
 
 .search-box {
@@ -1725,6 +1735,7 @@ input[type="month"].input-lg {
 }
 
 
+
 /* Contact Form 7 */
 
 form.wpcf7-form label,
@@ -1787,6 +1798,7 @@ form.wpcf7-form .wpcf7-validation-errors {
 form.wpcf7-form .wpcf7-mail-sent-ok {
   background: #4a8d03 !important;
 }
+
 
 
 /* Page Navigation */
@@ -1950,6 +1962,7 @@ form.wpcf7-form .wpcf7-mail-sent-ok {
 }
 
 
+
 /* -----------------------------------
   Standard WordPress Styles
 -----------------------------------*/
@@ -1970,6 +1983,7 @@ form.wpcf7-form .wpcf7-mail-sent-ok {
 .alignright {
   float: right;
 }
+
 
 
 /* Image */
@@ -2147,6 +2161,7 @@ ul.sub-menu {
 .bypostauthor {}
 
 
+
 /* ZillaShortcodes Styles */
 
 .zilla-tabs .zilla-nav li a {
@@ -2165,6 +2180,7 @@ ul.sub-menu {
 .bypostauthor {}
 
 
+
 /*--------------------------
   Footer Styles
 ------------------------------*/
@@ -2175,6 +2191,7 @@ footer {
   width: 100%;
   line-height: 140%;
 }
+
 
 /* WordPress Calendar Widget */
 
@@ -2209,6 +2226,7 @@ table#wp-calendar td#next {
 }
 
 
+
 /* Fix WordPress audio player issue */
 
 .mejs-container {
@@ -2225,6 +2243,7 @@ article.format-audio .embed-player .mejs-container {
 }
 
 
+
 /* FlexSlider Necessary Styles
 *********************************/
 
@@ -2233,10 +2252,11 @@ article.format-audio .embed-player .mejs-container {
   padding: 0;
 }
 
-.slides > li {
+.slides>li {
   display: none;
   -webkit-backface-visibility: hidden;
 }
+
 
 
 /* Hide the slides before the JS is loaded. Avoids image jumping */
@@ -2249,6 +2269,7 @@ article.format-audio .embed-player .mejs-container {
 .flex-pauseplay span {
   text-transform: capitalize;
 }
+
 
 
 /* Clearfix for the .slides element */
@@ -2271,13 +2292,14 @@ html[xmlns] .slides {
 }
 
 
+
 /* No JavaScript Fallback */
 
 
 /* If you are not using another script, such as Modernizr, make sure you
 * include js that eliminates this class on page load */
 
-.no-js .slides > li:first-child {
+.no-js .slides>li:first-child {
   display: block;
 }
 

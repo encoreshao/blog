@@ -1,13 +1,25 @@
 body {
-	background-color: #FFFFFF;
+  background-color: #FFFFFF;
 
-  > .container { margin-top: 20px; }
-  .bg-inverse { background-color: $topNav; }
+  >.container {
+    margin-top: 20px;
+  }
+  .bg-inverse {
+    background-color: $topNav;
+  }
 
-  a, a:hover, .btn { cursor: pointer; }
+  a,
+  a:hover,
+  .btn {
+    cursor: pointer;
+  }
 
-  .fa { font-size: 1.2em; }
-  section h4 { margin-top: 1em; }
+  .fa {
+    font-size: 1.2em;
+  }
+  section h4 {
+    margin-top: 1em;
+  }
 
   .right {
     float: right;
@@ -17,20 +29,32 @@ body {
     float: left;
     right: 10px;
   }
-  .simple_form .form-group > textarea.form-control {
+  .simple_form .form-group>textarea.form-control {
     width: 70%;
     height: 200px;
   }
-  .btn-outline-success, .btn-primary {
+  .btn-outline-success,
+  .btn-primary {
     color: $siteColor;
     border-color: $siteColor;
   }
-  .btn-outline-success:hover, .btn-primary {
+  .btn-outline-success:hover,
+  .btn-primary {
     color: white;
     background-color: $siteColor;
     border-color: $siteColor;
   }
+  .nav-item .nav-link,
+  a.navbar-brand {
+    color: rgba(10, 164, 211, .5);
+  }
+
+  .nav-item .nav-link:hover,
+  .nav-item .nav-link.active {
+    color: rgba(10, 164, 211, 1);
+  }
 }
+
 body.mobile {
   nav.navbar .container {
     margin: auto 20px;

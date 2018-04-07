@@ -2,9 +2,13 @@
   color: #bfbfae;
   background-color: #2c2e2f;
 }
-.prettyprint, .highlight {
+
+.prettyprint,
+.highlight {
   padding: 20px 30px;
   margin: 10px 0px;
 
-  &.text { margin: 5px 0px; }
+  &.text {
+    margin: 5px 0px;
+  }
 }

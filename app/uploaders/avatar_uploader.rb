@@ -33,7 +33,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   version :large do
     process resize_to_fit: [230, 230]
-    process :add_text!
+    # process :add_text!
   end
 
   # Create different versions of your uploaded files:

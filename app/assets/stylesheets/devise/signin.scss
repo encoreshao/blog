@@ -1,44 +1,86 @@
-body { font-size: 1.5em; /* Prevents an IE bug where em's scale out of proportion */ }
-
-a img { border: none; } /* Gets rid of IE's blue borders */
-
-a, a:hover { text-decoration: none; }
-
-/* ---------- CLEARFIX ---------- */
-/* For modern browsers */
-.cf:before,
-.cf:after {
-    content: "";
-    display: table;
+body {
+  font-size: 1.5em;
+  /* Prevents an IE bug where em's scale out of proportion */
 }
 
-.cf:after { clear:both; }
+a img {
+  border: none;
+}
+
+
+/* Gets rid of IE's blue borders */
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+
+/* ---------- CLEARFIX ---------- */
+
+
+/* For modern browsers */
+
+.cf:before,
+.cf:after {
+  content: "";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
 
 /* For IE 6/7 (trigger hasLayout) */
-.cf { zoom: 1; }
+
+.cf {
+  zoom: 1;
+}
+
 
 
 /* ---------- GENERAL ---------- */
+
 .round {
-  border-radius: 0.3125em; /* 5/16 */
-  -moz-border-radius: 0.3125em; /* 5/16 */
-  -webkit-border-radius: 0.3125em; /* 5/16 */
+  border-radius: 0.3125em;
+  /* 5/16 */
+  -moz-border-radius: 0.3125em;
+  /* 5/16 */
+  -webkit-border-radius: 0.3125em;
+  /* 5/16 */
 }
 
 p {
-  margin-bottom: 1.25em; /* 20/16 */
+  margin-bottom: 1.25em;
+  /* 20/16 */
   color: #9498a1;
 }
 
-.fl { float: left; }
-.fr { float: right; }
-.cb { clear: both; }
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.cb {
+  clear: both;
+}
+
 
 
 /* ---------- COLORS ---------- */
-a, a:hover { color: $siteColor; }
+
+a,
+a:hover {
+  color: $siteColor;
+}
+
 
 /* ---------- BUTTONS ---------- */
+
 .btn {
   padding: 10px 40px;
 
@@ -49,27 +91,50 @@ a, a:hover { color: $siteColor; }
   border: 1px solid $siteColor;
   cursor: pointer;
 }
+
 .btn:hover {
   background-color: $siteColorLight;
   border: 1px solid $siteColorLight;
 }
 
+
 /* Styling the HTML5 placeholders */
+
+
 /* So far they don't work in: IE, Opera 10 and below, Firefox 3.6 and below */
-::-webkit-input-placeholder { color: #858d9c; }
-:-moz-placeholder { color: #858d9c; }
+
+::-webkit-input-placeholder {
+  color: #858d9c;
+}
+
+:-moz-placeholder {
+  color: #858d9c;
+}
+
 
 /* ---------- CONTENT BOXES ---------- */
-.information-box, .confirmation-box, .error-box, .warning-box { color: $siteColor; }
 
-.notices-boxes { text-align: center; }
+.information-box,
+.confirmation-box,
+.error-box,
+.warning-box {
+  color: $siteColor;
+}
+
+.notices-boxes {
+  text-align: center;
+}
+
 
 /* ---------- TOP + HEADER ---------- */
+
 div#top-bar {
   background-color: $topNav;
-  padding: 0.625em 0; /* 10/16 */
+  padding: 0.625em 0;
+  /* 10/16 */
   padding-left: 3.125em;
 }
+
 #top-bar a {
   color: white;
   padding: 0.6em 0;
@@ -80,25 +145,40 @@ div#header {
   padding: 1%;
 }
 
-div#header-with-tabs { padding: 1.25em 0 0 0; /* 20/16 */ }
+div#header-with-tabs {
+  padding: 1.25em 0 0 0;
+  /* 20/16 */
+}
 
-div#login-intro { padding: 3%; }
+div#login-intro {
+  padding: 3%;
+}
+
 div#login-intro h1 {
   text-transform: uppercase;
   margin: 0.312em 0 0 0;
   font-size: 1.6em;
 }
-div#login-intro h5 { color: #9498a1; }
+
+div#login-intro h5 {
+  color: #9498a1;
+}
+
 
 /* ---------- CONTENT ---------- */
+
 div#content {
   padding: 2em;
   text-align: center;
 }
 
-a:hover { text-decoration: none; }
+a:hover {
+  text-decoration: none;
+}
 
-.right { float: right; }
+.right {
+  float: right;
+}
 
 .navbar-brand.active {
   font-size: 2.0em;
