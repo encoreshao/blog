@@ -12,6 +12,9 @@
 /tmp
 /public/uploads
 
+# Should be excluded kindeditor
+/vendor/assets/kindeditor
+
 /node_modules
 
 # Ignore editor config
