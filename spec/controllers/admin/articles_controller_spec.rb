@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 RSpec.describe Admin::ArticlesController do
   let(:user) { User.make!(:admin) }
-  before(:each) {
+  before(:each) do
     @article = Article.make!
     sign_in(user)
-  }
+  end
 
   describe "GET #index" do
     it "returns http success" do

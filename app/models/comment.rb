@@ -1,23 +1,25 @@
+# frozen_string_literal: true
+
 class Comment < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :commentable, polymorphic: true
 
   has_many :comments,
-           class_name: 'Comment',
-           primary_key: 'id',
-           foreign_key: 'comment_id'
+           class_name: "Comment",
+           primary_key: "id",
+           foreign_key: "comment_id"
 
-  scope :parent_comments, -> { where('comment_id IS NULL') }
+  scope :parent_comments, -> { where("comment_id IS NULL") }
   scope :with_keywords, ->(keyword) {
     return nil if keyword.blank?
 
     criteria = ActiveRecord::Base.send(:sanitize_sql, keyword)
-    joins('LEFT JOIN articles ON comments.commentable_id = articles.id').
-      where("LOWER(articles.title) ILIKE LOWER(?)", "%#{criteria}%")
+    joins("LEFT JOIN articles ON comments.commentable_id = articles.id")
+      .where("LOWER(articles.title) ILIKE LOWER(?)", "%#{criteria}%")
   }
 
   def user_name
-    name || 'Anonymous'
+    name || "Anonymous"
   end
 end
 

@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 # encoding; utf-8
 
 class AvatarUploader < CarrierWave::Uploader::Base
-
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -56,15 +57,15 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # 打水印的位置可以是
   #   'Center', 'NorthWest', 'North', 'NorthEast', 'West', 'Center', 'East', 'SouthWest', 'South', 'SouthEast'
   def add_text!
-    text      = (model.name || 'ICMOC').force_encoding(Encoding::UTF_8)
-    color     = '#0aa4d3'
-    position  = 'Center'
+    text      = (model.name || "ICMOC").force_encoding(Encoding::UTF_8)
+    color     = "#0aa4d3"
+    position  = "Center"
 
     manipulate! do |image|
       image.combine_options do |c|
         c.gravity position
         c.fill color
-        c.pointsize '24'
+        c.pointsize "24"
         c.draw "text 10,10 '#{text}'"
       end
       image

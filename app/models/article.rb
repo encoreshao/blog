@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Article < ApplicationRecord
   validates :title, :permalink, :user_id, :category_id, :content, presence: true
 
@@ -9,6 +11,7 @@ class Article < ApplicationRecord
   has_many :comments, as: :commentable
 
   scope :published, -> { where(is_published: true) }
+  scope :sorting, -> { order("published_at DESC NULLS LAST") }
   scope :with_categories, ->(category_id) {
     return nil if category_id.nil?
 
@@ -32,16 +35,12 @@ class Article < ApplicationRecord
     where(user_id: user_id)
   }
 
-  def author_name
-    user.try(:name)
-  end
-
   def category_name(locale)
     category.send("name_#{locale || 'en'}".to_sym)
   end
 
   def embed?
-    category && category.embed?
+    category&.embed?
   end
 
   def audio?
@@ -53,11 +52,11 @@ class Article < ApplicationRecord
   end
 
   def published_date
-    published_at && published_at.strftime('%Y-%m-%d')
+    published_at&.strftime("%Y-%m-%d")
   end
 
   def tag_names
-    tags.select('name').map(&:name).join(', ')
+    tags.select("name").map(&:name).join(", ")
   end
 
   def params

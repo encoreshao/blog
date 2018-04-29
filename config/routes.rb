@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  devise_for :users, path: '/i/admin/auth', path_names: {
+  devise_for :users, path: "/i/admin/auth", path_names: {
     sign_in: :login,
     sign_out: :logout
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  namespace :admin, path: '/i/admin' do
+  namespace :admin, path: "/i/admin" do
     resources :dashboards, only: [:index]
     resources :articles do
       collection do
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :comments
 
-    root 'dashboards#index'
+    root "dashboards#index"
   end
 
   resources :articles, only: [] do
@@ -39,5 +41,5 @@ Rails.application.routes.draw do
   get "category/:category" => "dashboards#index", as: :categories
   get "tag/:tag" => "dashboards#index", as: :tags
 
-  root 'dashboards#index'
+  root "dashboards#index"
 end

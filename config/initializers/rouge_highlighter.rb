@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module RougeHighlighter
   class Highlight
     def initialize
-      @formatter = Rouge::Formatters::HTML.new(css_class: 'highlight')
+      @formatter = Rouge::Formatters::HTML.new(css_class: "highlight")
       @lexer = Rouge::Lexers::Shell.new
     end
 

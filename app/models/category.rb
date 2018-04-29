@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 class Category < ApplicationRecord
-	has_many :articles
+  has_many :articles
 
   scope :with_keywords, ->(keyword) {
-  	return nil if keyword.blank?
+    return nil if keyword.blank?
 
-  	criteria = ActiveRecord::Base.send(:sanitize_sql, keyword)
-  	where("LOWER(name_zh) ILIKE LOWER(?) OR LOWER(name_en) ILIKE LOWER(?)", "%#{criteria}%", "%#{criteria}%")
+    criteria = ActiveRecord::Base.send(:sanitize_sql, keyword)
+    where("LOWER(name_zh) ILIKE LOWER(?) OR LOWER(name_en) ILIKE LOWER(?)", "%#{criteria}%", "%#{criteria}%")
   }
 
   def embed?
@@ -13,11 +15,11 @@ class Category < ApplicationRecord
   end
 
   def audio?
-    (permalink == 'audio')
+    (permalink == "audio")
   end
 
   def video?
-    (permalink == 'video')
+    (permalink == "video")
   end
 end
 

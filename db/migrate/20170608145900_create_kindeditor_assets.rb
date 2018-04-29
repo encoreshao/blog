@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateKindeditorAssets < ActiveRecord::Migration[5.1]
   def self.up
     create_table :kindeditor_assets do |t|
@@ -15,4 +17,3 @@ class CreateKindeditorAssets < ActiveRecord::Migration[5.1]
     drop_table :kindeditor_assets
   end
 end
-

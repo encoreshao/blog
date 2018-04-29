@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 User.blueprint do
   email         { "user#{sn}@blog.com" }
   name          { "User-#{sn}" }

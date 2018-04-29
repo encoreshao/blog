@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe DashboardsController do
   describe "GET #index" do
     it "returns http success" do

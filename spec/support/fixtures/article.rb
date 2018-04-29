@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Article.blueprint do
   user { User.make! }
   category { Category.make! }

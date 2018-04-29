@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable :recoverable, :registerable
@@ -17,7 +19,7 @@ class User < ApplicationRecord
   before_create :setup_info!
 
   def self.active_users
-    select('name, id').map { |e| [e.name, e.id] }
+    select("name, id").map { |e| [e.name, e.id] }
   end
 
   def display_name
@@ -26,22 +28,23 @@ class User < ApplicationRecord
     email
   end
 
- 	def admin?
- 		!member?
- 	end
+  def admin?
+    !member?
+  end
 
- 	def member?
- 		!is_admin?
- 	end
+  def member?
+    !is_admin?
+  end
 
   def setup_info!
-    self.uuid = SecureRandom.uuid.split('-').join
+    self.uuid = SecureRandom.uuid.split("-").join
   end
 
   private
-  def confirmation_required?
-    false
-  end
+
+    def confirmation_required?
+      false
+    end
 end
 
 # == Schema Information

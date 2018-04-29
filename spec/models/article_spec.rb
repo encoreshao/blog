@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 RSpec.describe Article do
   let (:article) { Article.make! }
 
-  it 'Should be include title when create article' do
+  it "Should be include title when create article" do
     expect(article.title.present?).to be_truthy
   end
 end

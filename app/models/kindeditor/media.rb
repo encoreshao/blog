@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kindeditor::Media < Kindeditor::Asset
   mount_uploader :asset, Kindeditor::MediaUploader
 end

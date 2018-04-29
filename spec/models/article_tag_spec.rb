@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 RSpec.describe ArticlesTag do
   let (:articles_tag) { ArticlesTag.make! }
 
-  it 'Should be present when create ArticlesTag' do
+  it "Should be present when create ArticlesTag" do
     expect(articles_tag.present?).to be_truthy
   end
 end

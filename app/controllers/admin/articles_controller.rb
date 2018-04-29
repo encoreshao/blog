@@ -1,49 +1,51 @@
-class Admin::ArticlesController < AdminController
-  defaults resource_class: Article, collection_name: 'articles', instance_name: 'article'
-  before_action :associate_tags, only: [:update]
-  before_action :parameterize_permalink!, only: [:create, :update]
-  before_action :verify_permit?, only: [:edit, :update, :show]
+# frozen_string_literal: true
 
-  def contenteditable
-  end
+class Admin::ArticlesController < AdminController
+  defaults resource_class: Article, collection_name: "articles", instance_name: "article"
+  before_action :associate_tags, only: [:update]
+  before_action :parameterize_permalink!, only: %i[create update]
+  before_action :verify_permit?, only: %i[edit update show]
+
+  def contenteditable; end
 
   protected
-  def article_params
-    params.fetch(:article, {}).permit(
-    	:title, :permalink, :category_id, :user_id, :published_at,
-    	:is_published, :content, :reprinted_source, :reprinted_link,
-    	:tags, :embed_link
-    )
-  end
 
-  def parameterize_permalink!
-    if params[:article][:permalink].blank? && !params[:article][:title].blank?
-      params[:article][:permalink] = params[:article][:title].parameterize
+    def article_params
+      params.fetch(:article, {}).permit(
+        :title, :permalink, :category_id, :user_id, :published_at,
+        :is_published, :content, :reprinted_source, :reprinted_link,
+        :tags, :embed_link
+      )
     end
-  end
 
-  def associate_tags
-  	tags = params[:article].delete(:tags).split(',').map { |e| e.strip }
+    def parameterize_permalink!
+      if params[:article][:permalink].blank? && !params[:article][:title].blank?
+        params[:article][:permalink] = params[:article][:title].parameterize
+      end
+    end
 
-  	build_tags(tags, resource)
-  end
+    def associate_tags
+      tags = params[:article].delete(:tags).split(",").map(&:strip)
 
-  def build_tags(tags, resource)
-  	return if tags.empty?
+      build_tags(tags, resource)
+    end
 
-    tags.each do |name|
-      tag = Tag.where("LOWER(name) ILIKE LOWER(?)", name).first
-      tag = Tag.create(name: name, permalink: name.downcase) if tag.nil?
+    def build_tags(tags, resource)
+      return if tags.empty?
 
-			ArticlesTag.find_or_create_by(article_id: resource.try(:id), tag_id: tag.id) if resource.present?
-		end
-  end
+      tags.each do |name|
+        tag = Tag.where("LOWER(name) ILIKE LOWER(?)", name).first
+        tag = Tag.create(name: name, permalink: name.downcase) if tag.nil?
 
-  def collection
-    @articles ||= end_of_association_chain.with_owner(current_user).with_keywords(params[:name]).page(params[:page])
-  end
+        ArticlesTag.find_or_create_by(article_id: resource.try(:id), tag_id: tag.id) if resource.present?
+      end
+    end
 
-  def verify_permit?
-    redirect_to admin_articles_path unless admin? || resource.user_id == current_user.id
-  end
+    def collection
+      @articles ||= end_of_association_chain.with_owner(current_user).with_keywords(params[:name]).sorting.page(params[:page])
+    end
+
+    def verify_permit?
+      redirect_to admin_articles_path unless admin? || resource.user_id == current_user.id
+    end
 end

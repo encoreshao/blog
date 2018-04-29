@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tag < ApplicationRecord
   validates :name, :permalink, presence: true, uniqueness: true
 

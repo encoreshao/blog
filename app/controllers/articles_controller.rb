@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
-  before_action :verify?, only: [:show, :comment, :like, :dislike]
+  before_action :verify?, only: %i[show comment like dislike]
 
   def show
     @article.increment!(:view_count)
@@ -29,23 +31,24 @@ class ArticlesController < ApplicationController
   end
 
   private
-  def verify?
-    @article = Article.preload([:comments]).find_by(permalink: params[:permalink], published_at: "#{params[:year]}-#{params[:month]}-#{params[:day]}")
 
-    redirect_to '/404' if @article.blank?
-  end
+    def verify?
+      @article = Article.preload([:comments]).find_by(permalink: params[:permalink], published_at: "#{params[:year]}-#{params[:month]}-#{params[:day]}")
 
-  def comment_params
-    params_comment = {
-      content: params[:comment][:content],
-      name: params[:comment][:name],
-      link: params[:comment][:link],
-      email: params[:comment][:email],
-      comment_parent: params[:comment][:comment_parent].to_i,
-      comment_id: params[:comment_id].blank? ? nil : params[:comment_id],
-      remote_ip: request.remote_ip
-    }
+      redirect_to "/404" if @article.blank?
+    end
 
-    params_comment.delete_if { |k, v| v.blank? }
-  end
+    def comment_params
+      params_comment = {
+        content: params[:comment][:content],
+        name: params[:comment][:name],
+        link: params[:comment][:link],
+        email: params[:comment][:email],
+        comment_parent: params[:comment][:comment_parent].to_i,
+        comment_id: params[:comment_id].blank? ? nil : params[:comment_id],
+        remote_ip: request.remote_ip
+      }
+
+      params_comment.delete_if { |_k, v| v.blank? }
+    end
 end

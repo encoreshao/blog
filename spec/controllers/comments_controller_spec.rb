@@ -1,3 +1,4 @@
-RSpec.describe CommentsController do
+# frozen_string_literal: true
 
+RSpec.describe CommentsController do
 end

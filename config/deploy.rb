@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # config valid only for current version of Capistrano
 lock "3.10.1"
 
@@ -14,11 +16,11 @@ set :format_options, command_output: true, log_file: "log/capistrano.log", color
 append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "public/uploads"
 
-server 'icmoc.com', port: 22, roles: [:web, :app, :db], primary: true
+server "icmoc.com", port: 22, roles: %i[web app db], primary: true
 
 ## Defaults:
 # set :scm,           :git
-set :user,          ENV['CAPISTRANO_USER'] || `whoami`.chop
+set :user,          ENV["CAPISTRANO_USER"] || `whoami`.chop
 set :tmp_dir,       "/home/#{fetch(:user)}/tmp"
 set :branch,        :master
 set :format,        :pretty
@@ -42,7 +44,7 @@ set :migration_servers, -> { primary(fetch(:migration_role)) }
 set :conditionally_migrate, true
 
 # Defaults to [:web]
-set :assets_roles, [:web, :app]
+set :assets_roles, %i[web app]
 
 # RAILS_GROUPS env value for the assets:precompile task. Default to nil.
 # set :rails_assets_groups, :assets
@@ -58,23 +60,23 @@ set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
 set :puma_pid,        "#{shared_path}/tmp/pids/puma.pid"
 set :puma_access_log, "#{release_path}/log/puma.error.log"
 set :puma_error_log,  "#{release_path}/log/puma.access.log"
-set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
+set :ssh_options,     forward_agent: true, user: fetch(:user), keys: %w[~/.ssh/id_rsa.pub]
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
-set :puma_init_active_record, false  # Change to true if using ActiveRecord
+set :puma_init_active_record, false # Change to true if using ActiveRecord
 
 namespace :deploy do
-  desc 'Initial Deploy'
+  desc "Initial Deploy"
   task :initial do
     on roles(:app) do
-      invoke 'deploy'
+      invoke "deploy"
     end
   end
 
-  desc 'Restart application'
+  desc "Restart application"
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      invoke 'puma:restart'
+      invoke "puma:restart"
     end
   end
 

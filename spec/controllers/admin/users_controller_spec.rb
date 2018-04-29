@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Admin::UsersController do
   let(:user) { User.make!(:admin) }
   before(:each) { sign_in(user) }
