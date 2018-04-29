@@ -8,6 +8,7 @@ body {
   font-size: 13px;
   font-family: Georgia, "Times New Roman", Times, serif;
   color: #919191;
+  background: url(http://old.bz55.com/uploads/allimg/150706/139-150F61A645.jpg) 0 0;
 }
 
 .justify {
@@ -88,132 +89,26 @@ section {
   padding: 0;
 }
 
-div.wrapper {
+header {
+  text-align: center;
+  padding: 2%;
+  color: white;
+}
+
+.container {
   display: block;
-  margin: 0;
+  margin: 3% 10%;
   padding: 0 3%;
   text-align: center;
-}
-
-.row1,
-.row1 a {
-  color: #C0BAB6;
-}
-
-.row2 {
-  color: #979797;
-  background-color: #FFFFFF;
-}
-
-.row2 a {
-  color: #FF9900;
-  background-color: #FFFFFF;
-}
-
-.row3,
-.row3 a {
-  color: #919191;
-  background-color: #232323;
-}
-
-.row1, .row3 {
-  height: 15%;
-}
-.row2 {
-  height: 70%;
-}
-
-form,
-fieldset,
-legend {
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-
-legend {
-  display: none;
-}
-
-input,
-textarea,
-select {
-  font-size: 12px;
-  font-family: Georgia, "Times New Roman", Times, serif;
-}
-
-#header,
-#container,
-#footer {
-  display: block;
-  width: 100%;
-  margin: 0 auto;
-}
-
-#header {
-  padding: 20px 0;
-}
-
-#header .fl_left h1,
-#header .fl_left h2 {
-  margin: 0;
-  padding: 0;
-  font-weight: normal;
-  text-transform: none;
-}
-
-#header .fl_left h1 {
-  font-size: 36px;
-}
-
-#header .fl_left h2 {
-  font-size: 13px;
-}
-
-#header #topnav {
-  display: block;
-  float: right;
-  margin: 0;
-  padding: 20px;
-  list-style: none;
-  color: #C0BAB6;
-  background-color: #232323;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 1 1 1;
   border-radius: 10px;
+  padding: 5%;
+  color: white;
 }
 
-#header #topnav li {
-  display: inline;
-  text-transform: uppercase;
-}
-
-#header #topnav li.last {
-  margin-right: 0;
-}
-
-#header #topnav li a {
-  color: #C0BAB6;
-  background-color: #232323;
-}
-
-#header #topnav li a:hover,
-#header #topnav li.active a {
-  color: #449d44;
-  background-color: #232323;
-}
-
-#container {
-  padding: 80px 0;
-}
-
-#footer {
-  padding: 20px 0;
-}
-
-#footer p {
-  margin: 0;
-  padding: 0;
+aside {
+  padding: 2%;
 }
 
 .flex-row {
@@ -228,13 +123,18 @@ select {
   line-height: 20px;
 }
 
-.avatar {
+.row-item a {
+  color: white;
+  text-decoration: underline;
+}
+
+figure {
   width: 200px;
   height: 200px;
   margin: auto;
 }
 
-.summary {
+summary {
   line-height: 2em;
   font-weight: 500;
   font-size: 1.2em;
