@@ -26,7 +26,7 @@ en:
     note2: Hey, I'm Encore Shao! A Ruby developer in Shanghai, China. We create websites and web based application. If you have a idea, Please contact me! - (encore.shao[at]gmail.com)
     comments: There's %{count} Comments
     heading: I'm a software developer with the main focus on Web Application.
-    side_note_1: Hey, are you looking for this?
+    side_note_1: Hello World!
   navigation:
     title: Sitemap
     category: By Category

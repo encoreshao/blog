@@ -116,13 +116,13 @@
             %label
               = I18n.t('form.name')
               %span.red *
-            %input#input-name.input-s{name: "comment[name]", type: "text", required: true}
+            %input#input-name.input-s{name: "comment[name]", type: "text", required: true, autocomplete: 'name'}
           .input.email
             %label
               = I18n.t('form.email')
               %span.red *
-            %input#input-email.input-s{name: "comment[email]", type: "email", required: true}
-          .input.email
+            %input#input-email.input-s{name: "comment[email]", type: "email", required: true, autocomplete: 'email'}
+          .input.url
             %label= I18n.t('form.url')
             %input#input-url.input-s{name: "comment[link]", type: "url"}
           %p.form-submit

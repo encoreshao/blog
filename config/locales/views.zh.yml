@@ -2,8 +2,8 @@ zh:
   title: 博客 - ICMOC
   site_title: 邵壮的个人博客 - Encore Shao - Ruby On Rails
   author: 邵壮
-  keywords: 博客, Encore Shao, 邵壮, Ruby On Rails, 上海, 中国, ICMOC, icmoc.com
-  description: 我是一名Web开发人员, 使用Ruby on Rails来构建Web应用程序. 如果你有想法? 联系我(encore.shao@gmail.com)!
+  keywords: 博客, Encore Shao, 邵壮, Ruby On Rails, 上海, 中国, ICMOC, icmoc.com, 个人博客
+  description: 邵壮的个人博客 - 我是一名Web开发人员, 使用Ruby on Rails来构建Web应用程序. 如果你有想法? 可以联系我哦(encore.shao@gmail.com)!
   tips:
     welcome: Hey, %{author} !
     author: Encore's Blog
@@ -23,10 +23,10 @@ zh:
     follow_me_on_twitter: 在Twitter上关注作者
     viewed_count: 预览数
     notes: Hey guys, I am a Web developer living in Shanghai, China. We use Ruby on Rails to build web applications!
-    note2: 我是一名生活在中国上海的开发者. 可以帮助您创建网站和基于网络的应用程序. 如果您有什么想法可以联系我! - (encore.shao[at]gmail.com)
+    note2: 我是一名生活在上海的开发者. 可以帮助您创建网站和基于网络的应用程序. 如果您有什么想法可以联系我哦! - (encore.shao[at]gmail.com)
     comments: 共有 %{count} 条留言
     heading: 专注于Web应用程序的软件开发人员
-    side_note_1: Hey, are you looking for this?
+    side_note_1: 世界，你好!
   navigation:
     title: 站点导航
     category: 分类
