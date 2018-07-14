@@ -32,6 +32,18 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :pages do
+    resources :fullpanels, only: [:index] do
+      collection do
+        get :case1
+        get :pagepiling
+        get :case3
+        get :case4
+      end
+    end
+    root "homepages#index"
+  end
+
   get "/:year/:month/:day/:permalink" => "articles#show",
       requirements: {
         year: /\d{4}/, month: /\d{1,2}/, day: /\d{1,2}/

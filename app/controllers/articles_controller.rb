@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
+  layout 'articles'
   before_action :verify?, only: %i[show comment like dislike]
 
   def show

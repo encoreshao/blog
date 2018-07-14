@@ -10,8 +10,8 @@
     %meta{ name: 'keywords', content: I18n.t('keywords') }
     %meta{ name: 'description', content: site_description }
 
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    = stylesheet_link_tag 'application', media: "all", 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'pages', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'pages', media: "all", 'data-turbolinks-track': 'reload'
     / Le HTML5 shim, for IE6-8 support of HTML5 elements
     /[if lt IE 9]
       %script{ src: 'http://html5shim.googlecode.com/svn/trunk/html5.js' }
@@ -19,4 +19,9 @@
     = render 'shared/gtag'
 
   %body
-    = yield
+    = render 'shared/fixed_header'
+
+    .container-fuild
+      = yield
+
+    = render 'shared/fixed_footer'

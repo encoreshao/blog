@@ -1,0 +1,38 @@
+#pagepiling
+  #section1.section
+    %h1
+      %author
+        Encore Shao
+      = raw '-'
+      Shanghai, China
+    %p
+      I am a web developer and use Ruby on Rails to build Web application.
+      %br
+      If you have a idea? Please contact me.
+    = render partial: 'shared/social_links', locals: { class_name: 'normal-links' }
+
+  #section2.section
+    .intro
+      %h1 We are using Ruby on Rails
+      %p 我们使用Ruby on Rails帮助用户构建出色的Web应用
+  #section3.section
+    .intro
+      %h1 PostgreSQL, MongoDB, InfluxDB, Redis
+      %p 免费开源的存贮服务
+  #section4.section
+    .intro
+      %h1 AWS, Aliyun
+      %p 构建基于云服务的应用程序
+
+:javascript
+  (function($){
+    $('#pagepiling').pagepiling({
+      sectionsColor: ['#bfda00', '#2ebe21', '#efc32f', '#51bec4'],
+      verticalCentered: true,
+      scrollingSpeed: 1000,
+      navigation: {
+        'position': 'right',
+        'tooltips': ['Personal', 'Language', 'Database', 'Service']
+      }
+    });
+  })(jQuery)

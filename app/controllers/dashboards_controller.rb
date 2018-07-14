@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class DashboardsController < ApplicationController
+  layout 'articles'
+
   def index
     @articles = Article.preload(%i[category user comments tags])
                        .published.with_categories(category_id)

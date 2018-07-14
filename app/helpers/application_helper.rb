@@ -2,15 +2,15 @@
 
 module ApplicationHelper
   def site_title
-    return I18n.t("site_title") if controller_name == "dashboards"
+    return "#{@article.title} - #{I18n.t('site_title')}" if controller_name == 'articles' && action_name == 'show'
 
-    "#{@article.title} - #{I18n.t('site_title')}"
+    I18n.t("site_title")
   end
 
   def site_description
-    return I18n.t("description") if controller_name == "dashboards"
+    return "#{@article.title} - #{I18n.t('site_title')} - #{I18n.t('author')}" if controller_name == 'articles' && action_name == 'show'
 
-    "#{@article.title} - #{I18n.t('site_title')} - #{I18n.t('author')}"
+    I18n.t("description")
   end
 
   def random_banner_image

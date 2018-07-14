@@ -1,0 +1,14 @@
+#pagepiling
+  #section1.section
+    %h1
+      Full Panels
+    %ul.normal-links
+      %li= link_to 'pagePiling', pagepiling_pages_fullpanels_path
+
+:javascript
+  (function($){
+    $('#pagepiling').pagepiling({
+      sectionsColor: ['#bfda00'],
+      navigation: []
+    });
+  })(jQuery)

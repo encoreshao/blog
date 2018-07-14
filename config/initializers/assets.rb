@@ -17,4 +17,4 @@ Rails.application.config.serve_static_assets = false
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
-Rails.application.config.assets.precompile += %w[admin.js admin.css devise.css]
+Rails.application.config.assets.precompile += %w[admin.js admin.css devise.css pages.js pages.css]

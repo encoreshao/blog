@@ -40,6 +40,7 @@ module Blog
     config.generators.system_tests = nil
     config.generators do |g|
       g.template_engine :haml
+      g.test_framework  :rspec, fixture: false, views: false
       g.fixture_replacement :machinist
     end
   end
