@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #
 Rails.application.config.assets.paths << Rails.root.join("vendor", "assets", "components")
 
@@ -20,3 +21,4 @@ Rails.application.config.serve_static_assets = false
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 Rails.application.config.assets.precompile += %w[admin.js admin.css devise.css pages.js pages.css]
+Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/

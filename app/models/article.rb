@@ -35,6 +35,8 @@ class Article < ApplicationRecord
     where(user_id: user_id)
   }
 
+  after_save :cleaning_cache!
+
   def category_name(locale)
     category.send("name_#{locale || 'en'}".to_sym)
   end
@@ -68,6 +70,10 @@ class Article < ApplicationRecord
       day: published_at.day,
       permalink: permalink
     }
+  end
+
+  def cleaning_cache!
+    WarmCaches::ActionCachingHelper.clean_article!(id)
   end
 end
 

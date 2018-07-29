@@ -31,6 +31,9 @@ module Blog
     config.i18n.default_locale = :zh
     config.encoding = "utf-8"
 
+    # Auto load lib folder
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
+
     config.to_prepare do
       # Configure single controller layout
       Devise::SessionsController.layout "devise"
