@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+#
+Rails.application.config.assets.paths << Rails.root.join("vendor", "assets", "components")
 
 # Be sure to restart your server when you modify this file.
 
