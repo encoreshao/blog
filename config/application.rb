@@ -32,7 +32,7 @@ module Blog
     config.encoding = "utf-8"
 
     # Auto load lib folder
-    config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    config.eager_load_paths += Dir["#{config.root}/lib/**/"]
 
     config.to_prepare do
       # Configure single controller layout
