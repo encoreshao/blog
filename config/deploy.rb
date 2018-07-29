@@ -22,7 +22,7 @@ server "icmoc.com", port: 22, roles: %i[web app db], primary: true
 # set :scm,           :git
 set :user,          ENV["CAPISTRANO_USER"] || `whoami`.chop
 set :tmp_dir,       "/home/#{fetch(:user)}/tmp"
-set :branch,        :develop
+set :branch,        :master
 set :format,        :pretty
 set :log_level,     :debug
 # set :keep_releases, 5
