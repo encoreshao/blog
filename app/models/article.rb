@@ -35,7 +35,7 @@ class Article < ApplicationRecord
     where(user_id: user_id)
   }
 
-  after_save :cleaning_cache!
+  after_update :cleaning_cache!
 
   def category_name(locale)
     category.send("name_#{locale || 'en'}".to_sym)
