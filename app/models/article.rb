@@ -73,7 +73,7 @@ class Article < ApplicationRecord
   end
 
   def cleaning_cache!
-    WarmCaches::ActionCachingHelper.clean_article!(id)
+    WarmCaches::ActionCachingHelper.clean_article!(permalink)
   end
 end
 

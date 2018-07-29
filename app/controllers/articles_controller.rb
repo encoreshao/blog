@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
   before_action :verify?, only: %i[show comment like dislike]
   before_action :cleaning_cache!, only: %i[comment like dislike]
 
-  caches_action :show, cache_path: proc { "views/articles-#{params[:id]}" }, expires_in: 1.days
+  caches_action :show, cache_path: proc { "views/articles-#{params[:permalink]}" }, expires_in: 1.days
 
   def show
     @article.increment!(:view_count)
