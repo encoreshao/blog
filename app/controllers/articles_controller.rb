@@ -4,9 +4,6 @@ class ArticlesController < ApplicationController
   layout 'articles'
 
   before_action :verify?, only: %i[show comment like dislike]
-  before_action :cleaning_cache!, only: %i[comment like dislike]
-
-  caches_action :show, cache_path: proc { "views/articles-#{params[:permalink]}" }, expires_in: 1.days
 
   def show
     @article.increment!(:view_count)
@@ -54,9 +51,5 @@ class ArticlesController < ApplicationController
       }
 
       params_comment.delete_if { |_k, v| v.blank? }
-    end
-
-    def cleaning_cache!
-      WarmCaches::ActionCachingHelper.clean_article!(params[:id])
     end
 end
