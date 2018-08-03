@@ -1,13 +1,13 @@
 .prettyprint {
-  color: #bfbfae;
-  background-color: #2c2e2f;
+  color: #f9f9ed;
+  background-color: #000000;
 }
 
 .prettyprint,
 .highlight {
-  padding: 20px 30px;
-  margin: 10px 0px;
-
+  padding: 10px 10px;
+  margin-top: 5px;
+  box-shadow: 0 0 10px 1px #efefef, 0 1px 10px #efefef;
   &.text {
     margin: 5px 0px;
   }

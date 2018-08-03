@@ -37,6 +37,7 @@ ul.normal-links {
         display: block;
         margin: 0 22px 0 0;
         color: #333;
+        font-size: 1.3em;
       }
     }
   }
@@ -68,7 +69,7 @@ ul.normal-links {
   .fa {
     font-size: 1.5em;
     &:hover {
-      font-size: 1.6em;
+      color: #FFF;
     }
   }
 }
