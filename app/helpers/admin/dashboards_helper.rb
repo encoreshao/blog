@@ -19,7 +19,7 @@ module Admin::DashboardsHelper
   def table_human_name(nav_class)
     return I18n.t("navigation.dashboards") if nav_class == "dashboards"
 
-    nav_class.singularize.titleize.constantize.model_name.human
+    nav_class.singularize.titleize.gsub(/\ /, '').constantize.model_name.human
   end
 
   def icon_name(nav_class)
@@ -30,9 +30,13 @@ module Admin::DashboardsHelper
                    "building"
                  when "dashboards"
                    "dashboard"
+                 when 'site_groups'
+                  'object-group'
+                when 'site_links'
+                  'link'
                  else
                    nav_class
-    end
+                 end
 
     "fa fa-#{class_name}"
   end

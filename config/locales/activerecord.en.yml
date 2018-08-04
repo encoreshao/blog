@@ -6,6 +6,8 @@ en:
       category: Category
       tag: Tag
       comment: Comment
+      site_group: Site Group
+      site_link: Site Links
     attributes:
       user:
         email: Email
@@ -60,3 +62,10 @@ en:
         comment_parent: Parent
         content: Content
         created_at: Comment At
+      site_group:
+        name: Name
+        created_at: Created At
+      site_link:
+        name: Name
+        url: URL
+        created_at: Created At

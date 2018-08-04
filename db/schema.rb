@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_170_701_150_254) do
+ActiveRecord::Schema.define(version: 2018_08_03_234846) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,7 +66,7 @@ ActiveRecord::Schema.define(version: 20_170_701_150_254) do
     t.bigint "commentable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index %w[commentable_type commentable_id], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -80,6 +79,21 @@ ActiveRecord::Schema.define(version: 20_170_701_150_254) do
     t.string "asset_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "site_groups", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "site_links", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.bigint "site_group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["site_group_id"], name: "index_site_links_on_site_group_id"
   end
 
   create_table "tags", force: :cascade do |t|

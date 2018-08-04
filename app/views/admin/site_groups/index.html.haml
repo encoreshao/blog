@@ -1,0 +1,26 @@
+.right
+  %nav.navbar
+    = link_to I18n.t('action.new'), new_admin_site_group_path, class: 'btn btn-primary'
+
+.table-responsive
+  %table.table.table-hover.table-bordered
+    %thead
+      %tr
+        %th= SiteGroup.human_attribute_name(:name)
+        %th= SiteGroup.human_attribute_name(:created_at)
+        %th
+    %tbody
+      - collection.each do |resource|
+        %tr
+          %td= resource.name
+          %td= resource.created_at.strftime('%b %d, %Y')
+          %td
+            = link_to edit_admin_site_group_path(resource) do
+              %i.fa.fa-edit
+              = I18n.t('action.edit')
+            = link_to admin_site_group_path(resource), method: :DELETE do
+              %i.fa.fa-remove
+              = I18n.t('action.destory')
+
+%nav{:'aria-label' => 'Page navigation'}
+  = paginate collection, views_prefix: 'admin'

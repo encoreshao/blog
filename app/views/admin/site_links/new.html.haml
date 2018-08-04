@@ -1,0 +1,8 @@
+%h2.text-center
+  = I18n.t('action.new')
+  = SiteLink.model_name.human
+
+.right
+  = link_to I18n.t('action.back'), admin_site_links_path
+
+= render partial: 'form', locals: { resource: @site_link, url: admin_site_links_path }

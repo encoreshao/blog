@@ -1,0 +1,11 @@
+.right
+  = link_to I18n.t('action.back'), admin_site_links_path
+  = link_to I18n.t('action.edit'), edit_admin_site_link_path(resource)
+
+.table-responsive
+  .jumbotron
+    %h2= resource.name
+    %br
+    %div= resource.url
+    %br
+    %div= resource.created_at

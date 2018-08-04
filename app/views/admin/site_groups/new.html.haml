@@ -1,0 +1,8 @@
+%h2.text-center
+  = I18n.t('action.new')
+  = SiteGroup.model_name.human
+
+.right
+  = link_to I18n.t('action.back'), admin_site_groups_path
+
+= render partial: 'form', locals: { resource: @site_group, url: admin_site_groups_path }

@@ -67,14 +67,15 @@
       - full_atricle_tags.each do |tag|
         = link_to tag[0], tags_path(tag: tag[1]), class: "#{'active' if tag[1] == params[:tag]}"
 
-  #widget-pages.widget
-    %h3.widget-title
-      %label
-        %i.fa.fa-tags
-        = I18n.t('tips.pages')
-    .tagcloud
-      = link_to 'Pages', pages_root_path
-      = link_to 'Ekohe', 'https://ekohe.com', target: '_blank'
+  - if sites = SiteLink.availables
+    #widget-pages.widget
+      %h3.widget-title
+        %label
+          %i.fa.fa-tags
+          = I18n.t('tips.pages')
+      .tagcloud
+        - sites.each do |site|
+          = link_to site[0], site[1], target: '_blank'
 
   #widget-wechat.widget
     %h3.widget-title

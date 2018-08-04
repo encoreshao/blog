@@ -6,6 +6,8 @@ zh:
       category: 分类
       tag: 标签
       comment: 留言
+      site_group: 链接组
+      site_link: 链接
     attributes:
       user:
         email: 邮箱
@@ -60,3 +62,10 @@ zh:
         comment_parent: 父类
         content: 内容
         created_at: 留言时间
+      site_group:
+        name: 名称
+        created_at: 创建时间
+      site_link:
+        name: 名称
+        url: 链接
+        created_at: 创建时间

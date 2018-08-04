@@ -18,18 +18,10 @@ Rails.application.routes.draw do
     resources :tags
     resources :categories
     resources :comments
+    resources :site_groups
+    resources :site_links
 
     root "dashboards#index"
-  end
-
-  resources :articles, only: [] do
-    collection do
-      post :comment
-      constraints format: :json do
-        post :like
-        post :dislike
-      end
-    end
   end
 
   namespace :pages do
@@ -43,6 +35,18 @@ Rails.application.routes.draw do
     end
     root "homepages#index"
   end
+
+  resources :articles, only: [] do
+    collection do
+      post :comment
+      constraints format: :json do
+        post :like
+        post :dislike
+      end
+    end
+  end
+
+  resources :sites, only: [:index]
 
   get "/:year/:month/:day/:permalink" => "articles#show",
       requirements: {
