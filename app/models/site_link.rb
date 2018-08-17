@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 class SiteLink < ApplicationRecord
   validates :name, :url, presence: true, uniqueness: true
 
-  has_many :site_group
+  delegate :name, to: :site_group, prefix: true, allow_nil: true
+  belongs_to :site_group
 
   scope :with_keywords, ->(keyword) {
     return nil if keyword.blank?
@@ -14,14 +17,14 @@ class SiteLink < ApplicationRecord
 
   class << self
     def availables
-      Rails.cache.fetch('site_links_availables', expires_in: 1.hour) do
-        order('created_at ASC').map { |e| [e.name, e.url] }
+      Rails.cache.fetch("site_links_availables", expires_in: 1.hour) do
+        order("created_at ASC").map { |e| [e.name, e.url] }
       end
     end
   end
 
   private
-  def clearing_cache
-    Rails.cache.delete('site_links_availables')
-  end
+    def clearing_cache
+      Rails.cache.delete("site_links_availables")
+    end
 end

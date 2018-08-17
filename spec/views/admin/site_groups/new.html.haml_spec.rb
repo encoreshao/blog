@@ -1,9 +1,11 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe "admin/site_groups/new", type: :view do
   before(:each) do
     assign(:site_group, Admin::SiteGroup.new(
-      :name => "MyString"
+                          name: "MyString"
     ))
   end
 

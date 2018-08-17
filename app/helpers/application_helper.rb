@@ -14,7 +14,7 @@ module ApplicationHelper
   end
 
   def random_banner_image
-    image_tag("photos/banner-00#{rand(1..6)}.jpg", class: "attachment-blog-image size-blog-image wp-post-image")
+    image_tag("photos/banner-#{rand(1..15)}.jpg", class: "attachment-blog-image size-blog-image wp-post-image")
   end
 
   def author_thumb_image

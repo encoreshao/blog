@@ -1,9 +1,11 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe "admin/site_groups/edit", type: :view do
   before(:each) do
     @site_group = assign(:site_group, Admin::SiteGroup.create!(
-      :name => "MyString"
+                                        name: "MyString"
     ))
   end
 

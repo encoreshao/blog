@@ -3,6 +3,9 @@
     = f.error_notification
     = f.input :name, required: true
     = f.input :url, required: true
+    .form-group.required.site_group
+      = f.label :site_group, class: 'control-label'
+      = f.select :site_group_id, options_for_select(site_groups)
 
     .form-group.string
       %label.control-label

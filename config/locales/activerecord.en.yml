@@ -68,4 +68,5 @@ en:
       site_link:
         name: Name
         url: URL
+        site_group: Group
         created_at: Created At

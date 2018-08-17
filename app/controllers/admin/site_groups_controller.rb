@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::SiteGroupsController < AdminController
   defaults resource_class: SiteGroup, collection_name: "site_groups", instance_name: "site_group"
 
@@ -11,4 +13,3 @@ class Admin::SiteGroupsController < AdminController
       @site_groups ||= end_of_association_chain.with_keywords(params[:name]).page(params[:page])
     end
 end
-

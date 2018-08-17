@@ -68,4 +68,5 @@ zh:
       site_link:
         name: 名称
         url: 链接
+        site_group: 组
         created_at: 创建时间

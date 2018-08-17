@@ -1,11 +1,13 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe "admin/site_links/edit", type: :view do
   before(:each) do
-    @site_link = assign(:site_link, Admin::SiteLink.create!(
-      :name => "MyString",
-      :url => "MyString",
-      :site_group => ""
+    @site_link = assign(:site_link, SiteLink.create!(
+                                      name: "MyString",
+                                      url: "MyString",
+                                      site_group: ""
     ))
   end
 
