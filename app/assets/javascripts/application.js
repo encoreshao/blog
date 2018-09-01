@@ -1,6 +1,7 @@
 //= require rails-ujs
 //= require turbolinks
 //= require jquery
+//= require utils/js.cookie.min
 //= require utils/jquery-migrate.min
 //= require utils/jquery.backstretch.min
 //= require utils/jpanelmenu

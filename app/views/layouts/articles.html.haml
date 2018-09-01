@@ -19,11 +19,17 @@
     = render 'shared/gtag'
 
   %body{class: "home blog wpb-js-composer js-comp-ver-5.0.1 vc_responsive #{'mobile' if mobile_device?}"}
+    - if controller_name == 'dashboards' && params[:q].blank?
+      = render 'shared/animation'
+
     = render 'shared/top_navbar'
     = render 'shared/navbar'
+
     %section.container
       #content-wrappers
         = yield
+
     = render 'shared/footer'
+    = render 'shared/cookieconsent'
 
     = yield :javascript

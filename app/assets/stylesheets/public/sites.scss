@@ -1,3 +1,39 @@
+@keyframes animation-random {
+  10% {
+    background-color: rgba(10, 164, 211, 0.1)
+  }
+  30% {
+    background-color: rgba(10, 164, 211, 0.3)
+  }
+  50% {
+    background-color: rgba(10, 164, 211, 0.5)
+  }
+  70% {
+    background-color: rgba(10, 164, 211, 0.7)
+  }
+  90% {
+    background-color: rgba(10, 164, 211, 0.9)
+  }
+}
+
+@keyframes color-random {
+  10% {
+    color: rgba(10, 164, 211, 0.1)
+  }
+  30% {
+    color: rgba(10, 164, 211, 0.3)
+  }
+  50% {
+    color: rgba(10, 164, 211, 0.5)
+  }
+  70% {
+    color: rgba(10, 164, 211, 0.7)
+  }
+  90% {
+    color: rgba(10, 164, 211, 0.9)
+  }
+}
+
 #search-form {
   #search-field {
     margin-bottom: 0px !important;
@@ -73,5 +109,124 @@
       text-transform: uppercase;
       display: inline-block;
     }
+  }
+}
+
+.fullpage-animated-box {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+
+  .top-box,
+  .bottom-box {
+    width: 100%;
+    height: 50%;
+    position: relative;
+  }
+
+  .top-box .boxing {
+    bottom: 0;
+  }
+  .bottom-box .boxing {
+    top: 0;
+  }
+  .animation .boxing {
+    position: absolute;
+    width: .5%;
+    height: .5%;
+    background-color: rgba(10, 164, 211, 0.3);
+    -webkit-animation: animation-random 5s infinite;
+    animation: animation-random 5s infinite;
+  }
+  .caption {
+    color: rgba(10, 164, 211, 0.0) !important;
+    -webkit-animation: color-random 5s infinite;
+    animation: color-random 5s infinite;
+  }
+  ul {
+    padding: 0 40px;
+    list-style: none;
+    margin: 0;
+    li {
+      display: inline-block;
+      position: relative;
+      a {
+        display: block;
+        margin: 0 22px 0 0;
+        font-size: 2em;
+      }
+      .fa {
+        font-size: 2em;
+      }
+    }
+  }
+}
+
+.cc-banner.cc-bottom {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
+  align-items: center;
+
+  padding: 1em 1.8em;
+  width: 100%;
+  -ms-flex-direction: row;
+  flex-direction: row;
+
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+
+  position: fixed;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 1.5em;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  z-index: 9999;
+
+  transition: opacity 1s ease;
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.9);
+  .cc-message {
+    -ms-flex: 1;
+    flex: 1;
+  }
+  .cc-compliance {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-line-pack: justify;
+    align-content: space-between;
+    flex-direction: row-reverse;
+  }
+  .cc-banner .cc-btn:last-child {
+    min-width: 140px;
+  }
+  .cc-btn {
+    flex: .5;
+    -ms-flex: .5;
+    cursor: pointer;
+    display: block;
+    padding: .4em .8em;
+    font-size: .9em;
+    font-weight: 700;
+    border-width: 2px;
+    border-style: solid;
+    text-align: center;
+    white-space: nowrap;
+    color: rgb(255, 255, 255);
+    background-color: rgba(10, 164, 211, 1);
+    border-color: transparent;
   }
 }

@@ -29,6 +29,13 @@
 
     $.ajax ajaxOptions
 
+  $(document).on 'click', '.cc-btn.cc-dismiss', (e) ->
+    e.preventDefault()
+
+    $('.cc-window.cc-banner').remove()
+    enabledCookies()
+    return
+
   $("#commentForm").validate()
 
   window.typingRotateCarousel = ->
@@ -55,6 +62,29 @@
   window.loadAssetImages = (elements) ->
     $.each elements, (_, e) ->
       $(this).css('background-image', 'url(' + $(this).data('url') + ')').removeData 'url'
+    return
+
+  window.animationKey = () ->
+    return 'blog.icmoc.com__animation'
+
+  window.noOpeningAnimation = () ->
+    return typeof Cookies.get(animationKey()) == 'undefined'
+
+  window.enabledCookies = () ->
+    Cookies.set(animationKey(), 'opened', { expires: 7 })
+    return
+
+  window.removeAnimationKeyFromCookies = () ->
+    Cookies.remove(animationKey())
+    return
+
+  window.openingAnimation = () ->
+    $boxing = $('.animation .boxing')
+    $boxing.animate { width: '100%' }, 2000, ->
+      $boxing.animate { height: '100%' }, 2000, ->
+        $('.fullpage-animated-box').fadeOut('slow')
+        $('.cc-window.cc-banner').css('opacity', '1')
+
     return
 
 ) jQuery

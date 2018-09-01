@@ -1,0 +1,24 @@
+.fullpage-animated-box
+  .top-box.animation
+    .container-fluid.fullpage-content
+      .row
+        .col-sm-12
+          .caption
+            %h1 Web Developer
+            %br
+            %span
+              = raw I18n.t('tips.notes')
+    .boxing
+  .bottom-box.animation
+    .container-fluid.fullpage-content
+      .row
+        .col-sm-12
+          .caption
+            = render partial: 'shared/social_links', locals: { class_name: '' }
+    .boxing
+
+- content_for :javascript do
+  :javascript
+    (function($){
+      openingAnimation();
+    })(jQuery)

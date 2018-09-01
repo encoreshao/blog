@@ -21,4 +21,8 @@
   :javascript
     (function($){
       loadAssetImages($('header.intro-header, .front'));
+
+      if (!noOpeningAnimation()) {
+        $('.cc-window.cc-banner').remove();
+      }
     })(jQuery)
