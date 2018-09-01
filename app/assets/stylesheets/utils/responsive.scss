@@ -42,6 +42,9 @@
 }
 
 @media screen and (max-width: 800px) {
+  .navbar-brand {
+    display: none;
+  }
   .container {
     width: 90%;
     position: relative;
@@ -114,7 +117,6 @@
   }
   #main-header,
   .sidebar-widgets {
-    padding: 20px 30px;
     clear: both;
   }
   body.admin-bar .sidebar-widgets {
@@ -165,25 +167,22 @@
     width: 100%;
     padding: 0px;
   }
+  .intro-header .site-heading {
+    padding: 15px 0;
+  }
   .sidebar-widgets {
     margin-top: 0px;
-    #widget-warrior_about-2,
-    #widget-search-3,
-    #widget-warrior_recent_posts-2,
-    #widget-tag_cloud-2,
-    #widget-pages,
-    #widget-wechat,
     footer {
       display: none;
     }
     #widget-nav_menu-2 {
-      margin-bottom: 5px;
       .widget-title {
         margin-bottom: 10px;
       }
       #menu-main-menu li {
         float: left;
         margin-left: 10px;
+        width: 50px;
         a {
           text-decoration: underline;
         }
@@ -202,7 +201,7 @@
     }
   }
   #content-wrappers {
-    padding-top: 0px;
+    padding-top: 15px;
     .post-title h3 {
       font-size: 1.2em !important;
     }
@@ -260,6 +259,22 @@
     }
     footer {
       font-size: .7em;
+    }
+  }
+
+  .fullpage-content {
+    .caption {
+      h1 {
+        font-size: 2em;
+      }
+      span {
+        font-size: 1em;
+      }
+    }
+  }
+  .caption.social-links {
+    .fa {
+      font-size: 2em;
     }
   }
 }
