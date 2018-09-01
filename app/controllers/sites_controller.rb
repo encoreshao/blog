@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 class SitesController < ApplicationController
-  layout "pages"
+  layout 'articles'
 
   def index
+  end
+
+  def author
   end
 end

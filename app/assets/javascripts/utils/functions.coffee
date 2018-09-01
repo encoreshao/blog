@@ -130,6 +130,9 @@
 
   $(window).scroll ->
     menu = jQuery('#sidebar-wrappers')
+    if menu.length == 0
+      return
+
     pos = menu.offset()
 
     if $(this).scrollTop() > pos.top + menu.height()

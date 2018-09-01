@@ -19,10 +19,9 @@
     = render 'shared/gtag'
 
   %body{class: "home blog wpb-js-composer js-comp-ver-5.0.1 vc_responsive #{'mobile' if mobile_device?}"}
+    = render 'shared/top_navbar'
     = render 'shared/navbar'
     %section.container
-      #sidebar-wrappers
-        = render 'shared/sidebar'
       #content-wrappers
         = yield
     = render 'shared/footer'

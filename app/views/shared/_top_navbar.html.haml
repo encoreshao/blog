@@ -1,0 +1,18 @@
+%nav.navbar.navbar-expand.navbar-dark.flex-column.flex-md-row.bd-navbar
+  .container
+    %a.navbar-brand.mr-0.mr-md-2{href: root_path}
+      = I18n.t('title')
+
+    .navbar-nav-scroll
+      %ul.navbar-nav.bd-navbar-nav.flex-row
+        = navbar_menu_item(root_path, 'dashboards_index', 'Home')
+        = navbar_menu_item(sites_path, 'sites_index', 'Sitemap')
+        = navbar_menu_item(author_sites_path, 'sites_author', 'Author')
+        = navbar_menu_item(pages_root_path, 'pages_index', 'Pages')
+
+    %ul.navbar-nav.flex-row.ml-md-auto.d-none.d-md-flex
+      %li.nav-item
+        %form.form-inline.my-2.my-lg-0#search-form{action: root_path, method: "get"}
+          %input.form-control.mr-sm-2#search-field{placeholder: 'Search...', type: "text", value: params[:q] || '', name: 'q'}/
+          %button.btn.btn-outline-success.my-2.my-sm-0{type: 'submit', onclick: "jQuery('#search-form').submit();"}
+            = I18n.t('action.search')

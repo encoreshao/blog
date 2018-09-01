@@ -1,41 +1,5 @@
-.post-wrapper.clearfix
-  - @articles.each do |article|
-    %article#post-481.basic-post.post-picture.post-481.post.type-post.status-publish.format-image.has-post-thumbnail.hentry.category-fashion.tag-fashion-show.tag-photography.post_format-post-format-image
-      .post-inner
-        .post-title
-          %h3
-            = link_to article.title, article_path(article.params), target: '_blank'
-        .meta
-          %span
-            %i.fa.fa-cubes
-            = article.category_name(I18n.default_locale)
-          %span
-            %i.fa.fa-calendar
-            = article.published_date
-          - unless article.author_name.blank?
-            %span
-              %i.fa.fa-user
-              = article.author_name
-        .post-content
-          %p
-            = raw truncate(strip_tags(article.content), length: 400)
+- if @articles.empty?
+  = render 'shared/no_results'
+- else
+  = render partial: 'results', locals: { articles: @articles }
 
-        - unless article.tags.empty?
-          .tags
-            %i.fa.fa-tags
-            #{I18n.t('tips.tags')}:
-            - article.tags.each do |tag|
-              = tag.name
-
-        .read-more
-          %a{href: article_path(article.params)}= I18n.t('action.read_more')
-
-- if @articles.total_pages > 1
-  .page-navigation.clearfix
-    = paginate @articles
-
-- content_for :javascript do
-  :javascript
-    (function($){
-      typingRotateCarousel();
-    })(jQuery)

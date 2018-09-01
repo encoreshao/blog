@@ -46,7 +46,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :sites, only: [:index]
+  resources :sites, only: [:index] do
+    collection do
+      get :author
+    end
+  end
 
   get "/:year/:month/:day/:permalink" => "articles#show",
       requirements: {

@@ -1,0 +1,31 @@
+.sidebar-widgets.clearfix
+  #widget-warrior_about-2.widget.about
+    %h3.widget-title
+      %label
+        %i.fa.fa-user
+        = I18n.t('tips.about_the_author')
+    .card.text-center
+      .card-body
+        = image_tag image_path('photos/encore.jpg'), alt: 'Encore Shao', class: 'card-img-top', style: 'width: 300px;height: 300px;'
+      .card-body
+        .container-fluid.fullpage-content
+          .row
+            .col-sm-12
+              .caption
+                %h1 Web Developer
+                %br
+                %span
+                  = raw I18n.t('tips.notes')
+      .card-footer.text-muted
+        .social
+          = render partial: 'shared/social_links', locals: { class_name: '' }
+
+  #widget-wechat.widget
+    %h3.widget-title
+      %label
+        %i.fa.fa-wechat
+        = I18n.t('tips.wechat')
+
+    .card.blocks.wechat
+      .card-body
+        = wechat_image

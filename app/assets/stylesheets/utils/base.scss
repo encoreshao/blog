@@ -298,15 +298,17 @@ h6 {
 
 #sidebar-wrappers {
   color: #555;
-  float: left;
-  width: 25%;
+  // float: left;
+  // width: 25%;
+  display: none;
   line-height: 140%;
 }
 
 #content-wrappers {
-  float: right;
-  width: 69%;
-  max-width: 900px;
+  // float: right;
+  // width: 69%;
+  // max-width: 900px;
+  width: 100%;
   min-height: 100px;
   padding-top: 50px;
 }
@@ -934,14 +936,14 @@ body.single .post-wrapper article.hentry {
 }
 
 .post-inner {
-  padding: 5%;
+  padding: 2% 5%;
 }
 
 .post-inner:hover {
   box-shadow: 0 0 10px 1px $shadowColor, 0 1px 10px $shadowColor;
 }
 
-#content-wrappers article.hentry .read-more {
+.read-more {
   font-family: 'Open Sans';
   font-weight: 400;
   font-size: 12px;
@@ -956,7 +958,7 @@ body.single .post-wrapper article.hentry {
   transition: .25s;
 }
 
-#content-wrappers article.hentry .read-more a {
+#search-form .btn-outline-success, .read-more a {
   display: inline-block;
   color: rgba(255, 255, 255, 1);
   line-height: 20px;
@@ -966,8 +968,8 @@ body.single .post-wrapper article.hentry {
   font-size: 1em;
 }
 
-#content-wrappers article.hentry .read-more a:hover {
-  font-size: 1.1em;
+#search-form .btn-outline-success:hover, .read-more a:hover {
+  font-size: 1.001em;
   color: rgba(255, 255, 255, .8);
   background-color: $siteColorLight;
 }

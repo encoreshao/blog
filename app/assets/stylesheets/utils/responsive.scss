@@ -3,10 +3,12 @@
     width: 1000px;
   }
   #content-wrappers {
-    width: 66%;
+    // width: 66%;
+    width: 100%;
   }
   #sidebar-wrappers {
-    width: 28%;
+    // width: 28%;
+    display: none;
   }
   .before {
     right: 72%;

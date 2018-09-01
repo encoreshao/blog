@@ -84,9 +84,3 @@
         = I18n.t('tips.wechat')
     .blocks.wechat
       = wechat_image
-
-- content_for :javascript do
-  :javascript
-    (function($){
-      loadAssetImages($('header.intro-header, .front'));
-    })(jQuery)

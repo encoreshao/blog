@@ -14,12 +14,14 @@
         #bd-main-nav.collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li.nav-item.active
-              %a.nav-item.nav-link{:href => "/", :onclick => "ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');"}= I18n.t('title')
+              %a.nav-item.nav-link{:href => "/", :onclick => "ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');"}
+                = I18n.t('title')
     #header
       .page-full-width.cf
         #login-intro
           %h1
             = I18n.t('action.signin')
+
     #content
       .notices-boxes
         - flash.each do |type, value|

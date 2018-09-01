@@ -1,5 +1,5 @@
 zh:
-  title: 博客 - ICMOC
+  title: Encore's Blog
   site_title: 邵壮的个人博客 - Encore Shao - Ruby On Rails
   author: 邵壮
   location: 上海, 中国
@@ -12,10 +12,10 @@ zh:
     about_the_author: 关于作者
     tags: 标签
     hot_tags: 热门标签
-    pages: 酷站
+    pages: 友情链接
     wechat: 微信号
     latest_tweets: 最近发表
-    recent_posts: 最近回复
+    recent_posts: 热门讨论
     related_posts: 相关帖子
     post_format: 帖子格式
     previous_post: 上一篇
@@ -24,7 +24,7 @@ zh:
     share_this_article: 分享此文章
     follow_me_on_twitter: 在Twitter上关注作者
     viewed_count: 预览数
-    notes: Hey guys, I am a Web developer living in Shanghai, China. We use Ruby on Rails to build web applications!
+    notes: "Hello, I'm Encore Shao, Worked at Ekohe and lived in Shanghai, China. <br /> We use Ruby on Rails to build the web applications!"
     note2: 我是一名生活在上海的开发者. 可以帮助您创建网站和基于网络的应用程序. 如果您有什么想法可以联系我哦!
     comments: 共有 %{count} 条留言
     heading: 专注于Web应用程序的软件开发人员
