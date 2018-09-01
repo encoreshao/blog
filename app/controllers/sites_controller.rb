@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SitesController < ApplicationController
-  layout 'articles'
+  layout "articles"
 
   def index
   end
