@@ -1,17 +1,13 @@
 %footer.footer-wrapper.clearfix
-  .footer-container.container
   .copyright-wrapper
-    .copyright-container.container
-      .copyright.left
+    .copyright-container.container.d-flex
+      .mr-auto.p-2
         &copy; #{Time.zone.now.year}
         &nbsp;
         = '-'
         &nbsp;
         = link_to I18n.t('title'), root_path
-
-      %br
-
-      .copyright.right
+      .ml-auto.p-2
         All Rights Reserved
 
 %a#scroll-top{href: "#top"}

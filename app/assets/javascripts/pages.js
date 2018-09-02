@@ -1,7 +1,9 @@
 //= require rails-ujs
 //= require turbolinks
 //= require utils/jquery.min
+//= require utils/typed.min
 //= require bootstrap
 //= require jquery.pagepiling.min
+//= require pages/base
 //= require pages/homepages
 //= require pages/fullpanels

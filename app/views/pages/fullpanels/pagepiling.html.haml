@@ -2,9 +2,12 @@
   #section1.section
     %h1
       %author= I18n.t('author')
-    %p
-      %strong= I18n.t('location')
-    %p
+    %div
+      %strong= I18n.t('job_title')
+      = '-'
+      %span= I18n.t('location')
+    %br
+    %div
       = I18n.t('tips.note2')
 
   #section2.section
@@ -22,14 +25,15 @@
       %h1 AWS, Aliyun, Vultr, Digitalocean
       %p 构建基于云服务的应用程序
 
-:javascript
-  (function($){
-    $('#pagepiling').pagepiling({
-      sectionsColor: ['#bfda00', '#2ebe21', '#efc32f', '#51bec4'],
-      scrollingSpeed: 500,
-      navigation: {
-        'position': 'right',
-        'tooltips': ['Personal', 'Language', 'Database', 'Service']
-      }
-    });
-  })(jQuery)
+- content_for :javascript do
+  :javascript
+    (function($){
+      $('#pagepiling').pagepiling({
+        sectionsColor: ['#bfda00', '#2ebe21', '#efc32f', '#51bec4'],
+        scrollingSpeed: 500,
+        navigation: {
+          'position': 'right',
+          'tooltips': ['Personal', 'Language', 'Database', 'Service']
+        }
+      });
+    })(jQuery)

@@ -18,10 +18,12 @@
     = csrf_meta_tags
     = render 'shared/gtag'
 
-  %body
+  %body{class: "#{controller_name}"}
     = render 'shared/fixed_header'
 
     .container-fuild
       = yield
 
     = render 'shared/fixed_footer'
+
+    = yield :javascript

@@ -8,7 +8,7 @@
         .meta
           %span
             %i.fa.fa-cubes
-            = article.category_name(I18n.default_locale)
+            = link_to article.category_name(I18n.default_locale), categories_path(category: article.category&.permalink)
           %span
             %i.fa.fa-calendar
             = article.published_date

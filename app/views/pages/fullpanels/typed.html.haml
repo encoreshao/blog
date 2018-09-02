@@ -1,0 +1,29 @@
+:ruby
+  text = I18n.t('tips.notes')
+  text += '<br /><br />'
+  text += '温故而知新，可以为师矣。<br />学而不思则罔，思而不学则殆。'
+  texts = [text]
+
+#pagepiling
+  .section
+    %h3
+      %span.typed1{data: {text: texts, period: 200}}
+
+- content_for :javascript do
+  :javascript
+    (function($){
+      $('#pagepiling').pagepiling({
+        menu: null,
+        sectionsColor: ['#bfda00'],
+        scrollingSpeed: 500,
+        navigation: {
+          'position': 'right',
+          'tooltips': ['']
+        }
+      });
+
+      // Hide the navigation bar
+      $('#pp-nav').hide()
+
+      typingRotateCarousel('typed1');
+    })(jQuery)

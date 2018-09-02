@@ -38,17 +38,6 @@
 
   $("#commentForm").validate()
 
-  window.typingRotateCarousel = ->
-    textElement = $('.txt-rotate')
-    return if textElement.length == 0
-
-    options =
-      strings: textElement.data('text')
-      typeSpeed: textElement.data('period')
-
-    new Typed '.txt-rotate', options
-    return
-
   window.loadingTagsColor = ->
     cloudTags = $('.tagcloud a')
     $.each cloudTags, (_, e)->
@@ -78,10 +67,11 @@
     Cookies.remove(animationKey())
     return
 
-  window.openingAnimation = () ->
+  window.openingAnimation = (delayTime) ->
     $boxing = $('.animation .boxing')
-    $boxing.animate { width: '100%' }, 2000, ->
-      $boxing.animate { height: '100%' }, 2000, ->
+
+    $boxing.animate { width: '100%' }, delayTime, ->
+      $boxing.animate { height: '100%' }, delayTime, ->
         $('.fullpage-animated-box').fadeOut('slow')
         $('.cc-window.cc-banner').css('opacity', '1')
 

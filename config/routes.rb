@@ -27,8 +27,9 @@ Rails.application.routes.draw do
   namespace :pages do
     resources :fullpanels, only: [:index] do
       collection do
-        get :case1
         get :pagepiling
+        get :typed
+        get :case1
         get :case3
         get :case4
       end

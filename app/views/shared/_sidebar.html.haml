@@ -13,7 +13,7 @@
     .flip-container{ontouchstart: "this.classList.toggle('hover');"}
       .flipper
         .front{data: {url: image_path('photos/encore.jpg')}}
-          %span.name Encore Shao
+          %span.name= I18n.t('author')
         .back
           .back-logo
           .back-title= I18n.t('author')

@@ -1,3 +1,31 @@
-// Place all the styles related to the fullscreens controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.typed-cursor {
+  opacity: 1;
+  animation: typedJSBlink 0.7s infinite;
+  -webkit-animation: typedJSBlink 0.7s infinite;
+  animation: typedJSBlink 0.7s infinite;
+}
+
+@keyframes typedJSBlink {
+  50% {
+    opacity: 0.0;
+  }
+}
+
+@-webkit-keyframes typedJSBlink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.typed-fade-out {
+  opacity: 0;
+  transition: opacity .25s;
+  -webkit-animation: 0;
+  animation: 0;
+}

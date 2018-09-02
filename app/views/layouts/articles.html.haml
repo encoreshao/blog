@@ -19,8 +19,7 @@
     = render 'shared/gtag'
 
   %body{class: "home blog wpb-js-composer js-comp-ver-5.0.1 vc_responsive #{'mobile' if mobile_device?}"}
-    - if controller_name == 'dashboards' && params[:q].blank? && params[:category].blank?
-      = render 'shared/animation'
+    = render 'shared/animation' if animation?
 
     = render 'shared/top_navbar'
     = render 'shared/navbar'

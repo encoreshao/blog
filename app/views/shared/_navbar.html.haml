@@ -5,4 +5,7 @@
         %h1
           = link_to I18n.t('tips.author'), root_path
         .subheading
-          = I18n.t('tips.heading', date: Time.now.strftime('%Y-%m-%d'))
+          %em
+            = I18n.t('job_title')
+          = '-'
+          = I18n.t('tips.heading')

@@ -1,14 +1,14 @@
 #pagepiling
   #section1.section
-    %h1
-      单页应用
     %ul.normal-links
-      %li= link_to 'pagePiling', pagepiling_pages_fullpanels_path
+      %li= link_to '全屏滚动效果', pagepiling_pages_fullpanels_path
+      %li= link_to '打印机', typed_pages_fullpanels_path
 
-:javascript
-  (function($){
-    $('#pagepiling').pagepiling({
-      sectionsColor: ['#bfda00'],
-      navigation: []
-    });
-  })(jQuery)
+- content_for :javascript do
+  :javascript
+    (function($){
+      $('#pagepiling').pagepiling({
+        sectionsColor: ['#bfda00'],
+        navigation: []
+      });
+    })(jQuery)

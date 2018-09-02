@@ -6,13 +6,13 @@
         = I18n.t('tips.about_the_author')
     .card.text-center
       .card-body
-        = image_tag image_path('photos/encore.jpg'), alt: 'Encore Shao', class: 'card-img-top', style: 'width: 300px;height: 300px;'
+        = image_tag image_path('photos/encore.jpg'), alt: I18n.t('author'), class: 'card-img-top', style: 'width: 300px;height: 300px;'
       .card-body
         .container-fluid.fullpage-content
           .row
             .col-sm-12
               .caption
-                %h1 Web Developer
+                %h1= raw I18n.t('job_title')
                 %br
                 %span
                   = raw I18n.t('tips.notes')

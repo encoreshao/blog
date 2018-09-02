@@ -4,6 +4,9 @@ class Pages::FullpanelsController < PagesController
   def index
   end
 
+  def typed
+  end
+
   def case1
   end
 

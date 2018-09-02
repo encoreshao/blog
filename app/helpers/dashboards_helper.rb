@@ -10,4 +10,8 @@ module DashboardsHelper
       Article.select("title, created_at, published_at, permalink").where(id: article_ids)
     end
   end
+
+  def animation?
+    controller_name == 'dashboards' && params[:q].blank? && params[:category].blank? && params[:page].blank?
+  end
 end
