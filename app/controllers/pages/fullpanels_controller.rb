@@ -7,6 +7,9 @@ class Pages::FullpanelsController < PagesController
   def typed
   end
 
+  def slides
+  end
+
   def case1
   end
 

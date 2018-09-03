@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'LibreBaskerville';
+  font-style: normal;
+  font-weight: 400;
+  src: local('LibreBaskerville-Regular'),
+      local('LibreBaskerville-Regular'),
+      font-url('LibreBaskerville-Regular.ttf')
+      format('ttf');
+}
+@font-face {
+  font-family: 'LibreBaskerville Italic';
+  font-style: normal;
+  font-weight: 700;
+  src: local('LibreBaskerville-Italic'),
+      local('LibreBaskerville-Italic'),
+      font-url('LibreBaskerville-Italic.ttf')
+      format('ttf');
+}
+@font-face {
+  font-family: 'LibreBaskerville Bold';
+  font-style: normal;
+  font-weight: 700;
+  src: local('LibreBaskerville-Bold'),
+      local('LibreBaskerville-Bold'),
+      font-url('LibreBaskerville-Bold.ttf')
+      format('ttf');
+}

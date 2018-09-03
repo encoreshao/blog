@@ -10,7 +10,6 @@
     %meta{ name: 'keywords', content: I18n.t('keywords') }
     %meta{ name: 'description', content: site_description }
 
-    = javascript_include_tag 'pages', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag 'pages', media: "all", 'data-turbolinks-track': 'reload'
     / Le HTML5 shim, for IE6-8 support of HTML5 elements
     /[if lt IE 9]
@@ -18,12 +17,13 @@
     = csrf_meta_tags
     = render 'shared/gtag'
 
-  %body{class: "#{controller_name}"}
+  %body{class: "#{controller_name}-#{action_name}"}
     = render 'shared/fixed_header'
 
     .container-fuild
       = yield
 
-    = render 'shared/fixed_footer'
+    = render 'shared/fixed_footer' unless action_name == 'slides'
 
+    = javascript_include_tag 'pages', 'data-turbolinks-track': 'reload', 'data-turbolinks-suppress-warning': 'reload'
     = yield :javascript

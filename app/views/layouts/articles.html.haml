@@ -10,7 +10,6 @@
     %meta{ name: 'keywords', content: I18n.t('keywords') }
     %meta{ name: 'description', content: site_description }
 
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag 'application', media: "all", 'data-turbolinks-track': 'reload'
     / Le HTML5 shim, for IE6-8 support of HTML5 elements
     /[if lt IE 9]
@@ -30,5 +29,7 @@
 
     = render 'shared/footer'
     = render 'shared/cookieconsent'
+
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
     = yield :javascript

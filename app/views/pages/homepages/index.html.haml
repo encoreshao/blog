@@ -4,10 +4,11 @@
     %ul.normal-links
       %li= link_to '单页应用', pages_fullpanels_path
 
-:javascript
-  (function($){
-    $('#pagepiling').pagepiling({
-      sectionsColor: ['#bfda00'],
-      navigation: []
-    });
-  })(jQuery)
+- content_for :javascript do
+  :javascript
+    (function($){
+      $('#pagepiling').pagepiling({
+        sectionsColor: ['rgba(10, 164, 211, .8)'],
+        navigation: []
+      });
+    })(jQuery)

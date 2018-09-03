@@ -25,13 +25,11 @@ Rails.application.routes.draw do
   end
 
   namespace :pages do
-    resources :fullpanels, only: [:index] do
+    resources :fullpanels, only: [:index], constraints: { format: 'html' } do
       collection do
         get :pagepiling
         get :typed
-        get :case1
-        get :case3
-        get :case4
+        get :slides
       end
     end
     root "homepages#index"

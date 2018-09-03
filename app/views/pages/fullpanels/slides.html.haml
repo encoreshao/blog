@@ -1,0 +1,66 @@
+<!-- slides -->
+
+%section#slides
+  - slides_data.each do |data|
+    .slide{data: {view: data[:view], order: data[:order]}, class: "#{'current' if data[:order] == 1}"}
+      %h2= raw data[:title]
+      %p
+        = raw data[:desc]
+        %a.slide-trigger.open{href: 'javascript:void(0);'}
+          %i
+          %b= I18n.t('action.more')
+        %a.slide-trigger.close{href: 'javascript:void(0);'}
+          %i
+          %b= I18n.t('action.less')
+
+<!-- panes -->
+%section#panes.hide
+  - panes_data.each do |data|
+    - style = "display: #{data[:order] == 1 ? 'block' : 'none'};"
+    .pane{data: {view: data[:view]}, style: style}
+      .inner
+        // %img
+        .left
+          %p
+            %em>
+              = raw data[:left][:title]
+            = raw data[:left][:desc]
+        .right
+          %h2= raw data[:right][:title]
+          %p= raw data[:right][:desc]
+
+<!-- Author -->
+%section#about-pane
+  .inner
+    %img{alt: I18n.t('author'), src: image_path('photos/encore.jpg')}/
+    .left
+      %p
+        = raw I18n.t('tips.notes')
+    .right
+      %p
+        一起书写未来...
+      %br
+      %p
+        = raw I18n.t('tips.note2')
+      = render partial: 'shared/social_links', locals: { class_name: 'personal-links' }
+
+<!-- Tracking -->
+%section#track
+  %nav#about
+    %a#about-trigger{href: 'javascript:void(0);'}
+      %i.fa.fa-info
+  %nav#dates
+    - dates_data.each_with_index do |data, index|
+      %a.date.open{data: {view: data[:view], href: 'javascript:void(0);'}, class: "#{'current' if index == 0}"}
+        - date = data[:date]
+        = date.strftime('%b')
+        %i= date.strftime('%d')
+        = date.strftime('%Y')
+
+  %nav#ticker
+    %a#ticker-moment{href: 'javascript:void(0);', style: "left: 168px; width: 60.4737px;"}
+  %nav#keys
+    %a#KeyTop{href: 'javascript:void(0);'}
+    %a#KeyRight{href: 'javascript:void(0);'}
+    %a#KeyBottom{href: 'javascript:void(0);'}
+    %a#KeyLeft{href: 'javascript:void(0);'}
