@@ -24,7 +24,7 @@ If you want to add or modify the styles please do it from the custom.css file in
 
 body {
   background: white;
-  font: 15px/200% 'Open Sans', Georgia, serif;
+  font: 15px/200% 'LibreBaskerville', Georgia, serif;
   color: #2a2a2a;
   font-weight: 400;
   margin: 0 auto;
@@ -35,7 +35,7 @@ body {
 
 input,
 textarea {
-  font: 100% 'Open Sans', Arial, Helvetica, sans-serif;
+  font: 100% 'LibreBaskerville', Arial, Helvetica, sans-serif;
 }
 
 p {
@@ -944,7 +944,7 @@ body.single .post-wrapper article.hentry {
 }
 
 .read-more {
-  font-family: 'Open Sans';
+  font-family: 'LibreBaskerville';
   font-weight: 400;
   font-size: 12px;
   color: $siteColor;
@@ -1119,7 +1119,7 @@ article.post-quote quote {
 .post-quote cite {
   display: inline-block;
   background: rgba(0, 0, 0, .3);
-  font: 14px/180% 'Open Sans', Helvetica, Arial, sans-serif;
+  font: 14px/180% 'LibreBaskerville', Helvetica, Arial, sans-serif;
   color: #fff;
   padding: 5px 10px;
 }

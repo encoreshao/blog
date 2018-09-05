@@ -1,4 +1,3 @@
-//= require rails-ujs
 //= require turbolinks
 //= require jquery
 //= require utils/js.cookie.min

@@ -1,4 +1,3 @@
-//= require rails-ujs
 //= require turbolinks
 //= require utils/jquery.min
 //= require utils/jquery-migrate.min
