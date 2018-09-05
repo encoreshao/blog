@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
 
   namespace :pages do
-    resources :fullpanels, only: [:index], constraints: { format: 'html' } do
+    resources :fullpanels, only: [:index], constraints: { format: "html" } do
       collection do
         get :pagepiling
         get :typed

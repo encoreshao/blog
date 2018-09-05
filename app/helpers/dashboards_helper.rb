@@ -12,8 +12,8 @@ module DashboardsHelper
   end
 
   def animation?
-    controller_name == 'dashboards' &&
-      params[:q].blank? && params[:category].blank? && params[:tag] &&
+    controller_name == "dashboards" &&
+      params[:q].blank? && params[:category].blank? && params[:tag].blank? &&
       params[:page].blank?
   end
 end
