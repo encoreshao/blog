@@ -22,7 +22,7 @@ Z-INDEXES
 /* globals --------------- */
 
 body.fullpanels-slides {
-  background: #222 url(asset-path('assets/photos/desktop.jpg')) center center fixed;
+  background: #222 image-url('photos/desktop.jpg') center center fixed;
   overflow-x: hidden;
   position: relative;
   -webkit-background-size: cover;
