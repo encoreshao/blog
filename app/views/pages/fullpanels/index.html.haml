@@ -1,9 +1,12 @@
 #pagepiling
   #section1.section
     %ul.normal-links
-      %li= link_to '全屏滚动效果', pagepiling_pages_fullpanels_path
-      %li= link_to '打字机', typed_pages_fullpanels_path
-      %li= link_to '幻灯片', slides_pages_fullpanels_path
+      %li
+        %h5= link_to '全屏滚动效果', pagepiling_pages_fullpanels_path
+      %li
+        %h5= link_to '打字机', typed_pages_fullpanels_path
+      %li
+        %h5= link_to '幻灯片', slides_pages_fullpanels_path
 
 - content_for :javascript do
   :javascript

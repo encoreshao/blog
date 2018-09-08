@@ -316,7 +316,8 @@ h6 {
 .container {
   max-width: 1180px;
   margin: 0 auto;
-  position: relative;
+  max-width: calc(100% - 100px);
+  min-width: 400px;
 }
 
 .thumbnail img,
@@ -333,8 +334,6 @@ h6 {
 article .thumbnail {
   height: 150px;
 }
-
-
 
 /* Menu Navigations */
 

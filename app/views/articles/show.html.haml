@@ -31,6 +31,12 @@
         - if @article.embed?
           = audio_or_video_of_article(@article)
 
+        - if @article.reprinted_link.present?
+          %strong
+            = 'References - '
+          %em= link_to @article.reprinted_source, @article.reprinted_link, target: '_blank'
+          %br
+
       - unless @article.tags.empty?
         %footer.content-footer
           .tags
