@@ -16,7 +16,7 @@
   }
 }
 
-@keyframes color-random {
+@keyframes colorRandom {
   10% {
     color: rgba(10, 164, 211, 0.1)
   }
@@ -145,8 +145,8 @@
   }
   .caption {
     color: rgba(10, 164, 211, 0.0) !important;
-    -webkit-animation: color-random 5s infinite;
-    animation: color-random 5s infinite;
+    -webkit-animation: colorRandom 5s infinite;
+    animation: colorRandom 5s infinite;
   }
   ul {
     padding: 0 40px;

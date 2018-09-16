@@ -1,7 +1,7 @@
 .post-wrapper
   %article#post-481.basic-post.post-picture.post.type-post.status-publish.format-image.has-post-thumbnail.hentry.category-fashion.tag-fashion-show.tag-photography.post_format-post-format-image
     .thumbnail.typing
-      %h1.typing-carousel.txt-rotate{data: {period: 50, text: [I18n.t('tips.side_note_1')]}}
+      %h1= I18n.t('tips.side_note_1')
     .post-inner
       .post-title
         %h1
@@ -41,7 +41,8 @@
         %footer.content-footer
           .tags
             %label #{I18n.t('tips.tags')}:
-            %strong= @article.tag_names
+            - @article.tag_names.each do |tag|
+              %strong= link_to tag[:name], tag[:permalink], target: '_blank'
 
       .share-buttons
         - article_url = article_url(@article.params)

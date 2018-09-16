@@ -2,15 +2,33 @@
 
 module ApplicationHelper
   def site_title
-    return "#{@article.title} - #{I18n.t('site_title')}" if controller_name == 'articles' && action_name == 'show'
-
-    I18n.t("site_title")
+    if article_pages?
+      article_page_title
+    elsif fullpanel_pages?
+      "#{I18n.t("site_title")} - 单页应用"
+    else
+      I18n.t("site_title")
+    end
   end
 
   def site_description
-    return "#{@article.title} - #{I18n.t('site_title')} - #{I18n.t('author')}" if controller_name == 'articles' && action_name == 'show'
+    if article_pages?
+      "#{article_page_title} - #{I18n.t('author')}"
+    else
+      I18n.t("description")
+    end
+  end
 
-    I18n.t("description")
+  def article_page_title
+    "#{@article.title} - #{I18n.t('site_title')}"
+  end
+
+  def article_pages?
+    controller_name == 'articles' && action_name == 'show'
+  end
+
+  def fullpanel_pages?
+    controller_name == 'fullpanels'
   end
 
   def random_banner_image
@@ -37,12 +55,6 @@ module ApplicationHelper
         [e.send(attr_name.to_sym), e.permalink]
       end
     end
-  end
-
-  def friendly_links
-    {
-      "Ekohe" => "https://ekohe.com"
-    }
   end
 
   def audio_or_video_of_article(article)

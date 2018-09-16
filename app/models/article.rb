@@ -57,7 +57,7 @@ class Article < ApplicationRecord
   end
 
   def tag_names
-    tags.select("name").map(&:name).join(", ")
+    tags.select('name, permalink').map { |e| { permalink: e.permalink, name: e.name } }
   end
 
   def params
