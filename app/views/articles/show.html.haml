@@ -42,7 +42,7 @@
           .tags
             %label #{I18n.t('tips.tags')}:
             - @article.tag_names.each do |tag|
-              %strong= link_to tag[:name], tag[:permalink], target: '_blank'
+              %strong= link_to tag[:name], tags_path(tag: tag[:permalink]), target: '_blank'
 
       .share-buttons
         - article_url = article_url(@article.params)
