@@ -1359,3 +1359,39 @@ body.fullpanels-slides {
     opacity: .05;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .fullpanels-slides {
+    #slides {
+      h2 {
+        font-size: 2.5rem;
+      }
+      p {
+        font-size: 1.2rem;
+        margin: 0px;
+      }
+    }
+  }
+  #about-pane .inner {
+    img {
+      left: 40%;
+    }
+    div.left, div.right {
+      width: 100%;
+      padding: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .fullpanels-slides {
+    #slides .slide h2 {
+      font-size: 2em;
+    }
+    #slides .slide p {
+      margin: .1em 1.1em !important;
+      width: 80%;
+      font-size: 1.5em;
+    }
+  }
+}

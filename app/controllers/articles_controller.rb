@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article.increment!(:view_count)
+    fresh_when @article
   end
 
   def comment
@@ -34,7 +35,7 @@ class ArticlesController < ApplicationController
 
   private
     def verify?
-      @article = Article.preload([:comments]).find_by(permalink: params[:permalink], published_at: "#{params[:year]}-#{params[:month]}-#{params[:day]}")
+      @article = Article.preload([:comments, :tags]).find_by(permalink: params[:permalink], published_at: "#{params[:year]}-#{params[:month]}-#{params[:day]}")
 
       redirect_to "/404" if @article.blank?
     end

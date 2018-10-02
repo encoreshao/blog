@@ -169,6 +169,11 @@
   }
   .intro-header .site-heading {
     padding: 15px 0;
+    h1 {
+      font-size: 1.5em;
+      padding: 5px;
+      margin: 0px;
+    }
   }
   .sidebar-widgets {
     margin-top: 0px;
@@ -219,7 +224,7 @@
     word-break: break-word;
   }
   article .thumbnail.typing {
-    height: 80px;
+    height: auto;
     h1 {
       line-height: 80px;
       font-size: 1.5em;
@@ -228,6 +233,9 @@
   .post-inner .meta span,
   footer.footer-wrapper {
     font-size: .8em;
+    .copyright-wrapper {
+      padding: 10px;
+    }
   }
   .post-content {
     audio,

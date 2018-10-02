@@ -24,8 +24,8 @@
           .tags
             %i.fa.fa-tags
             #{I18n.t('tips.tags')}:
-            - article.tag_names.each do |tag|
-              = link_to tag[:name], tags_path(tag: tag[:permalink]), target: '_blank'
+            - article.tags.each do |tag|
+              = link_to tag.name, tags_path(tag: tag.permalink), target: '_blank'
 
         .read-more
           %a{href: article_path(article.params)}= I18n.t('action.read_more')
