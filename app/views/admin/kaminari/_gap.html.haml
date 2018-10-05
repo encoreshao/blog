@@ -5,5 +5,4 @@
 -#    per_page:      number of items to fetch per page
 -#    remote:        data-remote
 %li.page-item.page.gap
-	= link_to 'javascript:void(0)', class: 'page-link' do
-  	= t('views.pagination.truncate').html_safe
+	= link_to t('views.pagination.truncate').html_safe, 'javascript:void(0)', class: 'page-link'

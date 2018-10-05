@@ -1,6 +1,4 @@
-.right
-  %nav.navbar
-    = link_to I18n.t('action.new'), new_admin_tag_path, class: 'btn btn-primary'
+= render partial: 'admin/shared/list_header', locals: { new_resource_path: new_admin_tag_path, kclass: Tag }
 
 .table-responsive
   %table.table.table-hover.table-bordered

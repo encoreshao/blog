@@ -94,6 +94,7 @@ en:
       previous: "&lsaquo; Prev"
       next: "Next &rsaquo;"
       truncate: "&hellip;"
+    total_count: "Total of %{count} %{name}"
   helpers:
     page_entries_info:
       one_page:

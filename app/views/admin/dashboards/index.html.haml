@@ -1,9 +1,10 @@
 .jumbotron.masthead
   .container
-    %h1
-      = I18n.t('tips.welcome', author: current_user.display_name)
-    %br
-    %h2= I18n.t('tips.admin_notes')
+    .text-center
+      %h1
+        = I18n.t('tips.welcome', author: current_user.display_name)
+      %h6= I18n.t('tips.admin_notes')
+
     %br
     %pre.highlight
       = raw rouge("def say_hi!\n  puts 'Hey, #{current_user.display_name}!'\nend", 'ruby')

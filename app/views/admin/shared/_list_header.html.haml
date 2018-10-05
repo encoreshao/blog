@@ -1,0 +1,5 @@
+.alert.alert-info
+  %strong= I18n.t('views.total_count', count: collection.total_count, name: kclass.model_name.human)
+
+  - unless new_resource_path.nil?
+    %span= link_to I18n.t('action.new'), new_resource_path, class: 'btn btn-primary'

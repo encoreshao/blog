@@ -50,5 +50,7 @@ module Blog
       g.test_framework  :rspec, fixture: false, views: false
       g.fixture_replacement :machinist
     end
+
+    config.middleware.use Rack::Attack
   end
 end

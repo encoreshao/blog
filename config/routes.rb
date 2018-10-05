@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     sign_in: :login,
     sign_out: :logout
   }
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :admin, path: "/i/admin" do
     resources :dashboards, only: [:index]
     resources :articles do

@@ -96,6 +96,7 @@ zh:
       previous: "&lsaquo; 上一页"
       next: "下一页 &rsaquo;"
       truncate: "&hellip;"
+    total_count: "总计 %{count} %{name}"
   helpers:
     page_entries_info:
       one_page:

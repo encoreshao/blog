@@ -1,5 +1,6 @@
 //= require turbolinks
 //= require utils/jquery.min
+//= require jquery_ujs
 //= require utils/jquery-migrate.min
 //= require utils/jquery.form.min
 //= require utils/jquery-3.2.1.slim.min
