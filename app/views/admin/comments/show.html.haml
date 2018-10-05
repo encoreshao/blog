@@ -2,10 +2,22 @@
   = link_to I18n.t('action.back'), admin_comments_path
 
 .table-responsive
-  .jumbotron
-    %h2= resource.commentable.try(:title)
-    %br
-    %div= resource.name
-    %div= resource.email
-    %div= resource.link
-    %div= resource.content
+  %h2= link_to resource.commentable.try(:title), admin_article_path(resource.commentable)
+  %br
+  %table.table.table-hover.table-bordered
+    %tbody
+      %tr
+        %td Request IP
+        %td= resource.remote_ip
+      %tr
+        %td Name
+        %td= resource.name
+      %tr
+        %td Email
+        %td= resource.email
+      %tr
+        %td Link
+        %td= resource.link
+      %tr
+        %td Content
+        %td= resource.content

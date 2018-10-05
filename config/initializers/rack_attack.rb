@@ -1,12 +1,66 @@
 # frozen_string_literal: true
 
-class Rack::Attack::Request < ::Rack::Request
-  def localhost?
-    ip == "127.0.0.1"
+# class Rack::Attack::Request < ::Rack::Request
+#   def localhost?
+#     ip == "127.0.0.1"
+#   end
+# end
+
+# Rack::Attack.safelist("localhost") { |req| req.localhost? }
+
+class Rack::Attack
+  class Request < ::Rack::Request
+    def allowed_ip?
+      allowed_ips = ["127.0.0.1", "::1"]
+      allowed_ips.include?(remote_ip)
+    end
+
+    def remote_ip
+      # Cloudflare stores remote IP in CF_CONNECTING_IP header
+      @remote_ip ||= (env["HTTP_CF_CONNECTING_IP"] ||
+                      env["action_dispatch.remote_ip"] ||
+                      ip).to_s
+    end
+  end
+
+  safelist("allow from localhost") do |req|
+    req.allowed_ip?
+  end
+
+  # https://github.com/kickstarter/rack-attack/wiki/Example-Configuration
+  # Throttle all requests by IP (60rpm)
+  #
+  # Key: "rack::attack:#{Time.now.to_i/:period}:req/ip:#{req.ip}"
+  throttle('req/ip', limit: 300, period: 5.minutes) do |req|
+    req.ip # unless req.path.start_with?('/assets')
+  end
+
+  ### Prevent Brute-Force commets Attacks ###
+
+  # Throttle POST requests to /articles/comment by IP address
+  #
+  # Key: "rack::attack:#{Time.now.to_i/:period}:comments/ip:#{req.ip}"
+  throttle('comments/ip', limit: 5, period: 20.seconds) do |req|
+    if req.path == '/articles/comment' && req.post?
+      req.ip
+    end
+  end
+
+  # Throttle POST requests to /login by email param
+  #
+  # Key: "rack::attack:#{Time.now.to_i/:period}:logins/email:#{req.email}"
+  #
+  # Note: This creates a problem where a malicious user could intentionally
+  # throttle logins for another user and force their login requests to be
+  # denied, but that's not very common and shouldn't happen to you. (Knock
+  # on wood!)
+  throttle("logins/email", limit: 5, period: 20.seconds) do |req|
+    if req.path == '/i/admin/login' && req.post?
+      # return the email if present, nil otherwise
+      req.params['email'].presence
+    end
   end
 end
-
-Rack::Attack.safelist("localhost") { |req| req.localhost? }
 
 # Block suspicious requests for '/etc/password' or wordpress specific paths.
 # After 3 blocked requests in 10 minutes, block all requests from that IP for 5 minutes.
@@ -22,15 +76,17 @@ Rack::Attack.blocklist("fail2ban pentesters") do |req|
   end
 end
 
-Rack::Attack.blacklist("block <ip>") do |req|
-  # if variable `block <ip>` exists in cache store, then we'll block the request
-  Rails.cache.fetch("block #{req.ip}").blank?
-end
+ActiveSupport::Notifications.subscribe("rack.attack") do |name, start, finish, request_id, req|
+  if req.env["rack.attack.match_type"] == :throttle
+    request_headers = { "CF-RAY" => req.env["HTTP_CF_RAY"],
+                        "X-Amzn-Trace-Id" => req.env["HTTP_X_AMZN_TRACE_ID"] }
 
-Rack::Attack.throttle("requests by ip", limit: 5, period: 2) do |req|
-  req.ip && req.post?
+    Rails.logger.info "[Rack::Attack][Blocked]" <<
+                      "remote_ip: \"#{req.remote_ip}\"," <<
+                      "path: \"#{req.path}\", " <<
+                      "headers: #{request_headers.inspect}"
+  end
 end
-
 # Customizing responses
 
 Rack::Attack.blocklisted_response = lambda do |env|
