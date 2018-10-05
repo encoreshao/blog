@@ -92,6 +92,7 @@
 
     .clearfix
 
+  / Comments
   - if @article.comments.count > 0
     #comment-widget.comments.box
       %h3.widget-title= I18n.t('tips.comments', count: @article.comments.count)
@@ -100,7 +101,6 @@
           - @article.comments.parent_comments.each do |comment|
             = render partial: 'comments', locals: { comment: comment }
 
-  / Comment
   #comment-form-widget.comments.box
     #respond.comment-respond
       %h3#reply-title.comment-reply-title

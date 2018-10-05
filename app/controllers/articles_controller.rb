@@ -35,7 +35,8 @@ class ArticlesController < ApplicationController
 
   private
     def verify?
-      @article = Article.preload([:comments, :tags]).find_by(permalink: params[:permalink], published_at: "#{params[:year]}-#{params[:month]}-#{params[:day]}")
+      @article = Article.preload([:comments, :tags]).
+        find_by(permalink: params[:permalink], published_at: published_date)
 
       redirect_to "/404" if @article.blank?
     end
@@ -52,5 +53,9 @@ class ArticlesController < ApplicationController
       }
 
       params_comment.delete_if { |_k, v| v.blank? }
+    end
+
+    def published_date
+      "#{params[:year]}-#{params[:month]}-#{params[:day]}"
     end
 end

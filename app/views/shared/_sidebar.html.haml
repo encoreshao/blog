@@ -42,22 +42,6 @@
               %i.fa.fa-dot-circle-o
               = category[0]
 
-  - if Comment.count > 0
-    #widget-warrior_recent_posts-2.widget.warrior_recent_posts
-      %h3.widget-title
-        %label
-          %i.fa.fa-comments-o
-          = I18n.t('tips.recent_posts')
-      .blocks.recent-post-widget
-        %ul
-          - top_ten_articles_with_top_comments.each do |article|
-            %li.post-481
-              .clearfix
-                = link_to article_path(article.params), title: article.title, target: '_blank' do
-                  = article.title
-                .meta
-                  = article.created_at.strftime('%B %d, %Y')
-
   #widget-tag_cloud-2.widget.widget_tag_cloud
     %h3.widget-title
       %label

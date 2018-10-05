@@ -15,7 +15,7 @@
 .table-responsive
   .clearfix
     %strong Tags:
-    = @article.tag_names.collect {|e| e[:name] }.join(' ')
+    = @article.tags.map(&:name)
   %br
   .clearfix
     = raw @article.content

@@ -39,7 +39,7 @@
           = I18n.t('tips.recent_posts')
 
       .blocks
-        - top_ten_articles_with_top_comments.each do |article|
+        - recently_replied_to_the_articles.each do |article|
           .d-flex
             .mr-auto.p-2
               = link_to article_path(article.params), title: article.title, target: '_blank' do

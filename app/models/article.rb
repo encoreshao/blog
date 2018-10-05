@@ -56,10 +56,6 @@ class Article < ApplicationRecord
     published_at&.strftime("%Y-%m-%d")
   end
 
-  def tag_names
-    tags.select('name, permalink').map { |e| { permalink: e.permalink, name: e.name } }
-  end
-
   def params
     return {} if published_at.blank?
 
