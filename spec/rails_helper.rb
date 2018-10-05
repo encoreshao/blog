@@ -28,8 +28,8 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  # config.failure_color = :magenta
-  # config.color_mode = :on
+  config.failure_color = :magenta
+  config.color_mode = :on
   config.warnings = false
 
   config.infer_spec_type_from_file_location!
@@ -40,4 +40,5 @@ RSpec.configure do |config|
 
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::LoggingHelpers, type: :controller
+  # config.extend ViewResourceMacros, type: :view
 end

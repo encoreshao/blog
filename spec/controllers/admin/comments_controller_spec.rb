@@ -2,6 +2,7 @@
 
 RSpec.describe Admin::CommentsController do
   let(:user) { User.make!(:admin) }
+  let(:comment) { Comment.make! }
   before(:each) { sign_in(user) }
 
   describe "GET #index" do
@@ -13,21 +14,7 @@ RSpec.describe Admin::CommentsController do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #new" do
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #edit" do
-    it "returns http success" do
-      get :edit
+      get :show, params: { id: comment.id }
       expect(response).to have_http_status(:success)
     end
   end

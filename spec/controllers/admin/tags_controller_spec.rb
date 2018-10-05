@@ -2,6 +2,7 @@
 
 RSpec.describe Admin::TagsController do
   let(:user) { User.make!(:admin) }
+  let(:tag) { Tag.make! }
   before(:each) { sign_in(user) }
 
   describe "GET #index" do
@@ -13,7 +14,7 @@ RSpec.describe Admin::TagsController do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show
+      get :show, params: { id: tag.id }
       expect(response).to have_http_status(:success)
     end
   end
@@ -27,7 +28,7 @@ RSpec.describe Admin::TagsController do
 
   describe "GET #edit" do
     it "returns http success" do
-      get :edit
+      get :edit, params: { id: tag.id }
       expect(response).to have_http_status(:success)
     end
   end

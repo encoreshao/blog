@@ -13,7 +13,7 @@ RSpec.describe Admin::UsersController do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show
+      get :show, params: { id: user.id }
       expect(response).to have_http_status(:success)
     end
   end
@@ -27,7 +27,7 @@ RSpec.describe Admin::UsersController do
 
   describe "GET #edit" do
     it "returns http success" do
-      get :edit
+      get :edit, params: { id: user.id }
       expect(response).to have_http_status(:success)
     end
   end

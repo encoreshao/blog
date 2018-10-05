@@ -1,9 +1,9 @@
 .right
   = link_to I18n.t('action.back'), admin_site_groups_path
-  = link_to I18n.t('action.edit'), edit_admin_site_group_path(resource)
+  = link_to I18n.t('action.edit'), edit_admin_site_group_path(@site_group)
 
 .table-responsive
   .jumbotron
-    %h2= resource.name
+    %h2= @site_group.name
     %br
-    %div= resource.created_at
+    %div= @site_group.created_at
