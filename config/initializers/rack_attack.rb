@@ -31,7 +31,7 @@ class Rack::Attack
   # Throttle all requests by IP (60rpm)
   #
   # Key: "rack::attack:#{Time.now.to_i/:period}:req/ip:#{req.ip}"
-  throttle('req/ip', limit: 300, period: 5.minutes) do |req|
+  throttle("req/ip", limit: 300, period: 5.minutes) do |req|
     req.ip # unless req.path.start_with?('/assets')
   end
 
@@ -40,8 +40,8 @@ class Rack::Attack
   # Throttle POST requests to /articles/comment by IP address
   #
   # Key: "rack::attack:#{Time.now.to_i/:period}:comments/ip:#{req.ip}"
-  throttle('comments/ip', limit: 5, period: 20.seconds) do |req|
-    if req.path == '/articles/comment' && req.post?
+  throttle("comments/ip", limit: 5, period: 2.minutes) do |req|
+    if req.path == "/articles/comment" && req.post?
       req.ip
     end
   end
@@ -55,9 +55,9 @@ class Rack::Attack
   # denied, but that's not very common and shouldn't happen to you. (Knock
   # on wood!)
   throttle("logins/email", limit: 5, period: 20.seconds) do |req|
-    if req.path == '/i/admin/login' && req.post?
+    if req.path == "/i/admin/login" && req.post?
       # return the email if present, nil otherwise
-      req.params['email'].presence
+      req.params["email"].presence
     end
   end
 end
