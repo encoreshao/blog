@@ -2,8 +2,8 @@
 
 Things you may want to cover:
 
-* Ruby - 2.5.0
-* Rails - 5.1.2
+* Ruby - 2.5.1
+* Rails - 5.2.1
 
 ### Rouge Themes
 

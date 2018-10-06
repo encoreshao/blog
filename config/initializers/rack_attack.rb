@@ -35,12 +35,12 @@ class Rack::Attack
     req.ip # unless req.path.start_with?('/assets')
   end
 
-  ### Prevent Brute-Force commets Attacks ###
+  ### Prevent Brute-Force comments Attacks ###
 
   # Throttle POST requests to /articles/comment by IP address
   #
   # Key: "rack::attack:#{Time.now.to_i/:period}:comments/ip:#{req.ip}"
-  throttle("comments/ip", limit: 5, period: 2.minutes) do |req|
+  throttle("comments/ip", limit: 5, period: 20.seconds) do |req|
     if req.path == "/articles/comment" && req.post?
       req.ip
     end
@@ -87,8 +87,8 @@ ActiveSupport::Notifications.subscribe("rack.attack") do |name, start, finish, r
                       "headers: #{request_headers.inspect}"
   end
 end
-# Customizing responses
 
+# Customizing responses
 Rack::Attack.blocklisted_response = lambda do |env|
   # Using 503 because it may make attacker think that they have successfully
   # DOSed the site. Rack::Attack returns 403 for blocklists by default
