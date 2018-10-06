@@ -6,6 +6,7 @@ zh:
   location: 上海, 中国
   keywords: 博客, Encore Shao, 邵壮, Ruby On Rails, 上海, 中国, ICMOC, icmoc.com, 个人博客
   description: 邵壮的个人博客 - 我是一名Web开发人员, 使用Ruby on Rails来构建Web应用程序.
+  baidu_analysis: 百度统计分析
   tips:
     welcome: Hello, %{author} !
     author: Encore's Blog

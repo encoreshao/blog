@@ -17,8 +17,9 @@
 
   %body{class: "admin #{'mobile' if mobile_device?}"}
     = render 'admin/shared/header'
+
     .container
       = yield
-
     %br
+
     = render 'shared/footer'

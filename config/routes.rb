@@ -60,5 +60,11 @@ Rails.application.routes.draw do
   get "category/:category" => "dashboards#index", as: :categories
   get "tag/:tag" => "dashboards#index", as: :tags
 
+  resources :dashboards, only: [:index] do
+    collection do
+      get :articles
+    end
+  end
+
   root "dashboards#index"
 end

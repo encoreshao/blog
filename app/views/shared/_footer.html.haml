@@ -7,6 +7,11 @@
         = '-'
         &nbsp;
         = link_to I18n.t('title'), root_path
+
+        - if current_user.present?
+          &nbsp;
+          = link_to I18n.t('baidu_analysis'), 'https://tongji.baidu.com/web/welcome/ico?s=b8f39701da6c8a5b848ae1d135cd9ee5', target: '_blank'
+
       .ml-auto.p-2
         All Rights Reserved
 

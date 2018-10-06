@@ -4,12 +4,22 @@ class DashboardsController < ApplicationController
   layout 'articles'
 
   def index
-    @articles = Article.preload(%i[category user comments tags])
-                       .published.with_categories(category_id)
-                       .with_tags(tag_id)
-                       .with_keywords(params[:q])
-                       .sorting
-                       .page(params[:page]).per(10)
+    @articles = loading_articles
+  end
+
+  def articles
+    @articles = loading_articles
+
+    render partial: 'results', locals: { articles: @articles }
+  end
+
+  def loading_articles
+    Article.preload(%i[category user comments tags])
+           .published.with_categories(category_id)
+           .with_tags(tag_id)
+           .with_keywords(params[:q])
+           .sorting
+           .page(params[:page]).per(10)
   end
 
   protected

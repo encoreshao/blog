@@ -1,5 +1,5 @@
 - if @articles.empty?
   = render 'shared/no_results'
-- else
+- elsif !animation?
   = render partial: 'results', locals: { articles: @articles }
 

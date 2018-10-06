@@ -6,6 +6,7 @@ en:
   location: Shanghai, China
   keywords: Blog, Encore Shao, Ruby On Rails, Shanghai, China, ICMOC, icmoc.com
   description: I am a web developer and use Ruby on Rails to build Web application in China.
+  baidu_analysis: Baidu statistical analysis
   tips:
     welcome: Hey, %{author} !
     author: Encore's Blog

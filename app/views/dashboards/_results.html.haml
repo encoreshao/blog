@@ -31,4 +31,4 @@
           %a{href: article_path(article.params)}= I18n.t('action.read_more')
 
 .page-navigation.clearfix
-  = paginate articles
+  = paginate articles, params: { controller: 'dashboards', action: 'index'}

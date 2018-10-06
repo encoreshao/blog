@@ -75,6 +75,14 @@
         $('.fullpage-animated-box').fadeOut('slow')
         $('.cc-window.cc-banner').css('opacity', '1')
 
+        loadingArticlesRequest()
+
+    return
+
+  loadingArticlesRequest = () ->
+    $.get "/dashboards/articles", (response) ->
+      $("section #content-wrappers").html(response).fadeIn('slow')
+
     return
 
 ) jQuery
