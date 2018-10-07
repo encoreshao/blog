@@ -69,14 +69,19 @@
 
   window.openingAnimation = (delayTime) ->
     $boxing = $('.animation .boxing')
+    $('body').css('overflow', 'hidden')
 
     $boxing.animate { width: '100%' }, delayTime, ->
       $boxing.animate { height: '100%' }, delayTime, ->
         $('.fullpage-animated-box').fadeOut('slow')
         $('.cc-window.cc-banner').css('opacity', '1')
 
-        loadingArticlesRequest()
+        enableScrollBar()
 
+    return
+
+  enableScrollBar = () ->
+    $('body').css('overflow', 'auto')
     return
 
   loadingArticlesRequest = () ->
