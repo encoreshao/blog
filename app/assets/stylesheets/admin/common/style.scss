@@ -4,6 +4,7 @@ body.devise {
     text-align: center;
   }
   .form-group {
+    margin: 0.5rem 0;
     .form-inline select {
       width: 100px;
     }
@@ -26,6 +27,8 @@ body.devise {
       text-align: right;
       margin-right: 5%;
       vertical-align: top;
+      height: 2rem;
+      line-height: 2rem;
     }
     >.form-control,
     .form-inline {
