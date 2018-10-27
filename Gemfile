@@ -29,8 +29,9 @@ gem "devise"
 gem "inherited_resources"
 gem "jquery-rails"
 gem "kaminari"
-gem "rails_kindeditor", git: "https://github.com/Macrow/rails_kindeditor.git"
+gem "trix"
 gem "simple_form"
+gem "mini_magick"
 # gem 'rails-i18n'
 
 gem "redcarpet"

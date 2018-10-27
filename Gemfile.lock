@@ -1,12 +1,3 @@
-GIT
-  remote: https://github.com/Macrow/rails_kindeditor.git
-  revision: 493dbdb69abfef0fd52d91e5d06203a71c90f366
-  specs:
-    rails_kindeditor (0.5.1)
-      carrierwave
-      jquery-rails
-      mini_magick
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -382,6 +373,8 @@ GEM
     thread_safe (0.3.6)
     thread_safe (0.3.6-java)
     tilt (2.0.8)
+    trix (0.10.1)
+      rails
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -439,6 +432,7 @@ DEPENDENCIES
   kaminari
   listen (>= 3.0.5, < 3.2)
   machinist
+  mini_magick
   mini_racer
   pg
   pry-byebug
@@ -447,7 +441,6 @@ DEPENDENCIES
   rack-attack
   rack-livereload
   rails (~> 5.2.1)
-  rails_kindeditor!
   redcarpet
   rouge
   rspec-rails
@@ -457,6 +450,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen
   sprockets
+  trix
   turbolinks
   tzinfo-data
   uglifier
