@@ -81,6 +81,7 @@ group :development do
   gem "capistrano-rails"
   gem "capistrano-rails-console"
   gem "capistrano-rvm"
+  gem 'capistrano-yarn'
   gem "capistrano3-puma"
 
   gem "guard-livereload", require: false
