@@ -17,9 +17,15 @@
     - unless resource.new_record?
       = f.input :tags, input_html: { value: resource.tags.map(&:name).join(', ') }
 
-    = f.hidden_field :content
-    %trix-editor{input: "article_content"}
+    = f.input :content, as: :text
 
     .form-group.string
       %label.control-label
       = f.submit class: 'btn btn-primary'
+
+- content_for :javascript do
+  :javascript
+    (function($){
+      var editor = new Simditor({ textarea: $('#article_content') });
+    })(jQuery)
+

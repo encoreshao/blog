@@ -18,3 +18,9 @@
     .form-group.string
       %label.control-label
       = f.submit class: 'btn btn-primary'
+
+- content_for :javascript do
+  :javascript
+    (function($){
+      var editor = new Simditor({ textarea: $('#user_introduction') });
+    })(jQuery)

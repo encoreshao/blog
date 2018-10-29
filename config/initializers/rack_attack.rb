@@ -40,11 +40,11 @@ class Rack::Attack
   # Throttle POST requests to /articles/comment by IP address
   #
   # Key: "rack::attack:#{Time.now.to_i/:period}:comments/ip:#{req.ip}"
-  throttle("comments/ip", limit: 5, period: 20.seconds) do |req|
-    if req.path == "/articles/comment" && req.post?
-      req.ip
-    end
-  end
+  # throttle("comments/ip", limit: 5, period: 5.minutes) do |req|
+  #   if req.path == "/articles/comment" && req.post?
+  #     req.ip
+  #   end
+  # end
 
   # Throttle POST requests to /login by email param
   #

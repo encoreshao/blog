@@ -5,7 +5,10 @@
 //= require utils/jquery.form.min
 //= require utils/jquery-3.2.1.slim.min
 //= require utils/tether.min
-//= require trix
+//= require simple-module/lib/module
+//= require simple-hotkeys/lib/hotkeys
+//= require simple-uploader/lib/uploader
+//= require simditor/lib/simditor
 //= require bootstrap
 //= require utils/popper.min
 //= require utils/contenteditable

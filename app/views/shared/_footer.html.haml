@@ -17,13 +17,3 @@
 
 %a#scroll-top{href: "#top"}
   %span.fa.fa-arrow-up
-
-- content_for :javascript do
-  :javascript
-    (function($){
-      loadAssetImages($('header.intro-header, .front'));
-
-      if (!noOpeningAnimation()) {
-        $('.cc-window.cc-banner').remove();
-      }
-    })(jQuery)
