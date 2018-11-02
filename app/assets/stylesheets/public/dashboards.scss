@@ -170,8 +170,6 @@
 }
 
 .post-content {
-  padding: 5px;
-  overflow: hidden;
   &.audio,
   &.video {
     text-align: center;
@@ -191,7 +189,7 @@
 
 ul.menu li {
   margin: 5px 0;
-  width: 100px;
+  width: 110px;
   float: left;
 }
 

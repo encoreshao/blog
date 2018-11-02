@@ -38,10 +38,6 @@ textarea {
   font: 100% 'LibreBaskerville', Arial, Helvetica, sans-serif;
 }
 
-p {
-  margin-bottom: 20px;
-}
-
 a {
   transition: all ease-in 0.5s;
 }
@@ -54,25 +50,17 @@ a:hover {
   text-decoration: none !important;
 }
 
-p,
-blockquote {
-  margin: 0 0 1.7em 0;
-}
-
 blockquote {
   font: italic 25px/140% Georgia, "Times New Roman", serif;
   text-align: center;
   margin: 40px -9%;
 }
 
-blockquote p {}
-
 pre,
 code {
   font: .9em/120% 'Courier New', Courier, monospace;
   overflow-x: auto;
   overflow-y: hidden;
-  margin: 40px 0;
   white-space: pre-wrap;
   /* css-3 */
   white-space: -moz-pre-wrap;
@@ -1904,10 +1892,6 @@ form.wpcf7-form .wpcf7-mail-sent-ok {
 
 .older-posts {
   float: right;
-}
-
-.post-content p {
-  line-height: 180%;
 }
 
 .post-content .gallery {

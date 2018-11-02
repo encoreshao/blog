@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article.increment!(:view_count)
-    fresh_when @article
+    fresh_when(etag: @article, last_modified: @article.updated_at)
   end
 
   def comment
