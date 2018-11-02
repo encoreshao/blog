@@ -1,0 +1,5 @@
+en:
+  uploads:
+    image:
+      success: "%{filename}: 只支持上传JPG, JPEG, PNG格式图片"
+      bigsize: "#{filename}: 图片太大，请上传小于2M的图片"

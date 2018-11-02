@@ -12,6 +12,8 @@ class ArticlesController < ApplicationController
 
   def comment
     @article.comments.create(comment_params)
+    @article.update_attribute(:updated_at, Time.zone.now)
+
     redirect_to article_path(@article.params)
   end
 
@@ -42,17 +44,11 @@ class ArticlesController < ApplicationController
     end
 
     def comment_params
-      params_comment = {
-        content: params[:comment][:content],
-        name: params[:comment][:name],
-        link: params[:comment][:link],
-        email: params[:comment][:email],
-        comment_parent: params[:comment][:comment_parent].to_i,
-        comment_id: params[:comment_id].blank? ? nil : params[:comment_id],
-        remote_ip: request.remote_ip
-      }
+      params[:comment][:comment_id] = params[:comment_id].blank? ? nil : params[:comment_id]
+      params[:comment][:remote_ip] = request.remote_ip
+      params[:comment].delete_if { |_k, v| v.blank? }
 
-      params_comment.delete_if { |_k, v| v.blank? }
+      params.require(:comment).permit(:comment_id, :remote_ip, :content, :name, :email, :link, :comment_parent)
     end
 
     def published_date

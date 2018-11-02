@@ -3,7 +3,6 @@
 //= require jquery_ujs
 //= require utils/jquery-migrate.min
 //= require utils/jquery.form.min
-//= require utils/jquery-3.2.1.slim.min
 //= require utils/tether.min
 //= require simple-module/lib/module
 //= require simple-hotkeys/lib/hotkeys

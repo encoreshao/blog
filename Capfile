@@ -15,7 +15,7 @@ require "capistrano/rails/migrations"
 require "capistrano/bundler"
 require "capistrano/rvm"
 require "capistrano/puma"
-require 'capistrano/yarn'
+require "capistrano/yarn"
 install_plugin Capistrano::Puma # Default puma tasks
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined

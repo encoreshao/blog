@@ -1,0 +1,5 @@
+en:
+  uploads:
+    image:
+      success: "%{filename}: Only supports uploading JPG, JPEG, PNG format images"
+      bigsize: "#{filename}: The picture is too large, please upload an image smaller than 2M"

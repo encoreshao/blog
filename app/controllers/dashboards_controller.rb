@@ -5,6 +5,8 @@ class DashboardsController < ApplicationController
 
   def index
     @articles = loading_articles
+
+    fresh_when(etag: @articles, last_modified: @articles.maximum(:updated_at))
   end
 
   def articles

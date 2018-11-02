@@ -50,12 +50,6 @@ a:hover {
   text-decoration: none !important;
 }
 
-blockquote {
-  font: italic 25px/140% Georgia, "Times New Roman", serif;
-  text-align: center;
-  margin: 40px -9%;
-}
-
 pre,
 code {
   font: .9em/120% 'Courier New', Courier, monospace;
@@ -100,15 +94,6 @@ table>thead>tr>th {
   border-bottom: 2px solid #dddddd;
 }
 
-table>caption+thead>tr:first-child>th,
-table>colgroup+thead>tr:first-child>th,
-table>thead:first-child>tr:first-child>th,
-table>caption+thead>tr:first-child>td,
-table>colgroup+thead>tr:first-child>td,
-table>thead:first-child>tr:first-child>td {
-  border-top: 0;
-}
-
 table>tbody+tbody {
   border-top: 2px solid #dddddd;
 }
@@ -117,11 +102,6 @@ ul,
 ol {
   margin: 0 24px 30px 24px;
   padding: 0;
-}
-
-ul li {
-  list-style: disc;
-  margin-bottom: 4px;
 }
 
 ol li {
@@ -559,7 +539,7 @@ article .thumbnail {
   display: inline-block;
   font-size: .8em;
   letter-spacing: 1px;
-  line-height: 1;
+  line-height: 1.5em;
   text-transform: uppercase;
   padding: 5px;
 }
@@ -873,7 +853,7 @@ ul.flex-direction-nav li a:after {
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
-  line-height: 1;
+  line-height: 1em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: '\e047';
@@ -1119,8 +1099,6 @@ article.post-quote quote {
 .page-page p {
   margin-bottom: 40px;
 }
-
-
 
 /* Chat */
 
@@ -1892,6 +1870,26 @@ form.wpcf7-form .wpcf7-mail-sent-ok {
 
 .older-posts {
   float: right;
+}
+
+.post-content table td,
+.post-content table th {
+  min-width: 40px;
+  height: 30px;
+  border: 1px solid hsl(0, 0%, 80%);
+  vertical-align: top;
+  padding: 2px 4px;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.post-content blockquote {
+  border-left: 6px solid hsl(0, 0%, 87%);
+  padding: 5px 0 5px 10px;
+  margin: 15px 0 15px 10px;
+  ul, ol {
+    margin: 0 15px;
+  }
 }
 
 .post-content .gallery {

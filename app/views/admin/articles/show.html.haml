@@ -17,7 +17,7 @@
     %strong Tags:
     = @article.tags.map(&:name).join(', ')
   %br
-  .clearfix
+  .post-content.clearfix
     = raw @article.content
 
   - if @article.embed?

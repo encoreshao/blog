@@ -7,6 +7,7 @@
   background-size: cover;
   -o-background-size: cover;
   margin-bottom: 0;
+
   h1 {
     font-size: 3em;
     background-color: rgba(0, 0, 0, 0.1);
@@ -14,12 +15,14 @@
     border-radius: 10px;
     font-family: 'LibreBaskerville', serif;
   }
+
   .site-heading {
     color: #fff;
     padding: 20px 0;
     text-align: center;
     margin: auto;
   }
+
   .subheading {
     margin-top: 10px;
     background-color: rgba(19, 7, 7, .5);
@@ -144,6 +147,7 @@
 .thumbnail.typing {
   background-color: #f9f9f9;
   text-align: center;
+
   h1 {
     font-weight: 200;
     line-height: 2.5em;
@@ -161,19 +165,23 @@
   0% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
 }
 
 .post-content {
+
   &.audio,
   &.video {
     text-align: center;
   }
+
   audio,
   video,
   iframe {
@@ -182,6 +190,7 @@
     margin: 10px 50px;
     clear: both;
   }
+
   audio {
     height: 50px;
   }
@@ -202,11 +211,13 @@ footer {
   text-align: center;
   border-top: 1px solid #efefef;
   color: #555;
+
   .copyright-wrapper {
     padding: 50px 0px;
     background-color: #262f39;
     color: #ffffff;
   }
+
   a {
     color: #aac8d6;
     border-color: #596a72;

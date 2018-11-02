@@ -51,6 +51,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :uploads, only: [] do
+    collection do
+      post :image
+    end
+  end
+
   get "/:year/:month/:day/:permalink" => "articles#show",
       requirements: {
         year: /\d{4}/, month: /\d{1,2}/, day: /\d{1,2}/

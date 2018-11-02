@@ -42,7 +42,10 @@ class Admin::ArticlesController < AdminController
     end
 
     def collection
-      @articles ||= end_of_association_chain.with_owner(current_user).with_keywords(params[:name]).sorting.page(params[:page])
+      @articles ||= end_of_association_chain.preload([:category, :user]).
+                    with_owner(current_user).
+                    with_keywords(params[:name]).
+                    sorting.page(params[:page])
     end
 
     def verify_permit?

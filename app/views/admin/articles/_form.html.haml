@@ -26,6 +26,23 @@
 - content_for :javascript do
   :javascript
     (function($){
-      var editor = new Simditor({ textarea: $('#article_content') });
+      var toolbar = [ 'title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale',
+                      'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|',
+                      'link', 'image', 'hr', '|', 'indent', 'outdent' ];
+
+      var editor = new Simditor({
+        textarea: $('#article_content'),
+        toolbar: toolbar,
+        pasteImage: true,
+        upload: {
+          url: '/uploads/image',
+          fileKey: 'file',
+          params: null,
+          leaveConfirm: '正在上传文件，如果离开上传会自动取消',
+          success: function(data) {
+            alert(data);
+          }
+        }
+      });
     })(jQuery)
 
