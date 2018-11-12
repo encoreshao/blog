@@ -27,11 +27,11 @@ end
 #
 # Table name: categories
 #
-#  id             :integer          not null, primary key
-#  name_zh        :string
-#  name_en        :string
-#  permalink      :string
+#  id             :bigint(8)        not null, primary key
 #  articles_count :integer          default(0)
+#  name_en        :string
+#  name_zh        :string
+#  permalink      :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #

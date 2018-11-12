@@ -1,0 +1,21 @@
+.jumbotron
+  .text-center
+    %h3= I18n.t('tips.pages')
+
+  .boxes
+    - flash.each do |type, value|
+      .alert.alert-info
+        %strong= value
+
+  %h6
+    注: 本站会定期检查友情连接，如没有本站链接的，本站会将其撤销链接。但请勿多次提交，后台需要审核。谢谢各位站长/博主的配合。
+  %hr
+
+  .table-responsive
+    = simple_form_for @site, url: feedback_sites_path, html: { class: 'inline_form', validate: true } do |f|
+      = f.error_notification
+      = f.input :name, required: true
+      = f.input :url, required: true
+      = f.input :email, required: true
+
+      = f.submit I18n.t('action.submit'), class: 'btn btn-primary'

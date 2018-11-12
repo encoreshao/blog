@@ -68,5 +68,8 @@ zh:
       site_link:
         name: 名称
         url: 链接
+        enabled: 启用
+        email: 站点邮箱
+        site_group_id: 组
         site_group: 组
         created_at: 创建时间

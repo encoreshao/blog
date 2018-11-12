@@ -3,11 +3,15 @@
   = link_to I18n.t('action.edit'), edit_admin_site_link_path(resource)
 
 .table-responsive
-  .jumbotron
-    %h2= resource.site_group_name
-    %br
-    %h2= resource.name
-    %br
-    %div= resource.url
-    %br
-    %div= resource.created_at
+  %h3= resource.site_group_name
+  %h5= resource.name
+  %ul
+    %li
+      %strong URL
+      = resource.url
+    %li
+      %strong Created At
+      = resource.created_at
+    %li
+      %strong Enabled
+      = resource.enabled

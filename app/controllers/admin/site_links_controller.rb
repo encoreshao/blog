@@ -11,6 +11,6 @@ class Admin::SiteLinksController < AdminController
     end
 
     def collection
-      @site_links ||= end_of_association_chain.with_keywords(params[:name]).page(params[:page])
+      @site_links ||= end_of_association_chain.with_keywords(params[:name]).page(params[:page]).order("created_at ASC")
     end
 end

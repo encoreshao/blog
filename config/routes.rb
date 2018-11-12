@@ -48,6 +48,8 @@ Rails.application.routes.draw do
   resources :sites, only: [:index] do
     collection do
       get :author
+      get :feedback
+      post :feedback
     end
   end
 

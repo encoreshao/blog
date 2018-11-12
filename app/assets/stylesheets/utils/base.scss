@@ -550,7 +550,7 @@ article .thumbnail {
 
 .sidebar-widgets .tagcloud {
   .tags0 {
-    font-size: .6em;
+    font-size: 1.003em;
   }
   .tags1 {
     color: #969696;
@@ -558,7 +558,7 @@ article .thumbnail {
   }
   .tags2 {
     color: #030;
-    font-size: .7em;
+    font-size: .89em;
   }
 
   .tags3 {
@@ -2348,4 +2348,9 @@ html[xmlns] .slides {
 .page-navigation ul.pagination li.page-item .page-link:hover {
   color: rgba(255, 255, 255, .8);
   background-color: $siteColorLight;
+}
+
+span.help-block {
+  margin-left: 10px;
+  color: red;
 }

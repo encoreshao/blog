@@ -68,5 +68,8 @@ en:
       site_link:
         name: Name
         url: URL
+        email: Email
         site_group: Group
+        site_group_id: Group
+        enabled: Enabled
         created_at: Created At

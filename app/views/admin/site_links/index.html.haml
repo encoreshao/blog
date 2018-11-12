@@ -6,6 +6,7 @@
       %tr
         %th= SiteLink.human_attribute_name(:name)
         %th= SiteLink.human_attribute_name(:url)
+        %th= SiteLink.human_attribute_name(:enabled)
         %th= SiteLink.human_attribute_name(:created_at)
         %th
     %tbody
@@ -13,6 +14,7 @@
         %tr
           %td= resource.name
           %td= resource.url
+          %td= resource.enabled
           %td= resource.created_at.strftime('%b %d, %Y')
           %td
             = link_to edit_admin_site_link_path(resource) do

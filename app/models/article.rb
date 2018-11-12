@@ -72,20 +72,30 @@ end
 #
 # Table name: articles
 #
-#  id               :integer          not null, primary key
-#  title            :string
-#  permalink        :string
+#  id               :bigint(8)        not null, primary key
 #  content          :text
-#  is_published     :boolean          default(FALSE)
-#  published_at     :date
-#  view_count       :integer          default(0)
-#  likes_count      :integer          default(0)
 #  dislike_count    :integer          default(0)
-#  reprinted_source :string
+#  embed_link       :string
+#  is_published     :boolean          default(FALSE)
+#  likes_count      :integer          default(0)
+#  permalink        :string
+#  published_at     :date
 #  reprinted_link   :string
-#  category_id      :integer
-#  user_id          :integer
+#  reprinted_source :string
+#  title            :string
+#  view_count       :integer          default(0)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#  embed_link       :string
+#  category_id      :bigint(8)
+#  user_id          :bigint(8)
+#
+# Indexes
+#
+#  index_articles_on_category_id  (category_id)
+#  index_articles_on_user_id      (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (category_id => categories.id)
+#  fk_rails_...  (user_id => users.id)
 #

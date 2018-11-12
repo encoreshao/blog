@@ -59,7 +59,6 @@ td {
   padding: 0;
   border: 0;
   outline: 0;
-  font-size: 100%;
   font-family: 'LibreBaskerville', serif;
   vertical-align: baseline;
 }
@@ -73,11 +72,6 @@ td {
 body {
   line-height: 1.5em;
   color: black;
-}
-
-ol,
-ul {
-  list-style: none;
 }
 
 /* tables still need 'cellspacing="0"' in the markup */
