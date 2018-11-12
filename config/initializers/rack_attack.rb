@@ -23,6 +23,19 @@ class Rack::Attack
     end
   end
 
+  def blockips
+    [
+      '62.210.180.122', '62.210.202.176', '62.210.82.122', '62.210.202.55', '62.210.202.48',
+      '195.154.170.190', '195.154.170.194', '195.154.187.245', '195.154.181.60', '195.154.187.229',
+      '5.188.210.60', '5.188.210.35', '5.188.210.29', '5.188.210.54', '5.188.210.13'
+    ]
+  end
+
+  blocklist("blockips") do |req|
+    # Requests are blocked if the return value is truthy
+    blockips.include?(req.ip)
+  end
+
   safelist("allow from localhost") do |req|
     req.allowed_ip?
   end
@@ -31,8 +44,8 @@ class Rack::Attack
   # Throttle all requests by IP (60rpm)
   #
   # Key: "rack::attack:#{Time.now.to_i/:period}:req/ip:#{req.ip}"
-  throttle("req/ip", limit: 300, period: 5.minutes) do |req|
-    req.ip # unless req.path.start_with?('/assets')
+  throttle("req/ip", limit: 5, period: 2) do |req|
+    req.ip
   end
 
   ### Prevent Brute-Force comments Attacks ###
@@ -40,11 +53,11 @@ class Rack::Attack
   # Throttle POST requests to /articles/comment by IP address
   #
   # Key: "rack::attack:#{Time.now.to_i/:period}:comments/ip:#{req.ip}"
-  # throttle("comments/ip", limit: 5, period: 5.minutes) do |req|
-  #   if req.path == "/articles/comment" && req.post?
-  #     req.ip
-  #   end
-  # end
+  throttle("comments/ip", limit: 5, period: 10.minutes) do |req|
+    if req.path == "/articles/comments" && req.post?
+      req.ip
+    end
+  end
 
   # Throttle POST requests to /login by email param
   #

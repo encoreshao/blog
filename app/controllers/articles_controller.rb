@@ -3,14 +3,14 @@
 class ArticlesController < ApplicationController
   layout 'articles'
 
-  before_action :verify?, only: %i[show comment like dislike]
+  before_action :verify?, only: %i[show comments like dislike]
 
   def show
     @article.increment!(:view_count)
     fresh_when(etag: @article, last_modified: @article.updated_at)
   end
 
-  def comment
+  def comments
     @article.comments.create(comment_params)
     @article.update_attribute(:updated_at, Time.zone.now)
 

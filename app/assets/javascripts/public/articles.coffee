@@ -74,7 +74,8 @@
     $boxing.animate { width: '100%' }, delayTime, ->
       $boxing.animate { height: '100%' }, delayTime, ->
         $('.fullpage-animated-box').fadeOut('slow')
-        $('.cc-window.cc-banner').css('opacity', '1')
+        if noOpeningAnimation()
+          $('.cc-window.cc-banner').css('opacity', '1')
 
         enableScrollBar()
 

@@ -37,7 +37,7 @@ Rails.application.routes.draw do
 
   resources :articles, only: [] do
     collection do
-      post :comment
+      post :comments
       constraints format: :json do
         post :like
         post :dislike

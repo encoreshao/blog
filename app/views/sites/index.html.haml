@@ -27,6 +27,8 @@
         %label
           %i.fa.fa-sitemap
           = I18n.t('tips.pages')
+        %label.right
+          =# I18n.t('action.submit_link')
       .tagcloud
         - sites.each do |site|
           = link_to site[0], site[1], target: '_blank'

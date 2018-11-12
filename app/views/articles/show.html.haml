@@ -110,7 +110,7 @@
         %small
           %a#cancel-comment-reply-link.fa.fa-retweet{rel: "nofollow", style: "display:none;"}= I18n.t('action.cancel_reply')
 
-      = form_tag comment_articles_path, method: :POST, class: 'comment-form', id: 'commentForm' do
+      = form_tag comments_articles_path, method: :POST, class: 'comment-form', id: 'commentForm' do
         .comment-form-wrapper
           .clearfix
             %label= I18n.t('form.tips')
