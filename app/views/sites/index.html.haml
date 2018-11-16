@@ -29,7 +29,7 @@
           %label.mr-auto
             %i.fa.fa-sitemap
             = I18n.t('tips.pages')
-          %label.ml-auto
+          %label.ml-auto{style: 'font-size: .8em'}
             = link_to I18n.t('action.submit_link'), feedback_sites_path, target: '_blank', style: 'text-decoration-line: underline;'
       .tagcloud
         - sites.each do |site|

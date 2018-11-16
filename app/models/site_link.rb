@@ -20,6 +20,7 @@
 
 class SiteLink < ApplicationRecord
   validates :name, :url, presence: true, uniqueness: true
+  attribute_method_suffix "_text"
 
   delegate :name, to: :site_group, prefix: true, allow_nil: true
   belongs_to :site_group, optional: true
@@ -43,6 +44,12 @@ class SiteLink < ApplicationRecord
   end
 
   private
+    def attribute_text(attr_name)
+      return unless [true, false].include?(send(attr_name))
+
+      send(attr_name) ? "YES" : "NO"
+    end
+
     def clearing_cache
       Rails.cache.delete("site_links_availables")
     end

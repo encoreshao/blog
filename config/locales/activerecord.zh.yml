@@ -62,10 +62,12 @@ zh:
         comment_parent: 父类
         content: 内容
         created_at: 留言时间
+        remote_ip: IP地址
       site_group:
         name: 名称
         created_at: 创建时间
       site_link:
+        id: 编码
         name: 名称
         url: 链接
         enabled: 启用
@@ -73,3 +75,4 @@ zh:
         site_group_id: 组
         site_group: 组
         created_at: 创建时间
+        updated_at: 更新时间

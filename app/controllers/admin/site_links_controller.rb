@@ -7,7 +7,7 @@ class Admin::SiteLinksController < AdminController
   private
 
     def site_link_params
-      params.require(:site_link).permit(:name, :url, :site_group_id)
+      params.require(:site_link).permit(:name, :url, :site_group_id, :email, :enabled)
     end
 
     def collection

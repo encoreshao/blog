@@ -3,15 +3,20 @@
   = link_to I18n.t('action.edit'), edit_admin_site_link_path(resource)
 
 .table-responsive
-  %h3= resource.site_group_name
-  %h5= resource.name
-  %ul
-    %li
-      %strong URL
-      = resource.url
-    %li
-      %strong Created At
-      = resource.created_at
-    %li
-      %strong Enabled
-      = resource.enabled
+  %h3= resource.name
+  %table.table.table-hover.table-bordered
+    %tr
+      %td= SiteLink.human_attribute_name(:site_group)
+      %td= resource.site_group_name
+    %tr
+      %td= SiteLink.human_attribute_name(:url)
+      %td= resource.url
+    %tr
+      %td= SiteLink.human_attribute_name(:email)
+      %td= resource.email
+    %tr
+      %td= SiteLink.human_attribute_name(:enabled)
+      %td= resource.enabled_text
+    %tr
+      %td= SiteLink.human_attribute_name(:created_at)
+      %td= resource.created_at

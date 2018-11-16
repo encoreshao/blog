@@ -226,8 +226,8 @@
   article .thumbnail.typing {
     height: auto;
     h1 {
-      line-height: 80px;
-      font-size: 1.5em;
+      line-height: 30px;
+      font-size: 1em;
     }
   }
   .post-inner .meta span,
@@ -329,8 +329,8 @@
   .menu-trigger {
     left: 20px;
   }
-  .page-title h1,
-  .post-title h1 {
+  .page-title h5,
+  .post-title h5 {
     font-size: 25px !important;
     line-height: 140%;
   }

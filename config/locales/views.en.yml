@@ -81,6 +81,8 @@ en:
     dislike: UnLike
     preview: Preview
     submit_link: Submit Link
+    switch_yes: Yes
+    switch_no: No
   links:
     blog: Blog
     github: Github

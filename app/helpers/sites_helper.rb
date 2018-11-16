@@ -12,4 +12,8 @@ module SitesHelper
       content_tag(:a, I18n.t("navigation.#{nav_name}"), href: link, class: "nav-link")
     end
   end
+
+  def switch_options
+    [[I18n.t("action.switch_no"), "0"], [I18n.t("action.switch_yes"), "1"]]
+  end
 end

@@ -83,6 +83,8 @@ zh:
     more: More
     less: Less
     submit_link: 提交链接
+    switch_yes: 是
+    switch_no: 否
   links:
     blog: Blog
     github: Github

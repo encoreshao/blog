@@ -2,22 +2,22 @@
   = link_to I18n.t('action.back'), admin_comments_path
 
 .table-responsive
-  %h2= link_to resource.commentable.try(:title), admin_article_path(resource.commentable)
+  %h4= link_to resource.commentable.try(:title), admin_article_path(resource.commentable)
   %br
   %table.table.table-hover.table-bordered
     %tbody
       %tr
-        %td Request IP
+        %td= Comment.human_attribute_name(:remote_ip)
         %td= resource.remote_ip
       %tr
-        %td Name
+        %td= Comment.human_attribute_name(:name)
         %td= resource.name
       %tr
-        %td Email
+        %td= Comment.human_attribute_name(:email)
         %td= resource.email
       %tr
-        %td Link
+        %td= Comment.human_attribute_name(:link)
         %td= resource.link
       %tr
-        %td Content
+        %td= Comment.human_attribute_name(:content)
         %td= resource.content
