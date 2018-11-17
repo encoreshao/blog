@@ -4,6 +4,7 @@
 //= require bootstrap
 //= require jquery.pagepiling.min
 //= require utils/fittext
+//= require utils/images
 //= require pages/base
 //= require pages/homepages
 //= require pages/fullpanels

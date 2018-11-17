@@ -24,7 +24,7 @@
       = yield
 
     = render 'shared/fixed_footer' unless action_name == 'slides'
-    = render 'shared/baidu_tongji'
+    = render 'shared/baidu_tongji' unless Rails.env.development?
 
     = javascript_include_tag 'pages', 'data-turbolinks-track': 'reload', 'data-turbolinks-suppress-warning': 'reload'
     = yield :javascript

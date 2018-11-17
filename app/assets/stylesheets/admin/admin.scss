@@ -1,9 +1,10 @@
 body {
   background-color: #FFFFFF;
 
-  >.container {
+  >.container, >.container-fluid {
     margin-top: 20px;
   }
+
   .bg-inverse {
     background-color: $topNav;
   }

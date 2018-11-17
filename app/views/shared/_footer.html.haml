@@ -15,5 +15,11 @@
       .ml-auto.p-2
         All Rights Reserved
 
-%a#scroll-top{href: "#top"}
+%a#scroll-top{href: "javascript:void(0);"}
   %span.fa.fa-arrow-up
+
+- content_for :javascript do
+  :javascript
+    (function($){
+      loadAssetImages($('.intro-header'));
+    })(jQuery)

@@ -17,11 +17,7 @@
 
   %body{class: "admin #{'mobile' if mobile_device?}"}
     = render 'admin/shared/header'
-
-    .container
-      = yield
-    %br
-
+    .container-fluid= yield
     = render 'shared/footer'
 
     = yield :javascript

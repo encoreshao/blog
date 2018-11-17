@@ -1,6 +1,5 @@
 (($) ->
   'use strict'
-  # Navigation
   if $(window).outerWidth() > 800
     $('ul.menu li.menu-item-has-children').append '<div class=\'menu-dropdown-trigger\'></div>'
     $('ul.menu li.menu-item-has-children ul.sub-menu li.menu-item-has-children .menu-dropdown-trigger').attr 'style', 'display:none;'
@@ -118,9 +117,13 @@
     social_tools: false
 
   # Go to Top
-  $('a[href="#top"]').click ->
+  $(document).on 'click', 'a#scroll-top', (e)->
+    e.preventDefault()
+    e.stopPropagation()
+
     $('html, body').animate { scrollTop: 0 }, 'slow'
-    false
+    return
+
   $('#jPanelMenu-menu').hide()
 
   # Parallax effect
@@ -129,26 +132,24 @@
     verticalOffset: 10
 
   $(window).scroll ->
-    menu = jQuery('#sidebar-wrappers')
-    if menu.length == 0
+    navbar      = jQuery('nav.navbar.navbar-expand')
+    introHeader = jQuery('.intro-header')
+    scrollTop   = $(this).scrollTop()
+    if navbar.length == 0
       return
 
-    pos = menu.offset()
-
-    if $(this).scrollTop() > pos.top + menu.height()
-      $('.widget_nav_menu').addClass('fixed').fadeIn 'medium'
+    if scrollTop >= navbar.height() + introHeader.height()
+      navbar.addClass('sticky')
+      introHeader.addClass('navbar-padding')
     else
-      $('.widget_nav_menu').removeClass('fixed').fadeIn 'medium'
+      navbar.removeClass('sticky')
+      introHeader.removeClass('navbar-padding')
 
     # Scroll to top button
-    if $(this).scrollTop() > 600
+    if scrollTop > 600
       $('#scroll-top').fadeIn()
     else
       $('#scroll-top').fadeOut()
-    $('article.format-quote').each ->
-      quoteHeight = $(this).outerHeight()
-      $(this).find('.bg-opacity').css 'height', quoteHeight
-      return
     return
 
   return

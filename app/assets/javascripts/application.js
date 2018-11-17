@@ -16,5 +16,6 @@
 //= require utils/typed.min
 //= require utils/comment-reply.min
 //= require utils/functions
+//= require utils/images
 //= require pages/base
 //= require public/articles

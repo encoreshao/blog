@@ -21,4 +21,4 @@
   %body
     = yield
 
-    = render 'shared/baidu_tongji'
+    = render 'shared/baidu_tongji' unless Rails.env.development?

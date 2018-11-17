@@ -5,6 +5,7 @@
 dompurify@^1.0.8:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-1.0.8.tgz#3fa0d91fde3827d6509d83b43444da56a2796795"
+  integrity sha512-vetRFbN1SXSPfP3ClIiYnxTrXquSqakBEOoB5JESn0SVcSYzpu6ougjakpKnskGctYdlNpwf+riUHSkG7d4XUw==
 
 font-awesome@^4.7.0:
   version "4.7.0"
@@ -13,18 +14,22 @@ font-awesome@^4.7.0:
 jquery@2.x:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
+  integrity sha1-LInWiJterFIqfuoywUUhVZxsvwI=
 
 jquery@^3.0.0, jquery@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
+  integrity sha512-Ubldcmxp5np52/ENotGxlLe6aGMvmF4R8S6tZjsP6Knsaxd/xp3Zrh50cG93lR6nPXyUFwzN3ZSOQI0wRJNdGg==
 
 jquery@~3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.1.1.tgz#347c1c21c7e004115e0a4da32cece041fad3c8a3"
+  integrity sha1-NHwcIcfgBBFeCk2jLOzgQfrTyKM=
 
 simditor@^2.3.23:
   version "2.3.23"
   resolved "https://registry.yarnpkg.com/simditor/-/simditor-2.3.23.tgz#882ee2d90863ad42fbeae8ef9880efa6e2915a50"
+  integrity sha512-duGugv2RIJbAtBzoy/+87C/Ij68HNRJJnHpcfR9HH7uXa+2jUYHjKWM8XBDQrNZOZ3x346zWuwgtbyXSgtbG9A==
   dependencies:
     dompurify "^1.0.8"
     jquery "^3.3.1"
@@ -35,6 +40,7 @@ simditor@^2.3.23:
 simple-hotkeys@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/simple-hotkeys/-/simple-hotkeys-1.0.3.tgz#47a5bc35362ca7339611bd09a84fa37818b0bbc6"
+  integrity sha1-R6W8NTYspzOWEb0JqE+jeBiwu8Y=
   dependencies:
     jquery "2.x"
     simple-module "~2.0.5"
@@ -42,18 +48,21 @@ simple-hotkeys@^1.0.3:
 simple-module@^3.0.3, simple-module@~3.0.0:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/simple-module/-/simple-module-3.0.3.tgz#ad52766785d27cd9427ee8645a49e41199725a92"
+  integrity sha1-rVJ2Z4XSfNlCfuhkWknkEZlyWpI=
   dependencies:
     jquery "^3.0.0"
 
 simple-module@~2.0.5:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/simple-module/-/simple-module-2.0.6.tgz#cec8250325f8c7f575f4aa75c919b38396a6037b"
+  integrity sha1-zsglAyX4x/V19Kp1yRmzg5amA3s=
   dependencies:
     jquery "2.x"
 
 simple-uploader@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/simple-uploader/-/simple-uploader-3.0.0.tgz#c09f706f1cfcbea1fe780e35759a683b1336d4d1"
+  integrity sha1-wJ9wbxz8vqH+eA41dZpoOxM21NE=
   dependencies:
     jquery "~3.1.0"
     simple-module "~3.0.0"

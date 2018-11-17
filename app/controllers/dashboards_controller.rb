@@ -6,7 +6,7 @@ class DashboardsController < ApplicationController
   def index
     @articles = loading_articles
 
-    fresh_when(etag: @articles, last_modified: @articles.maximum(:updated_at))
+    fresh_when(etag: @articles, last_modified: @articles.maximum(:updated_at)) unless Rails.env.development?
   end
 
   def articles

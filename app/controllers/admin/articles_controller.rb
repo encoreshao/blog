@@ -6,8 +6,6 @@ class Admin::ArticlesController < AdminController
   before_action :parameterize_permalink!, only: %i[create update]
   before_action :verify_permit?, only: %i[edit update show]
 
-  def contenteditable; end
-
   protected
 
     def article_params
