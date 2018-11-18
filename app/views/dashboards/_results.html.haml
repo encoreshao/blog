@@ -27,8 +27,5 @@
             - article.tags.each do |tag|
               = link_to tag.name, tags_path(tag: tag.permalink), target: '_blank'
 
-        .read-more
-          = link_to I18n.t('action.read_more'), article_path(article.params), target: '_blank'
-
 .page-navigation.clearfix
   = paginate articles, params: { controller: 'dashboards', action: 'index'}

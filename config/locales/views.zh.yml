@@ -30,7 +30,12 @@ zh:
     note2: 我是一名生活在上海的开发者. 可以帮助您创建网站和基于网络的应用程序. 如果您有什么想法可以联系我哦!
     comments: 共有 %{count} 条留言
     heading: 专注于WEB应用程序的软件开发人员
-    side_note_1: 世界，你好!
+  notes:
+    word_1: 世界，你好!
+    word_2: 世界，你好!
+    word_3: 世界，你好!
+    word_4: 世界，你好!
+    word_5: 世界，你好!
   navigation:
     home: 主页
     sitemap: 站点

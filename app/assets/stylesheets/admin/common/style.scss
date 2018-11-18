@@ -1,25 +1,33 @@
 body.admin,
 body.devise {
   border: 2px solid hsla(0, 0%, 0%, 0);
+  background-color: rgba(122, 192, 214, .2);
+
   main h2 {
     text-align: center;
   }
+
   .form-group {
     margin: 0.5rem 0;
+
     .form-inline select {
       width: 100px;
     }
+
     &.hide {
       display: none;
     }
+
     span.radio label {
       cursor: pointer;
       width: auto;
       padding: 0 15px;
+
       input {
         margin-right: 10px;
       }
     }
+
     >.control-label {
       width: 10%;
       text-align: right;
@@ -28,23 +36,27 @@ body.devise {
       height: 2rem;
       line-height: 2rem;
     }
+
     >.form-control,
     .form-inline {
       display: inline-block;
       width: 40%;
     }
+
     &.content .form-control {
       margin-left: -4px;
       width: 80%;
     }
   }
+
   footer {
-    font-size: 1em;
+    font-size: .8em;
     width: 100%;
     text-align: center;
     padding: 1.5em;
     color: #2a2e36;
   }
+
   #scroll-top {
     display: none;
   }

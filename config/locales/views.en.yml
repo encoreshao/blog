@@ -30,7 +30,12 @@ en:
     note2: Hello, I'm Encore Shao! A Ruby developer in Shanghai, China. We create websites and web based application. If you have a idea, Please contact me!
     comments: There's %{count} Comments
     heading: Software developers focused on web applications!
-    side_note_1: Hello World!
+  notes:
+    word_1: Hello World!
+    word_2: Hello World!
+    word_3: Hello World!
+    word_4: Hello World!
+    word_5: Hello World!
   navigation:
     home: Home
     sitemap: Sitemap

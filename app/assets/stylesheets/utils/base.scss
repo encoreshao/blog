@@ -1232,7 +1232,7 @@ body.single-format-quote #post-nav {
 #post-nav .post-previous h3 a:before,
 #post-nav .post-next h3 a:before {
   float: left;
-  content: '\e047';
+  content: '<';
   font-family: 'typicons';
   font-size: 32px;
   margin: 10px 6.5% 0 0;
@@ -1241,7 +1241,7 @@ body.single-format-quote #post-nav {
 
 #post-nav .post-next h3 a:before {
   float: right;
-  content: '\e049';
+  content: '>';
   margin: 10px 0 0 6.5%;
 }
 

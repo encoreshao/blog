@@ -1,7 +1,8 @@
 .post-wrapper
   %article#post-481.basic-post.post-picture.post.type-post.status-publish.format-image.has-post-thumbnail.hentry.category-fashion.tag-fashion-show.tag-photography.post_format-post-format-image
     .thumbnail.typing
-      %h1= I18n.t('tips.side_note_1')
+      %h1= I18n.t("notes.word_#{1+rand(4)}")
+
     .post-inner
       .post-title
         %h5
@@ -45,40 +46,21 @@
               %strong= link_to tag.name, tags_path(tag: tag.permalink), target: '_blank'
 
       .share-buttons
-        - article_url = article_url(@article.params)
-        - article_title = @article.title
         .addthis_toolbox.addthis_default_style
           %h4= I18n.t('tips.share_this_article')
-          %a.addthis_button_facebook
-            = link_to "https://www.facebook.com/sharer/sharer.php?u=#{article_url}&t=#{article_title}", rel: 'canonical', target: '_blank' do
-              %span.fa.fa-facebook
-          %a.addthis_button_twitter
-            = link_to "https://twitter.com/share?url=#{article_url}&text=#{article_title}", rel: 'canonical', target: '_blank' do
-              %span.fa.fa-twitter
-          %a.addthis_button_weibo
-            = link_to "http://service.weibo.com/share/share.php?url=#{article_url}&title=#{article_title}", rel: 'canonical', target: '_blank' do
-              %span.fa.fa-weibo
-          %a.addthis_button_tencent_weibo
-            = link_to "http://v.t.qq.com/share/share.php?url=#{article_url}&title=#{article_title}", rel: 'canonical', target: '_blank' do
-              %span.fa.fa-tencent-weibo
-          %a.addthis_button_qq
-            = link_to "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=#{article_url}&title=#{article_title}", rel: 'canonical', target: '_blank' do
-              %span.fa.fa-qq
-          %a.addthis_button_google-plus
-            = link_to "https://plus.google.com/share?url=#{article_url}", onclick: "javascript:window.open(this.href,
-  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;", rel: 'canonical', target: '_blank', alt: 'Share on Google+' do
-              %span.fa.fa-google-plus
+          = render partial: 'shared/social_share', locals: { article_url: article_url(@article.params), article_title: @article.title }
 
-      - if false
-        #post-nav
-          .post-previous
-            %span.title= I18n.t('tips.previous_post')
-            %h3
-              = 'Even the Celebrities Wanted to...'
-          .post-next
-            %span.title= I18n.t('tips.next_post')
-            %h3
-              = 'Even the Celebrities Wanted to...'
+      #post-nav
+        .post-previous
+          %span.title= I18n.t('tips.previous_post')
+          %h3
+            - if sample_article = Article.where('id <> ?', @article.id).sample
+              = link_to sample_article.title, article_url(sample_article.params)
+        .post-next
+          %span.title= I18n.t('tips.next_post')
+          %h3
+            - if sample_article = Article.where('id NOT IN (?)', [@article.id, sample_article.try(:id)]).sample
+              = link_to sample_article.title, article_url(sample_article.params)
 
   / Author
   .single-author.box.clearfix

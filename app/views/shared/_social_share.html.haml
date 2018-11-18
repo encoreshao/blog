@@ -1,0 +1,19 @@
+%a.addthis_button_facebook
+  = link_to "https://www.facebook.com/sharer/sharer.php?u=#{article_url}&t=#{article_title}", rel: 'canonical', target: '_blank' do
+    %span.fa.fa-facebook
+%a.addthis_button_twitter
+  = link_to "https://twitter.com/share?url=#{article_url}&text=#{article_title}", rel: 'canonical', target: '_blank' do
+    %span.fa.fa-twitter
+%a.addthis_button_weibo
+  = link_to "http://service.weibo.com/share/share.php?url=#{article_url}&title=#{article_title}", rel: 'canonical', target: '_blank' do
+    %span.fa.fa-weibo
+%a.addthis_button_tencent_weibo
+  = link_to "http://v.t.qq.com/share/share.php?url=#{article_url}&title=#{article_title}", rel: 'canonical', target: '_blank' do
+    %span.fa.fa-tencent-weibo
+%a.addthis_button_qq
+  = link_to "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=#{article_url}&title=#{article_title}", rel: 'canonical', target: '_blank' do
+    %span.fa.fa-qq
+%a.addthis_button_google-plus
+  = link_to "https://plus.google.com/share?url=#{article_url}", onclick: "javascript:window.open(this.href,
+'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;", rel: 'canonical', target: '_blank', alt: 'Share on Google+' do
+    %span.fa.fa-google-plus
