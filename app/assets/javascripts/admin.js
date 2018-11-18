@@ -3,9 +3,9 @@
 //= require jquery_ujs
 //= require utils/jquery.form.min
 //= require utils/tether.min
-//= require simple-module/dist/simple-module.min
+//= require simple-module/lib/module
 //= require simple-hotkeys/lib/hotkeys
-//= require simple-uploader/dist/uploader
+//= require simple-uploader/lib/uploader
 //= require simditor/lib/simditor
 //= require bootstrap
 //= require utils/popper.min

@@ -8,7 +8,7 @@
         .meta
           %span
             %i.fa.fa-cubes
-            = link_to article.category_name(I18n.default_locale), categories_path(category: article.category&.permalink)
+            = link_to article.category_name(I18n.default_locale), categories_path(category: article.category&.permalink), target: '_blank'
           %span
             %i.fa.fa-calendar
             = article.published_date
@@ -28,7 +28,7 @@
               = link_to tag.name, tags_path(tag: tag.permalink), target: '_blank'
 
         .read-more
-          %a{href: article_path(article.params)}= I18n.t('action.read_more')
+          = link_to I18n.t('action.read_more'), article_path(article.params), target: '_blank'
 
 .page-navigation.clearfix
   = paginate articles, params: { controller: 'dashboards', action: 'index'}

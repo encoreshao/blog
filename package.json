@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "font-awesome": "^4.7.0",
-    "simditor": "^2.3.23"
+    "simditor": "2.3.19"
   },
   "version": "1.0.0",
   "main": "index.js",
