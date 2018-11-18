@@ -15,6 +15,6 @@ class Admin::CategoriesController < AdminController
     end
 
     def collection
-      @categories ||= end_of_association_chain.with_keywords(params[:name]).page(params[:page])
+      @categories ||= end_of_association_chain.fuzzy_search(params[:name]).page(params[:page])
     end
 end

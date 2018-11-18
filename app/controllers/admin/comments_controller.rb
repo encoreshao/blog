@@ -11,6 +11,6 @@ class Admin::CommentsController < AdminController
     end
 
     def collection
-      @comments ||= end_of_association_chain.with_keywords(params[:name]).page(params[:page])
+      @comments ||= end_of_association_chain.fuzzy_search(params[:name]).page(params[:page])
     end
 end

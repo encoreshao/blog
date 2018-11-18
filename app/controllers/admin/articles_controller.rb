@@ -42,7 +42,7 @@ class Admin::ArticlesController < AdminController
     def collection
       @articles ||= end_of_association_chain.preload([:category, :user]).
                     with_owner(current_user).
-                    with_keywords(params[:name]).
+                    fuzzy_search(params[:name]).
                     sorting.page(params[:page])
     end
 

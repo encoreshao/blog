@@ -20,7 +20,7 @@ class Admin::UsersController < AdminController
     end
 
     def collection
-      @users ||= end_of_association_chain.with_keywords(params[:name]).page(params[:page])
+      @users ||= end_of_association_chain.fuzzy_search(params[:name]).page(params[:page])
     end
 
     def verify_permit?

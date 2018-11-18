@@ -3,7 +3,7 @@
 class Category < ApplicationRecord
   has_many :articles
 
-  scope :with_keywords, ->(keyword) {
+  scope :fuzzy_search, ->(keyword) {
     return nil if keyword.blank?
 
     criteria = ActiveRecord::Base.send(:sanitize_sql, keyword)

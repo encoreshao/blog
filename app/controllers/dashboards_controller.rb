@@ -19,7 +19,7 @@ class DashboardsController < ApplicationController
     Article.preload(%i[category user comments tags])
            .published.with_categories(category_id)
            .with_tags(tag_id)
-           .with_keywords(params[:q])
+           .fuzzy_search(params[:q])
            .sorting
            .page(params[:page]).per(10)
   end

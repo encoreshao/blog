@@ -5,13 +5,14 @@
     = link_to I18n.t('action.back'), admin_users_path
     |
     = link_to I18n.t('action.new'), edit_admin_user_path
+  %br
 
 .table-responsive
   %table.table.table-hover.table-bordered
     - [:name, :email, :title, :link, :introduction].each do |attr|
       %tr
         %td= User.human_attribute_name(attr)
-        %td= resource.send(attr)
+        %td= raw resource.send(attr)
     %tr
       %td= User.human_attribute_name(:avatar)
       %td{style: ''}

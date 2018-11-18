@@ -19,21 +19,18 @@
 #
 
 class SiteLink < ApplicationRecord
+  include AttrMethodSuffix
+  include Searchable
+
   validates :name, :url, presence: true, uniqueness: true
-  attribute_method_suffix "_text"
 
   delegate :name, to: :site_group, prefix: true, allow_nil: true
   belongs_to :site_group, optional: true
 
   scope :enabled, -> { where(enabled: true) }
-  scope :with_keywords, ->(keyword) {
-    return nil if keyword.blank?
-
-    where("LOWER(name) ILIKE LOWER(?)", "%#{sanitize_sql(keyword)}%")
-  }
   scope :sorting, -> { order("created_at ASC") }
 
-  after_save :clearing_cache
+  after_save :cache_clear!
 
   class << self
     def availables
@@ -44,13 +41,8 @@ class SiteLink < ApplicationRecord
   end
 
   private
-    def attribute_text(attr_name)
-      return unless [true, false].include?(send(attr_name))
 
-      send(attr_name) ? "YES" : "NO"
-    end
-
-    def clearing_cache
+    def cache_clear!
       Rails.cache.delete("site_links_availables")
     end
 end

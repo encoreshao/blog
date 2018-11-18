@@ -5,6 +5,6 @@
     = f.input :url, required: true
     = f.input :email
     = f.input :site_group_id, collection: site_groups, include_blank: false
-    = f.input :enabled, collection: switch_options, include_blank: false
+    = f.input :enabled, as: :radio_buttons
 
     = f.submit class: 'btn btn-primary'

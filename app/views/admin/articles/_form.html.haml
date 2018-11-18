@@ -1,5 +1,5 @@
 .table-responsive
-  = simple_form_for resource, url: url, html: { class: 'vertical_form', validate: true } do |f|
+  = simple_form_for resource, url: url, html: { class: 'vertical_radio_and_checkboxes', validate: true } do |f|
     = f.error_notification
     = f.input :title, required: true
     = f.input :permalink, required: true

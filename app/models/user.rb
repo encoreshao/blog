@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  include Searchable
+
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable :recoverable, :registerable
   devise :database_authenticatable, :rememberable, :trackable, :validatable, :confirmable
@@ -9,13 +11,6 @@ class User < ApplicationRecord
   has_many :articles
 
   mount_uploader :avatar, AvatarUploader
-
-  scope :with_keywords, ->(keyword) {
-    return nil if keyword.blank?
-
-    criteria = ActiveRecord::Base.send(:sanitize_sql, keyword)
-    where("LOWER(name) ILIKE LOWER(?)", "%#{criteria}%")
-  }
 
   before_create :setup_info!
 

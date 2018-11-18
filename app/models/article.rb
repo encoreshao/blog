@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Article < ApplicationRecord
+  include AttrMethodSuffix
+
   validates :title, :permalink, :user_id, :category_id, :content, presence: true
 
   belongs_to :user, optional: true
@@ -18,16 +20,16 @@ class Article < ApplicationRecord
 
     where(category_id: category_id)
   }
-  scope :with_tags, ->(tag_id) {
-    return nil if tag_id.nil?
-
-    joins(:tags).where("articles_tags.tag_id = ?", tag_id)
-  }
-  scope :with_keywords, ->(keyword) {
+  scope :fuzzy_search, ->(keyword) {
     return nil if keyword.blank?
 
     criteria = ActiveRecord::Base.send(:sanitize_sql, keyword)
     where("LOWER(title) ILIKE LOWER(?)", "%#{criteria}%")
+  }
+  scope :with_tags, ->(tag_id) {
+    return nil if tag_id.nil?
+
+    joins(:tags).where("articles_tags.tag_id = ?", tag_id)
   }
   scope :with_owner, ->(current_user) {
     user_id = (current_user.admin? ? nil : current_user.id)

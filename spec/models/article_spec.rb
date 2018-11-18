@@ -6,6 +6,10 @@ RSpec.describe Article do
   it "Should be include title when create article" do
     expect(article.title.present?).to be_truthy
   end
+
+  it "Should be contains method `is_published_text`" do
+    expect(article.is_published_text).to eq("否")
+  end
 end
 
 # == Schema Information

@@ -10,6 +10,6 @@ class Admin::SiteGroupsController < AdminController
     end
 
     def collection
-      @site_groups ||= end_of_association_chain.with_keywords(params[:name]).page(params[:page])
+      @site_groups ||= end_of_association_chain.fuzzy_search(params[:name]).page(params[:page])
     end
 end
