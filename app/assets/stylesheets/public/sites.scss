@@ -2,15 +2,19 @@
   10% {
     background-color: rgba(10, 164, 211, 0.1)
   }
+
   30% {
     background-color: rgba(10, 164, 211, 0.3)
   }
+
   50% {
     background-color: rgba(10, 164, 211, 0.5)
   }
+
   70% {
     background-color: rgba(10, 164, 211, 0.7)
   }
+
   90% {
     background-color: rgba(10, 164, 211, 0.9)
   }
@@ -20,15 +24,19 @@
   10% {
     color: rgba(10, 164, 211, 0.1)
   }
+
   30% {
     color: rgba(10, 164, 211, 0.3)
   }
+
   50% {
     color: rgba(10, 164, 211, 0.5)
   }
+
   70% {
     color: rgba(10, 164, 211, 0.7)
   }
+
   90% {
     color: rgba(10, 164, 211, 0.9)
   }
@@ -81,24 +89,29 @@
   color: #0aa4d3;
   height: 100%;
   display: inline-grid;
+
   &.fluid__margins {
     padding-top: 4em;
     padding-bottom: 2em;
     margin-bottom: 50px;
   }
+
   .caption {
     h1 {
       font-size: 4rem;
     }
+
     span {
       font-size: 1.2em;
       line-height: 1.2em;
       font-style: italic;
     }
+
     .m-buttom {
       margin: 0 0 10px;
       margin-top: 5em;
     }
+
     .ghost-buttom {
       background: none;
       border: 1px solid #0aa4d3;
@@ -133,9 +146,11 @@
   .top-box .boxing {
     bottom: 0;
   }
+
   .bottom-box .boxing {
     top: 0;
   }
+
   .animation .boxing {
     position: absolute;
     width: .5%;
@@ -144,23 +159,28 @@
     -webkit-animation: animation-random 5s infinite;
     animation: animation-random 5s infinite;
   }
+
   .caption {
     color: rgba(10, 164, 211, 0.0) !important;
     -webkit-animation: colorRandom 5s infinite;
     animation: colorRandom 5s infinite;
   }
+
   ul {
     padding: 0 40px;
     list-style: none;
     margin: 0;
+
     li {
       display: inline-block;
       position: relative;
+
       a {
         display: block;
         margin: 0 22px 0 0;
         font-size: 2em;
       }
+
       .fa {
         font-size: 2em;
       }
@@ -199,10 +219,12 @@
 
   transition: opacity 1s ease;
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.9);
+
   .cc-message {
     -ms-flex: 1;
     flex: 1;
   }
+
   .cc-compliance {
     display: -ms-flexbox;
     display: flex;
@@ -212,9 +234,11 @@
     align-content: space-between;
     flex-direction: row-reverse;
   }
+
   .cc-banner .cc-btn:last-child {
     min-width: 140px;
   }
+
   .cc-btn {
     flex: .5;
     -ms-flex: .5;
@@ -236,4 +260,23 @@
 .card-img-top {
   border-radius: 50%;
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.9);
+}
+
+nav.navbar {
+  padding: 0;
+
+  #search-field {
+    height: 30px;
+    border-radius: 0;
+    border: 1px solid $topNav;
+  }
+}
+
+nav.navbar:before {
+  background: hsl(0, 2%, 9%) linear-gradient(to left, hsl(130, 74%, 41%), hsl(199, 76%, 59%), hsl(211, 36%, 37%), hsl(198, 33%, 53%), hsl(299, 38%, 40%), hsl(64, 91%, 63%));
+  content: "";
+  height: 5px;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }

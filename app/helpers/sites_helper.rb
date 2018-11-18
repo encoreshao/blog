@@ -13,6 +13,12 @@ module SitesHelper
     end
   end
 
+  def custom_menu_item(link, text)
+    content_tag(:li, class: "nav-item") do
+      content_tag(:a, text, href: link, class: "nav-link")
+    end
+  end
+
   def switch_options
     [[I18n.t("action.switch_no"), "0"], [I18n.t("action.switch_yes"), "1"]]
   end
