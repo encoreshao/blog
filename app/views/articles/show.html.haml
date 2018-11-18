@@ -39,7 +39,7 @@
           %br
 
       - unless @article.tags.empty?
-        %footer.content-footer
+        .content-footer
           .tags
             %label #{I18n.t('tips.tags')}:
             - @article.tags.each do |tag|

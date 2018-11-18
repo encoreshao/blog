@@ -176,7 +176,6 @@
 }
 
 .post-content {
-
   &.audio,
   &.video {
     text-align: center;
@@ -210,12 +209,11 @@ ul.menu li.active {
 footer {
   text-align: center;
   border-top: 1px solid #efefef;
-  color: #555;
+  color: #ffffff;
+  background-color: $topNav;
 
   .copyright-wrapper {
     padding: 50px 0px;
-    background-color: #262f39;
-    color: #ffffff;
   }
 
   a {
