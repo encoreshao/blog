@@ -1,4 +1,3 @@
 .header-menu
   %ul
-    %li= link_to I18n.t('navigation.home'), root_path
-    %li= link_to I18n.t('navigation.pages'), pages_root_path
+    = render partial: 'shared/menu'
