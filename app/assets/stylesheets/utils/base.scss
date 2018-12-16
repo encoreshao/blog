@@ -16,6 +16,7 @@ PLEASE DON'T EDIT THIS FILE
 If you want to add or modify the styles please do it from the custom.css file inside the theme folder, or for best practice do your customization in a child theme http://codex.wordpress.org/Child_Themes. It will make it easier for you to update your theme when we release a theme updates.
 */
 
+
 * {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -126,9 +127,30 @@ img {
   height: auto;
 }
 
+/* draw any selected text yellow on red background */
+::-moz-selection {
+  color: #1f1f1f;
+  background: $siteColorLight;
+  text-shadow: none;
+}
+
 ::selection {
-  background-color: #9e9e9e;
-  color: #fff;
+  color: #1f1f1f;
+  background: $siteColorLight;
+  text-shadow: none;
+}
+
+/* draw selected text in a paragraph white on black */
+*::-moz-selection {
+  color: #1f1f1f;
+  background: $siteColorLight;
+  text-shadow: none;
+}
+
+*::selection {
+  color: #1f1f1f;
+  background: $siteColorLight;
+  text-shadow: none;
 }
 
 .clearfix,
@@ -357,7 +379,7 @@ article .thumbnail {
 ,
 .widget_nav_menu ul li.current-menu-item a,
 .widget_nav_menu ul li.current_page_item a,
-{
+  {
   color: #ff5722;
 }
 
@@ -552,10 +574,12 @@ article .thumbnail {
   .tags0 {
     font-size: 1.003em;
   }
+
   .tags1 {
     color: #969696;
     font-size: 1.3em;
   }
+
   .tags2 {
     color: #030;
     font-size: .89em;
@@ -662,6 +686,7 @@ article .thumbnail {
   -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
+
   &:hover {
     border: 2px solid $siteColor;
     -moz-border-radius: 119px;
@@ -721,20 +746,25 @@ article .thumbnail {
 .social {
   font-size: 20px;
   margin-top: 10px;
+
   ul {
     margin: 0;
+
     li {
       float: left;
       margin: 0 7px 7px 0;
       font-size: 1em;
+
       a {
         padding: 5px;
         border-radius: 2px;
       }
+
       &:hover {
         a {
           background-color: $siteColor;
         }
+
         i.fa {
           color: white
         }
@@ -753,6 +783,7 @@ article .thumbnail {
 
 #main-carousel-slider {
   margin-bottom: 30px;
+
   ul.slides {
     margin: 0;
   }
@@ -927,7 +958,8 @@ body.single .post-wrapper article.hentry {
   transition: .25s;
 }
 
-#search-form .btn-outline-success, .read-more a {
+#search-form .btn-outline-success,
+.read-more a {
   display: inline-block;
   color: rgba(255, 255, 255, 1);
   line-height: 15px;
@@ -937,7 +969,8 @@ body.single .post-wrapper article.hentry {
   font-size: 1em;
 }
 
-#search-form .btn-outline-success:hover, .read-more a:hover {
+#search-form .btn-outline-success:hover,
+.read-more a:hover {
   font-size: 1.001em;
   color: rgba(255, 255, 255, .8);
   background-color: $siteColorLight;
@@ -1889,7 +1922,9 @@ form.wpcf7-form .wpcf7-mail-sent-ok {
   border-left: 6px solid hsl(0, 0%, 87%);
   padding: 5px 0 5px 10px;
   margin: 15px 0 15px 10px;
-  ul, ol {
+
+  ul,
+  ol {
     margin: 0 15px;
   }
 }
