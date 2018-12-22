@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Pages::HomepagesController < PagesController
-  def index
-  end
+  caches_action :index, expires_in: 2.days
+
+  def index; end
 end

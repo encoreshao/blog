@@ -3,11 +3,12 @@
 class SitesController < ApplicationController
   layout "articles"
 
-  def index
-  end
+  caches_action :index, expires_in: 4.hours
+  caches_action :author, expires_in: 2.days
 
-  def author
-  end
+  def index; end
+
+  def author; end
 
   def feedback
     if request.post?

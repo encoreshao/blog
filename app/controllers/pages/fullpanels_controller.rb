@@ -1,24 +1,13 @@
 # frozen_string_literal: true
 
 class Pages::FullpanelsController < PagesController
-  def index
-  end
+  caches_action :index, expires_in: 2.days
+  caches_action :typed, expires_in: 2.days
+  caches_action :slides, expires_in: 2.days
 
-  def typed
-  end
+  def index; end
 
-  def slides
-  end
+  def typed; end
 
-  def case1
-  end
-
-  def case2
-  end
-
-  def case3
-  end
-
-  def case4
-  end
+  def slides; end
 end
