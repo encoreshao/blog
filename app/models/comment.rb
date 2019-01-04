@@ -17,6 +17,7 @@ class Comment < ApplicationRecord
     joins("LEFT JOIN articles ON comments.commentable_id = articles.id")
       .where("LOWER(articles.title) ILIKE LOWER(?)", "%#{criteria}%")
   }
+  scope :sorting, -> { order(created_at: :desc) }
 
   def user_name
     name || "Anonymous"

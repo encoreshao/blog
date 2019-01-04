@@ -8,6 +8,7 @@
         %th= Comment.human_attribute_name(:title)
         %th= Comment.human_attribute_name(:content)
         %th= Comment.human_attribute_name(:name)
+        %th= Comment.human_attribute_name(:remote_ip)
         %th= Comment.human_attribute_name(:created_at)
         %th
     %tbody
@@ -17,6 +18,7 @@
           %td= truncate(resource.commentable.title, length: 20)
           %td= truncate(resource.content, length: 20)
           %td= resource.name
+          %td= resource.remote_ip
           %td= resource.created_at.strftime('%b %d, %Y')
           %td
             = link_to resource_path(resource) do
