@@ -23,7 +23,7 @@ gem "uglifier"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem "mini_racer", platforms: :ruby
 
-gem "bootstrap"
+gem "bootstrap", "~> 4.1.3"
 gem "carrierwave"
 gem "devise"
 gem "inherited_resources"
