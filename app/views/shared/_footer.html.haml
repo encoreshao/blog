@@ -1,16 +1,14 @@
 %footer.footer-wrapper.clearfix
   .copyright-wrapper
-    .copyright-container.container.d-flex
+    .container.d-flex
       .mr-auto.p-2
-        &copy; #{Time.zone.now.year}
-        &nbsp;
-        = '-'
-        &nbsp;
-        = link_to I18n.t('title'), root_path
-
-        - if current_user.present?
-          &nbsp;
-          = link_to I18n.t('baidu_analysis'), 'https://tongji.baidu.com/web/welcome/ico?s=b8f39701da6c8a5b848ae1d135cd9ee5', target: '_blank'
+        %span
+          &copy; #{Time.zone.now.year}
+        %span
+          = link_to I18n.t('title'), root_path
+        - if current_user.admin?
+          %span
+            = link_to I18n.t('baidu_analysis'), 'https://tongji.baidu.com/web/welcome/ico?s=b8f39701da6c8a5b848ae1d135cd9ee5', target: '_blank'
 
       .ml-auto.p-2
         All Rights Reserved

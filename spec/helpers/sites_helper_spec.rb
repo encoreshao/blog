@@ -2,16 +2,12 @@
 
 require "rails_helper"
 
-# Specs in this file have access to a helper object that includes
-# the SitesHelper. For example:
-#
-# describe SitesHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe SitesHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'should contains custom class nav-link' do
+    expect(helper.custom_menu_item('link1', 'text')).to match(/nav-link/)
+  end
+
+  it 'returns yes or no options' do
+    expect(helper.switch_options).to eq([['否', '0'], ['是', '1']])
+  end
 end

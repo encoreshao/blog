@@ -176,6 +176,7 @@
 }
 
 .post-content {
+
   &.audio,
   &.video {
     text-align: center;
@@ -214,6 +215,10 @@ footer {
 
   .copyright-wrapper {
     padding: 50px 0px;
+
+    span {
+      padding-right: 10px;
+    }
   }
 
   a {

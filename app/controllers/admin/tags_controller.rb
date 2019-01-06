@@ -15,6 +15,6 @@ class Admin::TagsController < AdminController
     end
 
     def collection
-      @tags ||= end_of_association_chain.fuzzy_search(params[:name]).page(params[:page])
+      @tags ||= end_of_association_chain.includes([:articles]).fuzzy_search(params[:name]).page(params[:page])
     end
 end

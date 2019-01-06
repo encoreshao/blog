@@ -14,7 +14,7 @@
         %tr
           %td= resource.name
           %td= resource.permalink
-          %td= resource.articles.count
+          %td= resource.articles.size
           %td= resource.created_at.strftime('%b %d, %Y')
           %td
             = link_to edit_admin_tag_path(resource) do
