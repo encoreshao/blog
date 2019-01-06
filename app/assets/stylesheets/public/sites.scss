@@ -55,6 +55,9 @@
 .nav-item {
   list-style: none;
   margin-bottom: 0px;
+  &.active {
+    border-bottom: 1px solid rgb(255, 0, 0);
+  }
 }
 
 .nav-item:hover {
