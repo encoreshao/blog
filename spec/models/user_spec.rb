@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe User do
-  let (:user) { User.make!(:info, name: 'Test User Name') }
+  let (:user) { User.make!(:info, name: "Test User Name") }
   let (:admin) { User.make!(:admin) }
 
   it "Should be return false when user is member" do
@@ -20,9 +20,9 @@ RSpec.describe User do
     expect(admin.admin?).to be_truthy
   end
 
-  context '#display_name' do
-    it 'returns name as display_name' do
-      expect(user.display_name).to eq('Test User Name')
+  context "#display_name" do
+    it "returns name as display_name" do
+      expect(user.display_name).to eq("Test User Name")
     end
   end
 end
