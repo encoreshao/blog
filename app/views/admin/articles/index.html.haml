@@ -25,7 +25,7 @@
             = link_to edit_admin_article_path(resource) do
               %i.fa.fa-edit
               = I18n.t('action.edit')
-            = link_to admin_article_path(resource), method: :DELETE do
+            = link_to admin_article_path(resource), method: :DELETE, data: { confirm: 'Are you want to delete it?' } do
               %i.fa.fa-trash
               = I18n.t('action.destory')
 

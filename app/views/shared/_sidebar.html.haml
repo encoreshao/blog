@@ -35,7 +35,7 @@
         %i.fa.fa-bars
         = I18n.t('navigation.category')
     .menu-main-menu-container
-      %ul#menu-main-menu.menu
+      %ul#menu-main-menu.menu.clearfix
         - widget_categories.each do |category|
           %li{class: "#{'active' if category[1] == params[:category]}"}
             = link_to categories_path(category: category[1]), target: '_blank' do

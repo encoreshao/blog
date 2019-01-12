@@ -196,10 +196,15 @@
   }
 }
 
+
+ul.menu {
+  padding: 0px;
+  margin: 0px;
+}
+
 ul.menu li {
-  margin: 5px 0;
-  width: 110px;
   float: left;
+  padding: 0 10px;
 }
 
 .tagcloud a.active,

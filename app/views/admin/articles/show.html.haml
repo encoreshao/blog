@@ -1,33 +1,82 @@
-%h4.text-center
-  = raw @article.title
-
-.right
-  = link_to I18n.t('action.back'), admin_articles_path
-  |
-  = link_to I18n.t('action.edit'), edit_admin_article_path(resource)
-  |
-  = link_to I18n.t('action.new'), new_admin_article_path
-  |
-  = link_to I18n.t('action.preview'), article_path(resource.params)
-
-%br
-
 .table-responsive
-  .clearfix
-    %strong Tags:
-    = @article.tags.map(&:name).join(', ')
-  %br
-  .post-content.clearfix
-    = raw @article.content
+  .right
+    = link_to I18n.t('action.back'), admin_articles_path
+    |
+    = link_to I18n.t('action.edit'), edit_admin_article_path(resource)
+    |
+    = link_to I18n.t('action.new'), new_admin_article_path
+    |
+    = link_to I18n.t('action.preview'), article_path(resource.params)
 
-  - if @article.embed?
-    %table.table.table-hover.table-bordered
-      %tr
-        %td= Article.human_attribute_name(:category_id)
-        %td= @article.category.permalink.titleize
-      %tr
-        %td= Article.human_attribute_name(:embed_link)
-        %td= @article.embed_link
-      %tr
-        %td
-        %td= audio_or_video_of_article(@article)
+%hr
+
+.post-wrapper
+  %article#post-481.basic-post.post-picture.post.type-post.status-publish.format-image.has-post-thumbnail.hentry.category-fashion.tag-fashion-show.tag-photography.post_format-post-format-image
+    .post-inner
+      .post-title
+        %h5
+          %strong= @article.title
+      .meta
+        %span
+          %i.fa.fa-calendar
+          = @article.published_date
+        %span
+          %i.fa.fa-cubes
+          = link_to @article.category_name(I18n.default_locale), categories_path(category: @article.category&.permalink)
+        %span
+          %i.fa.fa-meh-o
+          = I18n.t('tips.viewed_count')
+          = raw "(#{@article.view_count})"
+        %span.btn-action{data: {name: 'up'}}
+          %i.fa.fa-thumbs-up
+          = I18n.t('action.like')
+          = raw "(<count>#{@article.likes_count}</count>)"
+        %span.btn-action{data: {name: 'down'}}
+          %i.fa.fa-thumbs-down
+          = I18n.t('action.dislike')
+          = raw "(<count>#{@article.dislike_count}</count>)"
+      .post-content{class: @article.category.try(:permalink)}
+        = raw @article.content
+
+        - if @article.embed?
+          = audio_or_video_of_article(@article)
+
+        - if @article.reprinted_link.present?
+          %strong
+            = 'References - '
+          %em= link_to @article.reprinted_source, @article.reprinted_link, target: '_blank'
+          %br
+
+      - unless @article.tags.empty?
+        .content-footer
+          .tags
+            %label #{I18n.t('tips.tags')}:
+            - @article.tags.each do |tag|
+              %strong= link_to tag.name, tags_path(tag: tag.permalink), target: '_blank'
+
+      .share-buttons
+        .addthis_toolbox.addthis_default_style
+          %h4= I18n.t('tips.share_this_article')
+          = render partial: 'shared/social_share', locals: { article_url: article_url(@article.params), article_title: @article.title }
+
+      #post-nav
+        .post-previous
+          %span.title= I18n.t('tips.previous_post')
+          %h3
+            - if sample_article = Article.where('id <> ?', @article.id).sample
+              = link_to sample_article.title, article_url(sample_article.params)
+        .post-next
+          %span.title= I18n.t('tips.next_post')
+          %h3
+            - if sample_article = Article.where('id NOT IN (?)', [@article.id, sample_article.try(:id)]).sample
+              = link_to sample_article.title, article_url(sample_article.params)
+
+  / Author
+  .single-author.box
+    .wrapper
+      .thumbnail
+        = author_avatar
+      .info
+        = I18n.t('tips.note2')
+
+      = render partial: 'shared/social_links', locals: { class_name: 'social-profiles' }

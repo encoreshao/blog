@@ -3,8 +3,8 @@
 class SitesController < ApplicationController
   layout "articles"
 
-  caches_action :index, expires_in: 4.hours
-  caches_action :author, expires_in: 2.days
+  # caches_action :index, expires_in: 4.hours
+  # caches_action :author, expires_in: 2.days
 
   def index; end
 

@@ -6,7 +6,7 @@
           &copy; #{Time.zone.now.year}
         %span
           = link_to I18n.t('title'), root_path
-        - if current_user.admin?
+        - if request.url =~ /admin/
           %span
             = link_to I18n.t('baidu_analysis'), 'https://tongji.baidu.com/web/welcome/ico?s=b8f39701da6c8a5b848ae1d135cd9ee5', target: '_blank'
 

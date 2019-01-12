@@ -63,16 +63,13 @@
               = link_to sample_article.title, article_url(sample_article.params)
 
   / Author
-  .single-author.box.clearfix
-    .wrapper.clearfix
+  .single-author.box
+    .wrapper
       .thumbnail
         = author_avatar
-      .info.clearfix{style: 'width: 100%;margin-bottom: 20px;'}
+      .info
         = I18n.t('tips.note2')
-
       = render partial: 'shared/social_links', locals: { class_name: 'social-profiles' }
-
-    .clearfix
 
   / Comments
   - if @article.comments.count > 0
@@ -124,8 +121,6 @@
           %input{name: "year", type: "hidden", value: @article.published_at.year}
           %input{name: "month", type: "hidden", value: @article.published_at.month}
           %input{name: "day", type: "hidden", value: @article.published_at.day}
-
-.clearfix
 
 - content_for :javascript do
   :javascript
