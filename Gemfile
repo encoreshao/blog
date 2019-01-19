@@ -65,6 +65,7 @@ group :test do
   gem "ffaker"
   gem "machinist"
   gem "rspec-rails"
+  gem "rails-controller-testing"
 end
 
 group :development do

@@ -23,4 +23,12 @@ RSpec.describe ArticlesController do
       expect(get: article_path(@article.params)).to route_to(routes_path)
     end
   end
+
+  describe "GET #timeline" do
+    it "assigns @articles" do
+      get :timeline
+
+      expect(assigns(:articles)).to eq(@article.created_at.beginning_of_month.strftime("%b, %Y") => [@article])
+    end
+  end
 end

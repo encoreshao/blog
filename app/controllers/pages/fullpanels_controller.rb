@@ -1,13 +1,10 @@
 # frozen_string_literal: true
 
 class Pages::FullpanelsController < PagesController
-  caches_action :index, expires_in: 2.days
-  caches_action :typed, expires_in: 2.days
-  caches_action :slides, expires_in: 2.days
+  %i[index typed slides slack_logo].each do |method_name|
+    caches_action method_name, expires_in: Rails.env.development? ? 1.seconds : 2.days
 
-  def index; end
-
-  def typed; end
-
-  def slides; end
+    def method_name
+    end
+  end
 end

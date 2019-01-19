@@ -3,12 +3,12 @@
 class SitesController < ApplicationController
   layout "articles"
 
-  caches_action :index, expires_in: 4.hours
-  caches_action :author, expires_in: 2.days
+  %i[index author].each do |method_name|
+    caches_action method_name, expires_in: Rails.env.development? ? 1.seconds : 2.days
 
-  def index; end
-
-  def author; end
+    def method_name
+    end
+  end
 
   def feedback
     if request.post?

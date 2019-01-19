@@ -6,7 +6,8 @@ module SitesHelper
   end
 
   def navbar_menu_item(link, controller_and_action, nav_name)
-    active = "active" if controller_and_action == "#{controller_name}_#{action_name}"
+    controller_and_action = [controller_and_action] if controller_and_action.is_a?(String)
+    active = "active" if controller_and_action.include?("#{controller_name}_#{action_name}")
 
     content_tag(:li, class: "nav-item #{active}") do
       content_tag(:a, I18n.t("navigation.#{nav_name}"), href: link, class: "nav-link")

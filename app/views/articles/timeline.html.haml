@@ -1,0 +1,16 @@
+/ https://codepen.io/erinesullivan/pen/gZNdve
+
+#wrapper
+  #timeline-wrapper
+    %h1 Timeline
+    %ol.timeline
+      - @articles.sort.each do |month, articles|
+        %li
+          %h2= month
+          %ol
+            - articles.each do |article|
+              %li
+                %h3= link_to article.title, article_path(article.params), target: '_blank'
+                %p= article.created_at.strftime('%b %d, %Y')
+      %li
+        %h2 Today

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
         get :pagepiling
         get :typed
         get :slides
+        get :slack_logo
       end
     end
     root "homepages#index"
@@ -33,6 +34,7 @@ Rails.application.routes.draw do
 
   resources :articles, only: [] do
     collection do
+      get :timeline
       post :comments
       constraints format: :json do
         post :like

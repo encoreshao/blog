@@ -1,0 +1,73 @@
+.slack-logo {
+  position: relative;
+}
+
+.slack-logo__color {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0 0;
+
+  &.-yellow {}
+
+  &.-red {
+    transform: rotateZ(90deg);
+  }
+
+  &.-blue {
+    transform: rotateZ(180deg);
+  }
+
+  &.-green {
+    transform: rotateZ(270deg);
+  }
+}
+
+.slack-logo__tip {
+  margin-top: 1.5vmin;
+  margin-left: 1.5vmin;
+  border-radius: 17vmin;
+  width: 37vmin;
+  height: 17vmin;
+
+  .-green & {
+    background-color: #2db67c;
+  }
+
+  .-yellow & {
+    background-color: #ebb12d;
+  }
+
+  .-red & {
+    background-color: #df1e5a;
+  }
+
+  .-blue & {
+    background-color: #36c5ef;
+  }
+}
+
+.slack-logo__drop {
+  margin-top: 3vmin;
+  margin-left: 1.5vmin;
+  border-radius: 17vmin;
+  border-top-left-radius: 0;
+  width: 17vmin;
+  height: 17vmin;
+
+  .-green & {
+    background-color: #2db67c;
+  }
+
+  .-yellow & {
+    background-color: #ebb12d;
+  }
+
+  .-red & {
+    background-color: #df1e5a;
+  }
+
+  .-blue & {
+    background-color: #36c5ef;
+  }
+}

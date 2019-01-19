@@ -1,0 +1,23 @@
+/ https://codepen.io/otiext/pen/REOeOr
+
+.slack-logo
+  .slack-logo__color.-yellow
+    .slack-logo__tip
+    .slack-logo__drop
+  .slack-logo__color.-red
+    .slack-logo__tip
+    .slack-logo__drop
+  .slack-logo__color.-blue
+    .slack-logo__tip
+    .slack-logo__drop
+  .slack-logo__color.-green
+    .slack-logo__tip
+    .slack-logo__drop
+
+- content_for :javascript do
+  :javascript
+    (function($){
+      $('html, body').css({'margin': 0, 'padding': 0, 'height': '100%'});
+      $('body').css({'display': 'flex', 'justify-content': 'center', 'align-items': 'center', 'background-color': 'rgba(10, 164, 211, .5)'});
+      $('a').css({'color': '#FAFAFA'});
+    })(jQuery)

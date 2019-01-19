@@ -35,6 +35,11 @@ class ArticlesController < ApplicationController
     }
   end
 
+  caches_action :timeline, expires_in: Rails.env.development? ? 1.seconds : 2.days
+  def timeline
+    @articles = Article.all.order("created_at DESC").limit(100).group_by { |t| t.created_at.beginning_of_month.strftime('%b, %Y') }
+  end
+
   private
     def verify?
       @article = Article.preload([:comments, :tags]).
