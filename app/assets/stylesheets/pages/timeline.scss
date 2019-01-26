@@ -26,29 +26,26 @@ $yellowgreen: #9acd32;
 }
 
 /*** STYLE ***/
-
-#wrapper {
-  margin: 0 auto;
-  max-width: 64em;
-  h1,
-  h2 {
-    text-align: center;
-  }
-  h3 {
-    font-size: 2rem;
-    line-height: 1.5rem;
-  }
-  a {
-    font-size: 1.5rem;
-    line-height: 1.5rem;
-  }
-}
-
 #timeline-wrapper {
   float: left;
   padding: 1em;
   width: 100%;
   text-align: left;
+
+  h1,
+  h2 {
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 2rem;
+    line-height: 1.5rem;
+  }
+
+  a {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
 }
 
 @each $list in 'ol.timeline''ol.timeline ol' {
@@ -126,6 +123,7 @@ ol.timeline>li {
   }
 
   &:nth-child(6n + 2) {
+
     &:before,
     >h2 {
       background-color: $blue;
@@ -143,6 +141,7 @@ ol.timeline>li {
   }
 
   &:nth-child(6n + 3) {
+
     &:before,
     >h2 {
       background-color: $red;
@@ -160,6 +159,7 @@ ol.timeline>li {
   }
 
   &:nth-child(6n + 4) {
+
     &:before,
     >h2 {
       background-color: $orange;
@@ -177,6 +177,7 @@ ol.timeline>li {
   }
 
   &:nth-child(6n + 5) {
+
     &:before,
     >h2 {
       background-color: $yellow;
@@ -194,6 +195,7 @@ ol.timeline>li {
   }
 
   &:nth-child(6n + 6) {
+
     &:before,
     >h2 {
       background-color: $brown;
@@ -211,6 +213,7 @@ ol.timeline>li {
   }
 
   &:nth-child(6n + 7) {
+
     &:before,
     >h2 {
       background-color: $darkgreen;
@@ -228,6 +231,7 @@ ol.timeline>li {
   }
 
   &:nth-child(6n + 8) {
+
     &:before,
     >h2 {
       background-color: $mediumturquoise;
@@ -245,6 +249,7 @@ ol.timeline>li {
   }
 
   &:nth-child(6n + 9) {
+
     &:before,
     >h2 {
       background-color: $yellowgreen;
