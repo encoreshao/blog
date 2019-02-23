@@ -37,7 +37,7 @@ class ArticlesController < ApplicationController
 
   caches_action :timeline, expires_in: Rails.env.development? ? 1.seconds : 2.days
   def timeline
-    @articles = Article.all.limit(100).group_by { |a| a.created_at.beginning_of_month }
+    @articles = Article.all.limit(100).group_by { |a| a.published_at.beginning_of_month }.sort
   end
 
   private

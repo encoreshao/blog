@@ -2,13 +2,13 @@
 
 #timeline-wrapper
   %ol.timeline
-    - @articles.sort.each do |month, articles|
+    - @articles.each do |month, articles|
       %li
         %h2= month.strftime('%b, %Y')
         %ol
           - articles.each do |article|
             %li
               %h3= link_to article.title, article_path(article.params), target: '_blank'
-              %p= article.created_at.strftime('%b %d, %Y')
+              %p= article.published_at.strftime('%b %d, %Y')
     %li
       %h2 Today
