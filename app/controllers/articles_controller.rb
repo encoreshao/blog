@@ -37,12 +37,12 @@ class ArticlesController < ApplicationController
 
   caches_action :timeline, expires_in: Rails.env.development? ? 1.seconds : 2.days
   def timeline
-    @articles = Article.all.limit(100).group_by { |a| a.published_at.beginning_of_month }.sort
+    @articles = Article.published.limit(100).group_by { |a| a.published_at.beginning_of_month }.sort
   end
 
   private
     def verify?
-      @article = Article.preload([:comments, :tags]).
+      @article = Article.preload([:comments, :tags]).published.
         find_by(permalink: params[:permalink], published_at: published_date)
 
       redirect_to "/404" if @article.blank?
