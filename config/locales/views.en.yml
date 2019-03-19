@@ -31,6 +31,7 @@ en:
     comments: There's %{count} Comments
     heading: Software developers focused on web applications!
     site_notes: "Note: I will check the friendship links regularly. If there is no link to this site, the site will revoke your link. However, please do not submit multiple times, the background needs to be reviewed. Thank you for your cooperation with the webmaster/blogger."
+    comments: Comments
   notes:
     word_1: Hello World!
     word_2: Hello World!
@@ -51,6 +52,7 @@ en:
     fashion: Fashion
     friendly_links: Friendly Links
     timeline: Timeline
+    comments: Comments
   format:
     image: Image
     gallery: Gallery

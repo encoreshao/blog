@@ -31,6 +31,7 @@ zh:
     comments: 共有 %{count} 条留言
     heading: 专注于WEB应用程序的软件开发人员
     site_notes: "注: 本站会定期检查友情连接，如没有本站链接的，本站会将其撤销链接。但请勿多次提交，后台需要审核。谢谢各位站长/博主的配合。"
+    comments: 留言板
   notes:
     word_1: 世界，你好!
     word_2: 世界，你好!
@@ -51,6 +52,7 @@ zh:
     fashion: 时尚
     friendly_links: 友情链接
     timeline: 时间轴
+    comments: 留言板
   format:
     image: 图片
     gallery: 画廊

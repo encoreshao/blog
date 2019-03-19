@@ -221,6 +221,10 @@ p {
   display: none;
 }
 
+.jumbotron {
+  background-color: rgba(251, 251, 252, .2);
+}
+
 #sidebar-wrappers {
   padding: 40px 40px 40px 0;
   position: relative;
@@ -1254,6 +1258,7 @@ body.single-format-quote #post-nav {
   .thumbnail {
     width: 120px;
     height: 120px;
+
     img {
       display: block;
       position: absolute;
@@ -1268,19 +1273,23 @@ body.single-format-quote #post-nav {
       box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
     }
   }
+
   .info {
     width: 100%;
     padding: 10px 0;
   }
+
   .social-profiles {
     margin: 0;
     list-style: none;
     padding: 0;
+
     li {
       float: left;
       font-size: 20px;
       list-style: none;
       margin: 0 15px 0 0;
+
       a {
         color: #666;
       }
@@ -1320,7 +1329,6 @@ body.single-format-quote #post-nav {
 .comments,
 #respond {
   font-size: .85em;
-  line-height: 160%;
 }
 
 #respond {
@@ -1349,12 +1357,13 @@ p.moderate {
 .comments-list ul {
   margin: 0;
   padding: 0;
+  clear: both;
 }
 
 .comments-list ul li {
   list-style: none;
   position: relative;
-  margin-bottom: 10px;
+  margin: 10px;
 }
 
 .comments-list ul li:after {

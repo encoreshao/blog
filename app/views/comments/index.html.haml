@@ -1,0 +1,28 @@
+.jumbotron
+  .text-center
+    %h3= I18n.t('tips.comments')
+
+  = simple_form_for @comment, url: comments_path, html: { class: 'horizontal_form', validate: true } do |f|
+    = f.error_notification
+    = f.input :name
+    = f.input :email
+    = f.input :link
+    = f.input :content
+
+    = f.submit I18n.t('action.submit'), class: 'btn btn-primary'
+
+#comment-widget.comments.box
+  %h3.widget-title= I18n.t('tips.comments', count: @comments.size)
+  .comments-list
+    %ul
+      - @comments.each do |comment|
+        %li.comment.byuser.comment-author-themewarrior.even.thread-even{id: "comment-#{comment.id}"}
+          .thumbnail
+            %div.media.avatar-48
+              %img{src: gravatar_url(comment.email)}
+          .comment-detail
+            .author
+              = comment.user_name
+              %span -
+              %time= comment.created_at.strftime('%B %d, %Y')
+            %p= comment.content

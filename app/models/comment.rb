@@ -1,15 +1,17 @@
 # frozen_string_literal: true
 
 class Comment < ApplicationRecord
+  validates :name, :email, :content, presence: true
+
   belongs_to :user, optional: true
-  belongs_to :commentable, polymorphic: true
+  belongs_to :commentable, polymorphic: true, optional: true
 
   has_many :comments,
            class_name: "Comment",
            primary_key: "id",
            foreign_key: "comment_id"
 
-  scope :parent_comments, -> { where("comment_id IS NULL") }
+  scope :parent_comments, -> { where(comment_id: nil) }
   scope :fuzzy_search, ->(keyword) {
     return nil if keyword.blank?
 
@@ -18,6 +20,7 @@ class Comment < ApplicationRecord
       .where("LOWER(articles.title) ILIKE LOWER(?)", "%#{criteria}%")
   }
   scope :sorting, -> { order(created_at: :desc) }
+  scope :messages, -> { where(commentable_id: nil) }
 
   def user_name
     name || "Anonymous"

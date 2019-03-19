@@ -13,7 +13,7 @@
         %a.comment-reply-link{onclick: "return addComment.moveForm( \"comment-#{comment.id}\", \"#{comment.comment_parent + 1}\", \"respond\", \"#{comment.id}\" )", rel: "nofollow"}
           = I18n.t('action.reply')
 
-  - unless (comments = comment.comments).empty?
+  - unless (sub_comments = comment.comments).empty?
     %ul.depth-more
-      - comments.each do |depth_comment|
-        = render partial: 'comments', locals: { comment: depth_comment }
+      - sub_comments.each do |depth_comment|
+        = render partial: 'articles/comments', locals: { comment: depth_comment }

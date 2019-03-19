@@ -72,12 +72,12 @@
       = render partial: 'shared/social_links', locals: { class_name: 'social-profiles' }
 
   / Comments
-  - if @article.comments.count > 0
+  - unless (comments = @article.comments).empty?
     #comment-widget.comments.box
-      %h3.widget-title= I18n.t('tips.comments', count: @article.comments.count)
+      %h3.widget-title= I18n.t('tips.comments', count: comments.size)
       .comments-list
         %ul
-          - @article.comments.parent_comments.each do |comment|
+          - comments.parent_comments.each do |comment|
             = render partial: 'comments', locals: { comment: comment }
 
   #comment-form-widget.comments.box
