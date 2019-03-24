@@ -15,7 +15,7 @@
       - collection.each do |resource|
         %tr
           %td= resource.id
-          %td= truncate(resource.commentable.title, length: 20)
+          %td= truncate(resource.commentable.try(:title), length: 20)
           %td= truncate(resource.content, length: 20)
           %td= resource.name
           %td= resource.remote_ip

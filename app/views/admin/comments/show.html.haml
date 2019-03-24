@@ -2,7 +2,11 @@
   = link_to I18n.t('action.back'), admin_comments_path
 
 .table-responsive
-  %h4= link_to resource.commentable.try(:title), admin_article_path(resource.commentable)
+  %h4
+    - if resource.commentable.present?
+      = link_to resource.commentable.try(:title), admin_article_path(resource.commentable)
+    - else
+      = I18n.t('tips.comments')
   %br
   %table.table.table-hover.table-bordered
     %tbody
