@@ -8,10 +8,8 @@ module Admin::ArticlesHelper
   end
 
   def atricle_categories
-    attr_name = "name_#{params[:locale] || I18n.default_locale}"
-
-    Category.all.select("id, #{attr_name}, permalink").map do |e|
-      [e.send(attr_name.to_sym), e.id, { "data-type" => e.permalink }]
+    Category.all.select("id, name, permalink").map do |e|
+      [e.name, e.id, { "data-type" => e.permalink }]
     end
   end
 end

@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   layout "articles"
 
   def index
-    comments_cache_key = ['icmoc', 'comments', Comment.maximum(:updated_at).to_s(:db)].join('/')
+    comments_cache_key = ["icmoc", "comments", Comment.maximum(:updated_at).to_s(:db)].join("/")
 
     @comments = Rails.cache.fetch(comments_cache_key, expires_in: 10.hours) do
       Comment.messages.sorting

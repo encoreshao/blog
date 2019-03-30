@@ -14,7 +14,7 @@
       - collection.each do |resource|
         %tr
           %td= truncate(resource.title, length: 50)
-          %td= resource.category.try("name_#{params[:locale] || I18n.default_locale}".to_sym)
+          %td= resource.category&.name
           %td= resource.try(:author_name)
           %td= resource.is_published_text
           %td= resource.published_date

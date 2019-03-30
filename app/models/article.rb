@@ -14,6 +14,8 @@ class Article < ApplicationRecord
   has_many :comments, as: :commentable
 
   scope :published, -> { where(is_published: true) }
+  scope :by_permalink, ->(permalink) { where(permalink: permalink) }
+  scope :by_date, ->(date) { where(published_at: date) }
   scope :sorting, -> { order("published_at DESC NULLS LAST") }
   scope :with_categories, ->(category_id) {
     return nil if category_id.nil?

@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
   private
     def verify?
       @article = Article.preload([:comments, :tags]).published.
-        find_by(permalink: params[:permalink], published_at: published_date)
+        by_permalink(params[:permalink]).by_date(published_date).first
 
       redirect_to "/404" if @article.blank?
     end

@@ -25,7 +25,7 @@
       beforeSend: () ->
         currentElement.data('disabled', true)
       success: (response) ->
-        currentElement.find('count').text(response.count)
+        currentElement.find('span.count').text('(' + response.count + ')')
 
     $.ajax ajaxOptions
 

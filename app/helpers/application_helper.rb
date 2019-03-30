@@ -49,10 +49,8 @@ module ApplicationHelper
 
   def widget_categories
     Rails.cache.fetch("icmoc_widget_categories_with_#{params[:locale]}", expires_in: 1.hours) do
-      attr_name = "name_#{params[:locale] || I18n.default_locale}"
-
-      Category.where("articles_count > 0").select("permalink, #{attr_name}").map do |e|
-        [e.send(attr_name.to_sym), e.permalink]
+      Category.where("articles_count > 0").select('permalink, name').map do |e|
+        [e.name, e.permalink]
       end
     end
   end

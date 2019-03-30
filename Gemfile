@@ -9,7 +9,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 5.2.2"
+gem "rails", "~> 5.2.2.1"
 # For action cache
 gem "actionpack-action_caching"
 # Use postgresql as the database for Active Record
@@ -23,7 +23,7 @@ gem "uglifier"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem "mini_racer", platforms: :ruby
 
-gem "bootstrap", "~> 4.1.3"
+gem "bootstrap"
 gem "carrierwave"
 gem "devise"
 gem "inherited_resources"
@@ -88,6 +88,9 @@ group :development do
   gem "guard-livereload", require: false
   gem "rack-livereload"
   gem "annotate"
+
+  gem "bundler-audit"
+  gem "brakeman"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

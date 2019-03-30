@@ -17,26 +17,20 @@
         %span
           %i.fa.fa-meh-o
           = I18n.t('tips.viewed_count')
-          = raw "(#{@article.view_count})"
+          %span.count= "(#{@article.view_count})"
         %span.btn-action{data: {name: 'up'}}
           %i.fa.fa-thumbs-up
           = I18n.t('action.like')
-          = raw "(<count>#{@article.likes_count}</count>)"
+          %span.count= "(#{@article.likes_count})"
         %span.btn-action{data: {name: 'down'}}
           %i.fa.fa-thumbs-down
           = I18n.t('action.dislike')
-          = raw "(<count>#{@article.dislike_count}</count>)"
+          %span.count= "(#{@article.dislike_count})"
       .post-content{class: @article.category.try(:permalink)}
-        = raw @article.content
+        = sanitize @article.content # (, tags: %w(a), attributes: %w(href)
 
         - if @article.embed?
           = audio_or_video_of_article(@article)
-
-        - if @article.reprinted_link.present?
-          %strong
-            = 'References - '
-          %em= link_to @article.reprinted_source, @article.reprinted_link, target: '_blank'
-          %br
 
       - unless @article.tags.empty?
         .content-footer
