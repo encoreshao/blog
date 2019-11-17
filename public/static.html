@@ -5,40 +5,151 @@
   <title>ICMOC - Encore Shao - 邵壮</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="Author" content="Encore Shao" />
-  <link rel="stylesheet" type="text/css" href="assets/css/icmoc.css">
-  <!--[if lte IE 6]><style type="text/css">#footer{position:absolute; display:none;}</style><![endif]-->
+  <style type="text/css">
+  root: {
+    font-size: 12px;
+  }
+
+  @keyframes random {
+    10% {
+      background-color: #98ddc2;
+    }
+
+    30% {
+      background-color: #7d8a2f;
+    }
+
+    50% {
+      background-color: #9ccf5c;
+    }
+
+    70% {
+      background-color: #732e96;
+    }
+
+    90% {
+      background-color: #ba9eb5;
+    }
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #919191;
+    background-image: -webkit-linear-gradient(-45deg, green, orange);
+    background-image: linear-gradient(-45deg, green, orange);
+    background-image: -webkit-linear-gradient(45deg, blue, yellow);
+    background-image: linear-gradient(45deg, blue, yellow);
+    background-color: #9ccf5c;
+    /*-webkit-animation: random 10s infinite;*/
+    /*animation: random 10s infinite;*/
+  }
+
+  header {
+    text-align: center;
+    padding: 2%;
+    color: white;
+  }
+
+  a {
+    outline: none;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+
+  img {
+    margin: 0;
+    padding: 0;
+    border: none;
+    line-height: normal;
+    vertical-align: middle;
+    width: 100%;
+    border-radius: 100px;
+  }
+
+  .container {
+    display: block;
+    margin: 0 5%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 1 1 0 0;
+    border-radius: 50px;
+    padding: 5%;
+    color: white;
+  }
+
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .row-item {
+    flex: auto;
+    text-align: center;
+    width: 5rem;
+    line-height: 5rem;
+  }
+
+  .row-item a {
+    color: #7bc65e;
+    text-decoration: underline;
+  }
+
+  figure {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+  }
+
+  summary {
+    line-height: 2rem;
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+
+  summary div {
+    font-size: 1.2rem;
+  }
+  </style>
 </head>
 
 <body>
   <header>
     <div class="top">
-      <h1><a href="https://www.icmoc.com">ICMOC</a></h1>
-      <h2>icmoc.com &middot; 2018</h2>
+      <h1>Welcome!!!</h1>
+      <h2>icmoc.com &middot; 2019</h2>
     </div>
   </header>
-    <section class="container">
-      <figure class="avatar">
-        <img src="https://icmoc.com/encore.jpeg"></img>
-      </figure>
-      <summary>
-        <br />
-        <author>Encore Shao</author>, Ruby On Rails, Shanghai, China.
-        <br /> I am a web developer and use Ruby on Rails to build Web application in China.
-        <br /> If you have a idea? Please contact me (<email>encore.shao[at]gmail.com</email>).
-      </summary>
-      <aside>
-        <div class="flex-row">
-          <div class="row-item"><a href="https://blog.icmoc.com" target='_blank'>Encore's Blog</a></div>
-          <div class="row-item"><a href="https://github.com/encoreshao" target='_blank'>Encore on Github</a></div>
-          <div class="row-item">
-            <a href="https://chrome.google.com/webstore/detail/imknfkidkilkomeomcidnnjojiilaofb" target='_blank'>Dashboard for bookmarks</a>
-          </div>
-          <div class="row-item"><a href="https://www.linkedin.com/in/1encoreshao/" target='_blank'>Encore on LinkedIn</a></div>
-          <div class="row-item"><a href="https://www.facebook.com/encore.shao" target='_blank'>Encore on Facebook</a></div>
-          <div class="row-item"><a href="https://twitter.com/encoreshao" target='_blank'>Encore on Twitter</a></div>
+  <section class="container">
+    <figure class="avatar">
+      <img src="https://cdn.ekohe.com/76f6/encore.jpg"></img>
+    </figure>
+    <summary>
+      <br />
+      <author>Encore Shao</author>, Ruby On Rails, Shanghai, China.
+      <br /> I am a web developer and use Ruby on Rails to build Web application in China.
+      <br /> <br />
+      <div>
+        If you have a idea? Please contact me (<email>encore.shao[at]gmail.com</email>).
+      </div>
+    </summary>
+    <aside>
+      <div class="flex-row">
+        <div class="row-item"><a href="https://blog.icmoc.com" target='_blank'>Blog</a></div>
+        <div class="row-item"><a href="https://github.com/encoreshao" target='_blank'>Github</a></div>
+        <div class="row-item">
+          <a href="https://chrome.google.com/webstore/detail/imknfkidkilkomeomcidnnjojiilaofb" target='_blank'>Bookmarks</a>
         </div>
-      </aside>
-    </section>
+        <div class="row-item"><a href="https://www.linkedin.com/in/1encoreshao/" target='_blank'>LinkedIn</a></div>
+        <div class="row-item"><a href="https://www.facebook.com/encore.shao" target='_blank'>Facebook</a></div>
+        <div class="row-item"><a href="https://twitter.com/encoreshao" target='_blank'>Twitter</a></div>
+        <div class="row-item"><a href="https://ekohe.com/encore" target='_blank'>Ekohe</a></div>
+      </div>
+    </aside>
+  </section>
 </body>
 
 </html>

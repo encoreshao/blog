@@ -6,7 +6,7 @@ lock "3.11.0"
 set :application, "blog"
 set :repo_url, "https://github.com/encoreshao/#{fetch(:application)}"
 set :rvm_type, :system
-set :rvm_ruby_version, "2.5.0@#{fetch(:application)}"
+set :rvm_ruby_version, "2.6.5@#{fetch(:application)}"
 
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 # set :local_user, -> { `git config user.name`.chomp }
