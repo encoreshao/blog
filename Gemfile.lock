@@ -423,7 +423,6 @@ DEPENDENCIES
   spring
   spring-watcher-listen
   sprockets
-  sshkit (~> 1.19.0)
   trix
   turbolinks
   tzinfo-data
