@@ -14,7 +14,7 @@
       - collection.each do |resource|
         %tr
           %td= truncate(resource.title, length: 50)
-          %td= resource.category&.name
+          %td= resource.category&.name_en || resource.category&.name_zh
           %td= resource.try(:author_name)
           %td= resource.is_published_text
           %td= resource.published_date
