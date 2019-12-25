@@ -72,13 +72,12 @@ group :development do
   gem "spring-watcher-listen"
   gem "sprockets"
 
-  gem "capistrano"
   gem "capistrano-bundler"
   gem "capistrano-rails"
-  gem "capistrano-rails-console"
   gem "capistrano-rvm"
   gem "capistrano-yarn"
   gem "capistrano3-puma"
+  gem "sshkit", "~> 1.18.2"
 
   gem "guard-livereload", require: false
   gem "rack-livereload"

@@ -77,9 +77,6 @@ GEM
     capistrano-rails (1.4.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capistrano-rails-console (2.3.0)
-      capistrano (>= 3.5.0, < 4.0.0)
-      sshkit-interactive (~> 0.3.0)
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
@@ -343,11 +340,9 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sshkit (1.20.0)
+    sshkit (1.18.2)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    sshkit-interactive (0.3.0)
-      sshkit (~> 1.12)
     temple (0.8.2)
     thor (0.20.3)
     thread_safe (0.3.6)
@@ -385,10 +380,8 @@ DEPENDENCIES
   brakeman
   bundler-audit
   byebug
-  capistrano
   capistrano-bundler
   capistrano-rails
-  capistrano-rails-console
   capistrano-rvm
   capistrano-yarn
   capistrano3-puma
@@ -423,6 +416,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen
   sprockets
+  sshkit (~> 1.18.2)
   trix
   turbolinks
   tzinfo-data
