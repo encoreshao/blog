@@ -12,7 +12,7 @@
   }
 
   body {
-    padding: 1px;
+    padding: 0;
   }
 
   article,
@@ -825,7 +825,7 @@
 
   @media (min-width: 1200px) {
     .container {
-      width: 1170px
+      width: 1200px
     }
   }
 
@@ -2959,7 +2959,8 @@
     overflow-y: auto;
     -webkit-transition: width .2s ease;
     transition: width .2s ease;
-    color: #ccc !important
+    color: #ccc !important;
+    z-index: 1;
   }
 
   .main-nav a {
@@ -3430,11 +3431,11 @@
   }
 
   .well {
-    min-height: 20px;
-    padding: 9px;
+    min-height: 290px;
+    padding: 30px;
+    margin-bottom: 15px;
     font-size: 15px;
-    margin-bottom: 20px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.85);
     border-radius: 3px;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05)
   }
@@ -3687,237 +3688,257 @@
       <div class="row">
         <div class="col-md-4">
           <div class="well">
-            <img src="https://images.unsplash.com/photo-1514428631868-a400b561ff44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80" style="width:100%">
+            <a href="https://www.icmoc.com">
+              <img src="https://images.unsplash.com/photo-1514428631868-a400b561ff44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" style="width:100%">
+            </a>
           </div>
-          </div>
-          <div class="col-md-8">
-            <div class="well">
-              <h3>
-                <i>Encore Shao</i>
-              </h3>
+        </div>
+        <div class="col-md-8">
+          <div class="well">
+            <h3 style="font-family: monospace;">Encore Shao</h3>
+            <br />
+            <p>
+              Web Developer | Software Developer Focusing on Web Applications
               <br />
-              <author>Encore Shao</author>, Ruby On Rails, Shanghai, China.
-              <br /> I am a web developer and use Ruby on Rails to build Web application in China.
-              <br />
-              <div>
-                If you have a idea? Please contact me (<email>encore.shao[at]gmail.com</email>).
-              </div>
-              <br />
-              <br />
-              <p><a href="mailto:encore.shao@gmail.com" class="btn btn-default">Contact me</a></p>
+              I am a web developer and use Ruby on Rails to build Web application in China.
+            </p>
+            <div>
+              If you have a idea? Please contact me (<email>encore.shao[at]gmail.com</email>).
             </div>
+            <br />
+            <p><a href="mailto:encore.shao@gmail.com" class="btn btn-default">CONTACT ME!</a></p>
           </div>
         </div>
-        <!--/.row-->
       </div>
-      <!--/.container-->
-      <div class="section" id="what-i-do"><h1>What I Do</h1>
-        <hr>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-            <div class="well">
-              <h3>Skills</h3>
-              <div class="spacer"></div>
-              <div class="spacer"></div>
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="ruby-on-rails"></div> <h4 style="font-weight: 400; display: inline;">Ruby on Rails</h4><br>
-                  <div class="java"></div> <h4 style="font-weight: 400; display: inline;">Java</h4><br>
-                  <div class="ios"></div> <h4 style="font-weight: 400; display: inline;">IOS</h4><br>
-                  <div class="sql"></div> <h4 style="font-weight: 400; display: inline; margin-bottom:5px;">SQL</h4><br>
-                  <div class="chrome-extension"></div> <h4 style="font-weight: 400; display: inline; margin-bottom:5px;">Chrome Extension</h4>
-                </div>
-                <div class="col-md-8">
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-ruby-on-rails" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
-                      <span class="sr-only">Ruby on Rails 90%</span>
-                    </div>
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-java" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
-                      <span class="sr-only">Java 90%</span>
-                    </div>
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-ios" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                      <span class="sr-only">IOS 50%</span>
-                    </div>
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-sql" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                      <span class="sr-only">SQL 80%</span>
-                    </div>
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-chrome-extension" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
-                      <span class="sr-only">Chrome Extension 90%</span>
-                    </div>
-                  </div>
-                </div>
-                <!--/.col-6-->
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="well">
-              <h3>I Build Great Websites</h3>
-              <p>Being a full stack developer, I can develop any website from a database driven web app to a small static site. Every custom website built uses higher grade techniques and is fast, mobile friendly, scalable.</p>
-            </div>
-          </div>
-        </div>
-        <!--/.row-->
-      </div>
-      <!--/.container-->
-      <div class="work visible-lg" style="height:250px !important;">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-3">
-              <h3><i class="fa fa-code"></i>&nbsp; Beautiful Code</h3>
-              <p>I write clean, semantic, organized, and valid markup that eliminates excess code and allows others to easily understand and therfore update content in the future.</p>
-            </div>
-            <div class="col-md-3">
-              <h3><i class="fa fa-fighter-jet"></i>&nbsp; Fast</h3>
-              <p>I build fast and efficient web sites. Fast websites always attract more visitors, and those visitors are more likely to choose you over the competition. In addition, website speed is essential for <abbr title="Search Engine Optimization">SEO</abbr> &mdash; <a href="http://moz.com/blog/how-website-speed-actually-impacts-search-ranking">faster websites rank higher</a>.</p>
-            </div>
-            <div class="col-md-3">
-              <h3><i class="fa fa-arrows-alt"></i>&nbsp; Responsive</h3>
-              <p>Responsive web design means that your website will work on any screen size, from desktops to mobile phones alike. Having a website that works well across all devices and screen sizes means your website has a broader reach, appealing to more visitors.</p>
-            </div>
-            <div class="col-md-3">
-              <h3><i class="fa fa-bolt"></i>&nbsp; Powerful</h3>
-              <p>From a static single page website to a full fledged database driven web app, I build websites that give your organization the potential to succeed.</p>
-            </div>
-          </div>
-          <!--/.row-->
-        </div>
-        <!--/.container-->
-      </div>
-      <!--/.work-->
-      <!--mobile work-->
-      <div class="container hidden-lg">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="well">
-              <h3><i class="fa fa-code"></i>&nbsp; Beautiful Code</h3>
-              <p>I write clean, semantic, organized, and valid markup that eliminates excess code and allows others to easily understand and therfore update content in the future.</p>
-            </div>
-          </div>
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="well">
-              <h3><i class="fa fa-fighter-jet"></i>&nbsp; Fast</h3>
-              <p>I build fast and efficient web sites. Fast websites always attract more visitors, and those visitors are more likely to choose you over the competition. In addition, website speed is essential for <abbr title="Search Engine Optimization">SEO</abbr> &mdash; <a href="http://moz.com/blog/how-website-speed-actually-impacts-search-ranking">faster websites rank higher</a>.</p>
-            </div>
-          </div>
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="well">
-              <h3><i class="fa fa-arrows-alt"></i>&nbsp; Responsive</h3>
-              <p>Responsive web design means that your website will work on any screen size, from desktops to mobile phones alike. Having a website that works well across all devices and screen sizes means your website has a broader reach, appealing to more visitors.</p>
-            </div>
-          </div>
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="well">
-              <h3><i class="fa fa-bolt"></i>&nbsp; Powerful</h3>
-              <p>From a static single page website to a full fledged database driven web app, I build websites that give your organization the potential to succeed.</p>
-            </div>
-          </div>
-        </div>
-        <!--/.row-->
-      </div>
-      <!--/.container and mobile work-->
-      <div class="section" id="work"><h1>Recent Work</h1>
-        <hr>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="well">
-              <a href="https://ekohe.com"><img src="https://cdn.ekohe.com/76f6/encore.jpg" alt="https://ekohe.com" height="150px" class="pull-left" style="margin: 10px;border-radius: 10px;"></a>
-              <h3>A Website of Firm</h3>
-              <p>Elevator Dealer Website</p>
-              <div class="spacer"></div>
-              <div class="spacer"></div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="well">
-              <a href="https://ekohe.com"><img src="https://cdn.ekohe.com/76f6/encore.jpg" alt="https://ekohe.com" height="150px" class="pull-left" style="margin: 10px;border-radius: 10px;"></a>
-              <h3>Data Scraper</h3>
-              <p>Data collect and scraping.</p>
-              <div class="spacer"></div>
-              <div class="spacer"></div>
-            </div>
-          </div>
-        </div>
-        <!--/.row-->
-      </div>
-      <!--/.container-->
-      <!--<div class="hidden-xs"><div class="work-together" id="contact">LETS WORK TOGETHER</div></div>-->
-      <div class="section" id="contact"><h1>Let&apos;s Work Together</h1>
-        <hr>
-      </div>
-      <div class="work-together">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-              <h3>Send Me a Message</h3>
-              <div class="spacer"></div>
-              <form class="form-horizontal" role="form" id="form" method="post">
-                <div class="form-group">
-                  <label for="name" class="col-sm-2 control-label">Name</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="contact form-control" name="name" id="name" placeholder="Name">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="email" class="col-sm-2 control-label">Email</label>
-                  <div class="col-sm-10">
-                    <input type="email" class="contact form-control" name="email" id="email" placeholder="Email">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="subject" class="col-sm-2 control-label">Subject</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="contact form-control" name="subject" id="subject" placeholder="Subject">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="message" class="col-sm-2 control-label">Message</label>
-                  <div class="col-sm-10">
-                    <textarea class="contact form-control" rows="3" name="message" id="message" placeholder="Message"></textarea>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
-                    <input type="submit" value="Send" class="btn btn-default" name="submit">
-                  </div>
-                </div>
-              </form>
-            </div>
-            <!--/.col-->
-            <div class="col-lg-4 col-md-4 hidden-sm hidden-xs">
-              <h3>Contact Details</h3>
-              <div class="spacer"></div>
-              <p class="lead"><i class="fa fa-address"></i>&nbsp; Shanghai</p>
-              <p class="lead"><i class="fa fa-phone"></i>&nbsp; +86: 1520-1986-269</p>
-              <p class="lead"><i class="fa fa-envelope"></i>&nbsp; encore.shao[at]gmail.com</p>
-            </div>
-          </div>
-          <!--/.row-->
-        </div>
-        <!--/.container-->
-        <div class="container hidden-sm hidden-xs">
-          <div class="spacer"></div>
-          <div class="spacer"></div>
-          <footer>
-            <p class="pull-right">Made by Encore</p>
-          </footer>
-        </div>
-      </div>
-      <!--/.work-together-->
+      <!--/.row-->
     </div>
-    <!--/.page-wrap-->
+    <!--/.container-->
+    <div class="section" id="what-i-do"><h1>What I Do</h1>
+      <hr>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="well">
+            <h3>Skills</h3>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="ruby-on-rails"></div> <h4 style="font-weight: 400; display: inline;">Ruby on Rails</h4><br>
+                <div class="java"></div> <h4 style="font-weight: 400; display: inline;">Java</h4><br>
+                <div class="ios"></div> <h4 style="font-weight: 400; display: inline;">IOS</h4><br>
+                <div class="sql"></div> <h4 style="font-weight: 400; display: inline; margin-bottom:5px;">SQL</h4><br>
+                <div class="chrome-extension"></div> <h4 style="font-weight: 400; display: inline; margin-bottom:5px;">Chrome Extension</h4>
+              </div>
+              <div class="col-md-8">
+                <div class="progress">
+                  <div class="progress-bar progress-bar-ruby-on-rails" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+                    <span class="sr-only">Ruby on Rails 90%</span>
+                  </div>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-java" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+                    <span class="sr-only">Java 90%</span>
+                  </div>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-ios" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                    <span class="sr-only">IOS 50%</span>
+                  </div>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-sql" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                    <span class="sr-only">SQL 80%</span>
+                  </div>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-chrome-extension" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+                    <span class="sr-only">Chrome Extension 90%</span>
+                  </div>
+                </div>
+              </div>
+              <!--/.col-6-->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="well">
+            <h3>I Build Great Websites</h3>
+            <p>Being a full stack developer, I can develop any website from a database driven web app to a small static site. Every custom website built uses higher grade techniques and is fast, mobile friendly, scalable.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <div class="spacer"></div>
+      <!--/.row-->
+    </div>
+    <!--/.container-->
+    <div class="work visible-lg" style="height:250px !important;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <h3><i class="fa fa-code"></i>&nbsp; Beautiful Code</h3>
+            <p>I write clean, semantic, organized, and valid markup that eliminates excess code and allows others to easily understand and therfore update content in the future.</p>
+          </div>
+          <div class="col-md-3">
+            <h3><i class="fa fa-fighter-jet"></i>&nbsp; Fast</h3>
+            <p>I build fast and efficient web sites. Fast websites always attract more visitors, and those visitors are more likely to choose you over the competition. In addition, website speed is essential for <abbr title="Search Engine Optimization">SEO</abbr> &mdash; <a href="http://moz.com/blog/how-website-speed-actually-impacts-search-ranking">faster websites rank higher</a>.</p>
+          </div>
+          <div class="col-md-3">
+            <h3><i class="fa fa-arrows-alt"></i>&nbsp; Responsive</h3>
+            <p>Responsive web design means that your website will work on any screen size, from desktops to mobile phones alike. Having a website that works well across all devices and screen sizes means your website has a broader reach, appealing to more visitors.</p>
+          </div>
+          <div class="col-md-3">
+            <h3><i class="fa fa-bolt"></i>&nbsp; Powerful</h3>
+            <p>From a static single page website to a full fledged database driven web app, I build websites that give your organization the potential to succeed.</p>
+          </div>
+        </div>
+        <!--/.row-->
+      </div>
+      <!--/.container-->
+    </div>
+    <!--/.work-->
+    <!--mobile work-->
+    <div class="container hidden-lg">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="well">
+            <h3><i class="fa fa-code"></i>&nbsp; Beautiful Code</h3>
+            <p>I write clean, semantic, organized, and valid markup that eliminates excess code and allows others to easily understand and therfore update content in the future.</p>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="well">
+            <h3><i class="fa fa-fighter-jet"></i>&nbsp; Fast</h3>
+            <p>I build fast and efficient web sites. Fast websites always attract more visitors, and those visitors are more likely to choose you over the competition. In addition, website speed is essential for <abbr title="Search Engine Optimization">SEO</abbr> &mdash; <a href="http://moz.com/blog/how-website-speed-actually-impacts-search-ranking">faster websites rank higher</a>.</p>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="well">
+            <h3><i class="fa fa-arrows-alt"></i>&nbsp; Responsive</h3>
+            <p>Responsive web design means that your website will work on any screen size, from desktops to mobile phones alike. Having a website that works well across all devices and screen sizes means your website has a broader reach, appealing to more visitors.</p>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="well">
+            <h3><i class="fa fa-bolt"></i>&nbsp; Powerful</h3>
+            <p>From a static single page website to a full fledged database driven web app, I build websites that give your organization the potential to succeed.</p>
+          </div>
+        </div>
+      </div>
+      <!--/.row-->
+    </div>
+    <!--/.container and mobile work-->
+    <div class="section" id="work"><h1>Recent Work</h1>
+      <hr>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="well">
+            <a href="https://ekohe.com"><img src="https://images.unsplash.com/photo-1565417814737-6b4097de8a3a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt="https://ekohe.com" height="150px" class="pull-left" style="margin: 10px;border-radius: 10px;"></a>
+            <h3>A Website of Firm</h3>
+            <p>Elevator Dealer Website</p>
+            <div class="spacer"></div>
+            <div class="spacer"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="well">
+            <a href="https://ekohe.com"><img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="https://ekohe.com" height="150px" class="pull-left" style="margin: 10px;border-radius: 10px;"></a>
+            <h3>Data Scraper</h3>
+            <p>Data collect and scraping.</p>
+            <div class="spacer"></div>
+            <div class="spacer"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="well">
+            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" height="150px" class="pull-left" style="margin: 10px;border-radius: 10px;">
+            <h3>Social Shopping</h3>
+            <p>Emerging Social Fashion Shopping App.</p>
+            <div class="spacer"></div>
+            <div class="spacer"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="well">
+            <a href="https://blog.icmoc.com"><img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w600&q=60" alt="https://blog.icmoc.com" height="150px" class="pull-left" style="margin: 10px;border-radius: 10px;"></a>
+            <h3><a href="https://blog.icmoc.com">Encore's Blog</a></h3>
+            <p>Tech Blog.</p>
+            <div class="spacer"></div>
+            <div class="spacer"></div>
+          </div>
+        </div>
+      </div>
+      <!--/.row-->
+    </div>
+    <!--/.container-->
+    <!--<div class="hidden-xs"><div class="work-together" id="contact">LETS WORK TOGETHER</div></div>-->
+    <div class="section" id="contact"><h1>Let&apos;s Work Together</h1>
+      <hr>
+    </div>
+    <div class="work-together">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <h3>Send Me a Message</h3>
+            <div class="spacer"></div>
+            <form class="form-horizontal" role="form" id="form" method="post">
+              <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-10">
+                  <input type="text" class="contact form-control" name="name" id="name" placeholder="Name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                  <input type="email" class="contact form-control" name="email" id="email" placeholder="Email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="subject" class="col-sm-2 control-label">Subject</label>
+                <div class="col-sm-10">
+                  <input type="text" class="contact form-control" name="subject" id="subject" placeholder="Subject">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="message" class="col-sm-2 control-label">Message</label>
+                <div class="col-sm-10">
+                  <textarea class="contact form-control" rows="3" name="message" id="message" placeholder="Message"></textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <input type="button" value="SEND" class="btn btn-default" name="button">
+                </div>
+              </div>
+            </form>
+          </div>
+          <!--/.col-->
+          <div class="col-lg-4 col-md-4 hidden-sm hidden-xs">
+            <h3>Contact Details</h3>
+            <div class="spacer"></div>
+            <p class="lead"><i class="fa fa-address"></i>&nbsp; Shanghai, China</p>
+            <p class="lead"><i class="fa fa-phone"></i>&nbsp; +86: 1520-1986-269</p>
+            <p class="lead"><i class="fa fa-envelope"></i>&nbsp; encore.shao[at]gmail.com</p>
+          </div>
+        </div>
+        <!--/.row-->
+      </div>
+      <!--/.container-->
+      <div class="container hidden-sm hidden-xs">
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <footer>
+          <p class="pull-left">Made by Encore</p>
+          <p class="pull-right"><a href="https://unsplash.com">Photos by Unsplash</a></p>
+        </footer>
+      </div>
+    </div>
+    <!--/.work-together-->
+  </div>
+  <!--/.page-wrap-->
 </body>
 
 </html>
