@@ -8,8 +8,8 @@ module Admin::ArticlesHelper
   end
 
   def atricle_categories
-    Category.all.select("id, name, permalink").map do |e|
-      [e.name, e.id, { "data-type" => e.permalink }]
+    Category.all.select("id, name_en, name_zh, permalink").map do |e|
+      [e.name_zh, e.id, { "data-type" => e.permalink }]
     end
   end
 end

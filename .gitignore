@@ -27,6 +27,7 @@
 /node_modules
 /yarn-error.log
 /config/database.yml
+/config/secrets.yml
 
 # Ignore icons
 /app/assets/images/icons-*.png

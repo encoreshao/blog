@@ -1,0 +1,20 @@
+development: &dev
+  adapter: postgresql
+  encoding: utf8
+  reconnect: false
+  database: <%= ENV['database'] %>
+  pool: 5
+  username: <%= ENV['user'] %>
+  password: <%= ENV['password'] %>
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  reconnect: false
+  database: blog_test<%= ENV['TEST_ENV_NUMBER'] %>
+  pool: 5
+  username: encore
+  password:
+
+production:
+  <<: *dev
