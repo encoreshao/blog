@@ -3679,6 +3679,9 @@
         <hr>
         <hr>
         <h2 class="text-center">I build awesome web apps</h2>
+        <p class="text-center">
+          <canvas id="canvas" width="250" height="250"></canvas>
+        </p>
       </div>
     </div>
     <div class="section" id="about"><h1>About</h1>
@@ -3881,47 +3884,24 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-            <h3>Send Me a Message</h3>
+            <h3>Social Links</h3>
+            <div><a style="font-weight: 400;padding: 2px 5px 2px 10px;color: white;" href="https://blog.icmoc.com" target='_blank'>Blog</a></div>
+            <div><a style="font-weight: 400;padding: 2px 5px 2px 10px;color: white;" href="https://github.com/encoreshao" target='_blank'>Github</a></div>
+            <div><a style="font-weight: 400;padding: 2px 5px 2px 10px;color: white;" href="https://chrome.google.com/webstore/detail/imknfkidkilkomeomcidnnjojiilaofb" target='_blank'>Bookmarks</a>
+            </div>
+            <div><a style="font-weight: 400;padding: 2px 5px 2px 10px;color: white;" href="https://www.linkedin.com/in/1encoreshao/" target='_blank'>LinkedIn</a></div>
+            <div><a style="font-weight: 400;padding: 2px 5px 2px 10px;color: white;" href="https://www.facebook.com/encore.shao" target='_blank'>Facebook</a></div>
+            <div><a style="font-weight: 400;padding: 2px 5px 2px 10px;color: white;" href="https://twitter.com/encoreshao" target='_blank'>Twitter</a></div>
+            <div><a style="font-weight: 400;padding: 2px 5px 2px 10px;color: white;" href="https://ekohe.com/encore" target='_blank'>Ekohe</a></div>
             <div class="spacer"></div>
-            <form class="form-horizontal" role="form" id="form" method="post">
-              <div class="form-group">
-                <label for="name" class="col-sm-2 control-label">Name</label>
-                <div class="col-sm-10">
-                  <input type="text" class="contact form-control" name="name" id="name" placeholder="Name">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="email" class="col-sm-2 control-label">Email</label>
-                <div class="col-sm-10">
-                  <input type="email" class="contact form-control" name="email" id="email" placeholder="Email">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="subject" class="col-sm-2 control-label">Subject</label>
-                <div class="col-sm-10">
-                  <input type="text" class="contact form-control" name="subject" id="subject" placeholder="Subject">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="message" class="col-sm-2 control-label">Message</label>
-                <div class="col-sm-10">
-                  <textarea class="contact form-control" rows="3" name="message" id="message" placeholder="Message"></textarea>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <input type="button" value="SEND" class="btn btn-default" name="button">
-                </div>
-              </div>
-            </form>
           </div>
           <!--/.col-->
           <div class="col-lg-4 col-md-4 hidden-sm hidden-xs">
             <h3>Contact Details</h3>
+            <p><i class="fa fa-address"></i>&nbsp; Shanghai, China</p>
+            <p><i class="fa fa-phone"></i>&nbsp; +86: 1520-1986-269</p>
+            <p><i class="fa fa-envelope"></i>&nbsp; encore.shao[at]gmail.com</p>
             <div class="spacer"></div>
-            <p class="lead"><i class="fa fa-address"></i>&nbsp; Shanghai, China</p>
-            <p class="lead"><i class="fa fa-phone"></i>&nbsp; +86: 1520-1986-269</p>
-            <p class="lead"><i class="fa fa-envelope"></i>&nbsp; encore.shao[at]gmail.com</p>
           </div>
         </div>
         <!--/.row-->
@@ -3931,7 +3911,11 @@
         <div class="spacer"></div>
         <div class="spacer"></div>
         <footer>
-          <p class="pull-left">Made by Encore</p>
+          <p class="pull-left">
+            Made by Encore
+            &nbsp;&nbsp;
+            <strong id="timezone-clock" class="timezone-clock" onload="showTime()" style="font-family: initial;color: aqua;"></strong>
+          </p>
           <p class="pull-right"><a href="https://unsplash.com">Photos by Unsplash</a></p>
         </footer>
       </div>
@@ -3939,6 +3923,120 @@
     <!--/.work-together-->
   </div>
   <!--/.page-wrap-->
+  <script>
+  var canvas = document.getElementById("canvas");
+  var ctx = canvas.getContext("2d");
+  var radius = canvas.height / 2;
+  ctx.translate(radius, radius);
+  radius = radius * 0.90
+  setInterval(drawClock, 1000);
+
+  function drawClock() {
+    drawFace(ctx, radius);
+    drawNumbers(ctx, radius);
+    drawTime(ctx, radius);
+  }
+
+  function drawFace(ctx, radius) {
+    var grad;
+    ctx.beginPath();
+    ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+    ctx.fillStyle = 'white';
+    ctx.fill();
+    grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
+    grad.addColorStop(0, '#333');
+    grad.addColorStop(0.5, 'white');
+    grad.addColorStop(1, '#333');
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = radius * 0.1;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
+    ctx.fillStyle = '#333';
+    ctx.fill();
+  }
+
+  function drawNumbers(ctx, radius) {
+    var ang;
+    var num;
+    ctx.font = radius * 0.15 + "px arial";
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "center";
+    for (num = 1; num < 13; num++) {
+      ang = num * Math.PI / 6;
+      ctx.rotate(ang);
+      ctx.translate(0, -radius * 0.85);
+      ctx.rotate(-ang);
+      ctx.fillText(num.toString(), 0, 0);
+      ctx.rotate(ang);
+      ctx.translate(0, radius * 0.85);
+      ctx.rotate(-ang);
+    }
+  }
+
+  function drawTime(ctx, radius) {
+    var now = new Date();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    //hour
+    hour = hour % 12;
+    hour = (hour * Math.PI / 6) +
+      (minute * Math.PI / (6 * 60)) +
+      (second * Math.PI / (360 * 60));
+    drawHand(ctx, hour, radius * 0.5, radius * 0.07);
+    //minute
+    minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60));
+    drawHand(ctx, minute, radius * 0.8, radius * 0.07);
+    // second
+    second = (second * Math.PI / 30);
+    drawHand(ctx, second, radius * 0.9, radius * 0.02);
+  }
+
+  function drawHand(ctx, pos, length, width) {
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.moveTo(0, 0);
+    ctx.rotate(pos);
+    ctx.lineTo(0, -length);
+    ctx.stroke();
+    ctx.rotate(-pos);
+  }
+
+  // Display current time
+  function showTime() {
+    var date = new Date();
+    var year = date.getFullYear(); // 20xx
+    var month = date.getMonth(); // 1-12
+    var day = date.getDate(); // 1-12
+    var h = date.getHours(); // 0 - 23
+    var m = date.getMinutes(); // 0 - 59
+    var s = date.getSeconds(); // 0 - 59
+    var session = "AM";
+
+    if (h == 0) {
+      h = 12;
+    }
+
+    if (h > 12) {
+      h = h - 12;
+      session = "PM";
+    }
+
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    s = (s < 10) ? "0" + s : s;
+
+    var time = year + "-" + month + "-" + day + " " + h + ":" + m + ":" + s + " " + session;
+    document.getElementById("timezone-clock").innerText = time;
+    document.getElementById("timezone-clock").textContent = time;
+
+    setTimeout(showTime, 1000);
+  }
+
+  showTime();
+  </script>
 </body>
 
 </html>
