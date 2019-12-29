@@ -1,6 +1,9 @@
 //= require turbolinks
-//= require jquery/dist/jquery
-//= require jquery_ujs
+//= require jquery/dist/jquery.min
+//= require simple-module/lib/module
+//= require simple-hotkeys/lib/hotkeys
+//= require simple-uploader/lib/uploader
+//= require simditor/lib/simditor
 //= require utils/jquery.form.min
 //= require utils/tether.min
 //= require bootstrap
