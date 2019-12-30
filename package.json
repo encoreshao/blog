@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "font-awesome": "^4.7.0",
-    "jquery": "2.2.4",
+    "jquery": "3.4.0",
     "simditor": "2.3.22"
   },
   "version": "1.0.0",
