@@ -15,15 +15,15 @@ class Admin::UsersController < AdminController
 
   protected
 
-    def user_params
-      params.fetch(:user, {}).permit(:name, :email, :password, :title, :link, :introduction, :avatar)
-    end
+  def user_params
+    params.fetch(:user, {}).permit(:name, :email, :password, :title, :link, :introduction, :avatar)
+  end
 
-    def collection
-      @users ||= end_of_association_chain.fuzzy_search(params[:name]).page(params[:page])
-    end
+  def collection
+    @users ||= end_of_association_chain.fuzzy_search(params[:name]).page(params[:page])
+  end
 
-    def verify_permit?
-      redirect_to admin_root_path unless admin? || resource.id == current_user.id
-    end
+  def verify_permit?
+    redirect_to admin_root_path unless admin? || resource.id == current_user.id
+  end
 end

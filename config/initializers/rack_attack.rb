@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # # frozen_string_literal: true
 
 # # class Rack::Attack::Request < ::Rack::Request

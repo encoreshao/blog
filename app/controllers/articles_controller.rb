@@ -42,22 +42,22 @@ class ArticlesController < ApplicationController
   end
 
   private
-    def verify?
-      @article = Article.preload([:comments, :tags]).published.
-        by_permalink(params[:permalink]).by_date(published_date).first
+  def verify?
+    @article = Article.preload([:comments, :tags]).published.
+      by_permalink(params[:permalink]).by_date(published_date).first
 
-      redirect_to "/404" if @article.blank?
-    end
+    redirect_to "/404" if @article.blank?
+  end
 
-    def comment_params
-      params[:comment][:comment_id] = params[:comment_id].blank? ? nil : params[:comment_id]
-      params[:comment][:remote_ip] = request.remote_ip
-      params[:comment].delete_if { |_k, v| v.blank? }
+  def comment_params
+    params[:comment][:comment_id] = params[:comment_id].blank? ? nil : params[:comment_id]
+    params[:comment][:remote_ip] = request.remote_ip
+    params[:comment].delete_if { |_k, v| v.blank? }
 
-      params.require(:comment).permit(:comment_id, :remote_ip, :content, :name, :email, :link, :comment_parent)
-    end
+    params.require(:comment).permit(:comment_id, :remote_ip, :content, :name, :email, :link, :comment_parent)
+  end
 
-    def published_date
-      "#{params[:year]}-#{params[:month]}-#{params[:day]}"
-    end
+  def published_date
+    "#{params[:year]}-#{params[:month]}-#{params[:day]}"
+  end
 end

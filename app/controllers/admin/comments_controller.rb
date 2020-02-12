@@ -6,11 +6,11 @@ class Admin::CommentsController < AdminController
 
   protected
 
-    def permitted_params
-      params.fetch(:comment, {}).permit(:content, :user_id)
-    end
+  def permitted_params
+    params.fetch(:comment, {}).permit(:content, :user_id)
+  end
 
-    def collection
-      @comments ||= end_of_association_chain.includes([:user, :commentable]).fuzzy_search(params[:name]).sorting.page(params[:page])
-    end
+  def collection
+    @comments ||= end_of_association_chain.includes([:user, :commentable]).fuzzy_search(params[:name]).sorting.page(params[:page])
+  end
 end

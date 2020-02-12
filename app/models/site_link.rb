@@ -42,7 +42,7 @@ class SiteLink < ApplicationRecord
 
   private
 
-    def cache_clear!
-      Rails.cache.delete("site_links_availables")
-    end
+  def cache_clear!
+    Rails.cache.delete("site_links_availables")
+  end
 end

@@ -10,11 +10,11 @@ class Admin::CategoriesController < AdminController
 
   protected
 
-    def category_params
-      params.fetch(:category, {}).permit(:name_zh, :name_en, :permalink)
-    end
+  def category_params
+    params.fetch(:category, {}).permit(:name_zh, :name_en, :permalink)
+  end
 
-    def collection
-      @categories ||= end_of_association_chain.fuzzy_search(params[:name]).page(params[:page])
-    end
+  def collection
+    @categories ||= end_of_association_chain.fuzzy_search(params[:name]).page(params[:page])
+  end
 end

@@ -9,11 +9,11 @@ class AdminController < InheritedResources::Base
 
   private
 
-    def admin?
-      current_user.admin?
-    end
+  def admin?
+    current_user.admin?
+  end
 
-    def verify_admin?
-      redirect_to admin_root_path unless admin?
-    end
+  def verify_admin?
+    redirect_to admin_root_path unless admin?
+  end
 end

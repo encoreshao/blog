@@ -10,11 +10,11 @@ class Admin::TagsController < AdminController
 
   protected
 
-    def tag_params
-      params.fetch(:tag, {}).permit(:name, :permalink)
-    end
+  def tag_params
+    params.fetch(:tag, {}).permit(:name, :permalink)
+  end
 
-    def collection
-      @tags ||= end_of_association_chain.includes([:articles]).fuzzy_search(params[:name]).page(params[:page])
-    end
+  def collection
+    @tags ||= end_of_association_chain.includes([:articles]).fuzzy_search(params[:name]).page(params[:page])
+  end
 end

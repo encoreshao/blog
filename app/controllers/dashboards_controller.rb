@@ -26,15 +26,15 @@ class DashboardsController < ApplicationController
 
   protected
 
-    def category_id
-      return nil if params[:category].blank?
+  def category_id
+    return nil if params[:category].blank?
 
-      Category.find_by(permalink: params[:category]).try(:id) || ""
-    end
+    Category.find_by(permalink: params[:category]).try(:id) || ""
+  end
 
-    def tag_id
-      return nil if params[:tag].blank?
+  def tag_id
+    return nil if params[:tag].blank?
 
-      Tag.find_by(permalink: params[:tag]).try(:id) || ""
-    end
+    Tag.find_by(permalink: params[:tag]).try(:id) || ""
+  end
 end

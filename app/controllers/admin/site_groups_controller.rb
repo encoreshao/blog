@@ -5,11 +5,11 @@ class Admin::SiteGroupsController < AdminController
 
   private
 
-    def site_group_params
-      params.require(:site_group).permit(:name)
-    end
+  def site_group_params
+    params.require(:site_group).permit(:name)
+  end
 
-    def collection
-      @site_groups ||= end_of_association_chain.fuzzy_search(params[:name]).page(params[:page])
-    end
+  def collection
+    @site_groups ||= end_of_association_chain.fuzzy_search(params[:name]).page(params[:page])
+  end
 end

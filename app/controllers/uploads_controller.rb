@@ -25,39 +25,39 @@ class UploadsController < ApplicationController
   end
 
   private
-    def save_file(file)
-      extname = file.content_type.match(/^image\/(gif|png|jpg|jpeg){1}$/).to_a[1]
-      # filename = File.basename(file.original_filename,'.*')
-      uri = custom_filename(extname)
-      save_path = Rails.root.join("public", uri)
+  def save_file(file)
+    extname = file.content_type.match(/^image\/(gif|png|jpg|jpeg){1}$/).to_a[1]
+    # filename = File.basename(file.original_filename,'.*')
+    uri = custom_filename(extname)
+    save_path = Rails.root.join("public", uri)
 
-      create_folder!(save_path)
+    create_folder!(save_path)
 
-      File.open save_path, "wb" do |f|
-        f.write(file.read)
-      end
-
-      uri
+    File.open save_path, "wb" do |f|
+      f.write(file.read)
     end
 
-    def create_folder!(save_path)
-      file_dir = File.dirname(save_path)
+    uri
+  end
 
-      # Detect the file folder
-      FileUtils.mkdir_p(file_dir) unless Dir.exists?(file_dir)
-    end
+  def create_folder!(save_path)
+    file_dir = File.dirname(save_path)
 
-    def custom_filename(extname)
-      filename = "#{DateTime.now.strftime('%Y/%m%d/%H%M%S')}_#{SecureRandom.hex(4)}_#{current_user.id}.#{extname}"
+    # Detect the file folder
+    FileUtils.mkdir_p(file_dir) unless Dir.exists?(file_dir)
+  end
 
-      File.join("uploads", "images", filename)
-    end
+  def custom_filename(extname)
+    filename = "#{DateTime.now.strftime('%Y/%m%d/%H%M%S')}_#{SecureRandom.hex(4)}_#{current_user.id}.#{extname}"
 
-    def verify_image?(file)
-      !file.content_type.match(/^image\/(gif|png||jpg||jpeg|){1}$/)
-    end
+    File.join("uploads", "images", filename)
+  end
 
-    def filesize?(file)
-      file.size > 2 * 1024 * 1024
-    end
+  def verify_image?(file)
+    !file.content_type.match(/^image\/(gif|png||jpg||jpeg|){1}$/)
+  end
+
+  def filesize?(file)
+    file.size > 2 * 1024 * 1024
+  end
 end

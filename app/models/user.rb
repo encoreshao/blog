@@ -38,9 +38,9 @@ class User < ApplicationRecord
 
   private
 
-    def confirmation_required?
-      false
-    end
+  def confirmation_required?
+    false
+  end
 end
 
 # == Schema Information

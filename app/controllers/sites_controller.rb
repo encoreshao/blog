@@ -26,7 +26,7 @@ class SitesController < ApplicationController
   end
 
   private
-    def site_link_params
-      params.fetch(:site_link, {}).permit(:name, :email, :url)
-    end
+  def site_link_params
+    params.fetch(:site_link, {}).permit(:name, :email, :url)
+  end
 end

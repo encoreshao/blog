@@ -19,10 +19,10 @@ class CommentsController < ApplicationController
   end
 
   private
-    def comment_params
-      params[:comment][:remote_ip] = request.remote_ip
-      params[:comment].delete_if { |_k, v| v.blank? }
+  def comment_params
+    params[:comment][:remote_ip] = request.remote_ip
+    params[:comment].delete_if { |_k, v| v.blank? }
 
-      params.fetch(:comment, {}).permit(:name, :email, :link, :content, :remote_ip)
-    end
+    params.fetch(:comment, {}).permit(:name, :email, :link, :content, :remote_ip)
+  end
 end
