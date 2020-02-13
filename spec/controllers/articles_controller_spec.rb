@@ -2,7 +2,7 @@
 
 RSpec.describe ArticlesController do
   before :each do
-    @article = Article.make!(published_at: "2017-06-06".to_date, permalink: "rails5")
+    @article = Article.make!(published_at: "2017-06-06".to_date, permalink: "rails5", is_published: true)
   end
 
   describe "GET #show" do
@@ -28,7 +28,7 @@ RSpec.describe ArticlesController do
     it "assigns @articles" do
       get :timeline
 
-      expect(assigns(:articles)).to eq(@article.created_at.beginning_of_month.strftime("%b, %Y") => [@article])
+      expect(assigns(:articles)).to eq([[@article.published_at.beginning_of_month.to_date, [@article]]])
     end
   end
 end
