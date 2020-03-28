@@ -2959,11 +2959,11 @@ input[type="button"].btn-block {
 }
 
 #main-nav:target {
-  width: 40%
+  width: 20%
 }
 
 #main-nav:target+.page-wrap {
-  width: 60%;
+  width: 80%;
   overflow-x: hidden
 }
 
@@ -2971,13 +2971,52 @@ input[type="button"].btn-block {
   display: none
 }
 
+#main-nav:target+.page-wrap .open-menu i {
+  color: #fff;
+  position: relative;
+  bottom: 120px;
+  cursor: pointer;
+}
+
 #main-nav:target+.page-wrap .close-menu {
   display: block
 }
 
+#main-nav:target+.page-wrap .close-menu i {
+  color: #fff;
+  position: relative;
+  bottom: 120px;
+  cursor: pointer;
+}
+
 #main-nav:target+.page-wrap .main-header {
-  width: 60%;
-  left: 40%
+  width: 80%;
+  left: 20%
+}
+
+@media screen and (max-width: 768px) {
+
+  #main-nav:target {
+    width: 40%
+  }
+
+  #main-nav:target+.page-wrap {
+    width: 60%;
+    overflow-x: hidden
+  }
+
+  #main-nav:target+.page-wrap .open-menu {
+    display: none
+  }
+
+  #main-nav:target+.page-wrap .close-menu {
+    display: block
+  }
+
+  #main-nav:target+.page-wrap .main-header {
+    width: 60%;
+    left: 40%
+  }
 }
 
 .jumbotron {
@@ -3054,6 +3093,10 @@ input[type="button"].btn-block {
   font-size: 1em;
   font-weight: 400;
   padding: 2px 5px 2px 10px;
+}
+
+.work-together .ul-flex span:first-child {
+  padding-left: 0px;
 }
 
 .work-together .ul-flex span a {
