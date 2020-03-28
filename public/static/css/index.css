@@ -3029,29 +3029,35 @@ input[type="button"].btn-block {
   max-width: 100%
 }
 
-@media screen and (min-width: 768px) {
-  .jumbotron {
-    padding-top: 48px;
-    padding-bottom: 48px
-  }
-
-  .container .jumbotron {
-    padding-left: 60px;
-    padding-right: 60px
-  }
+.work-together {
+  background: -webkit-linear-gradient(rgba(52, 73, 94, 0.8), rgba(52, 73, 94, 0.8)), url(https://images.unsplash.com/photo-1489376646075-cd00ac377106?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) no-repeat center center fixed;
+  background: linear-gradient(rgba(52, 73, 94, 0.8), rgba(52, 73, 94, 0.8)), url(https://images.unsplash.com/photo-1489376646075-cd00ac377106?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) no-repeat center center fixed;
+  height: 350px;
+  background-size: cover;
+  padding-top: 40px;
+  color: #fff
 }
 
-@media screen and (max-width: 768px) {
+.work-together h3,
+.work-together h4,
+.work-together p,
+.work-together label {
+  color: #fff
+}
 
-  .jumbotron h1,
-  .jumbotron .h1 {
-    font-size: 35px
-  }
+.work-together .ul-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  .jumbotron h2,
-  .jumbotron .h2 {
-    font-size: 21px
-  }
+.work-together .ul-flex span {
+  font-size: 1em;
+  font-weight: 400;
+  padding: 2px 5px 2px 10px;
+}
+
+.work-together .ul-flex span a {
+  color: white
 }
 
 .section {
@@ -3085,26 +3091,6 @@ input[type="button"].btn-block {
 .work a {
   color: #fff !important;
   text-decoration: underline
-}
-
-.work-together {
-  background: -webkit-linear-gradient(rgba(52, 73, 94, 0.8), rgba(52, 73, 94, 0.8)), url(https://images.unsplash.com/photo-1489376646075-cd00ac377106?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) no-repeat center center fixed;
-  background: linear-gradient(rgba(52, 73, 94, 0.8), rgba(52, 73, 94, 0.8)), url(https://images.unsplash.com/photo-1489376646075-cd00ac377106?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60) no-repeat center center fixed;
-  height: 550px;
-  background-size: cover;
-  padding-top: 50px;
-  color: #fff
-}
-
-.work-together h3,
-.work-together h4,
-.work-together p,
-.work-together label {
-  color: #fff
-}
-
-.work-together ul li {
-  font-size: 1.2em;
 }
 
 @-webkit-keyframes progress-bar-stripes {
@@ -3178,6 +3164,15 @@ input[type="button"].btn-block {
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
 }
 
+.progress-bar-python {
+  background-color: #c337c5
+}
+
+.progress-striped .progress-bar-python {
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+}
+
 .progress-bar-ios {
   background-color: #acc88c
 }
@@ -3207,6 +3202,7 @@ input[type="button"].btn-block {
 
 .ruby-on-rails,
 .java,
+.python,
 .ios,
 .sql,
 .chrome-extension {
@@ -3222,6 +3218,10 @@ input[type="button"].btn-block {
 
 .java {
   background: #ffdf8a
+}
+
+.python {
+  background: #c337c5
 }
 
 .ios {
@@ -3423,7 +3423,6 @@ a.list-group-item-danger.active:focus {
 }
 
 .well {
-  min-height: 290px;
   padding: 30px;
   margin-bottom: 15px;
   font-size: 15px;
@@ -3646,5 +3645,34 @@ a.list-group-item-danger.active:focus {
 @media print {
   .hidden-print {
     display: none !important
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    padding-top: 48px;
+    padding-bottom: 48px
+  }
+
+  .container .jumbotron {
+    padding-left: 60px;
+    padding-right: 60px
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .jumbotron h1,
+  .jumbotron .h1 {
+    font-size: 35px
+  }
+
+  .jumbotron h2,
+  .jumbotron .h2 {
+    font-size: 21px
+  }
+
+  .work-together {
+    height: 250px;
   }
 }
