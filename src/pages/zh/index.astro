@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import TimelineFeed from '../../components/TimelineFeed.astro';
+import TagFilter from '../../components/TagFilter.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('zh', ({ data }) => !data.draft);
+const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
+---
+
+<Base title="文章" lang="zh">
+  <Nav lang="zh" currentPath="/zh/" />
+  <main>
+    <div class="page-header">
+      <h1>文章</h1>
+      <p>关于工程、AI 和软件交付的思考</p>
+    </div>
+    <TagFilter tags={allTags} lang="zh" />
+    <TimelineFeed posts={posts} lang="zh" />
+  </main>
+  <footer>
+    基于 Astro 构建 ·
+    <a href="https://github.com/encoreshao" target="_blank" rel="noopener">GitHub</a> ·
+    <a href="https://icmoc.com" target="_blank" rel="noopener">icmoc.com</a>
+  </footer>
+</Base>
+
+<style>
+  main   { max-width: 720px; margin: 0 auto; padding: 48px 24px; position: relative; z-index: 1; }
+  .page-header { margin-bottom: 40px; }
+  .page-header h1 { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+  .page-header p  { font-size: 14px; color: rgba(255,255,255,0.4); }
+  footer {
+    text-align: center; padding: 40px 24px;
+    font-size: 12px; color: rgba(255,255,255,0.2);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    position: relative; z-index: 1;
+  }
+  footer a { color: var(--cyan); text-decoration: none; }
+</style>
