@@ -1,6 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Nav from '../../components/Nav.astro';
+import HeroSection from '../../components/HeroSection.astro';
+import ProjectsStrip from '../../components/ProjectsStrip.astro';
 import TimelineFeed from '../../components/TimelineFeed.astro';
 import TagFilter from '../../components/TagFilter.astro';
 import { getCollection } from 'astro:content';
@@ -12,9 +14,11 @@ const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
 <Base title="Writing" lang="en">
   <Nav lang="en" currentPath="/en/" />
   <main>
-    <div class="page-header">
-      <h1>Writing</h1>
-      <p>Thoughts on engineering, AI, and shipping software</p>
+    <HeroSection lang="en" postCount={posts.length} />
+    <ProjectsStrip lang="en" />
+    <div class="feed-header">
+      <h2 class="feed-title">Writing</h2>
+      <span class="feed-sub">Thoughts on engineering, AI, and shipping software</span>
     </div>
     <TagFilter tags={allTags} lang="en" />
     <TimelineFeed posts={posts} lang="en" />
@@ -27,10 +31,22 @@ const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
 </Base>
 
 <style>
-  main   { max-width: 720px; margin: 0 auto; padding: 48px 24px; position: relative; z-index: 1; }
-  .page-header { margin-bottom: 40px; }
-  .page-header h1 { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 6px; }
-  .page-header p  { font-size: 14px; color: rgba(255,255,255,0.4); }
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 28px;
+    position: relative;
+    z-index: 1;
+  }
+  .feed-header {
+    display: flex; align-items: baseline; gap: 12px;
+    margin-bottom: 20px;
+  }
+  .feed-title {
+    font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.5);
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .feed-sub { font-size: 12px; color: rgba(255,255,255,0.2); }
   footer {
     text-align: center; padding: 40px 24px;
     font-size: 12px; color: rgba(255,255,255,0.2);

@@ -14,10 +14,10 @@ const slug = id.replace(/\.md$/, '');
 
 const tagClass: Record<string, string> = {
   AI: 'tag-ai', MCP: 'tag-ai', Agents: 'tag-ai',
-  Ruby: 'tag-ruby', 'Open Source': 'tag-ruby', API: 'tag-ruby',
+  Ruby: 'tag-ruby', 'Open Source': 'tag-ruby', '开源': 'tag-ruby', API: 'tag-ruby',
   Chrome: 'tag-chrome',
   Rails: 'tag-rails',
-  Product: 'tag-product',
+  Product: 'tag-product', '产品': 'tag-product',
 };
 
 const formattedDate = new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'zh-CN', {

@@ -1,0 +1,175 @@
+---
+interface Props {
+  lang: 'en' | 'zh';
+  postCount: number;
+}
+
+const { lang, postCount } = Astro.props;
+
+const content = {
+  en: {
+    role: 'Full-stack Engineer & AI Researcher',
+    bio: 'Building web software at Ekohe since 2013. Open source author. Currently focused on AI tooling, MCP infrastructure, and shipping things that actually get used.',
+    github: 'GitHub',
+    site: 'icmoc.com',
+    posts: `${postCount} articles`,
+    langs: 'EN + ZH',
+    updated: 'Updated Jun 2026',
+  },
+  zh: {
+    role: '全栈工程师 & AI 研究员',
+    bio: '2013 年起在 Ekohe 做软件工程，开源项目作者。当前专注于 AI 工具链、MCP 基础设施，以及做出真正被人使用的产品。',
+    github: 'GitHub',
+    site: 'icmoc.com',
+    posts: `${postCount} 篇文章`,
+    langs: '中文 + EN',
+    updated: '更新于 2026 年 6 月',
+  },
+} as const;
+
+const t = content[lang];
+---
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="hero-name">Encore Shao</div>
+    <div class="hero-role">{t.role}</div>
+    <p class="hero-bio">{t.bio}</p>
+    <div class="hero-links">
+      <a href="https://github.com/encoreshao" target="_blank" rel="noopener" class="hero-link link-github">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.603-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.682-.103-.253-.447-1.27.097-2.646 0 0 .84-.269 2.75 1.026A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.295 2.747-1.026 2.747-1.026.546 1.376.202 2.393.1 2.646.64.698 1.026 1.591 1.026 2.682 0 3.841-2.337 4.687-4.565 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+        </svg>
+        {t.github}
+      </a>
+      <a href="https://icmoc.com" target="_blank" rel="noopener" class="hero-link link-site">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        {t.site}
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-value">{postCount}</span>
+      <span class="stat-label">{lang === 'en' ? 'articles' : '篇文章'}</span>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat">
+      <span class="stat-value">2</span>
+      <span class="stat-label">{lang === 'en' ? 'languages' : '语言'}</span>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat">
+      <span class="stat-value">10+</span>
+      <span class="stat-label">{lang === 'en' ? 'years shipping' : '年经验'}</span>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat">
+      <span class="stat-value">5+</span>
+      <span class="stat-label">{lang === 'en' ? 'open source libs' : '开源项目'}</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    margin-bottom: 56px;
+    padding: 40px 0 36px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -40px; right: -60px;
+    width: 380px; height: 380px;
+    background: radial-gradient(circle at 60% 40%, rgba(0,212,255,0.09), transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-body { position: relative; z-index: 1; max-width: 640px; }
+
+  .hero-name {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #fff 30%, rgba(0,212,255,0.85));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 6px;
+  }
+
+  .hero-role {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--cyan);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0.85;
+  }
+
+  .hero-bio {
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 24px;
+    max-width: 560px;
+  }
+
+  .hero-links { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .hero-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; border-radius: 8px;
+    font-size: 13px; font-weight: 600;
+    text-decoration: none;
+    border: 1px solid;
+    transition: all 0.2s;
+  }
+  .link-github {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.7);
+  }
+  .link-github:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.25);
+    color: #fff;
+  }
+  .link-site {
+    background: rgba(0,212,255,0.08);
+    border-color: rgba(0,212,255,0.2);
+    color: var(--cyan);
+  }
+  .link-site:hover {
+    background: rgba(0,212,255,0.14);
+    border-color: rgba(0,212,255,0.4);
+  }
+
+  .hero-stats {
+    display: flex; align-items: center; gap: 0;
+    margin-top: 36px;
+    padding: 16px 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    width: fit-content;
+    position: relative; z-index: 1;
+  }
+  .stat { display: flex; flex-direction: column; align-items: center; padding: 0 20px; }
+  .stat-value { font-size: 20px; font-weight: 800; color: #fff; line-height: 1; }
+  .stat-label { font-size: 10px; color: rgba(255,255,255,0.3); margin-top: 3px; letter-spacing: 0.3px; white-space: nowrap; }
+  .stat-sep { width: 1px; height: 28px; background: rgba(255,255,255,0.07); }
+
+  @media (max-width: 480px) {
+    .hero-stats { gap: 0; flex-wrap: wrap; width: 100%; justify-content: center; }
+    .stat { padding: 8px 14px; }
+    .stat-sep { display: none; }
+  }
+</style>
