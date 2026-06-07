@@ -1,0 +1,63 @@
+---
+interface Props {
+  lang: 'en' | 'zh';
+  currentPath?: string;
+}
+
+const { lang, currentPath = '' } = Astro.props;
+const otherLang = lang === 'en' ? 'zh' : 'en';
+
+const pathParts = currentPath.split('/').filter(Boolean);
+const slug = pathParts.length > 1 ? pathParts[pathParts.length - 1] : '';
+const altHref = slug ? `/${otherLang}/${slug}` : `/${otherLang}/`;
+---
+
+<nav>
+  <a class="nav-logo" href={`/${lang}/`}>encore.dev</a>
+  <div class="nav-center">
+    <a href={`/${lang}/`} class={currentPath.endsWith('/') ? 'active' : ''}>
+      {lang === 'en' ? 'Blog' : '博客'}
+    </a>
+    <a href="https://icmoc.com" target="_blank" rel="noopener">
+      {lang === 'en' ? 'Projects' : '项目'}
+    </a>
+    <a href="https://icmoc.com" target="_blank" rel="noopener">
+      {lang === 'en' ? 'About' : '关于'}
+    </a>
+  </div>
+  <div class="lang-switcher">
+    <a href={lang === 'en' ? currentPath || `/${lang}/` : altHref}
+       class={`lang-btn${lang === 'en' ? ' active' : ''}`}>EN</a>
+    <a href={lang === 'zh' ? currentPath || `/${lang}/` : altHref}
+       class={`lang-btn${lang === 'zh' ? ' active' : ''}`}>中文</a>
+  </div>
+</nav>
+
+<style>
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(15, 15, 35, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: var(--nav-height);
+  }
+  .nav-logo { font-size: 16px; font-weight: 800; color: var(--cyan); letter-spacing: -0.5px; text-decoration: none; }
+  .nav-center { display: flex; gap: 28px; }
+  .nav-center a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+  .nav-center a:hover, .nav-center a.active { color: #fff; }
+  .lang-switcher {
+    display: flex; gap: 2px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px; padding: 3px;
+  }
+  .lang-btn {
+    padding: 4px 12px; border-radius: 4px;
+    font-size: 12px; font-weight: 600; text-decoration: none;
+    color: rgba(255,255,255,0.4); transition: all 0.2s;
+  }
+  .lang-btn.active { background: rgba(0,212,255,0.2); color: var(--cyan); }
+</style>
