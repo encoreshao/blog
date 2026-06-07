@@ -1,0 +1,45 @@
+server {
+    listen 80;
+    listen [::]:80;
+    server_name blog.icmoc.com;
+
+    # Redirect HTTP to HTTPS
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name blog.icmoc.com;
+
+    # SSL — replace with your actual certificate paths (e.g. Let's Encrypt)
+    ssl_certificate     /etc/letsencrypt/live/blog.icmoc.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/blog.icmoc.com/privkey.pem;
+    ssl_protocols       TLSv1.2 TLSv1.3;
+    ssl_ciphers         HIGH:!aNULL:!MD5;
+
+    root /var/www/blog;
+    index index.html;
+
+    # Serve pre-built static files
+    location / {
+        try_files $uri $uri/ $uri/index.html =404;
+    }
+
+    # Astro generates clean URLs — /en/my-post → /en/my-post/index.html
+    location ~* \.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+        access_log off;
+    }
+
+    # Security headers
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+
+    # Gzip
+    gzip on;
+    gzip_types text/plain text/css application/javascript application/json image/svg+xml;
+    gzip_min_length 1000;
+}
