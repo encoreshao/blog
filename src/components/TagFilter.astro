@@ -1,0 +1,56 @@
+---
+interface Props {
+  tags: string[];
+  lang: 'en' | 'zh';
+}
+
+const { tags, lang } = Astro.props;
+const allLabel = lang === 'en' ? 'All' : '全部';
+---
+
+<div class="tag-filters" id="tag-filters">
+  <button class="tag active" data-tag="all">{allLabel}</button>
+  {tags.map(tag => (
+    <button class="tag" data-tag={tag}>{tag}</button>
+  ))}
+</div>
+
+<script>
+  const filters = document.getElementById('tag-filters')!;
+  const feed    = document.getElementById('timeline-feed')!;
+
+  filters.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('.tag');
+    if (!btn) return;
+
+    filters.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+
+    const selected = btn.dataset.tag ?? 'all';
+
+    feed.querySelectorAll<HTMLElement>('.timeline-item').forEach(item => {
+      const card = item.querySelector<HTMLElement>('.post-card');
+      const cardTags = card?.dataset.tags?.split(',') ?? [];
+      item.style.display = (selected === 'all' || cardTags.includes(selected)) ? '' : 'none';
+    });
+
+    feed.querySelectorAll<HTMLElement>('.year-group').forEach(group => {
+      const hasVisible = [...group.querySelectorAll<HTMLElement>('.timeline-item')]
+        .some(item => item.style.display !== 'none');
+      group.style.display = hasVisible ? '' : 'none';
+    });
+  });
+</script>
+
+<style>
+  .tag-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
+  .tag {
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 12px; font-weight: 600; cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.5);
+    transition: all 0.2s;
+  }
+  .tag.active { background: rgba(0,212,255,0.15); border-color: rgba(0,212,255,0.4); color: var(--cyan); }
+  .tag:hover  { border-color: rgba(255,255,255,0.25); color: rgba(255,255,255,0.8); }
+</style>

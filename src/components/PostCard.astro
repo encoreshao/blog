@@ -1,0 +1,64 @@
+---
+interface Props {
+  title: string;
+  date: Date;
+  tags: string[];
+  excerpt: string;
+  id: string;
+  lang: 'en' | 'zh';
+  featured?: boolean;
+}
+
+const { title, date, tags, excerpt, id, lang, featured = false } = Astro.props;
+const slug = id.replace(/\.md$/, '');
+
+const tagClass: Record<string, string> = {
+  AI: 'tag-ai', MCP: 'tag-ai', Agents: 'tag-ai',
+  Ruby: 'tag-ruby', 'Open Source': 'tag-ruby', API: 'tag-ruby',
+  Chrome: 'tag-chrome',
+  Rails: 'tag-rails',
+  Product: 'tag-product',
+};
+
+const formattedDate = new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'zh-CN', {
+  year: 'numeric', month: 'short',
+}).format(date);
+---
+
+<a
+  href={`/${lang}/${slug}`}
+  class:list={['post-card', { featured }]}
+  data-tags={tags.join(',')}
+>
+  <div class="post-meta">
+    <span class="post-date">{formattedDate}</span>
+    {tags.slice(0, 2).map(tag => (
+      <span class:list={['post-tag', tagClass[tag] ?? 'tag-ai']}>{tag}</span>
+    ))}
+    <span class="read-time">8 min</span>
+  </div>
+  <div class="post-title">{title}</div>
+  <div class="post-excerpt">{excerpt}</div>
+</a>
+
+<style>
+  .post-card {
+    display: block; text-decoration: none;
+    background: var(--glass-bg); border: 1px solid var(--glass-border);
+    border-radius: 12px; padding: 20px 24px;
+    transition: all 0.25s; margin-bottom: 12px;
+  }
+  .post-card:hover {
+    background: var(--glass-hover);
+    border-color: rgba(255,255,255,0.15);
+    transform: translateX(4px);
+  }
+  .post-card.featured { background: rgba(0,212,255,0.06); border-color: rgba(0,212,255,0.2); }
+  .post-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+  .post-date { font-size: 11px; color: rgba(255,255,255,0.35); }
+  .post-tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.5px; text-transform: uppercase; }
+  .read-time { font-size: 11px; color: rgba(255,255,255,0.25); margin-left: auto; }
+  .post-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.4; }
+  .featured .post-title { font-size: 18px; }
+  .post-excerpt { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.65; }
+</style>

@@ -1,0 +1,70 @@
+---
+import PostCard from './PostCard.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  posts: (CollectionEntry<'en'> | CollectionEntry<'zh'>)[];
+  lang: 'en' | 'zh';
+}
+
+const { posts, lang } = Astro.props;
+
+const sorted = [...posts]
+  .filter(p => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const byYear = sorted.reduce<Record<number, typeof sorted>>((acc, post) => {
+  const year = post.data.date.getFullYear();
+  (acc[year] ??= []).push(post);
+  return acc;
+}, {});
+
+const years = Object.keys(byYear).map(Number).sort((a, b) => b - a);
+const dotColors = ['dot-cyan', 'dot-purple', 'dot-blue', 'dot-dim'] as const;
+---
+
+<div class="timeline" id="timeline-feed">
+  {years.map(year => (
+    <div class="year-group">
+      <div class="year-label">{year}</div>
+      {byYear[year].map((post, i) => (
+        <div class="timeline-item">
+          <div class:list={['timeline-dot', dotColors[i % dotColors.length]]}></div>
+          <PostCard
+            title={post.data.title}
+            date={post.data.date}
+            tags={post.data.tags}
+            excerpt={post.data.excerpt}
+            id={post.id}
+            lang={lang}
+            featured={i === 0 && year === years[0]}
+          />
+        </div>
+      ))}
+    </div>
+  ))}
+</div>
+
+<style>
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 2px;
+    background: linear-gradient(180deg, rgba(0,212,255,0.6), rgba(168,85,247,0.3), rgba(255,255,255,0.05));
+  }
+  .year-label {
+    font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.2);
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 16px; margin-top: 8px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .year-label::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.06); }
+  .timeline-item { position: relative; }
+  .timeline-dot {
+    position: absolute; left: -34px; top: 20px;
+    width: 10px; height: 10px; border-radius: 50%; border: 2px solid;
+  }
+  .dot-cyan   { background: rgba(0,212,255,0.3);   border-color: var(--cyan);   box-shadow: 0 0 10px rgba(0,212,255,0.5); }
+  .dot-purple { background: rgba(168,85,247,0.3);  border-color: var(--purple); box-shadow: 0 0 8px rgba(168,85,247,0.4); }
+  .dot-blue   { background: rgba(96,165,250,0.3);  border-color: var(--blue);   box-shadow: 0 0 8px rgba(96,165,250,0.3); }
+  .dot-dim    { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.15); }
+</style>
