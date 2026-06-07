@@ -13,7 +13,7 @@ set -euo pipefail
 # ---------------------------------------------------------------------------
 
 DEPLOY_HOST="${1:-${DEPLOY_HOST:-root@ranbot.online}}"
-DEPLOY_PATH="${2:-${DEPLOY_PATH:-/var/www/blog}}"
+DEPLOY_PATH="${2:-${DEPLOY_PATH:-/var/www/production}}"
 
 echo "→ Building..."
 npm run build
