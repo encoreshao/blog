@@ -8,11 +8,11 @@ set -euo pipefail
 #   ./deploy.sh [user@host] [remote-path]
 #
 # Defaults (override via env vars or arguments):
-#   DEPLOY_HOST  — SSH host, e.g. encore@blog.icmoc.com
+#   DEPLOY_HOST  — SSH host, e.g. root@ranbot.online
 #   DEPLOY_PATH  — Remote path, e.g. /var/www/blog
 # ---------------------------------------------------------------------------
 
-DEPLOY_HOST="${1:-${DEPLOY_HOST:-encore@blog.icmoc.com}}"
+DEPLOY_HOST="${1:-${DEPLOY_HOST:-root@ranbot.online}}"
 DEPLOY_PATH="${2:-${DEPLOY_PATH:-/var/www/blog}}"
 
 echo "→ Building..."
