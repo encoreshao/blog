@@ -8,12 +8,12 @@ set -euo pipefail
 #   ./deploy.sh [user@host] [remote-path]
 #
 # Defaults (override via env vars or arguments):
-#   DEPLOY_HOST  — SSH host, e.g. root@ranbot.online
+#   DEPLOY_HOST  — SSH host, e.g. username@server.host
 #   DEPLOY_PATH  — Remote path, e.g. /var/www/blog
 # ---------------------------------------------------------------------------
 
-DEPLOY_HOST="${1:-${DEPLOY_HOST:-root@ranbot.online}}"
-DEPLOY_PATH="${2:-${DEPLOY_PATH:-/var/www/production}}"
+DEPLOY_HOST="${1:-${DEPLOY_HOST:-username@server.host}}"
+DEPLOY_PATH="${2:-${DEPLOY_PATH:-/var/www/production/blog}}"
 
 echo "→ Building..."
 npm run build
