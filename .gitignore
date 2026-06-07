@@ -4,3 +4,6 @@ dist/
 .env
 .env.*
 .superpowers/
+
+
+.claude/settings.local.json
