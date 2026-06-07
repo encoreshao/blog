@@ -1,0 +1,20 @@
+---
+import BlogPost from '../../layouts/BlogPost.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('zh', ({ data }) => !data.draft);
+  return posts.map(post => ({
+    params: { slug: post.id.replace(/\.md$/, '') },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const allPosts = await getCollection('zh', ({ data }) => !data.draft);
+---
+
+<BlogPost post={post} lang="zh" headings={headings} relatedPosts={allPosts}>
+  <Content />
+</BlogPost>

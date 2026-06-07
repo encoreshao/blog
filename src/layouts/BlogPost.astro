@@ -1,0 +1,104 @@
+---
+import Base from './Base.astro';
+import Nav from '../components/Nav.astro';
+import ArticleSubNav from '../components/ArticleSubNav.astro';
+import ReadingProgress from '../components/ReadingProgress.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import AuthorCard from '../components/AuthorCard.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'en'> | CollectionEntry<'zh'>;
+  lang: 'en' | 'zh';
+  headings: { depth: number; slug: string; text: string }[];
+  relatedPosts: (CollectionEntry<'en'> | CollectionEntry<'zh'>)[];
+}
+
+const { post, lang, headings, relatedPosts } = Astro.props;
+const { title, date, tags, excerpt } = post.data;
+
+const tagClass: Record<string, string> = {
+  AI: 'tag-ai', MCP: 'tag-ai', Agents: 'tag-ai',
+  Ruby: 'tag-ruby', 'Open Source': 'tag-ruby', API: 'tag-ruby',
+  Chrome: 'tag-chrome', Rails: 'tag-rails', Product: 'tag-product',
+};
+
+const formattedDate = new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'zh-CN', {
+  year: 'numeric', month: 'long', day: 'numeric',
+}).format(date);
+---
+
+<Base title={title} lang={lang}>
+  <Nav lang={lang} currentPath={`/${lang}/${post.id.replace(/\.md$/, '')}`} />
+  <ArticleSubNav title={title} lang={lang} headings={headings} />
+  <ReadingProgress />
+
+  <div class="page-wrap">
+    <article>
+      <header>
+        <div class="article-meta">
+          {tags.slice(0, 2).map(tag => (
+            <span class:list={['post-tag', tagClass[tag] ?? 'tag-ai']}>{tag}</span>
+          ))}
+          <span class="meta-sep">·</span>
+          <span class="meta-text">{formattedDate}</span>
+          <span class="meta-sep">·</span>
+          <span class="meta-text">8 {lang === 'en' ? 'min read' : '分钟阅读'}</span>
+        </div>
+        <h1 class="article-title">{title}</h1>
+        <p class="article-excerpt">{excerpt}</p>
+      </header>
+
+      <hr class="divider" />
+
+      <div class="prose">
+        <slot />
+      </div>
+
+      <AuthorCard lang={lang} />
+      <RelatedPosts
+        posts={relatedPosts}
+        lang={lang}
+        currentId={post.id}
+        currentTags={tags}
+      />
+    </article>
+
+    <TableOfContents headings={headings} lang={lang} />
+  </div>
+
+  <footer>
+    {lang === 'en' ? 'Built with Astro' : '基于 Astro 构建'} ·
+    <a href={`/${lang}/`}>{lang === 'en' ? 'Back to blog' : '返回博客'}</a> ·
+    <a href="https://github.com/encoreshao" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+</Base>
+
+<style>
+  .page-wrap {
+    max-width: 1100px; margin: 0 auto; padding: 48px 32px 80px;
+    display: grid; grid-template-columns: 1fr 220px; gap: 56px;
+    align-items: start; position: relative; z-index: 1;
+  }
+  .article-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .post-tag { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 4px; letter-spacing: 0.5px; text-transform: uppercase; }
+  .meta-sep  { color: rgba(255,255,255,0.15); }
+  .meta-text { font-size: 12px; color: rgba(255,255,255,0.35); }
+  .article-title { font-size: 36px; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 18px; letter-spacing: -0.5px; }
+  .article-excerpt {
+    font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.7;
+    border-left: 3px solid rgba(0,212,255,0.4); padding-left: 18px; font-style: italic;
+  }
+  .divider { height: 1px; border: none; background: rgba(255,255,255,0.07); margin: 36px 0; }
+  footer {
+    text-align: center; padding: 40px; font-size: 12px;
+    color: rgba(255,255,255,0.2); border-top: 1px solid rgba(255,255,255,0.06);
+    position: relative; z-index: 1;
+  }
+  footer a { color: var(--cyan); text-decoration: none; }
+  @media (max-width: 900px) {
+    .page-wrap { grid-template-columns: 1fr; }
+    .page-wrap aside { display: none; }
+  }
+</style>
