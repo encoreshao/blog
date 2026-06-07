@@ -27,13 +27,24 @@ A personal blog for Encore Shao (邵壮) — Full-stack Engineer & AI Researcher
 - Rails / Backend: orange `#fb923c`
 - Product: green `#34d399`
 
-**Layout:** Timeline + Tags
+**Homepage layout:** Timeline + Tags
 - Sticky nav (logo left, links center, EN/中文 switcher right)
 - Page header: "Writing" title + subtitle
 - Tag filter row (pill buttons, single-select)
 - Vertical timeline: gradient line left, colored dot per post, cards stacked with hover slide effect
 - Year separator labels in timeline
 - Footer with GitHub + icmoc.com links
+
+**Article page layout:** Wide with sticky sub-nav + TOC sidebar
+- Main nav unchanged (sticky, same as homepage)
+- Article sub-nav (second sticky bar below main nav): `← All posts` link / article title / section jump links
+- Reading progress bar: thin cyan→purple gradient line below sub-nav, fills on scroll
+- Two-column layout: article content (left, wider) + sticky TOC sidebar (right, 220px)
+  - TOC sidebar: "On this page" label, section links with active highlight via cyan left border
+- Article header: tag pills + date + read time / large title / italic excerpt with cyan left border
+- Body: `16px` text, `1.85` line-height, styled `h2`/`h3`, inline `code`, fenced `pre` blocks, `blockquote`
+- Author card below article: avatar gradient circle + name + bio
+- Related posts: 2-col grid of glass cards linking to other articles
 
 ---
 
@@ -72,7 +83,12 @@ blog/
 │   │   ├── Nav.astro              ← sticky nav + lang switcher
 │   │   ├── TimelineFeed.astro     ← timeline list with year separators
 │   │   ├── PostCard.astro         ← individual glass card
-│   │   └── TagFilter.astro        ← pill filter row (client:load)
+│   │   ├── TagFilter.astro        ← pill filter row (client:load)
+│   │   ├── ArticleSubNav.astro    ← sticky sub-nav with back link + section jumps
+│   │   ├── ReadingProgress.astro  ← progress bar (client:load)
+│   │   ├── TableOfContents.astro  ← sticky TOC sidebar (client:load)
+│   │   ├── AuthorCard.astro       ← author bio card below article
+│   │   └── RelatedPosts.astro     ← 2-col related posts grid
 │   ├── layouts/
 │   │   ├── Base.astro             ← HTML shell, meta tags
 │   │   └── BlogPost.astro         ← post page layout
