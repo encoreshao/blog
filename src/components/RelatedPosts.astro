@@ -1,0 +1,56 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  posts: (CollectionEntry<'en'> | CollectionEntry<'zh'>)[];
+  lang: 'en' | 'zh';
+  currentId: string;
+  currentTags: string[];
+}
+
+const { posts, lang, currentId, currentTags } = Astro.props;
+const label = lang === 'en' ? 'More from Encore' : '更多文章';
+
+const tagClass: Record<string, string> = {
+  AI: 'tag-ai', MCP: 'tag-ai', Agents: 'tag-ai',
+  Ruby: 'tag-ruby', 'Open Source': 'tag-ruby', API: 'tag-ruby',
+  Chrome: 'tag-chrome', Rails: 'tag-rails', Product: 'tag-product',
+};
+
+const related = posts
+  .filter(p => p.id !== currentId && !p.data.draft)
+  .sort((a, b) =>
+    b.data.tags.filter(t => currentTags.includes(t)).length -
+    a.data.tags.filter(t => currentTags.includes(t)).length
+  )
+  .slice(0, 2);
+---
+
+{related.length > 0 && (
+  <div class="related">
+    <div class="related-label">{label}</div>
+    <div class="related-grid">
+      {related.map(post => (
+        <a class="related-card" href={`/${lang}/${post.id.replace(/\.md$/, '')}`}>
+          <span class:list={['related-tag', tagClass[post.data.tags[0]] ?? 'tag-ai']}>
+            {post.data.tags.slice(0, 2).join(' · ')}
+          </span>
+          <div class="related-title">{post.data.title}</div>
+        </a>
+      ))}
+    </div>
+  </div>
+)}
+
+<style>
+  .related { margin-top: 48px; }
+  .related-label { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.25); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .related-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px; padding: 16px; text-decoration: none; display: block; transition: all 0.2s;
+  }
+  .related-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-2px); }
+  .related-tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.5px; text-transform: uppercase; display: inline-block; margin-bottom: 6px; }
+  .related-title { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.85); line-height: 1.4; }
+</style>

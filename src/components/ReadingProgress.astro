@@ -1,0 +1,28 @@
+---
+---
+
+<div class="progress-bar">
+  <div class="progress-fill" id="progress-fill"></div>
+</div>
+
+<script>
+  const fill = document.getElementById('progress-fill')!;
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const pct = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+    fill.style.width = Math.min(pct, 100) + '%';
+  }, { passive: true });
+</script>
+
+<style>
+  .progress-bar {
+    position: sticky;
+    top: calc(var(--nav-height) + var(--subnav-height));
+    z-index: 98; height: 2px; background: rgba(255,255,255,0.05);
+  }
+  .progress-fill {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, var(--cyan), var(--purple));
+    transition: width 0.05s linear;
+  }
+</style>

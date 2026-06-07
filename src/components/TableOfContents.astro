@@ -1,0 +1,57 @@
+---
+interface Props {
+  headings: { depth: number; slug: string; text: string }[];
+  lang: 'en' | 'zh';
+}
+
+const { headings, lang } = Astro.props;
+const items = headings.filter(h => h.depth === 2 || h.depth === 3);
+const label = lang === 'en' ? 'On this page' : '本页目录';
+---
+
+<aside class="toc">
+  <div class="toc-label">{label}</div>
+  {items.map(h => (
+    <a
+      href={`#${h.slug}`}
+      class:list={['toc-item', { sub: h.depth === 3 }]}
+      data-slug={h.slug}
+    >{h.text}</a>
+  ))}
+</aside>
+
+<script>
+  const links = document.querySelectorAll<HTMLAnchorElement>('.toc-item');
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.toggle('active', l.dataset.slug === e.target.id));
+        }
+      });
+    },
+    { rootMargin: '-20% 0px -70% 0px' }
+  );
+  links.forEach(l => {
+    const el = document.getElementById(l.dataset.slug ?? '');
+    if (el) observer.observe(el);
+  });
+</script>
+
+<style>
+  .toc {
+    position: sticky;
+    top: calc(var(--nav-height) + var(--subnav-height) + 2px + 24px);
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px; padding: 20px;
+  }
+  .toc-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: rgba(255,255,255,0.25); text-transform: uppercase; margin-bottom: 14px; }
+  .toc-item {
+    display: block; font-size: 12px; color: rgba(255,255,255,0.35); text-decoration: none;
+    padding: 5px 0 5px 10px; border-left: 2px solid rgba(255,255,255,0.06);
+    margin-bottom: 2px; transition: all 0.2s; line-height: 1.4;
+  }
+  .toc-item:hover { color: rgba(255,255,255,0.7); border-left-color: rgba(255,255,255,0.2); }
+  .toc-item.active { color: var(--cyan); border-left-color: var(--cyan); }
+  .toc-item.sub { padding-left: 20px; font-size: 11px; }
+</style>

@@ -1,0 +1,27 @@
+---
+interface Props { lang: 'en' | 'zh'; }
+const { lang } = Astro.props;
+---
+
+<div class="author-card">
+  <div class="author-avatar" aria-hidden="true"></div>
+  <div>
+    <div class="author-name">Encore Shao</div>
+    <p class="author-bio">
+      {lang === 'en'
+        ? 'Full-stack Engineer & AI Researcher at Ekohe, Shanghai. Building scalable Rails apps and agentic AI systems for 10+ years.'
+        : '全栈工程师 & AI 研究员，就职于上海 Ekohe。10 年以上经验，专注于 Rails 应用与 Agentic AI 系统。'}
+    </p>
+  </div>
+</div>
+
+<style>
+  .author-card {
+    margin-top: 56px; background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08); border-radius: 14px;
+    padding: 24px; display: flex; gap: 18px; align-items: center;
+  }
+  .author-avatar { width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, var(--cyan), var(--purple)); }
+  .author-name { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .author-bio  { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+</style>
