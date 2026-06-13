@@ -23,6 +23,10 @@ const {
     <title>{title} · Encore Shao</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={Astro.url.href} />
+    {lang === 'zh'
+      ? <link rel="alternate" type="application/rss+xml" title="邵恩科的博客 RSS" href="/zh/rss.xml" />
+      : <link rel="alternate" type="application/rss+xml" title="Encore Shao's Blog RSS" href="/rss.xml" />
+    }
   </head>
   <body>
     <slot />

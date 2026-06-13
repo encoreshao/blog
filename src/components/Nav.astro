@@ -25,6 +25,13 @@ const altHref = slug ? `/${otherLang}/${slug}` : `/${otherLang}/`;
       {lang === 'en' ? 'About' : '关于'}
     </a>
   </div>
+  <a class="rss-btn" href={lang === 'zh' ? '/zh/rss.xml' : '/rss.xml'} title="RSS Feed">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <circle cx="6.18" cy="17.82" r="2.18"/>
+      <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+    </svg>
+    RSS
+  </a>
   <div class="lang-switcher">
     <a href={lang === 'en' ? currentPath || `/${lang}/` : altHref}
        class={`lang-btn${lang === 'en' ? ' active' : ''}`}>EN</a>
@@ -48,6 +55,12 @@ const altHref = slug ? `/${otherLang}/${slug}` : `/${otherLang}/`;
   .nav-center { display: flex; gap: 28px; }
   .nav-center a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
   .nav-center a:hover, .nav-center a.active { color: #fff; }
+  .rss-btn {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.35);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .rss-btn:hover { color: var(--cyan); }
   .lang-switcher {
     display: flex; gap: 2px;
     background: rgba(255,255,255,0.06);
