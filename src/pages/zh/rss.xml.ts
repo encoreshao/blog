@@ -9,7 +9,7 @@ export async function GET(context: APIContext) {
   );
 
   return rss({
-    title: '邵恩科的博客',
+    title: '邵壮的博客',
     description: '关于工程、AI 和构建软件的思考。',
     site: context.site!,
     items: sorted.map((post) => ({
