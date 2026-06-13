@@ -113,7 +113,7 @@ Your content here...
 ./deploy.sh
 ```
 
-This runs `npm run build` then rsyncs `dist/` to `encore@blog.icmoc.com:/var/www/blog`.
+This runs `npm run build` then rsyncs `dist/` to `blog.icmoc.com:/var/www/{env}/blog`.
 
 ### Custom host / path
 
@@ -153,7 +153,7 @@ sudo certbot --nginx -d blog.icmoc.com
 
 ```bash
 # Create the web root on your server (run once)
-ssh encore@blog.icmoc.com "sudo mkdir -p /var/www/blog && sudo chown encore:www-data /var/www/blog"
+ssh blog.icmoc.com "sudo mkdir -p /var/www/blog && sudo chown encore:www-data /var/www/blog"
 ```
 
 ---
@@ -175,5 +175,5 @@ ssh encore@blog.icmoc.com "sudo mkdir -p /var/www/blog && sudo chown encore:www-
 
 ## License
 
-Content (articles) © Encore Shao. All rights reserved.  
+Content (articles) © Encore Shao. All rights reserved.
 Code (theme, components) MIT.

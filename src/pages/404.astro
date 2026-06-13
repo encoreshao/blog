@@ -1,0 +1,529 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="404 — Lost in the Void" description="Page not found">
+  <canvas id="code-rain"></canvas>
+
+  <div class="aurora" aria-hidden="true">
+    <div class="aurora-blob aurora-blob-1"></div>
+    <div class="aurora-blob aurora-blob-2"></div>
+    <div class="aurora-blob aurora-blob-3"></div>
+  </div>
+
+  <div class="fragments" id="fragments" aria-hidden="true"></div>
+
+  <header class="top-bar">
+    <a href="/" class="nav-logo">Encore<span class="nav-logo-accent"> / Blog</span></a>
+  </header>
+
+  <main class="page-wrap">
+    <p class="err-eyebrow">Error</p>
+
+    <div class="err-number" data-text="404" aria-label="404">
+      404
+      <div class="err-scanline" aria-hidden="true"></div>
+    </div>
+
+    <div class="terminal" role="region" aria-label="Error details">
+      <div class="terminal-bar">
+        <span class="dot dot-red" aria-hidden="true"></span>
+        <span class="dot dot-yellow" aria-hidden="true"></span>
+        <span class="dot dot-green" aria-hidden="true"></span>
+        <span class="terminal-title">bash — encore@blog:~</span>
+      </div>
+      <div class="terminal-body">
+        <div class="terminal-line">
+          <span class="t-prompt">~$</span>
+          <span class="t-cmd">curl -I <span class="t-url" id="requestedPath">/</span></span>
+        </div>
+        <div class="terminal-line">
+          <span class="t-err">✗ 404 Not Found</span>
+          <span class="t-info">— post lost in the void</span>
+        </div>
+        <div class="terminal-line">
+          <span class="t-comment"># maybe it was moved, renamed, or never published</span>
+        </div>
+        <div class="terminal-line">
+          <span class="t-prompt">~$</span>
+          <span class="t-cursor" aria-hidden="true"></span>
+        </div>
+        <div class="terminal-divider"></div>
+        <div class="terminal-actions">
+          <a href="/" class="btn btn-glow">
+            ← Go Home
+          </a>
+          <button class="btn btn-ghost" onclick="history.back()">
+            ↩ Go Back
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <p class="err-hint">
+      Looking for a post? Browse <span><a href="/en" style="color:inherit;text-decoration:underline;">English</a></span> or <span><a href="/zh" style="color:inherit;text-decoration:underline;">Chinese</a></span> articles.
+    </p>
+  </main>
+</Base>
+
+<style>
+  :root {
+    --404-bg:      #1a1a2e;
+    --404-surface: rgba(255,255,255,0.05);
+    --404-border:  rgba(255,255,255,0.08);
+    --404-border2: rgba(255,255,255,0.13);
+    --404-text:    #e2e8f0;
+    --404-text2:   rgba(255,255,255,0.55);
+    --404-muted:   rgba(255,255,255,0.25);
+    --404-blue:    #60a5fa;
+    --404-cyan:    #00d4ff;
+    --404-purple:  #a855f7;
+    --404-green:   #34d399;
+    --r-sm:        8px;
+    --r-lg:        24px;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  #code-rain {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .aurora {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .aurora-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.4;
+  }
+
+  .aurora-blob-1 {
+    width: 560px; height: 560px;
+    background: radial-gradient(circle, rgba(0,212,255,0.35) 0%, transparent 70%);
+    top: -150px; left: -100px;
+    animation: auroraDrift 14s ease-in-out infinite alternate;
+  }
+
+  .aurora-blob-2 {
+    width: 440px; height: 440px;
+    background: radial-gradient(circle, rgba(168,85,247,0.35) 0%, transparent 70%);
+    bottom: -100px; right: -50px;
+    animation: auroraDrift 18s ease-in-out infinite alternate-reverse;
+  }
+
+  .aurora-blob-3 {
+    width: 380px; height: 380px;
+    background: radial-gradient(circle, rgba(96,165,250,0.22) 0%, transparent 70%);
+    top: 40%; left: 55%;
+    animation: auroraDrift 22s ease-in-out infinite alternate;
+  }
+
+  @keyframes auroraDrift {
+    0%   { transform: translate(0, 0) scale(1); }
+    33%  { transform: translate(40px, -30px) scale(1.08); }
+    66%  { transform: translate(-20px, 40px) scale(0.95); }
+    100% { transform: translate(30px, 20px) scale(1.05); }
+  }
+
+  .fragments {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .fragment {
+    position: absolute;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    opacity: 0;
+    animation: floatUp linear infinite;
+    will-change: transform, opacity;
+  }
+
+  @keyframes floatUp {
+    0%   { opacity: 0; transform: translateY(0) rotate(0deg); }
+    8%   { opacity: 1; }
+    85%  { opacity: 0.3; }
+    100% { opacity: 0; transform: translateY(-420px) rotate(25deg); }
+  }
+
+  .top-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    padding: 0 28px;
+    height: 56px;
+    background: rgba(26,26,46,0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--404-border);
+  }
+
+  .nav-logo {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--404-text);
+    text-decoration: none;
+  }
+
+  .nav-logo-accent { color: var(--404-text2); font-weight: 400; }
+
+  .page-wrap {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 80px 24px 24px;
+  }
+
+  .err-eyebrow {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--404-cyan);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .err-eyebrow::before,
+  .err-eyebrow::after {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--404-cyan);
+    opacity: 0.5;
+  }
+
+  .err-number {
+    font-size: clamp(110px, 20vw, 210px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    color: var(--404-text);
+    position: relative;
+    margin-bottom: 4px;
+    user-select: none;
+  }
+
+  .err-number::before,
+  .err-number::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .err-number::before {
+    color: var(--404-cyan);
+    animation: glitch-a 5s infinite linear;
+    clip-path: polygon(0 0, 100% 0, 100% 42%, 0 42%);
+  }
+
+  .err-number::after {
+    color: var(--404-purple);
+    animation: glitch-b 5s infinite linear;
+    clip-path: polygon(0 58%, 100% 58%, 100% 100%, 0 100%);
+  }
+
+  @keyframes glitch-a {
+    0%, 87%, 100%  { transform: none; opacity: 0; }
+    88%  { transform: translate(-6px, 3px); opacity: 1; }
+    89%  { transform: translate(6px, -2px); opacity: 0.8; }
+    90%  { transform: translate(-3px, 4px); opacity: 0.9; }
+    91%  { transform: translate(4px, -1px); opacity: 0.7; }
+    92%  { transform: none; opacity: 0; }
+  }
+
+  @keyframes glitch-b {
+    0%, 84%, 100%  { transform: none; opacity: 0; }
+    85%  { transform: translate(7px, -3px); opacity: 1; }
+    86%  { transform: translate(-5px, 2px); opacity: 0.8; }
+    87%  { transform: translate(4px, -4px); opacity: 0.9; }
+    88%  { transform: none; opacity: 0; }
+  }
+
+  .err-scanline {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 2px,
+      rgba(0,0,0,0.07) 2px,
+      rgba(0,0,0,0.07) 3px
+    );
+    pointer-events: none;
+  }
+
+  .terminal {
+    margin-top: 40px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--404-border2);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    width: min(540px, 94vw);
+    box-shadow:
+      0 32px 80px rgba(0, 0, 0, 0.65),
+      0 0 0 1px rgba(0, 212, 255, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    animation: terminalIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.15s;
+  }
+
+  @keyframes terminalIn {
+    from { opacity: 0; transform: translateY(24px) scale(0.97); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .terminal-bar {
+    background: rgba(255,255,255,0.06);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid var(--404-border);
+    position: relative;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot-red    { background: #FF5F57; }
+  .dot-yellow { background: #FEBC2E; }
+  .dot-green  { background: #28C840; }
+
+  .terminal-title {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.68rem;
+    color: var(--404-muted);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .terminal-body {
+    padding: 22px 26px 26px;
+  }
+
+  .terminal-line {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.78rem;
+    line-height: 2.1;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .t-prompt  { color: var(--404-green); flex-shrink: 0; }
+  .t-cmd     { color: var(--404-text); }
+  .t-err     { color: #FF6B6B; font-weight: 500; flex-shrink: 0; }
+  .t-info    { color: var(--404-text2); }
+  .t-url     { color: var(--404-cyan); word-break: break-all; }
+  .t-comment { color: var(--404-muted); font-style: italic; }
+
+  .t-cursor {
+    display: inline-block;
+    width: 7px;
+    height: 1.1em;
+    background: var(--404-blue);
+    animation: cursorBlink 0.9s step-end infinite;
+    vertical-align: middle;
+    border-radius: 1px;
+  }
+
+  @keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+
+  .terminal-divider {
+    margin: 18px 0;
+    height: 1px;
+    background: var(--404-border);
+  }
+
+  .terminal-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: var(--r-sm);
+    padding: 9px 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    text-decoration: none;
+    border: 1.5px solid transparent;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .btn-glow {
+    background: linear-gradient(135deg, var(--404-cyan) 0%, var(--404-blue) 100%);
+    color: #0f172a;
+  }
+
+  .btn-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0, 212, 255, 0.4);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--404-text2);
+    border-color: var(--404-border2);
+  }
+
+  .btn-ghost:hover {
+    background: rgba(255,255,255,0.06);
+    color: var(--404-text);
+  }
+
+  .err-hint {
+    margin-top: 24px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.68rem;
+    color: var(--404-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .err-hint span { color: var(--404-cyan); opacity: 0.7; }
+
+  @media (max-width: 600px) {
+    .err-number { font-size: 96px; }
+    .terminal-body { padding: 18px 18px 20px; }
+    .terminal-actions { flex-direction: column; }
+    .btn { justify-content: center; }
+    .top-bar { padding: 0 16px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+
+<script>
+  // Show requested path in terminal
+  (function () {
+    const el = document.getElementById('requestedPath');
+    const path = window.location.pathname;
+    if (el) {
+      el.textContent = (path && path !== '/404' && path !== '/404.html')
+        ? path
+        : window.location.href.replace(window.location.origin, '');
+    }
+  })();
+
+  // Matrix code rain
+  (function () {
+    const canvas = document.getElementById('code-rain') as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d')!;
+    const chars = '01アイウエオカキクケコ{}[]();=>/<>\\#@!?&|~^0x'.split('');
+    const fontSize = 13;
+    let cols: number, drops: number[];
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      cols = Math.floor(canvas.width / (fontSize + 2));
+      drops = Array.from({ length: cols }, () => Math.random() * -(canvas.height / fontSize));
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+
+    function draw() {
+      ctx.fillStyle = 'rgba(26, 26, 46, 0.06)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.font = `${fontSize}px "Fira Code", "SF Mono", monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        const y = drops[i] * fontSize;
+        const progress = y / canvas.height;
+
+        if (progress < 0.25) {
+          ctx.fillStyle = 'rgba(0, 212, 255, 0.8)';
+        } else if (progress < 0.6) {
+          ctx.fillStyle = 'rgba(0, 212, 255, 0.45)';
+        } else {
+          ctx.fillStyle = 'rgba(0, 212, 255, 0.15)';
+        }
+
+        ctx.fillText(char, i * (fontSize + 2), y);
+        drops[i] += 0.45;
+        if (y > canvas.height && Math.random() > 0.978) {
+          drops[i] = Math.random() * -30;
+        }
+      }
+    }
+
+    setInterval(draw, 55);
+  })();
+
+  // Floating code fragments
+  (function () {
+    const container = document.getElementById('fragments')!;
+    const snippets = ['404', 'null', 'undefined', 'void 0', '!found', 'Error', '???', '∅', '0x404', 'NaN', 'nil', 'missing'];
+    const colors = ['var(--404-blue)', 'var(--404-cyan)', 'var(--404-purple)'];
+
+    function spawn() {
+      const el = document.createElement('span');
+      el.className = 'fragment';
+      el.textContent = snippets[Math.floor(Math.random() * snippets.length)];
+      el.style.cssText = [
+        `left:${5 + Math.random() * 88}%`,
+        `bottom:${-10 + Math.random() * 15}%`,
+        `font-size:${0.55 + Math.random() * 0.45}rem`,
+        `color:${colors[Math.floor(Math.random() * colors.length)]}`,
+        `animation-duration:${7 + Math.random() * 9}s`,
+        'animation-delay:0s',
+      ].join(';');
+      container.appendChild(el);
+      setTimeout(() => el.remove(), 17000);
+    }
+
+    for (let i = 0; i < 6; i++) setTimeout(spawn, i * 350);
+    setInterval(spawn, 1400);
+  })();
+</script>
