@@ -15,72 +15,92 @@ import Base from '../layouts/Base.astro';
 
   <header class="top-bar">
     <a href="/" class="nav-logo">Encore<span class="nav-logo-accent"> / Blog</span></a>
+    <nav class="top-nav">
+      <a href="/en/" class="top-nav-link">EN</a>
+      <a href="/zh/" class="top-nav-link">中文</a>
+      <span class="top-nav-divider" aria-hidden="true"></span>
+      <a class="rss-btn" href="/rss.xml" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <circle cx="6.18" cy="17.82" r="2.18"/>
+          <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+        </svg>
+        RSS
+      </a>
+    </nav>
   </header>
 
   <main class="page-wrap">
-    <p class="err-eyebrow">Error</p>
+    <p class="err-eyebrow">HTTP 404</p>
 
     <div class="err-number" data-text="404" aria-label="404">
       404
       <div class="err-scanline" aria-hidden="true"></div>
     </div>
 
-    <div class="terminal" role="region" aria-label="Error details">
+    <p class="err-subtitle">Searched every branch. This page was never committed.</p>
+
+    <div class="terminal" role="region" aria-label="Terminal debugging session">
       <div class="terminal-bar">
         <span class="dot dot-red" aria-hidden="true"></span>
         <span class="dot dot-yellow" aria-hidden="true"></span>
         <span class="dot dot-green" aria-hidden="true"></span>
         <span class="terminal-title">bash — encore@blog:~</span>
       </div>
+
       <div class="terminal-body">
-        <div class="terminal-line">
-          <span class="t-prompt">~$</span>
-          <span class="t-cmd">curl -I <span class="t-url" id="requestedPath">/</span></span>
-        </div>
-        <div class="terminal-line">
-          <span class="t-err">✗ 404 Not Found</span>
-          <span class="t-info">— post lost in the void</span>
-        </div>
-        <div class="terminal-line">
-          <span class="t-comment"># maybe it was moved, renamed, or never published</span>
-        </div>
-        <div class="terminal-line">
-          <span class="t-prompt">~$</span>
-          <span class="t-cursor" aria-hidden="true"></span>
-        </div>
+        <div id="term-lines" role="log" aria-live="polite" aria-label="Terminal output"></div>
+      </div>
+
+      <div id="term-footer" class="terminal-footer" style="display:none">
         <div class="terminal-divider"></div>
         <div class="terminal-actions">
-          <a href="/" class="btn btn-glow">
-            ← Go Home
+          <a href="/en/" class="btn btn-glow">← All Posts</a>
+          <button class="btn btn-ghost" onclick="history.back()">↩ Go Back</button>
+          <a href="/rss.xml" class="btn btn-ghost btn-rss">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <circle cx="6.18" cy="17.82" r="2.18"/>
+              <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+            </svg>
+            RSS
           </a>
-          <button class="btn btn-ghost" onclick="history.back()">
-            ↩ Go Back
-          </button>
         </div>
       </div>
     </div>
 
     <p class="err-hint">
-      Looking for a post? Browse <span><a href="/en" style="color:inherit;text-decoration:underline;">English</a></span> or <span><a href="/zh" style="color:inherit;text-decoration:underline;">Chinese</a></span> articles.
+      Browse writing in
+      <a href="/en/" class="err-hint-link">English</a>
+      <span class="err-hint-sep">·</span>
+      <a href="/zh/" class="err-hint-link">中文</a>
     </p>
   </main>
 </Base>
 
-<style>
+<style is:global>
   :root {
-    --404-bg:      #1a1a2e;
-    --404-surface: rgba(255,255,255,0.05);
-    --404-border:  rgba(255,255,255,0.08);
-    --404-border2: rgba(255,255,255,0.13);
-    --404-text:    #e2e8f0;
-    --404-text2:   rgba(255,255,255,0.55);
-    --404-muted:   rgba(255,255,255,0.25);
-    --404-blue:    #60a5fa;
-    --404-cyan:    #00d4ff;
-    --404-purple:  #a855f7;
-    --404-green:   #34d399;
-    --r-sm:        8px;
-    --r-lg:        24px;
+    --404-border:   rgba(255,255,255,0.08);
+    --404-border2:  rgba(255,255,255,0.13);
+    --404-text:     #e2e8f0;
+    --404-text2:    rgba(255,255,255,0.55);
+    --404-muted:    rgba(255,255,255,0.25);
+    --404-cyan:     #00d4ff;
+    --404-purple:   #a855f7;
+    --404-blue:     #60a5fa;
+
+    /* iTerm2 colour palette for terminal lines */
+    --iterm-green:   #5FFA68;   /* bright green   — prompt ~$              */
+    --iterm-white:   #FEFFFF;   /* bright white   — command text           */
+    --iterm-red:     #FF6E67;   /* bright red     — errors, exit 1         */
+    --iterm-yellow:  #FEFB67;   /* bright yellow  — HTTP header keys       */
+    --iterm-cyan:    #60FDFF;   /* bright cyan    — git body, paths        */
+    --iterm-blue:    #6871FF;   /* bright blue    — empty / no-output      */
+    --iterm-magenta: #FF77FF;   /* bright magenta — response body values   */
+    --iterm-sky:     #9AEDFE;   /* sky blue       — grep stats             */
+    --iterm-gray:    #686868;   /* bright black   — inline labels / muted  */
+    --iterm-dim:     rgba(255,255,255,0.22);  /* very dim — timestamps     */
+
+    --r-sm: 8px;
+    --r-lg: 24px;
   }
 
   body {
@@ -91,26 +111,20 @@ import Base from '../layouts/Base.astro';
     overflow: hidden;
   }
 
+  /* ── Background effects ── */
   #code-rain {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
+    position: fixed; inset: 0;
+    z-index: 0; pointer-events: none;
   }
 
   .aurora {
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    overflow: hidden;
-    pointer-events: none;
+    position: fixed; inset: 0;
+    z-index: 1; overflow: hidden; pointer-events: none;
   }
 
   .aurora-blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(90px);
-    opacity: 0.4;
+    position: absolute; border-radius: 50%;
+    filter: blur(90px); opacity: 0.4;
   }
 
   .aurora-blob-1 {
@@ -135,18 +149,15 @@ import Base from '../layouts/Base.astro';
   }
 
   @keyframes auroraDrift {
-    0%   { transform: translate(0, 0) scale(1); }
-    33%  { transform: translate(40px, -30px) scale(1.08); }
-    66%  { transform: translate(-20px, 40px) scale(0.95); }
-    100% { transform: translate(30px, 20px) scale(1.05); }
+    0%   { transform: translate(0,0) scale(1); }
+    33%  { transform: translate(40px,-30px) scale(1.08); }
+    66%  { transform: translate(-20px,40px) scale(0.95); }
+    100% { transform: translate(30px,20px) scale(1.05); }
   }
 
   .fragments {
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    overflow: hidden;
+    position: fixed; inset: 0;
+    z-index: 1; pointer-events: none; overflow: hidden;
   }
 
   .fragment {
@@ -164,79 +175,69 @@ import Base from '../layouts/Base.astro';
     100% { opacity: 0; transform: translateY(-420px) rotate(25deg); }
   }
 
+  /* ── Header ── */
   .top-bar {
-    position: fixed;
-    top: 0; left: 0; right: 0;
+    position: fixed; top: 0; left: 0; right: 0;
     z-index: 100;
-    display: flex;
-    align-items: center;
-    padding: 0 28px;
-    height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 28px; height: 56px;
     background: rgba(26,26,46,0.5);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--404-border);
   }
 
-  .nav-logo {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--404-text);
-    text-decoration: none;
-  }
-
+  .nav-logo { font-size: 1rem; font-weight: 700; color: var(--404-text); text-decoration: none; }
   .nav-logo-accent { color: var(--404-text2); font-weight: 400; }
 
+  .top-nav { display: flex; align-items: center; gap: 18px; }
+
+  .top-nav-link {
+    font-size: 13px; font-weight: 500;
+    color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s;
+  }
+  .top-nav-link:hover { color: #fff; }
+
+  .top-nav-divider {
+    width: 1px; height: 14px;
+    background: rgba(255,255,255,0.12); flex-shrink: 0;
+  }
+
+  .rss-btn {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 12px; font-weight: 600;
+    color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s;
+  }
+  .rss-btn:hover { color: var(--404-cyan); }
+
+  /* ── Page layout — left-aligned ── */
   .page-wrap {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 80px 24px 24px;
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column;
+    align-items: flex-start; text-align: left;
+    width: min(640px, 94vw);
+    padding: 80px 0 32px;
   }
 
   .err-eyebrow {
     font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--404-cyan);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .err-eyebrow::before,
-  .err-eyebrow::after {
-    content: '';
-    display: block;
-    width: 28px;
-    height: 1px;
-    background: var(--404-cyan);
-    opacity: 0.5;
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--iterm-cyan);
+    margin-bottom: 12px;
   }
 
   .err-number {
-    font-size: clamp(110px, 20vw, 210px);
-    font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.05em;
-    color: var(--404-text);
-    position: relative;
-    margin-bottom: 4px;
+    font-size: clamp(100px, 18vw, 200px);
+    font-weight: 800; line-height: 0.9;
+    letter-spacing: -0.05em; color: var(--404-text);
+    position: relative; margin-bottom: 4px;
     user-select: none;
   }
 
   .err-number::before,
   .err-number::after {
     content: attr(data-text);
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
+    position: absolute; inset: 0; pointer-events: none;
   }
 
   .err-number::before {
@@ -252,47 +253,52 @@ import Base from '../layouts/Base.astro';
   }
 
   @keyframes glitch-a {
-    0%, 87%, 100%  { transform: none; opacity: 0; }
-    88%  { transform: translate(-6px, 3px); opacity: 1; }
-    89%  { transform: translate(6px, -2px); opacity: 0.8; }
-    90%  { transform: translate(-3px, 4px); opacity: 0.9; }
-    91%  { transform: translate(4px, -1px); opacity: 0.7; }
-    92%  { transform: none; opacity: 0; }
+    0%, 87%, 100% { transform: none; opacity: 0; }
+    88% { transform: translate(-6px, 3px); opacity: 1; }
+    89% { transform: translate(6px, -2px); opacity: 0.8; }
+    90% { transform: translate(-3px, 4px); opacity: 0.9; }
+    91% { transform: translate(4px, -1px); opacity: 0.7; }
+    92% { transform: none; opacity: 0; }
   }
 
   @keyframes glitch-b {
-    0%, 84%, 100%  { transform: none; opacity: 0; }
-    85%  { transform: translate(7px, -3px); opacity: 1; }
-    86%  { transform: translate(-5px, 2px); opacity: 0.8; }
-    87%  { transform: translate(4px, -4px); opacity: 0.9; }
-    88%  { transform: none; opacity: 0; }
+    0%, 84%, 100% { transform: none; opacity: 0; }
+    85% { transform: translate(7px, -3px); opacity: 1; }
+    86% { transform: translate(-5px, 2px); opacity: 0.8; }
+    87% { transform: translate(4px, -4px); opacity: 0.9; }
+    88% { transform: none; opacity: 0; }
   }
 
   .err-scanline {
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background: repeating-linear-gradient(
       to bottom,
-      transparent 0px,
-      transparent 2px,
-      rgba(0,0,0,0.07) 2px,
-      rgba(0,0,0,0.07) 3px
+      transparent 0px, transparent 2px,
+      rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 3px
     );
     pointer-events: none;
   }
 
+  .err-subtitle {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.74rem; color: var(--iterm-gray);
+    letter-spacing: 0.02em;
+    margin-top: 16px; margin-bottom: 0;
+  }
+
+  /* ── Terminal ── */
   .terminal {
-    margin-top: 40px;
-    background: rgba(255,255,255,0.04);
+    margin-top: 32px;
+    width: 100%;
+    background: rgba(10,10,25,0.75);
     border: 1px solid var(--404-border2);
     border-radius: var(--r-lg);
     overflow: hidden;
-    width: min(540px, 94vw);
     box-shadow:
-      0 32px 80px rgba(0, 0, 0, 0.65),
-      0 0 0 1px rgba(0, 212, 255, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    animation: terminalIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+      0 32px 80px rgba(0,0,0,0.7),
+      0 0 0 1px rgba(0,212,255,0.07),
+      inset 0 1px 0 rgba(255,255,255,0.05);
+    animation: terminalIn 0.6s cubic-bezier(0.16,1,0.3,1) both;
     animation-delay: 0.15s;
   }
 
@@ -302,159 +308,308 @@ import Base from '../layouts/Base.astro';
   }
 
   .terminal-bar {
-    background: rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.05);
     padding: 10px 16px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    display: flex; align-items: center; gap: 6px;
     border-bottom: 1px solid var(--404-border);
     position: relative;
   }
 
-  .dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
+  .dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
   .dot-red    { background: #FF5F57; }
   .dot-yellow { background: #FEBC2E; }
   .dot-green  { background: #28C840; }
 
   .terminal-title {
     font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.68rem;
-    color: var(--404-muted);
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    font-size: 0.68rem; color: var(--404-muted);
+    position: absolute; left: 50%; transform: translateX(-50%);
   }
 
+  /* Scrollable output area */
   .terminal-body {
-    padding: 22px 26px 26px;
+    padding: 18px 22px 6px;
+    max-height: 320px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.08) transparent;
   }
 
+  .terminal-body::-webkit-scrollbar { width: 4px; }
+  .terminal-body::-webkit-scrollbar-track { background: transparent; }
+  .terminal-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+  /* Sticky footer — buttons stay pinned below scroll area */
+  .terminal-footer {
+    padding: 0 22px 20px;
+    opacity: 0; transition: opacity 0.4s ease;
+  }
+  .terminal-footer.visible { opacity: 1; }
+
+  /* ── iTerm2 terminal text colours ── */
   .terminal-line {
     font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.78rem;
-    line-height: 2.1;
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    flex-wrap: wrap;
+    font-size: 0.8rem;
+    line-height: 1.95;
+    display: flex; align-items: baseline;
+    gap: 0; flex-wrap: wrap;
   }
 
-  .t-prompt  { color: var(--404-green); flex-shrink: 0; }
-  .t-cmd     { color: var(--404-text); }
-  .t-err     { color: #FF6B6B; font-weight: 500; flex-shrink: 0; }
-  .t-info    { color: var(--404-text2); }
-  .t-url     { color: var(--404-cyan); word-break: break-all; }
-  .t-comment { color: var(--404-muted); font-style: italic; }
+  /* iTerm bright green   — prompt ~$ */
+  .t-prompt   { color: var(--iterm-green);   flex-shrink: 0; margin-right: 8px; }
+  /* iTerm bright white   — typed command text */
+  .t-cmd      { color: var(--iterm-white);   word-break: break-all; }
+  /* iTerm bright red     — fatal errors, exit code 1 */
+  .t-err      { color: var(--iterm-red);     font-weight: 500; }
+  /* iTerm bright yellow  — HTTP header keys (HTTP/1.1, x-reason:) */
+  .t-key      { color: var(--iterm-yellow);  margin-right: 6px; }
+  /* iTerm bright magenta — response body values (x-reason value) */
+  .t-magenta  { color: var(--iterm-magenta); }
+  /* iTerm bright cyan    — git body text, file paths */
+  .t-cyan     { color: var(--iterm-cyan); }
+  /* iTerm bright blue    — empty / no-output state */
+  .t-blue     { color: var(--iterm-blue);    font-style: italic; }
+  /* iTerm sky blue       — grep stats / counts */
+  .t-sky      { color: var(--iterm-sky); }
+  /* iTerm bright black   — inline labels (grep:) */
+  .t-comment  { color: var(--iterm-gray); }
+  /* Near-invisible       — timestamps, verbose metadata */
+  .t-dim      { color: var(--iterm-dim);     font-size: 0.72rem; }
+  /* Indented output line */
+  .t-indent   { padding-left: 20px; }
 
+  /* Block cursor — iTerm style */
   .t-cursor {
     display: inline-block;
-    width: 7px;
-    height: 1.1em;
-    background: var(--404-blue);
-    animation: cursorBlink 0.9s step-end infinite;
-    vertical-align: middle;
-    border-radius: 1px;
+    width: 8px; height: 1em;
+    background: var(--iterm-white);
+    animation: cursorBlink 1s step-end infinite;
+    vertical-align: text-bottom;
+    border-radius: 1px; flex-shrink: 0;
+    margin-left: 1px;
   }
 
   @keyframes cursorBlink {
     0%, 100% { opacity: 1; }
-    50%       { opacity: 0; }
+    50%      { opacity: 0; }
   }
 
-  .terminal-divider {
-    margin: 18px 0;
-    height: 1px;
-    background: var(--404-border);
-  }
-
-  .terminal-actions {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
+  /* Footer */
+  .terminal-divider { margin: 14px 0; height: 1px; background: var(--404-border); }
+  .terminal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 
   .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    border-radius: var(--r-sm);
-    padding: 9px 20px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.18s ease;
-    text-decoration: none;
-    border: 1.5px solid transparent;
-    line-height: 1;
-    white-space: nowrap;
+    display: inline-flex; align-items: center; gap: 8px;
+    border-radius: var(--r-sm); padding: 9px 20px;
+    font-size: 0.84rem; font-weight: 700;
+    cursor: pointer; transition: all 0.18s ease;
+    text-decoration: none; border: 1.5px solid transparent;
+    line-height: 1; white-space: nowrap;
   }
 
   .btn-glow {
     background: linear-gradient(135deg, var(--404-cyan) 0%, var(--404-blue) 100%);
     color: #0f172a;
   }
+  .btn-glow:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,212,255,0.4); }
 
-  .btn-glow:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(0, 212, 255, 0.4);
-  }
+  .btn-ghost { background: transparent; color: var(--404-text2); border-color: var(--404-border2); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.06); color: var(--404-text); }
 
-  .btn-ghost {
-    background: transparent;
-    color: var(--404-text2);
-    border-color: var(--404-border2);
-  }
+  .btn-rss { gap: 6px; }
 
-  .btn-ghost:hover {
-    background: rgba(255,255,255,0.06);
-    color: var(--404-text);
-  }
-
+  /* Bottom hint */
   .err-hint {
-    margin-top: 24px;
+    margin-top: 20px;
     font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.68rem;
-    color: var(--404-muted);
+    font-size: 0.68rem; color: var(--iterm-gray);
     letter-spacing: 0.04em;
+    display: flex; align-items: center; gap: 10px;
   }
 
-  .err-hint span { color: var(--404-cyan); opacity: 0.7; }
+  .err-hint-link { color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+  .err-hint-link:hover { color: var(--iterm-cyan); }
+  .err-hint-sep { color: rgba(255,255,255,0.12); }
 
+  /* ── Responsive ── */
   @media (max-width: 600px) {
-    .err-number { font-size: 96px; }
-    .terminal-body { padding: 18px 18px 20px; }
+    .err-number { font-size: 88px; }
+    .terminal-body { padding: 14px 16px 6px; }
+    .terminal-footer { padding: 0 16px 16px; }
     .terminal-actions { flex-direction: column; }
     .btn { justify-content: center; }
     .top-bar { padding: 0 16px; }
+    .top-nav { gap: 12px; }
+    .top-nav-link { font-size: 12px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      transition-duration: 0.01ms !important;
-    }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   }
 </style>
 
 <script>
-  // Show requested path in terminal
+  // ── Typewriter terminal animation ──────────────────────────────────────────
   (function () {
-    const el = document.getElementById('requestedPath');
-    const path = window.location.pathname;
-    if (el) {
-      el.textContent = (path && path !== '/404' && path !== '/404.html')
-        ? path
-        : window.location.href.replace(window.location.origin, '');
+    const termLines = document.getElementById('term-lines')!;
+    const termFooter = document.getElementById('term-footer')!;
+    const termBody = termLines.closest('.terminal-body') as HTMLElement;
+
+    const rawPath = window.location.pathname;
+    const isReal  = rawPath && rawPath !== '/404' && rawPath !== '/404.html';
+    const path    = isReal ? rawPath : '/unknown-page';
+    const parts   = path.split('/').filter(Boolean);
+    const slug    = parts[parts.length - 1] || 'unknown';
+    const mdPath  = `src/data/**/${slug}.md`;
+    const now     = new Date().toUTCString();
+
+    // Each step: one command + its output lines.
+    // All output uses html: '' so each token gets its own iTerm colour span.
+    const SESSION = [
+      {
+        cmd: `curl -sI blog.icmoc.com${path}`,
+        out: [
+          {
+            // yellow key + red status
+            html: `<span class="t-key">HTTP/1.1&nbsp;&nbsp;</span><span class="t-err">404 Not Found</span>`,
+            cls: 't-indent',
+          },
+          {
+            // yellow key + magenta value — most eye-catching output line
+            html: `<span class="t-key">x-reason:&nbsp;</span><span class="t-magenta">this page wandered off</span>`,
+            cls: 't-indent',
+          },
+          {
+            // yellow key + dim timestamp
+            html: `<span class="t-key">x-date:&nbsp;&nbsp;&nbsp;</span><span class="t-dim">${now}</span>`,
+            cls: 't-indent',
+          },
+        ],
+      },
+      {
+        cmd: `find src/data -name "*${slug}*"`,
+        out: [
+          {
+            // blue italic — conveys emptiness / void
+            html: `<span class="t-blue">(no output)</span>`,
+            cls: 't-indent',
+          },
+        ],
+      },
+      {
+        cmd: `git log --oneline --all -- ${mdPath}`,
+        out: [
+          {
+            // red "fatal:" label + cyan body — cyan reads as diagnostic, not alarming
+            html: `<span class="t-err">fatal:&nbsp;</span><span class="t-cyan">no path matched in any revision</span>`,
+            cls: 't-indent',
+          },
+        ],
+      },
+      {
+        cmd: `grep -r "${slug}" src/data/`,
+        out: [
+          {
+            // gray label + sky-blue count — neutral stat
+            html: `<span class="t-comment">grep:&nbsp;</span><span class="t-sky">0 matches found</span>`,
+            cls: 't-indent',
+          },
+        ],
+      },
+      {
+        cmd: 'echo $?',
+        out: [
+          {
+            // red exit code — non-zero = bad
+            html: `<span class="t-err">1</span>`,
+            cls: 't-indent',
+          },
+        ],
+      },
+    ];
+
+    const sleep = (ms: number) => new Promise<void>(r => setTimeout(r, ms));
+
+    function scrollBottom() {
+      termBody.scrollTop = termBody.scrollHeight;
     }
+
+    function addOutputLine(item: { html: string; cls?: string }) {
+      const div = document.createElement('div');
+      div.className = `terminal-line${item.cls ? ' ' + item.cls : ''}`;
+      div.innerHTML = item.html;
+      termLines.appendChild(div);
+      scrollBottom();
+    }
+
+    async function typeCommand(text: string) {
+      const line = document.createElement('div');
+      line.className = 'terminal-line';
+
+      const prompt = document.createElement('span');
+      prompt.className = 't-prompt';
+      prompt.textContent = '~$';
+
+      const cmd = document.createElement('span');
+      cmd.className = 't-cmd';
+
+      const cursor = document.createElement('span');
+      cursor.className = 't-cursor';
+      cursor.setAttribute('aria-hidden', 'true');
+
+      line.append(prompt, cmd, cursor);
+      termLines.appendChild(line);
+      scrollBottom();
+
+      for (const char of text) {
+        cmd.textContent += char;
+        scrollBottom();
+        await sleep(25 + Math.random() * 20);
+      }
+
+      cursor.remove();
+      await sleep(200);
+    }
+
+    async function run() {
+      await sleep(500);
+
+      for (const step of SESSION) {
+        await typeCommand(step.cmd);
+
+        for (const out of step.out) {
+          await sleep(55);
+          addOutputLine(out);
+        }
+
+        await sleep(300);
+      }
+
+      // Final prompt with blinking cursor
+      const finalLine = document.createElement('div');
+      finalLine.className = 'terminal-line';
+      const fp = document.createElement('span');
+      fp.className = 't-prompt';
+      fp.textContent = '~$';
+      const fc = document.createElement('span');
+      fc.className = 't-cursor';
+      fc.setAttribute('aria-hidden', 'true');
+      finalLine.append(fp, fc);
+      termLines.appendChild(finalLine);
+      scrollBottom();
+
+      await sleep(700);
+
+      // Reveal footer
+      termFooter.style.display = 'block';
+      requestAnimationFrame(() => termFooter.classList.add('visible'));
+      scrollBottom();
+    }
+
+    run();
   })();
 
-  // Matrix code rain
+  // ── Matrix code rain ───────────────────────────────────────────────────────
   (function () {
     const canvas = document.getElementById('code-rain') as HTMLCanvasElement;
     const ctx = canvas.getContext('2d')!;
@@ -463,9 +618,9 @@ import Base from '../layouts/Base.astro';
     let cols: number, drops: number[];
 
     function resize() {
-      canvas.width = window.innerWidth;
+      canvas.width  = window.innerWidth;
       canvas.height = window.innerHeight;
-      cols = Math.floor(canvas.width / (fontSize + 2));
+      cols  = Math.floor(canvas.width / (fontSize + 2));
       drops = Array.from({ length: cols }, () => Math.random() * -(canvas.height / fontSize));
     }
 
@@ -473,39 +628,35 @@ import Base from '../layouts/Base.astro';
     window.addEventListener('resize', resize);
 
     function draw() {
-      ctx.fillStyle = 'rgba(26, 26, 46, 0.06)';
+      ctx.fillStyle = 'rgba(26,26,46,0.06)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.font = `${fontSize}px "Fira Code", "SF Mono", monospace`;
+      ctx.font = `${fontSize}px "Fira Code","SF Mono",monospace`;
 
       for (let i = 0; i < drops.length; i++) {
-        const char = chars[Math.floor(Math.random() * chars.length)];
-        const y = drops[i] * fontSize;
+        const char     = chars[Math.floor(Math.random() * chars.length)];
+        const y        = drops[i] * fontSize;
         const progress = y / canvas.height;
 
-        if (progress < 0.25) {
-          ctx.fillStyle = 'rgba(0, 212, 255, 0.8)';
-        } else if (progress < 0.6) {
-          ctx.fillStyle = 'rgba(0, 212, 255, 0.45)';
-        } else {
-          ctx.fillStyle = 'rgba(0, 212, 255, 0.15)';
-        }
+        ctx.fillStyle = progress < 0.25
+          ? 'rgba(0,212,255,0.8)'
+          : progress < 0.6
+            ? 'rgba(0,212,255,0.45)'
+            : 'rgba(0,212,255,0.15)';
 
         ctx.fillText(char, i * (fontSize + 2), y);
         drops[i] += 0.45;
-        if (y > canvas.height && Math.random() > 0.978) {
-          drops[i] = Math.random() * -30;
-        }
+        if (y > canvas.height && Math.random() > 0.978) drops[i] = Math.random() * -30;
       }
     }
 
     setInterval(draw, 55);
   })();
 
-  // Floating code fragments
+  // ── Floating code fragments ────────────────────────────────────────────────
   (function () {
     const container = document.getElementById('fragments')!;
-    const snippets = ['404', 'null', 'undefined', 'void 0', '!found', 'Error', '???', '∅', '0x404', 'NaN', 'nil', 'missing'];
-    const colors = ['var(--404-blue)', 'var(--404-cyan)', 'var(--404-purple)'];
+    const snippets  = ['404','null','undefined','void 0','!found','Error','???','∅','0x404','NaN','nil','missing'];
+    const colors    = ['var(--404-blue)','var(--404-cyan)','var(--404-purple)'];
 
     function spawn() {
       const el = document.createElement('span');

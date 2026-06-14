@@ -1,4 +1,4 @@
-# encore.dev — Personal Blog
+# Encore Shao — Personal Blog
 
 > Also available in: [中文](README.zh.md)
 
@@ -16,6 +16,8 @@ Live at **[blog.icmoc.com](https://blog.icmoc.com)**
 | Styles | [Tailwind CSS 4](https://tailwindcss.com) via `@tailwindcss/vite` |
 | Content | Markdown with Astro Content Layer API |
 | Language | TypeScript (strict) |
+| Sitemap | `@astrojs/sitemap` — auto-generated at build time |
+| RSS | `@astrojs/rss` — bilingual feeds, auto-updated at build time |
 | Deploy | `rsync` to self-hosted server |
 
 ---
@@ -69,8 +71,10 @@ blog/
 │   ├── layouts/         ← Base.astro, BlogPost.astro
 │   ├── pages/
 │   │   ├── index.astro  ← Redirects to /en/
+│   │   ├── 404.astro    ← Custom 404 (matrix rain + glitch effect)
+│   │   ├── rss.xml.ts   ← English RSS feed
 │   │   ├── en/          ← English pages
-│   │   └── zh/          ← Chinese pages
+│   │   └── zh/          ← Chinese pages (includes rss.xml.ts)
 │   └── styles/
 │       └── global.css   ← Glass & Glow theme + Tailwind
 ├── content.config.ts    ← Content collection schema
@@ -102,6 +106,20 @@ Your content here...
 3. The filename becomes the URL slug. `09-my-post.md` → `/en/09-my-post`
 
 4. Available tags: `AI`, `Rails`, `Ruby`, `MCP`, `Chrome`, `Open Source`, `Product`, `Agents`
+
+5. **Sitemap and RSS update automatically** on every `npm run build` — no manual step needed.
+
+---
+
+## Feeds
+
+| Feed | URL | Description |
+|------|-----|-------------|
+| English RSS | `/rss.xml` | All English posts, newest first |
+| Chinese RSS | `/zh/rss.xml` | All Chinese posts, newest first |
+| Sitemap | `/sitemap-index.xml` | Full sitemap (all pages, both languages) |
+
+Both RSS feeds and the sitemap are regenerated on every build from the content collections. Adding a new article and running `npm run build` is all that's needed.
 
 ---
 
@@ -170,6 +188,7 @@ ssh blog.icmoc.com "sudo mkdir -p /var/www/blog && sudo chown encore:www-data /v
 | 6 | Building TrendShop: When AI Meets Fashion Discovery | 构建 TrendShop：当 AI 遇上时尚发现 |
 | 7 | Building a Ruby Wrapper for the Crunchbase API | 为 Crunchbase API 开发一个 Ruby 封装库 |
 | 8 | WorkflowPro: Building Office Automation That Actually Gets Used | WorkflowPro：做一个真正被人用的企业自动化系统 |
+| 9 | Building github-trending: From a Cron Script to a React App | github-trending：从一个定时脚本到 React 应用 |
 
 ---
 

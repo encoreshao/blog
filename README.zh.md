@@ -1,4 +1,4 @@
-# encore.dev — 个人博客
+# 邵壮的个人博客
 
 > Also available in: [English](README.md)
 
@@ -16,6 +16,8 @@
 | 样式 | [Tailwind CSS 4](https://tailwindcss.com)，通过 `@tailwindcss/vite` 接入 |
 | 内容 | Markdown + Astro Content Layer API |
 | 语言 | TypeScript（严格模式） |
+| Sitemap | `@astrojs/sitemap` — 构建时自动生成 |
+| RSS | `@astrojs/rss` — 中英双语 Feed，构建时自动更新 |
 | 部署 | `rsync` 到自托管服务器 |
 
 ---
@@ -69,8 +71,10 @@ blog/
 │   ├── layouts/         ← Base.astro、BlogPost.astro
 │   ├── pages/
 │   │   ├── index.astro  ← 重定向到 /en/
+│   │   ├── 404.astro    ← 自定义 404 页（矩阵雨 + 故障特效）
+│   │   ├── rss.xml.ts   ← 英文 RSS Feed
 │   │   ├── en/          ← 英文页面
-│   │   └── zh/          ← 中文页面
+│   │   └── zh/          ← 中文页面（含 rss.xml.ts）
 │   └── styles/
 │       └── global.css   ← Glass & Glow 主题 + Tailwind
 ├── content.config.ts    ← 内容集合 Schema
@@ -102,6 +106,20 @@ draft: false
 3. 文件名即 URL slug。`09-my-post.md` → `/zh/09-my-post`
 
 4. 可用标签：`AI`、`Rails`、`Ruby`、`MCP`、`Chrome`、`Open Source`、`Product`、`Agents`
+
+5. **Sitemap 和 RSS 在每次 `npm run build` 时自动更新**，无需手动操作。
+
+---
+
+## 订阅 Feed
+
+| Feed | URL | 说明 |
+|------|-----|------|
+| 英文 RSS | `/rss.xml` | 全部英文文章，按时间倒序 |
+| 中文 RSS | `/zh/rss.xml` | 全部中文文章，按时间倒序 |
+| Sitemap | `/sitemap-index.xml` | 完整站点地图（中英所有页面） |
+
+每次构建时，RSS Feed 和 Sitemap 都会从内容集合自动重新生成。新增文章后只需运行 `npm run build` 即可。
 
 ---
 
@@ -170,10 +188,11 @@ ssh encore@blog.icmoc.com "sudo mkdir -p /var/www/blog && sudo chown encore:www-
 | 6 | 构建 TrendShop：当 AI 遇上时尚发现 | Building TrendShop: When AI Meets Fashion Discovery |
 | 7 | 为 Crunchbase API 开发一个 Ruby 封装库 | Building a Ruby Wrapper for the Crunchbase API |
 | 8 | WorkflowPro：做一个真正被人用的企业自动化系统 | WorkflowPro: Building Office Automation That Actually Gets Used |
+| 9 | github-trending：从一个定时脚本到 React 应用 | Building github-trending: From a Cron Script to a React App |
 
 ---
 
 ## 许可证
 
-文章内容 © 邵壮（Encore Shao）保留所有权利。  
+文章内容 © 邵壮（Encore Shao）保留所有权利。
 主题代码（组件、样式）MIT 协议。

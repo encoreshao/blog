@@ -4,7 +4,9 @@ dist/
 .env
 .env.*
 .superpowers/
-
+docs/superpowers/plans/
+docs/superpowers/tasks/
+docs/superpowers/specs/
 
 .claude/settings.local.json
 
