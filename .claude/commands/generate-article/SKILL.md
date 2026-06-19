@@ -43,17 +43,21 @@ draft: false
 
 **Structure (follow this loosely — don't be rigid):**
 
-1. Open with a moment, not a thesis. A real scene: what you were doing, what broke, what you were asked for. Drop the reader into the story before you explain what the story is about.
+1. Open with a moment, not a thesis. A real scene: what you were doing, what broke, what you were asked for. Drop the reader into the story before you explain what the story is about. Include stakes — give the reader a reason the story matters before moving to technical content. Don't let the intro end flat ("so I spent a weekend on it").
 2. Tell what actually happened, in the order it happened. Skip the parts that aren't interesting.
-3. Go deep on the one or two things that were genuinely hard or surprising. This is the payload.
-4. End with what changed — in the code, in your thinking, or in how the team works. Not a summary, not a list of takeaways.
+3. Go deep on the one or two things that were genuinely hard or surprising. This is the payload. In any results or verification section, include the human moment — what it felt like when it worked or when it didn't. A query returning one row after 30 minutes of config is a moment worth naming.
+4. End with what changed — in the code, in your thinking, or in how the team works. Not a summary, not a list of takeaways. Write genuine reflection: what was *surprising*, what you'd do differently, what the experience changed in how you think. Never label this section as "Takeaways" and never structure it as a dressed-up bullet list.
+
+**Section headings:**
+
+Use `##` markdown headings for all sections — never `**bold text**` as a heading substitute. The TOC sidebar (`TableOfContents.astro`) filters for `depth === 2` and `depth === 3`, so only proper `##` and `###` headings appear in "On this page". Bold text is invisible to the TOC.
 
 **Writing rules:**
 
 - Write sentences the way you'd say them out loud. Read each paragraph back to yourself. If it sounds like a report, rewrite it.
 - Short sentences land harder than long ones. Use them for the moments that matter.
 - Vary rhythm. A short sentence after a long one hits different. Use it deliberately.
-- Never start with a definition ("Redis is an in-memory data store…"). Never end with a call to action ("I hope this helps!").
+- Never start with a definition ("Redis is an in-memory data store…", "Postgres streaming replication works through WAL…"). Never end with a call to action ("I hope this helps!"). This applies to section openings too — don't open a technical section with a textbook explanation of the concept. Start with what happens, then explain why it matters.
 - Cut every word that doesn't add meaning. "Very", "really", "quite", "in order to", "it's important to note" — all gone.
 - Name the thing. Don't write "a popular framework" when you mean Rails. Don't write "I encountered an issue" when you mean "the migration wiped the staging DB."
 - One idea per paragraph. If you're explaining two things, that's two paragraphs.
