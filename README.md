@@ -138,7 +138,7 @@ Your content here...
 ### What the script does
 
 1. Runs `npm run build` → produces `dist/` (always builds first — deploy never uses a stale build)
-2. `rsync -avz --delete dist/ root@ranbot.online:/var/www/production/blog`
+2. `rsync -avz --delete dist/ icmoc.com:/var/www/production/blog`
    - `--delete` removes files on the server that no longer exist locally
    - Incremental: only changed files are uploaded
    - Aborts immediately if the build fails (`set -e`)

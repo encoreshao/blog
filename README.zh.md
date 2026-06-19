@@ -138,7 +138,7 @@ draft: false
 ### 脚本做了什么
 
 1. 运行 `npm run build` → 生成 `dist/`（始终先构建，确保部署的不是旧产物）
-2. 执行 `rsync -avz --delete dist/ root@ranbot.online:/var/www/production/blog`
+2. 执行 `rsync -avz --delete dist/ icmoc.com:/var/www/production/blog`
    - `--delete` 会删除服务器上本地已不存在的文件
    - 增量传输：只上传变更的文件
    - 构建失败时立即中止（`set -e`）
