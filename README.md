@@ -79,7 +79,8 @@ blog/
 │       └── global.css   ← Glass & Glow theme + Tailwind
 ├── content.config.ts    ← Content collection schema
 ├── astro.config.mjs
-├── deploy.sh            ← Build + rsync deploy script
+├── scripts/
+│   └── deploy.sh        ← Build + rsync deploy script
 └── nginx.conf.example   ← Nginx config for self-hosted setup
 ```
 
@@ -111,7 +112,7 @@ Your content here...
 
 ---
 
-## Feeds
+## Feeds & Sitemap
 
 | Feed | URL | Description |
 |------|-----|-------------|
@@ -119,7 +120,10 @@ Your content here...
 | Chinese RSS | `/zh/rss.xml` | All Chinese posts, newest first |
 | Sitemap | `/sitemap-index.xml` | Full sitemap (all pages, both languages) |
 
-Both RSS feeds and the sitemap are regenerated on every build from the content collections. Adding a new article and running `npm run build` is all that's needed.
+**All three are generated automatically at build time — no manual step needed.**
+
+- **RSS** (`/rss.xml`, `/zh/rss.xml`) — Astro API endpoints that query the content collections on every `npm run build`. Adding a new `.md` file is enough.
+- **Sitemap** (`/sitemap-index.xml`) — powered by `@astrojs/sitemap`, configured in `astro.config.mjs`. It crawls all pages Astro renders and writes a sitemap index + per-language sitemaps. New articles appear automatically on the next build.
 
 ---
 
@@ -128,27 +132,16 @@ Both RSS feeds and the sitemap are regenerated on every build from the content c
 ### Quick deploy
 
 ```bash
-./deploy.sh
-```
-
-This runs `npm run build` then rsyncs `dist/` to `blog.icmoc.com:/var/www/{env}/blog`.
-
-### Custom host / path
-
-```bash
-# Positional args
-./deploy.sh user@yourserver.com /var/www/blog
-
-# Or via environment variables
-DEPLOY_HOST=user@yourserver.com DEPLOY_PATH=/var/www/blog ./deploy.sh
+./scripts/deploy.sh
 ```
 
 ### What the script does
 
-1. Runs `npm run build` → produces `dist/`
-2. `rsync -avz --delete dist/ user@host:/remote/path`
+1. Runs `npm run build` → produces `dist/` (always builds first — deploy never uses a stale build)
+2. `rsync -avz --delete dist/ root@ranbot.online:/var/www/production/blog`
    - `--delete` removes files on the server that no longer exist locally
    - Incremental: only changed files are uploaded
+   - Aborts immediately if the build fails (`set -e`)
 
 ### Server setup (nginx)
 
@@ -189,6 +182,7 @@ ssh blog.icmoc.com "sudo mkdir -p /var/www/blog && sudo chown encore:www-data /v
 | 7 | Building a Ruby Wrapper for the Crunchbase API | 为 Crunchbase API 开发一个 Ruby 封装库 |
 | 8 | WorkflowPro: Building Office Automation That Actually Gets Used | WorkflowPro：做一个真正被人用的企业自动化系统 |
 | 9 | Building github-trending: From a Cron Script to a React App | github-trending：从一个定时脚本到 React 应用 |
+| 10 | Setting Up PostgreSQL 10 Streaming Replication the Hard Way | 用 Vagrant 搭建 PostgreSQL 10 主从复制 |
 
 ---
 

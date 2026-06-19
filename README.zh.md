@@ -79,7 +79,8 @@ blog/
 │       └── global.css   ← Glass & Glow 主题 + Tailwind
 ├── content.config.ts    ← 内容集合 Schema
 ├── astro.config.mjs
-├── deploy.sh            ← 构建 + rsync 部署脚本
+├── scripts/
+│   └── deploy.sh        ← 构建 + rsync 部署脚本
 └── nginx.conf.example   ← 自托管服务器的 nginx 配置示例
 ```
 
@@ -111,7 +112,7 @@ draft: false
 
 ---
 
-## 订阅 Feed
+## 订阅 Feed 与 Sitemap
 
 | Feed | URL | 说明 |
 |------|-----|------|
@@ -119,7 +120,10 @@ draft: false
 | 中文 RSS | `/zh/rss.xml` | 全部中文文章，按时间倒序 |
 | Sitemap | `/sitemap-index.xml` | 完整站点地图（中英所有页面） |
 
-每次构建时，RSS Feed 和 Sitemap 都会从内容集合自动重新生成。新增文章后只需运行 `npm run build` 即可。
+**三者均在构建时自动生成，无需手动操作。**
+
+- **RSS**（`/rss.xml`、`/zh/rss.xml`）—— Astro API 端点，每次 `npm run build` 时查询内容集合自动生成。新增 `.md` 文件即可。
+- **Sitemap**（`/sitemap-index.xml`）—— 由 `@astrojs/sitemap` 驱动，配置在 `astro.config.mjs` 中。构建时自动抓取所有 Astro 渲染的页面，生成站点地图索引及各语言子站点地图。新文章在下次构建后自动收录。
 
 ---
 
@@ -128,27 +132,16 @@ draft: false
 ### 一键部署
 
 ```bash
-./deploy.sh
-```
-
-脚本会先运行 `npm run build`，然后通过 rsync 将 `dist/` 同步到 `encore@blog.icmoc.com:/var/www/blog`。
-
-### 自定义服务器地址或路径
-
-```bash
-# 通过位置参数
-./deploy.sh user@yourserver.com /var/www/blog
-
-# 或通过环境变量
-DEPLOY_HOST=user@yourserver.com DEPLOY_PATH=/var/www/blog ./deploy.sh
+./scripts/deploy.sh
 ```
 
 ### 脚本做了什么
 
-1. 运行 `npm run build` → 生成 `dist/`
-2. 执行 `rsync -avz --delete dist/ user@host:/remote/path`
+1. 运行 `npm run build` → 生成 `dist/`（始终先构建，确保部署的不是旧产物）
+2. 执行 `rsync -avz --delete dist/ root@ranbot.online:/var/www/production/blog`
    - `--delete` 会删除服务器上本地已不存在的文件
    - 增量传输：只上传变更的文件
+   - 构建失败时立即中止（`set -e`）
 
 ### 服务器配置（nginx）
 
@@ -189,6 +182,7 @@ ssh encore@blog.icmoc.com "sudo mkdir -p /var/www/blog && sudo chown encore:www-
 | 7 | 为 Crunchbase API 开发一个 Ruby 封装库 | Building a Ruby Wrapper for the Crunchbase API |
 | 8 | WorkflowPro：做一个真正被人用的企业自动化系统 | WorkflowPro: Building Office Automation That Actually Gets Used |
 | 9 | github-trending：从一个定时脚本到 React 应用 | Building github-trending: From a Cron Script to a React App |
+| 10 | 用 Vagrant 搭建 PostgreSQL 10 主从复制 | Setting Up PostgreSQL 10 Streaming Replication the Hard Way |
 
 ---
 
