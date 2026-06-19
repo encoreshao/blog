@@ -181,7 +181,7 @@ ssh encore@blog.icmoc.com "sudo mkdir -p /var/www/blog && sudo chown encore:www-
 | # | 中文 | English |
 |---|------|---------|
 | 1 | 开发 bamboohr-mcp：让 AI 直接对话 HR 系统 | Building bamboohr-mcp: An MCP Server for HR APIs |
-| 2 | china_regions：一个 25 Star Ruby Gem 的诞生 | china_regions: Lessons from a 25-Star Ruby Gem |
+| 2 | china_regions：一个 Ruby Gem 的诞生 | china_regions: Lessons from a Ruby Gem |
 | 3 | AI 书签仪表盘：一个 Chrome 扩展的开发故事 | AI-Powered Bookmark Dashboard: A Chrome Extension Story |
 | 4 | 生产环境中的 Agentic AI：RanBot 带给我的十二个月 | Agentic AI in Production: What I Learned Building RanBot |
 | 5 | 写了十年 Rails：那些我至今每天都在用的东西 | 10 Years of Rails: What I Still Reach For Every Day |
