@@ -30,6 +30,7 @@ const backLabel = lang === 'en' ? '← All posts' : '← 所有文章';
     padding: 0 40px;
     display: flex; align-items: center; gap: 20px;
     height: var(--subnav-height);
+    overflow: hidden;
   }
   .subnav-back {
     font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none;
@@ -41,8 +42,15 @@ const backLabel = lang === 'en' ? '← All posts' : '← 所有文章';
   .subnav-title {
     font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 600;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;
+    min-width: 0;
   }
   .subnav-toc { display: flex; gap: 18px; flex-shrink: 0; }
   .subnav-toc a { font-size: 11px; color: rgba(255,255,255,0.3); text-decoration: none; white-space: nowrap; transition: color 0.2s; }
   .subnav-toc a:hover { color: var(--cyan); }
+
+  @media (max-width: 640px) {
+    .article-subnav { padding: 0 16px; gap: 10px; }
+    .subnav-toc { display: none; }
+    .subnav-sep { display: none; }
+  }
 </style>

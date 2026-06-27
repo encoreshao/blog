@@ -101,4 +101,9 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'zh-CN',
     .page-wrap { grid-template-columns: 1fr; }
     .page-wrap aside { display: none; }
   }
+  @media (max-width: 640px) {
+    .page-wrap { padding: 28px 16px 60px; }
+    .article-title { font-size: 26px; }
+    .article-excerpt { font-size: 15px; }
+  }
 </style>
