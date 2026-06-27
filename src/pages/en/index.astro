@@ -38,6 +38,9 @@ const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
     position: relative;
     z-index: 1;
   }
+  @media (max-width: 640px) {
+    main { padding: 28px 16px; }
+  }
   .feed-header {
     display: flex; align-items: baseline; gap: 12px;
     margin-bottom: 20px;

@@ -1,22 +1,22 @@
 ---
-title: "Agentic AI in Production: What I Learned Building RanBot"
+title: "Agentic AI in Production: What I Learned Building RanBOT"
 date: 2026-03-20
 tags: [AI, Agents]
 excerpt: "Autonomous workflows sound great until they hit the real world. Twelve months of running agentic systems in production, and the lessons I keep coming back to."
 draft: false
 ---
 
-RanBot started as a side experiment that turned into something I actually use every day. The idea was simple: an AI bot platform where you define workflows in natural language and the system figures out the execution. No code, no integrations to maintain — just describe what you want done and let the agents handle it.
+RanBOT started as a side experiment that turned into something I actually use every day. The idea was simple: an AI bot platform where you define workflows in natural language and the system figures out the execution. No code, no integrations to maintain — just describe what you want done and let the agents handle it.
 
 Simple ideas are always more complicated in practice.
 
-## What RanBot actually is
+## What RanBOT actually is
 
-At its core, RanBot is a multi-agent orchestration platform. You create "bots" — each bot is a set of instructions, a set of tools (web search, API calls, file operations, notifications), and a trigger (schedule, webhook, or manual). When a bot runs, it gets an LLM doing the reasoning and a set of tools it can call to interact with the outside world.
+At its core, RanBOT is a multi-agent orchestration platform. You create "bots" — each bot is a set of instructions, a set of tools (web search, API calls, file operations, notifications), and a trigger (schedule, webhook, or manual). When a bot runs, it gets an LLM doing the reasoning and a set of tools it can call to interact with the outside world.
 
 The use cases we built it for: competitive monitoring (check competitor pricing daily), content summarization (morning briefing of news in specific categories), data enrichment (take a list of company names, look up their recent funding), workflow automation (when this Slack channel gets a message with keyword X, do Y).
 
-These aren't novel ideas. What made RanBot interesting was the attempt to make them accessible without programming.
+These aren't novel ideas. What made RanBOT interesting was the attempt to make them accessible without programming.
 
 ## The first production failure
 
@@ -52,4 +52,4 @@ The framing of "agentic AI" can mislead you into thinking the system is autonomo
 
 The most reliable agents I've built are the ones that do one thing and do it with tight constraints. The least reliable are the ones I gave the most freedom. That's counterintuitive if you're thinking about agents as autonomous workers. It makes perfect sense if you're thinking about them as functions.
 
-RanBot is at [ranbot.online](https://ranbot.online) if you want to try it. The interesting work isn't the framework — it's designing the workflows to take advantage of what agents are actually good at.
+RanBOT is at [ranbot.online](https://ranbot.online) if you want to try it. The interesting work isn't the framework — it's designing the workflows to take advantage of what agents are actually good at.

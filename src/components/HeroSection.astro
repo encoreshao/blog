@@ -9,19 +9,37 @@ const { lang, postCount } = Astro.props;
 const content = {
   en: {
     role: 'Full-stack Engineer & AI Researcher',
-    bio: 'Building web software at Ekohe since 2011. Open source author. Currently focused on AI tooling, MCP infrastructure, and shipping things that actually get used.',
+    bio: 'Full-stack engineer at Ekohe since 2011. I build AI-powered systems — LLM-integrated products, agentic workflows, and the data infrastructure that keeps them reliable. Open source author with a bias for shipping things that actually get used.',
     github: 'GitHub',
     site: 'icmoc.com',
     location: 'Shanghai, China',
   },
   zh: {
     role: '全栈工程师 & AI 研究员',
-    bio: '2011 年起在 Ekohe 做软件工程，开源项目作者。当前专注于 AI 工具链、MCP 基础设施，以及做出真正被人使用的产品。',
+    bio: '2011 年起在 Ekohe 做全栈工程。专注构建 AI 驱动的系统——LLM 集成产品、Agentic 工作流，以及支撑它们可靠运行的数据基础设施。开源项目作者，偏好做真正被人使用的东西。',
     github: 'GitHub',
     site: 'icmoc.com',
     location: '中国·上海',
   },
 } as const;
+
+const skillGroups = [
+  {
+    label: lang === 'en' ? 'AI & Agents' : 'AI 与 Agent',
+    type: 'ai',
+    tags: ['LLM', 'AI Agents', 'MCP', 'RAG', 'pgvector', 'Multi-Agent'],
+  },
+  {
+    label: lang === 'en' ? 'Engineering' : '工程',
+    type: 'eng',
+    tags: ['Ruby on Rails', 'Python', 'PostgreSQL', 'Redis', 'Sidekiq', 'REST API'],
+  },
+  {
+    label: lang === 'en' ? 'Data & Analysis' : '数据与分析',
+    type: 'data',
+    tags: [lang === 'en' ? 'Data Pipeline' : '数据管道', lang === 'en' ? 'Data Quality' : '数据质量', 'ETL', lang === 'en' ? 'Analytics' : '数据分析'],
+  },
+];
 
 const t = content[lang];
 ---
@@ -46,6 +64,19 @@ const t = content[lang];
           </svg>
           {t.site}
         </a>
+      </div>
+
+      <div class="hero-skills">
+        {skillGroups.map(group => (
+          <div class="skill-group">
+            <span class="group-label">{group.label}</span>
+            <div class="skill-tags">
+              {group.tags.map(tag => (
+                <span class={`skill-tag tag-${group.type}`}>{tag}</span>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
 
@@ -101,6 +132,7 @@ const t = content[lang];
     padding: 40px 0 36px;
     border-bottom: 1px solid rgba(255,255,255,0.06);
     position: relative;
+    overflow-x: hidden;
   }
   .hero::before {
     content: '';
@@ -114,7 +146,7 @@ const t = content[lang];
   .hero-left {
     display: flex;
     flex-direction: column;
-    gap: 36px;
+    gap: 40px;
     position: relative;
     z-index: 1;
   }
@@ -180,17 +212,96 @@ const t = content[lang];
   }
 
   .hero-stats {
+    position: relative;
     display: flex; align-items: center;
-    padding: 16px 20px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.07);
+    padding: 18px 20px;
+    background: rgba(8, 8, 24, 0.92);
     border-radius: 12px;
     width: fit-content;
+    margin: 4px 0 0 28px;
   }
-  .stat { display: flex; flex-direction: column; align-items: center; padding: 0 20px; }
+
+  /* Rainbow gradient border */
+  .hero-stats::before {
+    content: '';
+    position: absolute;
+    inset: -1.5px;
+    border-radius: 13.5px;
+    background: linear-gradient(90deg,
+      #ff4040 0%,
+      #ff8c00 18%,
+      #ffd700 36%,
+      #40c840 50%,
+      #00aaff 68%,
+      #a040ff 84%,
+      #ff4040 100%
+    );
+    z-index: -1;
+  }
+
+  /* Blurred rainbow glow behind the card */
+  .hero-stats::after {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    border-radius: 22px;
+    background: linear-gradient(90deg,
+      rgba(255,64,64,0.55) 0%,
+      rgba(255,140,0,0.55) 18%,
+      rgba(255,215,0,0.45) 36%,
+      rgba(64,200,64,0.45) 50%,
+      rgba(0,170,255,0.55) 68%,
+      rgba(160,64,255,0.55) 84%,
+      rgba(255,64,64,0.55) 100%
+    );
+    filter: blur(16px);
+    z-index: -1;
+    opacity: 0.75;
+  }
+
+  .stat { display: flex; flex-direction: column; align-items: center; padding: 0 26px; }
   .stat-value { font-size: 20px; font-weight: 800; color: #fff; line-height: 1; }
-  .stat-label { font-size: 10px; color: rgba(255,255,255,0.3); margin-top: 3px; letter-spacing: 0.3px; white-space: nowrap; }
-  .stat-sep { width: 1px; height: 28px; background: rgba(255,255,255,0.07); }
+  .stat-label { font-size: 10px; color: rgba(255,255,255,0.45); margin-top: 3px; letter-spacing: 0.3px; white-space: nowrap; }
+  .stat-sep { width: 1px; height: 28px; background: rgba(255,255,255,0.12); }
+
+  /* ── Skills ── */
+  .hero-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .skill-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .group-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    color: rgba(255,255,255,0.22);
+    white-space: nowrap;
+    min-width: 96px;
+    padding-top: 4px;
+  }
+  .skill-tags { display: flex; gap: 7px; flex-wrap: wrap; }
+  .skill-tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 20px;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+  .skill-tag:hover { opacity: 0.8; }
+  .tag-ai   { background: rgba(0,212,255,0.09);   color: var(--cyan);   border: 1px solid rgba(0,212,255,0.2); }
+  .tag-eng  { background: rgba(251,146,60,0.09);  color: var(--orange); border: 1px solid rgba(251,146,60,0.2); }
+  .tag-data { background: rgba(52,211,153,0.09);  color: var(--green);  border: 1px solid rgba(52,211,153,0.2); }
 
   /* ── Right column — portrait ── */
   .hero-right {
@@ -346,6 +457,9 @@ const t = content[lang];
   @media (max-width: 720px) {
     .hero {
       grid-template-columns: 1fr;
+      gap: 32px;
+      margin-bottom: 40px;
+      padding: 28px 0 32px;
     }
     .hero-right {
       order: -1;
@@ -354,12 +468,22 @@ const t = content[lang];
       width: 160px;
       height: 160px;
     }
+    .hero-left { gap: 32px; }
     .hero-stats {
       flex-wrap: wrap;
-      width: 100%;
+      width: calc(100% - 28px);
+      margin: 0 14px;
       justify-content: center;
+      padding: 16px 12px;
     }
-    .stat { padding: 8px 14px; }
+    .hero-stats::after { filter: blur(12px); opacity: 0.6; }
+    .stat { padding: 10px 18px; }
     .stat-sep { display: none; }
+    .hero-skills {
+      margin-top: 20px;
+      padding-top: 20px;
+      gap: 14px;
+    }
+    .group-label { min-width: 80px; }
   }
 </style>
