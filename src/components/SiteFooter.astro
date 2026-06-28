@@ -8,44 +8,28 @@ const year = new Date().getFullYear();
 
 const t = {
   en: {
-    role: 'Full-stack Engineer & AI Researcher',
-    bio: 'Building AI-powered systems and scalable Rails apps at Ekohe since 2011. Based in Shanghai, China.',
-    explore: 'Explore',
+    thanks: 'Thanks for reading.',
+    note: 'I write about AI systems, Rails engineering, and the craft of building things that actually ship — from Shanghai, since 2011.',
     links: [
-      { label: 'Blog · English', href: '/en/' },
-      { label: 'Blog · 中文', href: '/zh/' },
-      { label: 'RSS Feed', href: '/rss.xml' },
+      { label: '← All Articles', href: '/en/', external: false },
+      { label: 'GitHub', href: 'https://github.com/encoreshao', external: true },
+      { label: 'icmoc.com', href: 'https://icmoc.com', external: true },
+      { label: 'RSS', href: '/rss.xml', external: false },
+      { label: '中文版', href: '/zh/', external: false },
     ],
-    connect: 'Connect',
-    social: [
-      { label: 'GitHub', href: 'https://github.com/encoreshao' },
-      { label: 'icmoc.com', href: 'https://icmoc.com' },
-      { label: 'Open Source', href: 'https://github.com/encoreshao?tab=repositories' },
-    ],
-    topics: 'Topics',
-    topicList: ['AI Agents', 'MCP', 'Ruby on Rails', 'LLM', 'RAG', 'pgvector', 'Data Pipelines', 'Open Source'],
-    built: 'Built with Astro',
-    copyright: `© ${year} Encore Shao`,
+    byline: `Encore Shao · Shanghai, China · © ${year}`,
   },
   zh: {
-    role: '全栈工程师 & AI 研究员',
-    bio: '2011 年起就职于上海 Ekohe，专注构建 AI 驱动系统与可扩展 Rails 应用。',
-    explore: '文章',
+    thanks: '感谢阅读。',
+    note: '我在这里写 AI 系统、Rails 工程，以及真正能落地的产品构建——来自上海，始于 2011。',
     links: [
-      { label: 'Blog · English', href: '/en/' },
-      { label: 'Blog · 中文', href: '/zh/' },
-      { label: 'RSS 订阅', href: '/zh/rss.xml' },
+      { label: '← 所有文章', href: '/zh/', external: false },
+      { label: 'GitHub', href: 'https://github.com/encoreshao', external: true },
+      { label: 'icmoc.com', href: 'https://icmoc.com', external: true },
+      { label: 'RSS', href: '/zh/rss.xml', external: false },
+      { label: 'English', href: '/en/', external: false },
     ],
-    connect: '联系',
-    social: [
-      { label: 'GitHub', href: 'https://github.com/encoreshao' },
-      { label: 'icmoc.com', href: 'https://icmoc.com' },
-      { label: '开源项目', href: 'https://github.com/encoreshao?tab=repositories' },
-    ],
-    topics: '话题',
-    topicList: ['AI Agent', 'MCP', 'Ruby on Rails', 'LLM', 'RAG', 'pgvector', '数据管道', '开源'],
-    built: '基于 Astro 构建',
-    copyright: `© ${year} Encore Shao`,
+    byline: `邵壮 · 中国上海 · © ${year}`,
   },
 } as const;
 
@@ -53,185 +37,132 @@ const c = t[lang];
 ---
 
 <footer class="site-footer">
-  <div class="footer-inner">
-
-    <!-- Author column -->
-    <div class="footer-col footer-about">
-      <div class="footer-author">
-        <img
-          class="footer-avatar"
-          src="https://raw.githubusercontent.com/encoreshao/encore/gh-pages/assets/images/encore.jpg"
-          alt="Encore Shao"
-          width="48"
-          height="48"
-          loading="lazy"
-        />
-        <div>
-          <div class="footer-name">Encore Shao</div>
-          <div class="footer-role">{c.role}</div>
-        </div>
-      </div>
-      <p class="footer-bio">{c.bio}</p>
-      <div class="footer-tags">
-        {c.topicList.map(tag => (
-          <span class="footer-tag">{tag}</span>
-        ))}
-      </div>
-    </div>
-
-    <!-- Navigation column -->
-    <div class="footer-col">
-      <div class="footer-col-title">{c.explore}</div>
-      <ul class="footer-links">
-        {c.links.map(l => (
-          <li><a href={l.href}>{l.label}</a></li>
-        ))}
-      </ul>
-    </div>
-
-    <!-- Social column -->
-    <div class="footer-col">
-      <div class="footer-col-title">{c.connect}</div>
-      <ul class="footer-links">
-        {c.social.map(l => (
-          <li>
-            <a href={l.href} target="_blank" rel="noopener noreferrer">{l.label} ↗</a>
-          </li>
-        ))}
-      </ul>
-    </div>
-
+  <div class="footer-rule">
+    <span class="rule-line"></span>
+    <span class="rule-mark">✦</span>
+    <span class="rule-line"></span>
   </div>
 
-  <div class="footer-bar">
-    <span>{c.copyright}</span>
-    <span class="footer-sep">·</span>
-    <span>{c.built}</span>
-    <span class="footer-sep">·</span>
-    <a href="https://blog.icmoc.com" rel="noopener">blog.icmoc.com</a>
+  <div class="footer-body">
+    <p class="footer-thanks">{c.thanks}</p>
+    <p class="footer-note">{c.note}</p>
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+      {c.links.map((l, i) => (
+        <>
+          {i > 0 && <span class="nav-sep" aria-hidden="true">·</span>}
+          <a
+            href={l.href}
+            class="nav-link"
+            {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          >
+            {l.label}{l.external ? ' ↗' : ''}
+          </a>
+        </>
+      ))}
+    </nav>
   </div>
+
+  <p class="footer-byline">{c.byline}</p>
 </footer>
 
 <style>
   .site-footer {
-    border-top: 1px solid rgba(255,255,255,0.06);
     position: relative;
     z-index: 1;
-    margin-top: 0;
+    text-align: center;
+    padding: 0 24px 48px;
   }
 
-  .footer-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 56px 32px 40px;
-    display: grid;
-    grid-template-columns: 1.6fr 1fr 1fr;
-    gap: 48px;
-  }
-
-  /* About column */
-  .footer-author {
+  /* ── Decorative rule ── */
+  .footer-rule {
     display: flex;
     align-items: center;
-    gap: 14px;
-    margin-bottom: 14px;
+    gap: 16px;
+    max-width: 560px;
+    margin: 0 auto 52px;
   }
-  .footer-avatar {
-    width: 48px; height: 48px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid rgba(255,255,255,0.12);
+  .rule-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0,212,255,0.25) 40%,
+      rgba(168,85,247,0.2) 60%,
+      transparent
+    );
+  }
+  .rule-mark {
+    font-size: 12px;
+    color: rgba(0,212,255,0.4);
     flex-shrink: 0;
+    line-height: 1;
   }
-  .footer-name {
-    font-size: 15px;
-    font-weight: 700;
-    color: #fff;
+
+  /* ── Body copy ── */
+  .footer-body {
+    max-width: 520px;
+    margin: 0 auto 40px;
+  }
+
+  .footer-thanks {
+    font-size: clamp(22px, 4vw, 28px);
+    font-weight: 800;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: -0.3px;
+    margin-bottom: 14px;
     line-height: 1.2;
   }
-  .footer-role {
-    font-size: 11px;
-    color: var(--cyan);
-    margin-top: 2px;
-    font-weight: 500;
-    opacity: 0.85;
-  }
-  .footer-bio {
-    font-size: 13px;
-    color: rgba(255,255,255,0.38);
-    line-height: 1.65;
-    margin-bottom: 16px;
-  }
-  .footer-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .footer-tag {
-    font-size: 10px;
-    padding: 3px 9px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    color: rgba(255,255,255,0.3);
-    white-space: nowrap;
+
+  .footer-note {
+    font-size: 14px;
+    color: rgba(255,255,255,0.36);
+    line-height: 1.75;
+    margin-bottom: 32px;
   }
 
-  /* Nav / Connect columns */
-  .footer-col-title {
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: rgba(255,255,255,0.2);
-    margin-bottom: 16px;
-  }
-  .footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .footer-links a {
-    font-size: 13px;
-    color: rgba(255,255,255,0.45);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .footer-links a:hover { color: var(--cyan); }
-
-  /* Bottom bar */
-  .footer-bar {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 20px 32px 28px;
-    border-top: 1px solid rgba(255,255,255,0.05);
+  /* ── Link row ── */
+  .footer-nav {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 12px;
-    color: rgba(255,255,255,0.18);
+    justify-content: center;
     flex-wrap: wrap;
+    gap: 4px 2px;
   }
-  .footer-sep { opacity: 0.4; }
-  .footer-bar a {
-    color: rgba(255,255,255,0.25);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .footer-bar a:hover { color: var(--cyan); }
 
-  /* Responsive */
-  @media (max-width: 720px) {
-    .footer-inner {
-      grid-template-columns: 1fr;
-      gap: 36px;
-      padding: 40px 20px 28px;
-    }
-    .footer-bar {
-      padding: 16px 20px 24px;
-    }
+  .nav-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.38);
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: color 0.18s, background 0.18s;
+  }
+  .nav-link:hover {
+    color: var(--cyan);
+    background: rgba(0,212,255,0.07);
+  }
+
+  .nav-sep {
+    color: rgba(255,255,255,0.12);
+    font-size: 13px;
+    padding: 0 2px;
+    user-select: none;
+  }
+
+  /* ── Byline ── */
+  .footer-byline {
+    font-size: 11px;
+    color: rgba(255,255,255,0.16);
+    letter-spacing: 0.3px;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 480px) {
+    .site-footer { padding: 0 16px 36px; }
+    .footer-thanks { font-size: 20px; }
+    .footer-note { font-size: 13px; }
   }
 </style>
