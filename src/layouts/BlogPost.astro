@@ -7,6 +7,7 @@ import TableOfContents from '../components/TableOfContents.astro';
 import AuthorCard from '../components/AuthorCard.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
 import type { CollectionEntry } from 'astro:content';
+import { getReadingTime } from '../utils/readingTime';
 
 interface Props {
   post: CollectionEntry<'en'> | CollectionEntry<'zh'>;
@@ -17,6 +18,7 @@ interface Props {
 
 const { post, lang, headings, relatedPosts } = Astro.props;
 const { title, date, tags, excerpt } = post.data;
+const readingTime = getReadingTime(post.body ?? '', lang);
 
 const tagClass: Record<string, string> = {
   AI: 'tag-ai', MCP: 'tag-ai', Agents: 'tag-ai',
@@ -44,7 +46,7 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'zh-CN',
           <span class="meta-sep">·</span>
           <span class="meta-text">{formattedDate}</span>
           <span class="meta-sep">·</span>
-          <span class="meta-text">8 {lang === 'en' ? 'min read' : '分钟阅读'}</span>
+          <span class="meta-text">{readingTime}</span>
         </div>
         <h1 class="article-title">{title}</h1>
         <p class="article-excerpt">{excerpt}</p>

@@ -7,9 +7,10 @@ interface Props {
   id: string;
   lang: 'en' | 'zh';
   featured?: boolean;
+  readingTime?: string;
 }
 
-const { title, date, tags, excerpt, id, lang, featured = false } = Astro.props;
+const { title, date, tags, excerpt, id, lang, featured = false, readingTime = '…' } = Astro.props;
 const slug = id.replace(/\.md$/, '');
 
 const tagClass: Record<string, string> = {
@@ -35,7 +36,7 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'zh-CN',
     {tags.slice(0, 2).map(tag => (
       <span class:list={['post-tag', tagClass[tag] ?? 'tag-ai']}>{tag}</span>
     ))}
-    <span class="read-time">8 min</span>
+    <span class="read-time">{readingTime}</span>
   </div>
   <div class="post-title">{title}</div>
   <div class="post-excerpt">{excerpt}</div>

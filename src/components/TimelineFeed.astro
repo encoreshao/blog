@@ -1,6 +1,7 @@
 ---
 import PostCard from './PostCard.astro';
 import type { CollectionEntry } from 'astro:content';
+import { getReadingTime } from '../utils/readingTime';
 
 interface Props {
   posts: (CollectionEntry<'en'> | CollectionEntry<'zh'>)[];
@@ -38,6 +39,7 @@ const dotColors = ['dot-cyan', 'dot-purple', 'dot-blue', 'dot-dim'] as const;
             id={post.id}
             lang={lang}
             featured={i === 0 && year === years[0]}
+            readingTime={getReadingTime(post.body ?? '', lang)}
           />
         </div>
       ))}
