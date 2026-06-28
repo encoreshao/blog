@@ -68,9 +68,10 @@ body::after {
 }
 .prose pre {
   background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 10px; padding: 22px; margin: 24px 0; overflow-x: auto;
+  border-radius: 10px; padding: 22px; margin: 24px 0;
+  overflow-x: auto; max-width: 100%;
 }
-.prose pre code { background: none; border: none; padding: 0; font-size: 13.5px; color: var(--text-primary); line-height: 1.65; }
+.prose pre code { background: none; border: none; padding: 0; font-size: 13.5px; color: var(--text-primary); line-height: 1.65; white-space: pre; }
 .prose blockquote {
   border-left: 3px solid rgba(168,85,247,0.5);
   padding: 14px 22px; margin: 28px 0;

@@ -83,6 +83,7 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'zh-CN',
     display: grid; grid-template-columns: 1fr 220px; gap: 56px;
     align-items: start; position: relative; z-index: 1;
   }
+  article { min-width: 0; }
   .article-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
   .post-tag { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 4px; letter-spacing: 0.5px; text-transform: uppercase; }
   .meta-sep  { color: rgba(255,255,255,0.15); }
