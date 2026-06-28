@@ -6,6 +6,7 @@ import ReadingProgress from '../components/ReadingProgress.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import AuthorCard from '../components/AuthorCard.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import type { CollectionEntry } from 'astro:content';
 import { getReadingTime } from '../utils/readingTime';
 
@@ -20,6 +21,34 @@ const { post, lang, headings, relatedPosts } = Astro.props;
 const { title, date, tags, excerpt } = post.data;
 const readingTime = getReadingTime(post.body ?? '', lang);
 
+const canonicalUrl = Astro.url.href;
+const articleJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description: excerpt,
+  datePublished: date.toISOString(),
+  url: canonicalUrl,
+  inLanguage: lang === 'zh' ? 'zh-CN' : 'en',
+  keywords: tags.join(', '),
+  author: {
+    '@type': 'Person',
+    name: 'Encore Shao',
+    url: 'https://icmoc.com',
+    jobTitle: 'Full-stack Engineer & AI Researcher',
+    worksFor: { '@type': 'Organization', name: 'Ekohe' },
+    sameAs: [
+      'https://github.com/encoreshao',
+      'https://icmoc.com',
+    ],
+  },
+  publisher: {
+    '@type': 'Person',
+    name: 'Encore Shao',
+    url: 'https://blog.icmoc.com',
+  },
+});
+
 const tagClass: Record<string, string> = {
   AI: 'tag-ai', MCP: 'tag-ai', Agents: 'tag-ai',
   Ruby: 'tag-ruby', 'Open Source': 'tag-ruby', API: 'tag-ruby',
@@ -31,7 +60,8 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'zh-CN',
 }).format(date);
 ---
 
-<Base title={title} lang={lang}>
+<Base title={title} lang={lang} description={excerpt}>
+  <script slot="head" type="application/ld+json" set:html={articleJsonLd} />
   <Nav lang={lang} currentPath={`/${lang}/${post.id.replace(/\.md$/, '')}`} />
   <ArticleSubNav title={title} lang={lang} headings={headings} />
   <ReadingProgress />
@@ -70,11 +100,7 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'zh-CN',
     <TableOfContents headings={headings} lang={lang} />
   </div>
 
-  <footer>
-    {lang === 'en' ? 'Built with Astro' : '基于 Astro 构建'} ·
-    <a href={`/${lang}/`}>{lang === 'en' ? 'Back to blog' : '返回博客'}</a> ·
-    <a href="https://github.com/encoreshao" target="_blank" rel="noopener">GitHub</a>
-  </footer>
+  <SiteFooter lang={lang} />
 </Base>
 
 <style>
@@ -94,13 +120,7 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'zh-CN',
     border-left: 3px solid rgba(0,212,255,0.4); padding-left: 18px; font-style: italic;
   }
   .divider { height: 1px; border: none; background: rgba(255,255,255,0.07); margin: 36px 0; }
-  footer {
-    text-align: center; padding: 40px; font-size: 12px;
-    color: rgba(255,255,255,0.2); border-top: 1px solid rgba(255,255,255,0.06);
-    position: relative; z-index: 1;
-  }
-  footer a { color: var(--cyan); text-decoration: none; }
-  @media (max-width: 900px) {
+@media (max-width: 900px) {
     .page-wrap { grid-template-columns: 1fr; }
     .page-wrap aside { display: none; }
   }

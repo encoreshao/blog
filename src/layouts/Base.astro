@@ -27,6 +27,7 @@ const {
       ? <link rel="alternate" type="application/rss+xml" title="邵壮的博客 RSS" href="/zh/rss.xml" />
       : <link rel="alternate" type="application/rss+xml" title="Encore Shao's Blog RSS" href="/rss.xml" />
     }
+    <slot name="head" />
   </head>
   <body>
     <slot />

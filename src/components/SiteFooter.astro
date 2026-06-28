@@ -1,0 +1,237 @@
+---
+interface Props {
+  lang: 'en' | 'zh';
+}
+const { lang } = Astro.props;
+
+const year = new Date().getFullYear();
+
+const t = {
+  en: {
+    role: 'Full-stack Engineer & AI Researcher',
+    bio: 'Building AI-powered systems and scalable Rails apps at Ekohe since 2011. Based in Shanghai, China.',
+    explore: 'Explore',
+    links: [
+      { label: 'Blog · English', href: '/en/' },
+      { label: 'Blog · 中文', href: '/zh/' },
+      { label: 'RSS Feed', href: '/rss.xml' },
+    ],
+    connect: 'Connect',
+    social: [
+      { label: 'GitHub', href: 'https://github.com/encoreshao' },
+      { label: 'icmoc.com', href: 'https://icmoc.com' },
+      { label: 'Open Source', href: 'https://github.com/encoreshao?tab=repositories' },
+    ],
+    topics: 'Topics',
+    topicList: ['AI Agents', 'MCP', 'Ruby on Rails', 'LLM', 'RAG', 'pgvector', 'Data Pipelines', 'Open Source'],
+    built: 'Built with Astro',
+    copyright: `© ${year} Encore Shao`,
+  },
+  zh: {
+    role: '全栈工程师 & AI 研究员',
+    bio: '2011 年起就职于上海 Ekohe，专注构建 AI 驱动系统与可扩展 Rails 应用。',
+    explore: '文章',
+    links: [
+      { label: 'Blog · English', href: '/en/' },
+      { label: 'Blog · 中文', href: '/zh/' },
+      { label: 'RSS 订阅', href: '/zh/rss.xml' },
+    ],
+    connect: '联系',
+    social: [
+      { label: 'GitHub', href: 'https://github.com/encoreshao' },
+      { label: 'icmoc.com', href: 'https://icmoc.com' },
+      { label: '开源项目', href: 'https://github.com/encoreshao?tab=repositories' },
+    ],
+    topics: '话题',
+    topicList: ['AI Agent', 'MCP', 'Ruby on Rails', 'LLM', 'RAG', 'pgvector', '数据管道', '开源'],
+    built: '基于 Astro 构建',
+    copyright: `© ${year} Encore Shao`,
+  },
+} as const;
+
+const c = t[lang];
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <!-- Author column -->
+    <div class="footer-col footer-about">
+      <div class="footer-author">
+        <img
+          class="footer-avatar"
+          src="https://raw.githubusercontent.com/encoreshao/encore/gh-pages/assets/images/encore.jpg"
+          alt="Encore Shao"
+          width="48"
+          height="48"
+          loading="lazy"
+        />
+        <div>
+          <div class="footer-name">Encore Shao</div>
+          <div class="footer-role">{c.role}</div>
+        </div>
+      </div>
+      <p class="footer-bio">{c.bio}</p>
+      <div class="footer-tags">
+        {c.topicList.map(tag => (
+          <span class="footer-tag">{tag}</span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Navigation column -->
+    <div class="footer-col">
+      <div class="footer-col-title">{c.explore}</div>
+      <ul class="footer-links">
+        {c.links.map(l => (
+          <li><a href={l.href}>{l.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Social column -->
+    <div class="footer-col">
+      <div class="footer-col-title">{c.connect}</div>
+      <ul class="footer-links">
+        {c.social.map(l => (
+          <li>
+            <a href={l.href} target="_blank" rel="noopener noreferrer">{l.label} ↗</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bar">
+    <span>{c.copyright}</span>
+    <span class="footer-sep">·</span>
+    <span>{c.built}</span>
+    <span class="footer-sep">·</span>
+    <a href="https://blog.icmoc.com" rel="noopener">blog.icmoc.com</a>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 32px 40px;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 48px;
+  }
+
+  /* About column */
+  .footer-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .footer-avatar {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255,255,255,0.12);
+    flex-shrink: 0;
+  }
+  .footer-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .footer-role {
+    font-size: 11px;
+    color: var(--cyan);
+    margin-top: 2px;
+    font-weight: 500;
+    opacity: 0.85;
+  }
+  .footer-bio {
+    font-size: 13px;
+    color: rgba(255,255,255,0.38);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .footer-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .footer-tag {
+    font-size: 10px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.3);
+    white-space: nowrap;
+  }
+
+  /* Nav / Connect columns */
+  .footer-col-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.2);
+    margin-bottom: 16px;
+  }
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-links a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--cyan); }
+
+  /* Bottom bar */
+  .footer-bar {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 32px 28px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.18);
+    flex-wrap: wrap;
+  }
+  .footer-sep { opacity: 0.4; }
+  .footer-bar a {
+    color: rgba(255,255,255,0.25);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-bar a:hover { color: var(--cyan); }
+
+  /* Responsive */
+  @media (max-width: 720px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      padding: 40px 20px 28px;
+    }
+    .footer-bar {
+      padding: 16px 20px 24px;
+    }
+  }
+</style>
