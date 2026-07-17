@@ -24,7 +24,6 @@
 html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
-  overflow-x: hidden;
   background: linear-gradient(135deg, var(--bg-base) 0%, var(--bg-mid) 50%, var(--bg-deep) 100%);
   background-attachment: fixed;
   min-height: 100vh;
