@@ -1,6 +1,6 @@
 ---
 title: "Building a Ruby Wrapper for the Crunchbase API"
-date: 2025-09-15
+date: 2024-08-18
 tags: [Ruby, "Open Source", API]
 excerpt: "What I learned wrapping a third-party API in idiomatic Ruby — rate limits, authentication flows, model design, and the V3 to V4 migration I didn't see coming."
 draft: false

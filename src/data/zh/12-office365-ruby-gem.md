@@ -1,6 +1,6 @@
 ---
 title: "ruby-office365：一个 Microsoft Graph 的 Ruby 客户端"
-date: 2026-07-17
+date: 2024-12-11
 tags: [Ruby, 开源, API]
 excerpt: "为什么我没用现成方案，而是自己写了个 Office 365 的 Ruby Gem——以及用它拉邮件、日历、联系人到底是什么样子。"
 draft: false

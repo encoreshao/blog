@@ -1,6 +1,6 @@
 ---
 title: "china_regions: Lessons from a Ruby Gem"
-date: 2026-05-10
+date: 2021-12-02
 tags: [Ruby, "Open Source"]
 excerpt: "What I learned shipping a Ruby library for Chinese administrative regions — and why documentation matters more than the code itself."
 draft: false

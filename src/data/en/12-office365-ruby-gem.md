@@ -1,6 +1,6 @@
 ---
 title: "ruby-office365: A Ruby Client for Microsoft Graph"
-date: 2026-07-17
+date: 2024-12-11
 tags: [Ruby, "Open Source", API]
 excerpt: "Why I built a small Ruby gem for Office 365 instead of using what already existed, and what it actually looks like to pull mail, calendars, and contacts through it."
 draft: false

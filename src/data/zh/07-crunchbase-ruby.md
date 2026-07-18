@@ -1,6 +1,6 @@
 ---
 title: "为 Crunchbase API 开发一个 Ruby 封装库"
-date: 2025-09-15
+date: 2024-08-18
 tags: [Ruby, 开源, API]
 excerpt: "把一个第三方 API 包装成惯用 Ruby 的过程中，我学到了什么——限流、认证流程、模型设计，以及那次我没预料到的 V3 到 V4 迁移。"
 draft: false

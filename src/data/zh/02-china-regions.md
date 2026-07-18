@@ -1,6 +1,6 @@
 ---
 title: "china_regions：一个 Ruby Gem 的诞生"
-date: 2026-05-10
+date: 2021-12-02
 tags: [Ruby, "开源"]
 excerpt: "我为什么要写一个中国行政区划的 Ruby 库，为什么文档比代码本身更重要，以及那 Gem 背后真正的原因。"
 draft: false
