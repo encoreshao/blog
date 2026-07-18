@@ -186,6 +186,8 @@ ssh blog.icmoc.com "sudo mkdir -p /var/www/blog && sudo chown encore:www-data /v
 | 8 | WorkflowPro: Building Office Automation That Actually Gets Used | WorkflowPro：做一个真正被人用的企业自动化系统 |
 | 9 | Building github-trending: From a Cron Script to a React App | github-trending：从一个定时脚本到 React 应用 |
 | 10 | Setting Up PostgreSQL 10 Streaming Replication the Hard Way | 用 Vagrant 搭建 PostgreSQL 10 主从复制 |
+| 11 | More Than a Decade Building a VC Intelligence Platform | 十余年，为风投构建一套情报平台 |
+| 12 | ruby-office365: A Ruby Client for Microsoft Graph | ruby-office365：一个 Microsoft Graph 的 Ruby 客户端 |
 
 ---
 
