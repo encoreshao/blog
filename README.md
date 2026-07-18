@@ -119,11 +119,14 @@ Your content here...
 | English RSS | `/rss.xml` | All English posts, newest first |
 | Chinese RSS | `/zh/rss.xml` | All Chinese posts, newest first |
 | Sitemap | `/sitemap-index.xml` | Full sitemap (all pages, both languages) |
+| llms.txt | `/llms.txt` | Curated, LLM-friendly index of every article (EN + ZH) with links and descriptions |
+| llms-full.txt | `/llms-full.txt` | Full text of every article (EN + ZH), inlined in one file, for AI agents that want the whole site in one fetch |
 
-**All three are generated automatically at build time — no manual step needed.**
+**All of these are generated automatically at build time — no manual step needed.**
 
 - **RSS** (`/rss.xml`, `/zh/rss.xml`) — Astro API endpoints that query the content collections on every `npm run build`. Adding a new `.md` file is enough.
 - **Sitemap** (`/sitemap-index.xml`) — powered by `@astrojs/sitemap`, configured in `astro.config.mjs`. It crawls all pages Astro renders and writes a sitemap index + per-language sitemaps. New articles appear automatically on the next build.
+- **llms.txt / llms-full.txt** — Astro API endpoints (`src/pages/llms.txt.ts`, `src/pages/llms-full.txt.ts`) following the [llmstxt.org](https://llmstxt.org) convention, so AI agents and crawlers can quickly discover and understand the whole site. `robots.txt` explicitly allows major AI crawlers (GPTBot, ClaudeBot, Google-Extended, PerplexityBot, CCBot, etc.) and points them at `/llms.txt`.
 
 ---
 

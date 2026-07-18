@@ -119,11 +119,14 @@ draft: false
 | 英文 RSS | `/rss.xml` | 全部英文文章，按时间倒序 |
 | 中文 RSS | `/zh/rss.xml` | 全部中文文章，按时间倒序 |
 | Sitemap | `/sitemap-index.xml` | 完整站点地图（中英所有页面） |
+| llms.txt | `/llms.txt` | 面向 AI 的站点索引（中英文全部文章的链接与摘要） |
+| llms-full.txt | `/llms-full.txt` | 全部文章（中英文）的完整正文，合并在一个文件中，方便 AI Agent 一次性抓取全站内容 |
 
-**三者均在构建时自动生成，无需手动操作。**
+**以上内容均在构建时自动生成，无需手动操作。**
 
 - **RSS**（`/rss.xml`、`/zh/rss.xml`）—— Astro API 端点，每次 `npm run build` 时查询内容集合自动生成。新增 `.md` 文件即可。
 - **Sitemap**（`/sitemap-index.xml`）—— 由 `@astrojs/sitemap` 驱动，配置在 `astro.config.mjs` 中。构建时自动抓取所有 Astro 渲染的页面，生成站点地图索引及各语言子站点地图。新文章在下次构建后自动收录。
+- **llms.txt / llms-full.txt** —— Astro API 端点（`src/pages/llms.txt.ts`、`src/pages/llms-full.txt.ts`），遵循 [llmstxt.org](https://llmstxt.org) 规范，方便 AI Agent 和爬虫快速发现并理解整个站点。`robots.txt` 已显式放行主流 AI 爬虫（GPTBot、ClaudeBot、Google-Extended、PerplexityBot、CCBot 等），并指向 `/llms.txt`。
 
 ---
 
