@@ -188,6 +188,7 @@ ssh blog.icmoc.com "sudo mkdir -p /var/www/blog && sudo chown encore:www-data /v
 | 10 | Setting Up PostgreSQL 10 Streaming Replication the Hard Way | 用 Vagrant 搭建 PostgreSQL 10 主从复制 |
 | 11 | More Than a Decade Building a VC Intelligence Platform | 十余年，为风投构建一套情报平台 |
 | 12 | ruby-office365: A Ruby Client for Microsoft Graph | ruby-office365：一个 Microsoft Graph 的 Ruby 客户端 |
+| 13 | encore-skills: Stop Re-Teaching Your AI | encore-skills：别再重复教你的 AI |
 
 ---
 
