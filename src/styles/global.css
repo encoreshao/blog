@@ -10,13 +10,34 @@
   --orange: #fb923c;
   --green: #34d399;
   --text-primary: #e2e8f0;
-  --text-muted: rgba(255, 255, 255, 0.45);
-  --text-dim: rgba(255, 255, 255, 0.25);
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-hover: rgba(255, 255, 255, 0.08);
-  --nav-height: 56px;
+
+  /* Base RGB triplets that drive every translucent overlay below.
+     Flipping these two per theme is what makes white-on-dark text/
+     borders/glass become ink-on-light without touching each usage. */
+  --fg-rgb: 255, 255, 255;
+  --surface-rgb: 15, 15, 35;
+
+  --text-muted: rgba(var(--fg-rgb), 0.45);
+  --text-dim: rgba(var(--fg-rgb), 0.25);
+  --glass-bg: rgba(var(--fg-rgb), 0.05);
+  --glass-border: rgba(var(--fg-rgb), 0.08);
+  --glass-hover: rgba(var(--fg-rgb), 0.08);
+  --nav-height: 64px;
   --subnav-height: 44px;
+}
+
+html[data-theme='light'] {
+  --bg-base: #f8fafc;
+  --bg-mid: #eef2f7;
+  --bg-deep: #e2e8f0;
+  --cyan: #0089b3;
+  --purple: #7c3aed;
+  --blue: #2563eb;
+  --orange: #c2410c;
+  --green: #047857;
+  --text-primary: #1e293b;
+  --fg-rgb: 15, 23, 42;
+  --surface-rgb: 255, 255, 255;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -52,11 +73,11 @@ body::after {
 .tag-rails   { background: rgba(251,146,60,0.12);  color: var(--orange); border: 1px solid rgba(251,146,60,0.25); }
 .tag-product { background: rgba(52,211,153,0.12);  color: var(--green);  border: 1px solid rgba(52,211,153,0.25); }
 
-.prose { font-size: 16px; line-height: 1.85; color: rgba(255,255,255,0.72); }
+.prose { font-size: 16px; line-height: 1.85; color: rgba(var(--fg-rgb),0.72); }
 .prose p  { margin-bottom: 22px; }
-.prose h2 { font-size: 22px; font-weight: 700; color: #fff; margin: 40px 0 14px; }
-.prose h3 { font-size: 17px; font-weight: 700; color: rgba(255,255,255,0.9); margin: 30px 0 10px; }
-.prose strong { color: #fff; font-weight: 600; }
+.prose h2 { font-size: 22px; font-weight: 700; color: rgb(var(--fg-rgb)); margin: 40px 0 14px; }
+.prose h3 { font-size: 17px; font-weight: 700; color: rgba(var(--fg-rgb),0.9); margin: 30px 0 10px; }
+.prose strong { color: rgb(var(--fg-rgb)); font-weight: 600; }
 .prose a  { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(0,212,255,0.3); }
 .prose ul, .prose ol { padding-left: 24px; margin-bottom: 22px; }
 .prose li { margin-bottom: 6px; }
@@ -66,7 +87,7 @@ body::after {
   font-size: 13.5px; font-family: 'SF Mono', 'Fira Code', monospace; color: var(--cyan);
 }
 .prose pre {
-  background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0,0,0,0.45); border: 1px solid rgba(var(--fg-rgb),0.08);
   border-radius: 10px; padding: 22px; margin: 24px 0;
   overflow-x: auto; max-width: 100%;
 }
@@ -75,10 +96,17 @@ body::after {
   border-left: 3px solid rgba(168,85,247,0.5);
   padding: 14px 22px; margin: 28px 0;
   background: rgba(168,85,247,0.05); border-radius: 0 8px 8px 0;
-  color: rgba(255,255,255,0.6); font-style: italic;
+  color: rgba(var(--fg-rgb),0.6); font-style: italic;
 }
 .prose img {
   max-width: 100%; height: auto; display: block;
-  border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px; border: 1px solid rgba(var(--fg-rgb),0.08);
   margin: 28px 0;
+}
+
+/* Code blocks are a "recessed" surface, not a translucent overlay —
+   flipping fg-rgb opacity would turn it into a washed-out box, so it
+   gets an explicit light-mode treatment instead of the generic flip. */
+html[data-theme='light'] .prose pre {
+  background: rgba(15,23,42,0.05); border-color: rgba(15,23,42,0.12);
 }

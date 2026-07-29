@@ -138,7 +138,7 @@ const t = content[lang];
     align-items: center;
     margin-bottom: 56px;
     padding: 40px 0 36px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(var(--fg-rgb),0.06);
     position: relative;
     overflow-x: hidden;
   }
@@ -164,7 +164,7 @@ const t = content[lang];
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.5px;
-    background: linear-gradient(135deg, #fff 30%, rgba(0,212,255,0.85));
+    background: linear-gradient(135deg, rgb(var(--fg-rgb)) 30%, rgba(0,212,255,0.85));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -184,7 +184,7 @@ const t = content[lang];
   .hero-bio {
     font-size: 15px;
     line-height: 1.75;
-    color: rgba(255,255,255,0.5);
+    color: rgba(var(--fg-rgb),0.5);
     margin-bottom: 24px;
     max-width: 520px;
   }
@@ -200,14 +200,14 @@ const t = content[lang];
     transition: all 0.2s;
   }
   .link-github {
-    background: rgba(255,255,255,0.06);
-    border-color: rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.7);
+    background: rgba(var(--fg-rgb),0.06);
+    border-color: rgba(var(--fg-rgb),0.12);
+    color: rgba(var(--fg-rgb),0.7);
   }
   .link-github:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: rgba(255,255,255,0.25);
-    color: #fff;
+    background: rgba(var(--fg-rgb),0.1);
+    border-color: rgba(var(--fg-rgb),0.25);
+    color: rgb(var(--fg-rgb));
   }
   .link-linkedin {
     background: rgba(10,102,194,0.1);
@@ -219,6 +219,11 @@ const t = content[lang];
     border-color: rgba(10,102,194,0.45);
     color: #7bb8e0;
   }
+  /* #5ba4cf/#7bb8e0 are tuned for contrast on a dark navy background;
+     on white they read washed out, so light mode swaps in the deeper
+     official LinkedIn blue instead. */
+  :global(html[data-theme='light']) .link-linkedin { color: #0a66c2; }
+  :global(html[data-theme='light']) .link-linkedin:hover { color: #084e96; }
   .link-site {
     background: rgba(0,212,255,0.08);
     border-color: rgba(0,212,255,0.2);
@@ -233,7 +238,7 @@ const t = content[lang];
     position: relative;
     display: flex; align-items: center;
     padding: 18px 20px;
-    background: rgba(8, 8, 24, 0.92);
+    background: rgba(var(--surface-rgb), 0.92);
     border-radius: 12px;
     width: fit-content;
     margin: 4px 0 0 28px;
@@ -278,9 +283,9 @@ const t = content[lang];
   }
 
   .stat { display: flex; flex-direction: column; align-items: center; padding: 0 26px; }
-  .stat-value { font-size: 20px; font-weight: 800; color: #fff; line-height: 1; }
-  .stat-label { font-size: 10px; color: rgba(255,255,255,0.45); margin-top: 3px; letter-spacing: 0.3px; white-space: nowrap; }
-  .stat-sep { width: 1px; height: 28px; background: rgba(255,255,255,0.12); }
+  .stat-value { font-size: 20px; font-weight: 800; color: rgb(var(--fg-rgb)); line-height: 1; }
+  .stat-label { font-size: 10px; color: rgba(var(--fg-rgb),0.45); margin-top: 3px; letter-spacing: 0.3px; white-space: nowrap; }
+  .stat-sep { width: 1px; height: 28px; background: rgba(var(--fg-rgb),0.12); }
 
   /* ── Skills ── */
   .hero-skills {
@@ -289,7 +294,7 @@ const t = content[lang];
     gap: 12px;
     margin-top: 28px;
     padding-top: 24px;
-    border-top: 1px solid rgba(255,255,255,0.06);
+    border-top: 1px solid rgba(var(--fg-rgb),0.06);
   }
   .skill-group {
     display: flex;
@@ -302,7 +307,7 @@ const t = content[lang];
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.7px;
-    color: rgba(255,255,255,0.22);
+    color: rgba(var(--fg-rgb),0.22);
     white-space: nowrap;
     min-width: 96px;
     padding-top: 4px;
@@ -446,11 +451,11 @@ const t = content[lang];
     align-items: center;
     gap: 7px;
     padding: 6px 14px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.09);
+    background: rgba(var(--fg-rgb),0.04);
+    border: 1px solid rgba(var(--fg-rgb),0.09);
     border-radius: 20px;
     font-size: 11px;
-    color: rgba(255,255,255,0.42);
+    color: rgba(var(--fg-rgb),0.42);
     letter-spacing: 0.4px;
     backdrop-filter: blur(10px);
     position: relative;

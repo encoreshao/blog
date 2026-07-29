@@ -47,10 +47,10 @@ const allLabel = lang === 'en' ? 'All' : '全部';
   .tag {
     padding: 6px 14px; border-radius: 20px;
     font-size: 12px; font-weight: 600; cursor: pointer;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.5);
+    border: 1px solid rgba(var(--fg-rgb),0.1);
+    background: rgba(var(--fg-rgb),0.04); color: rgba(var(--fg-rgb),0.5);
     transition: all 0.2s;
   }
   .tag.active { background: rgba(0,212,255,0.15); border-color: rgba(0,212,255,0.4); color: var(--cyan); }
-  .tag:hover  { border-color: rgba(255,255,255,0.25); color: rgba(255,255,255,0.8); }
+  .tag:hover  { border-color: rgba(var(--fg-rgb),0.25); color: rgba(var(--fg-rgb),0.8); }
 </style>

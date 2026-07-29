@@ -10,73 +10,156 @@ const otherLang = lang === 'en' ? 'zh' : 'en';
 const pathParts = currentPath.split('/').filter(Boolean);
 const slug = pathParts.length > 1 ? pathParts[pathParts.length - 1] : '';
 const altHref = slug ? `/${otherLang}/${slug}` : `/${otherLang}/`;
+const isHome = currentPath.endsWith('/');
 ---
 
-<nav>
+<nav class="site-nav" aria-label="Primary">
   <a class="nav-logo" href={`/${lang}/`}>Encore Shao</a>
-  <div class="nav-center">
-    <a href={`/${lang}/`} class={currentPath.endsWith('/') ? 'active' : ''}>
+
+  <div class="nav-pill">
+    <a href={`/${lang}/`} class={`pill-link${isHome ? ' active' : ''}`}>
+      {isHome && <span class="pill-dot" aria-hidden="true"></span>}
       {lang === 'en' ? 'Blog' : '博客'}
     </a>
-    <a href="https://icmoc.com" target="_blank" rel="noopener">
+    <a href="https://icmoc.com" target="_blank" rel="noopener" class="pill-link">
       {lang === 'en' ? 'Projects' : '项目'}
     </a>
-    <a href="https://icmoc.com" target="_blank" rel="noopener">
+    <a href="https://icmoc.com" target="_blank" rel="noopener" class="pill-link">
       {lang === 'en' ? 'About' : '关于'}
     </a>
   </div>
-  <a class="rss-btn" href={lang === 'zh' ? '/zh/rss.xml' : '/rss.xml'} title="RSS Feed">
-    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <circle cx="6.18" cy="17.82" r="2.18"/>
-      <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
-    </svg>
-    RSS
-  </a>
-  <div class="lang-switcher">
-    <a href={lang === 'en' ? currentPath || `/${lang}/` : altHref}
-       class={`lang-btn${lang === 'en' ? ' active' : ''}`}>EN</a>
-    <a href={lang === 'zh' ? currentPath || `/${lang}/` : altHref}
-       class={`lang-btn${lang === 'zh' ? ' active' : ''}`}>中文</a>
+
+  <div class="nav-utility">
+    <div class="utility-pill">
+      <a href={lang === 'en' ? currentPath || `/${lang}/` : altHref}
+         class={`lang-btn${lang === 'en' ? ' active' : ''}`}>EN</a>
+      <a href={lang === 'zh' ? currentPath || `/${lang}/` : altHref}
+         class={`lang-btn${lang === 'zh' ? ' active' : ''}`}>中文</a>
+      <span class="utility-sep" aria-hidden="true"></span>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle color theme">
+        <svg class="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+        </svg>
+        <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+
+    <a class="rss-pill" href={lang === 'zh' ? '/zh/rss.xml' : '/rss.xml'} title="RSS Feed">
+      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <circle cx="6.18" cy="17.82" r="2.18"/>
+        <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+      </svg>
+      <span>RSS</span>
+    </a>
   </div>
 </nav>
 
+<script>
+  const btn = document.getElementById('theme-toggle')!;
+  btn.addEventListener('click', () => {
+    const html = document.documentElement;
+    const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+</script>
+
 <style>
-  nav {
+  .site-nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(15, 15, 35, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-    padding: 0 40px;
+    background: rgba(var(--surface-rgb), 0.4);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 0 32px;
     display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
     height: var(--nav-height);
   }
-  .nav-logo { font-size: 16px; font-weight: 800; color: var(--cyan); letter-spacing: -0.5px; text-decoration: none; white-space: nowrap; }
-  .nav-center { display: flex; gap: 28px; }
-  .nav-center a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
-  .nav-center a:hover, .nav-center a.active { color: #fff; }
-  .rss-btn {
-    display: flex; align-items: center; gap: 5px;
-    font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.35);
-    text-decoration: none; transition: color 0.2s;
+
+  .nav-logo {
+    font-size: 16px; font-weight: 800; color: var(--cyan);
+    letter-spacing: -0.5px; text-decoration: none; white-space: nowrap;
+    flex-shrink: 0;
   }
-  .rss-btn:hover { color: var(--cyan); }
-  .lang-switcher {
-    display: flex; gap: 2px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 6px; padding: 3px;
+
+  /* ── Center capsule: page links ── */
+  .nav-pill {
+    display: flex; align-items: center; gap: 2px;
+    background: var(--glass-bg); border: 1px solid var(--glass-border);
+    border-radius: 999px; padding: 4px;
+  }
+  .pill-link {
+    display: flex; align-items: center; gap: 7px;
+    padding: 7px 16px; border-radius: 999px;
+    font-size: 13px; font-weight: 600;
+    color: rgba(var(--fg-rgb),0.5); text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+  .pill-link:hover { color: rgb(var(--fg-rgb)); background: rgba(var(--fg-rgb),0.05); }
+  .pill-link.active { background: rgba(var(--fg-rgb),0.1); color: rgb(var(--fg-rgb)); }
+
+  /* Reuses the same "online" indicator from the hero's location badge,
+     repurposed here to mark the current section instead of a new motif. */
+  .pill-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green); box-shadow: 0 0 6px rgba(52,211,153,0.7);
+    flex-shrink: 0;
+    animation: pill-dot-blink 2.4s ease-in-out infinite;
+  }
+  @keyframes pill-dot-blink {
+    0%, 100% { opacity: 1; box-shadow: 0 0 6px rgba(52,211,153,0.7); }
+    50%       { opacity: 0.5; box-shadow: 0 0 3px rgba(52,211,153,0.35); }
+  }
+
+  /* ── Right cluster: lang + theme capsule, RSS accent pill ── */
+  .nav-utility { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+  .utility-pill {
+    display: flex; align-items: center; gap: 2px;
+    background: var(--glass-bg); border: 1px solid var(--glass-border);
+    border-radius: 999px; padding: 4px;
   }
   .lang-btn {
-    padding: 4px 12px; border-radius: 4px;
+    padding: 5px 12px; border-radius: 999px;
     font-size: 12px; font-weight: 600; text-decoration: none;
-    color: rgba(255,255,255,0.4); transition: all 0.2s;
+    color: rgba(var(--fg-rgb),0.45); transition: all 0.2s;
   }
-  .lang-btn.active { background: rgba(0,212,255,0.2); color: var(--cyan); }
+  .lang-btn.active { background: rgba(0,212,255,0.18); color: var(--cyan); }
+  .utility-sep { width: 1px; height: 14px; background: rgba(var(--fg-rgb),0.12); margin: 0 2px; }
+
+  .theme-toggle {
+    display: flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px;
+    background: transparent; border: none; border-radius: 999px;
+    color: rgba(var(--fg-rgb),0.55);
+    cursor: pointer; transition: all 0.2s; flex-shrink: 0;
+  }
+  .theme-toggle:hover { background: rgba(var(--fg-rgb),0.1); color: rgb(var(--fg-rgb)); }
+  .icon-sun { display: none; }
+  html[data-theme='light'] .icon-sun { display: block; }
+  html[data-theme='light'] .icon-moon { display: none; }
+
+  .rss-pill {
+    display: flex; align-items: center; gap: 6px;
+    padding: 8px 18px; border-radius: 999px;
+    background: linear-gradient(135deg, var(--cyan), var(--blue));
+    color: #041219; font-size: 12px; font-weight: 700;
+    text-decoration: none; white-space: nowrap;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .rss-pill:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,212,255,0.3); }
 
   @media (max-width: 640px) {
-    nav { padding: 0 16px; }
-    .nav-center { display: none; }
-    .rss-btn { display: none; }
+    .site-nav { padding: 0 16px; }
+    .nav-pill { display: none; }
+    .rss-pill span { display: none; }
+  }
+  @media (max-width: 480px) {
+    .rss-pill { padding: 8px 10px; }
+    .rss-pill svg { margin: 0; }
   }
 </style>

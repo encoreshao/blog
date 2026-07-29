@@ -51,15 +51,15 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'zh-CN',
   }
   .post-card:hover {
     background: var(--glass-hover);
-    border-color: rgba(255,255,255,0.15);
+    border-color: rgba(var(--fg-rgb),0.15);
     transform: translateX(4px);
   }
   .post-card.featured { background: rgba(0,212,255,0.06); border-color: rgba(0,212,255,0.2); }
   .post-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
-  .post-date { font-size: 11px; color: rgba(255,255,255,0.35); }
+  .post-date { font-size: 11px; color: rgba(var(--fg-rgb),0.35); }
   .post-tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.5px; text-transform: uppercase; }
-  .read-time { font-size: 11px; color: rgba(255,255,255,0.25); margin-left: auto; }
-  .post-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.4; }
+  .read-time { font-size: 11px; color: rgba(var(--fg-rgb),0.25); margin-left: auto; }
+  .post-title { font-size: 16px; font-weight: 700; color: rgb(var(--fg-rgb)); margin-bottom: 6px; line-height: 1.4; }
   .featured .post-title { font-size: 18px; }
-  .post-excerpt { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.65; }
+  .post-excerpt { font-size: 13px; color: rgba(var(--fg-rgb),0.45); line-height: 1.65; }
 </style>
