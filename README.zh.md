@@ -189,6 +189,7 @@ ssh encore@blog.icmoc.com "sudo mkdir -p /var/www/blog && sudo chown encore:www-
 | 11 | 十余年，为风投构建一套情报平台 | More Than a Decade Building a VC Intelligence Platform |
 | 12 | ruby-office365：一个 Microsoft Graph 的 Ruby 客户端 | ruby-office365: A Ruby Client for Microsoft Graph |
 | 13 | encore-skills：别再重复教你的 AI | encore-skills: Stop Re-Teaching Your AI |
+| 14 | 这块白板,把我的剪辑软件炒了鱿鱼 | The Whiteboard That Fired My Video Editor |
 
 ---
 

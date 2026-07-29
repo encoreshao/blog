@@ -77,3 +77,8 @@ body::after {
   background: rgba(168,85,247,0.05); border-radius: 0 8px 8px 0;
   color: rgba(255,255,255,0.6); font-style: italic;
 }
+.prose img {
+  max-width: 100%; height: auto; display: block;
+  border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);
+  margin: 28px 0;
+}
