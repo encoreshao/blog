@@ -21,32 +21,71 @@ const { post, lang, headings, relatedPosts } = Astro.props;
 const { title, date, tags, excerpt } = post.data;
 const readingTime = getReadingTime(post.body ?? '', lang);
 
+const site = 'https://blog.icmoc.com';
+const slug = post.id.replace(/\.md$/, '');
 const canonicalUrl = Astro.url.href;
+const otherLang = lang === 'en' ? 'zh' : 'en';
+const alternateHref = `${site}/${otherLang}/${slug}/`;
+const wordCount = (post.body ?? '')
+  .replace(/```[\s\S]*?```/g, '')
+  .replace(/[#*_~>|`]/g, '')
+  .split(/\s+/)
+  .filter(Boolean).length;
+
+const author = {
+  '@type': 'Person',
+  name: 'Encore Shao',
+  url: 'https://icmoc.com',
+  jobTitle: 'Full-stack Engineer & AI Researcher',
+  worksFor: { '@type': 'Organization', name: 'Ekohe' },
+  sameAs: [
+    'https://github.com/encoreshao',
+    'https://icmoc.com',
+  ],
+};
+
 const articleJsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: title,
   description: excerpt,
   datePublished: date.toISOString(),
+  dateModified: date.toISOString(),
   url: canonicalUrl,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
   inLanguage: lang === 'zh' ? 'zh-CN' : 'en',
   keywords: tags.join(', '),
-  author: {
-    '@type': 'Person',
-    name: 'Encore Shao',
-    url: 'https://icmoc.com',
-    jobTitle: 'Full-stack Engineer & AI Researcher',
-    worksFor: { '@type': 'Organization', name: 'Ekohe' },
-    sameAs: [
-      'https://github.com/encoreshao',
-      'https://icmoc.com',
-    ],
+  wordCount,
+  isPartOf: {
+    '@type': 'Blog',
+    name: lang === 'zh' ? '邵壮的博客' : "Encore Shao's Blog",
+    url: `${site}/${lang}/`,
   },
+  author,
   publisher: {
     '@type': 'Person',
     name: 'Encore Shao',
     url: 'https://blog.icmoc.com',
   },
+});
+
+const breadcrumbJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: lang === 'zh' ? '首页' : 'Home',
+      item: `${site}/${lang}/`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: title,
+      item: canonicalUrl,
+    },
+  ],
 });
 
 const tagClass: Record<string, string> = {
@@ -60,8 +99,18 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'zh-CN',
 }).format(date);
 ---
 
-<Base title={title} lang={lang} description={excerpt}>
+<Base
+  title={title}
+  lang={lang}
+  description={excerpt}
+  type="article"
+  alternateHref={alternateHref}
+  publishedTime={date.toISOString()}
+  modifiedTime={date.toISOString()}
+  tags={tags}
+>
   <script slot="head" type="application/ld+json" set:html={articleJsonLd} />
+  <script slot="head" type="application/ld+json" set:html={breadcrumbJsonLd} />
   <Nav lang={lang} currentPath={`/${lang}/${post.id.replace(/\.md$/, '')}`} />
   <ArticleSubNav title={title} lang={lang} headings={headings} />
   <ReadingProgress />

@@ -121,12 +121,23 @@ draft: false
 | Sitemap | `/sitemap-index.xml` | 完整站点地图（中英所有页面） |
 | llms.txt | `/llms.txt` | 面向 AI 的站点索引（中英文全部文章的链接与摘要） |
 | llms-full.txt | `/llms-full.txt` | 全部文章（中英文）的完整正文，合并在一个文件中，方便 AI Agent 一次性抓取全站内容 |
+| agents.txt | `/agents.txt` | 面向 AI Agent 的使用说明（引用时的署名要求、结构化入口链接） |
 
 **以上内容均在构建时自动生成，无需手动操作。**
 
 - **RSS**（`/rss.xml`、`/zh/rss.xml`）—— Astro API 端点，每次 `npm run build` 时查询内容集合自动生成。新增 `.md` 文件即可。
 - **Sitemap**（`/sitemap-index.xml`）—— 由 `@astrojs/sitemap` 驱动，配置在 `astro.config.mjs` 中。构建时自动抓取所有 Astro 渲染的页面，生成站点地图索引及各语言子站点地图。新文章在下次构建后自动收录。
 - **llms.txt / llms-full.txt** —— Astro API 端点（`src/pages/llms.txt.ts`、`src/pages/llms-full.txt.ts`），遵循 [llmstxt.org](https://llmstxt.org) 规范，方便 AI Agent 和爬虫快速发现并理解整个站点。`robots.txt` 已显式放行主流 AI 爬虫（GPTBot、ClaudeBot、Google-Extended、PerplexityBot、CCBot 等），并指向 `/llms.txt`。
+- **agents.txt**（`public/agents.txt`）—— 一个静态的、人类与 AI Agent 都可读的说明文件，描述 AI Agent 应如何使用本站内容（引用时的署名要求，以及指向 `/llms.txt`、`/llms-full.txt` 和 sitemap 的链接）。它是对 `robots.txt` 的补充约定，而非抓取权限机制。
+
+### GEO（生成式引擎优化）
+
+除了 Feed 和发现文件之外，每个页面都携带结构化数据和元信息，方便 AI Agent 与回答引擎直接解析，而无需抓取渲染后的 HTML：
+
+- **JSON-LD** —— 两个语言首页（`src/pages/en/index.astro`、`src/pages/zh/index.astro`）包含 `Person` + `WebSite` + `Blog`（内含每篇文章的 `BlogPosting` 条目）；每篇文章（`src/layouts/BlogPost.astro`）包含 `Article` + `BreadcrumbList`，含 `wordCount`、`keywords`、`datePublished`/`dateModified`，以及指回 Blog 实体的 `isPartOf`。
+- **Open Graph / Twitter 元信息** —— 标题、描述、canonical URL、语言区域，以及文章页的 `article:published_time`/`article:tag`，统一在 `src/layouts/Base.astro` 中渲染。
+- **hreflang 语言标注** —— 每个英文页面都链接到对应的中文页面，反之亦然（`Base.astro` 的 `alternateHref` 属性），让 Agent 和搜索引擎能解析出正确的语言版本，而不是把它们当作重复内容。
+- **Canonical 去重** —— 与 `/en/` 内容相同的根路径 `/` 将其 canonical URL 指向 `/en/`，避免同一内容出现两个 URL。
 
 ---
 

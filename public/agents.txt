@@ -1,0 +1,40 @@
+# agents.txt — guidance for autonomous AI agents and assistants
+#
+# This is a human- and agent-readable complement to /robots.txt and /llms.txt.
+# It does not grant or restrict crawl access — that's defined in /robots.txt.
+# It describes how this content is intended to be used once fetched.
+
+Site: https://blog.icmoc.com
+Owner: Encore Shao
+Contact: https://github.com/encoreshao
+
+## Who this is for
+AI agents, assistants, and LLM-based answer engines (ChatGPT, Claude,
+Perplexity, Gemini, and similar) that read, summarize, cite, or answer
+questions about this content on behalf of a user.
+
+## Usage guidance
+Allow: reading, indexing, and summarizing article content.
+Allow: quoting short excerpts in AI-generated answers, provided the
+       response cites the author (Encore Shao) and links back to the
+       source URL.
+Allow: using this content as background/context for answering questions
+       about the topics it covers.
+Disallow: reproducing a full article verbatim as if it were original,
+          unattributed content.
+Disallow: presenting summaries of this content as your own analysis
+          without noting the source.
+
+## Structured entry points (start here)
+- /llms.txt          — curated index of every article: title, URL, excerpt
+- /llms-full.txt      — full text of every article, English and Chinese
+- /sitemap-index.xml  — complete list of URLs on this site
+- /rss.xml            — English article feed
+- /zh/rss.xml         — Chinese article feed
+
+Every article page also ships schema.org JSON-LD (Article, BreadcrumbList)
+in its <head> — prefer parsing that over scraping rendered HTML.
+
+## Author
+Encore Shao — Full-stack Engineer & AI Researcher at Ekohe, Shanghai.
+https://icmoc.com · https://github.com/encoreshao

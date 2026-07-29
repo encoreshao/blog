@@ -121,12 +121,23 @@ Your content here...
 | Sitemap | `/sitemap-index.xml` | Full sitemap (all pages, both languages) |
 | llms.txt | `/llms.txt` | Curated, LLM-friendly index of every article (EN + ZH) with links and descriptions |
 | llms-full.txt | `/llms-full.txt` | Full text of every article (EN + ZH), inlined in one file, for AI agents that want the whole site in one fetch |
+| agents.txt | `/agents.txt` | Usage guidance for AI agents/assistants (attribution expectations, structured entry points) |
 
 **All of these are generated automatically at build time — no manual step needed.**
 
 - **RSS** (`/rss.xml`, `/zh/rss.xml`) — Astro API endpoints that query the content collections on every `npm run build`. Adding a new `.md` file is enough.
 - **Sitemap** (`/sitemap-index.xml`) — powered by `@astrojs/sitemap`, configured in `astro.config.mjs`. It crawls all pages Astro renders and writes a sitemap index + per-language sitemaps. New articles appear automatically on the next build.
 - **llms.txt / llms-full.txt** — Astro API endpoints (`src/pages/llms.txt.ts`, `src/pages/llms-full.txt.ts`) following the [llmstxt.org](https://llmstxt.org) convention, so AI agents and crawlers can quickly discover and understand the whole site. `robots.txt` explicitly allows major AI crawlers (GPTBot, ClaudeBot, Google-Extended, PerplexityBot, CCBot, etc.) and points them at `/llms.txt`.
+- **agents.txt** (`public/agents.txt`) — a static, human/agent-readable file describing how AI agents should use this content (attribution when quoting, links to `/llms.txt`, `/llms-full.txt`, and the sitemap). It's a convention complement to `robots.txt`, not a crawl-permission mechanism.
+
+### GEO (Generative Engine Optimization)
+
+Beyond feeds and discovery files, every page ships structured data and metadata so AI agents and answer engines can parse it without scraping rendered HTML:
+
+- **JSON-LD** — `Person` + `WebSite` + `Blog` (with a `BlogPosting` entry per article) on both homepages (`src/pages/en/index.astro`, `src/pages/zh/index.astro`); `Article` + `BreadcrumbList` on every post (`src/layouts/BlogPost.astro`), including `wordCount`, `keywords`, `datePublished`/`dateModified`, and `isPartOf` linking back to the Blog entity.
+- **Open Graph / Twitter meta** — title, description, canonical URL, locale, and (for articles) `article:published_time`/`article:tag`, rendered centrally in `src/layouts/Base.astro`.
+- **hreflang alternates** — every EN page links to its ZH counterpart and vice versa (`alternateHref` prop on `Base.astro`), so agents and search engines resolve the correct translation instead of treating them as duplicates.
+- **Canonical de-duplication** — the `/` root (which mirrors `/en/`) sets its canonical URL to `/en/` to avoid two URLs for identical content.
 
 ---
 

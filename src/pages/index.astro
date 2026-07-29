@@ -9,9 +9,10 @@ import { getCollection } from 'astro:content';
 
 const posts = await getCollection('en', ({ data }) => !data.draft);
 const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
+const site = 'https://blog.icmoc.com';
 ---
 
-<Base title="Writing" lang="en">
+<Base title="Writing" lang="en" canonicalHref={`${site}/en/`}>
   <Nav lang="en" currentPath="/en/" />
   <main>
     <HeroSection lang="en" postCount={posts.length} />

@@ -2,8 +2,8 @@ User-agent: *
 Allow: /
 
 # AI crawlers and agents are welcome. See /llms.txt for a curated,
-# LLM-friendly overview of this site and /llms-full.txt for the full
-# text of every article in one file.
+# LLM-friendly overview of this site, /llms-full.txt for the full text
+# of every article in one file, and /agents.txt for usage guidance.
 User-agent: GPTBot
 Allow: /
 
