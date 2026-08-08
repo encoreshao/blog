@@ -17,6 +17,10 @@ The URL is passed as `$ARGUMENTS`. If no URL is provided, ask the user for one b
 
 Use the `WebFetch` tool to retrieve the content at the given URL. Extract the core information: main topic, key points, technical details, and any notable insights.
 
+### 2b. Check the Material
+
+Before drafting, read `references/material-check.md`. It covers two things worth catching now rather than after a draft is written: whether the fetched source actually has enough concrete detail to support 800–1500 words without padding, and whether the article's opening should be a real personal moment or an honest explainer — since the source describes something Encore read, not necessarily something he did. Follow it in place of guessing.
+
 ### 3. Determine the Next File Number
 
 List `src/data/en/` to find existing files. Files follow the pattern `NN-slug.md` (e.g. `08-workflowpro.md`). Take the highest number and increment by 1 to get the next `NN`.
@@ -69,6 +73,22 @@ Use `##` markdown headings for all sections — never `**bold text**` as a headi
 
 If any of these appear in a draft, remove and rewrite the sentence from scratch.
 
+### 5b. Run the Prose Metrics Check
+
+Run `python3 .claude/commands/generate-article/scripts/check_prose.py <path-to-EN-draft>` against the English draft before moving on. This checks measurable signals of AI-flavored prose — the kind that survive a read-through because no single sentence looks wrong, only the pattern across the whole piece does:
+
+| Metric | What it catches |
+| --- | --- |
+| Sentence-length coefficient of variation | AI prose drifts toward same-length sentences; human prose mixes a 6-word sentence with a 30-word one. Flags if CV < 0.45. |
+| Em dash density | The single most reliable AI tell in English prose. Flags if more than ~3 per 1000 words. |
+| Transition-word density | Overuse of however/moreover/furthermore/additionally/notably/importantly stitching every paragraph together. Flags if > 8 per 1000 words. |
+| Reversal/pivot rhetoric | "It's not just X, it's Y" — a fake contrast set up only to be knocked down. Flags every occurrence. |
+| Banned phrase list | Reuses the list above. |
+| One-sentence-paragraph ratio | Staccato single-sentence paragraphs back to back read as machine-generated rhythm. Flags if ≥ 75%. |
+| Repeated paragraph openers | Same opening word/phrase starting 3+ paragraphs. |
+
+The output is advisory, not a gate — use judgment. A flagged em dash that's genuinely the clearest way to write a sentence can stay; a cluster of 15 across one article cannot. Revise the draft, then re-run until the flags that matter are gone. Don't chase a mechanical zero at the expense of a sentence that actually reads well.
+
 ### 6. Generate the Chinese Article
 
 Write a Chinese article that reads like it was **written in Chinese**, not translated from English. Same story, same voice, but adapted — Chinese readers have different rhythms, different expectations, and different idioms.
@@ -95,6 +115,14 @@ draft: false
 - Technical terms: keep in the original (English) when that's what engineers actually say (e.g. `fetch`, `staging`, `API key`). Translate when the Chinese term is genuinely in common use.
 - No 呢、嘛、哦 at sentence ends — these are too casual. 吧 is fine occasionally.
 - Code blocks stay in English. Comments in code can be translated if they add clarity.
+
+### 6b. Run the Prose Metrics Check (Chinese)
+
+Run `python3 .claude/commands/generate-article/scripts/check_prose.py <path-to-ZH-draft>` against the Chinese draft. The script auto-detects Chinese input and switches metrics accordingly: sentence-length CV (measured in Han characters), a conjunction-density check (因为/所以/但是/然而/同时/此外/而且/并且/因此/不仅 — Chinese clauses should connect through word order and logic, not connective words), and the same em-dash and reversal-rhetoric checks (不是……而是……, 并非……而是……, 表面……其实…… and similar "fake contrast" constructions). Treat it the same as the English pass — advisory, revise what actually reads as mechanical, ignore the rest.
+
+### 6c. Run the Revision Pass
+
+The metrics scripts catch shape, not substance. Read `references/revision.md` and apply it to both drafts: cut restated points, test whether the ending survives being deleted, and read each draft cold to check that it earns its length rather than filling it. Do this before saving — it's the last chance to catch padding or an overreaching ending without a file-edit round trip.
 
 ### 7. Save the Files
 
