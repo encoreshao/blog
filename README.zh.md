@@ -201,6 +201,7 @@ ssh encore@blog.icmoc.com "sudo mkdir -p /var/www/blog && sudo chown encore:www-
 | 12 | ruby-office365：一个 Microsoft Graph 的 Ruby 客户端 | ruby-office365: A Ruby Client for Microsoft Graph |
 | 13 | encore-skills：别再重复教你的 AI | encore-skills: Stop Re-Teaching Your AI |
 | 14 | 这块白板,把我的剪辑软件炒了鱿鱼 | The Whiteboard That Fired My Video Editor |
+| 15 | 怎么把 NotebookLM 生成的水印干净地去掉 | Removing the NotebookLM Watermark Without Wrecking the Slide |
 
 ---
 
