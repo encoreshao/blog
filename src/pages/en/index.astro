@@ -12,13 +12,13 @@ const posts = await getCollection('en', ({ data }) => !data.draft)
 const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
 
 const site = 'https://blog.icmoc.com';
-const description = 'Writing by Encore Shao — Full-stack Engineer & AI Researcher. Essays on Rails/Ruby engineering, agentic AI systems, MCP servers, and lessons from shipping production software.';
+const description = 'Writing by Encore Shao — AI Engineer & Product Builder. Essays on Rails/Ruby engineering, agentic AI systems, MCP servers, and lessons from shipping production software.';
 
 const personJsonLd = {
   '@type': 'Person',
   name: 'Encore Shao',
   url: 'https://icmoc.com',
-  jobTitle: 'Full-stack Engineer & AI Researcher',
+  jobTitle: 'AI Engineer & Product Builder',
   worksFor: { '@type': 'Organization', name: 'Ekohe' },
   sameAs: ['https://github.com/encoreshao', 'https://icmoc.com'],
 };

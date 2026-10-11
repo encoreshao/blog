@@ -2,7 +2,7 @@
 
 > Also available in: [中文](README.zh.md)
 
-Personal blog for [Encore Shao](https://icmoc.com) — Full-stack Engineer & AI Researcher based in Shanghai. Built with Astro 6, Tailwind CSS 4, and a Glass & Glow dark theme. Bilingual: English and Chinese.
+Personal blog for [Encore Shao](https://icmoc.com) — AI Engineer & Product Builder based in Shanghai. Built with Astro 6, Tailwind CSS 4, and a Glass & Glow dark theme. Bilingual: English and Chinese.
 
 Live at **[blog.icmoc.com](https://blog.icmoc.com)**
 

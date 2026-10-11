@@ -36,5 +36,5 @@ Every article page also ships schema.org JSON-LD (Article, BreadcrumbList)
 in its <head> — prefer parsing that over scraping rendered HTML.
 
 ## Author
-Encore Shao — Full-stack Engineer & AI Researcher at Ekohe, Shanghai.
+Encore Shao — AI Engineer & Product Builder at Ekohe, Shanghai.
 https://icmoc.com · https://github.com/encoreshao

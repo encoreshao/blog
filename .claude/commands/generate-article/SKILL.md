@@ -5,7 +5,7 @@ description: Fetch content from a remote URL and generate a bilingual blog artic
 
 ## Purpose
 
-Given a remote URL, fetch its content, synthesize it into an original blog article written in the voice of Encore Shao (full-stack engineer & AI researcher), and produce two files: an English version and a Chinese version. Both are saved into the blog project under `src/data/en/` and `src/data/zh/`.
+Given a remote URL, fetch its content, synthesize it into an original blog article written in the voice of Encore Shao (AI engineer & product builder), and produce two files: an English version and a Chinese version. Both are saved into the blog project under `src/data/en/` and `src/data/zh/`.
 
 ## Workflow
 

@@ -12,13 +12,13 @@ const posts = await getCollection('zh', ({ data }) => !data.draft)
 const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
 
 const site = 'https://blog.icmoc.com';
-const description = '邵壮的博客 — 全栈工程师 & AI 研究员。关于 Rails/Ruby 工程实践、Agentic AI 系统、MCP 服务器，以及生产环境软件交付经验的文章。';
+const description = '邵壮的博客 — AI 工程师 & Product Builder。关于 Rails/Ruby 工程实践、Agentic AI 系统、MCP 服务器，以及生产环境软件交付经验的文章。';
 
 const personJsonLd = {
   '@type': 'Person',
   name: '邵壮',
   url: 'https://icmoc.com',
-  jobTitle: '全栈工程师 & AI 研究员',
+  jobTitle: 'AI 工程师 & Product Builder',
   worksFor: { '@type': 'Organization', name: 'Ekohe' },
   sameAs: ['https://github.com/encoreshao', 'https://icmoc.com'],
 };

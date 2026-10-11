@@ -2,7 +2,7 @@
 
 > Also available in: [English](README.md)
 
-[邵壮（Encore Shao）](https://icmoc.com)的个人博客，上海全栈工程师 & AI 研究员。基于 Astro 6 构建，使用 Tailwind CSS 4 和 Glass & Glow 暗色主题，支持中英双语。
+[邵壮（Encore Shao）](https://icmoc.com)的个人博客，上海 AI 工程师 & Product Builder。基于 Astro 6 构建，使用 Tailwind CSS 4 和 Glass & Glow 暗色主题，支持中英双语。
 
 线上地址：**[blog.icmoc.com](https://blog.icmoc.com)**
 
