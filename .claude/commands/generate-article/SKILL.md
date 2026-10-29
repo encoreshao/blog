@@ -66,28 +66,43 @@ Use `##` markdown headings for all sections — never `**bold text**` as a headi
 - Name the thing. Don't write "a popular framework" when you mean Rails. Don't write "I encountered an issue" when you mean "the migration wiped the staging DB."
 - One idea per paragraph. If you're explaining two things, that's two paragraphs.
 - Include code blocks only when seeing the code changes what the reader understands. Not as decoration.
+- No em dashes or en dashes anywhere in prose. Use a period, comma, colon, or parentheses.
+- No bold for emphasis and no `- **Label:** text` lists. Write prose.
+- State the point directly. No "not X, but Y" contrasts, no one-line closers that repeat the paragraph, no run-ups like "here's the thing".
+- Don't group things in threes by reflex. Use as many items as there are.
+- Prefer *is*, *are*, *has* over "serves as", "boasts", "features", "offers".
+- Never invent a number, quote, error message, or personal incident to make the piece feel specific. Every concrete detail comes from the source.
 
-**Banned phrases (any AI-flavored language that signals the writer is a machine):**
+**Banned phrases and words (AI-flavored language that signals the writer is a machine):**
 
-> "In today's fast-paced world", "game-changer", "leverage", "robust", "seamless", "dive deep", "let's explore", "it's worth noting", "at the end of the day", "moving forward", "in conclusion", "this is a great opportunity", "the good news is", "the bad news is", "this is a complex topic", "I hope this was helpful", "delve", "unlock", "unleash", "transformative", "cutting-edge", "empower", "in summary", "to summarize"
+> "In today's fast-paced world", "game-changer", "leverage", "robust", "seamless", "dive deep", "deep dive", "let's explore", "let's dive in", "it's worth noting", "at the end of the day", "moving forward", "in conclusion", "this is a great opportunity", "the good news is", "the bad news is", "this is a complex topic", "I hope this was helpful", "delve", "unlock", "unleash", "transformative", "cutting-edge", "empower", "in summary", "to summarize", "pivotal", "tapestry", "testament", "landscape" (abstract), "showcase", "underscore", "foster", "streamline", "comprehensive", "the real question", "at its core", "here's the thing"
 
-If any of these appear in a draft, remove and rewrite the sentence from scratch.
+If any of these appear in a draft, remove and rewrite the sentence from scratch. The full pattern catalog lives in `references/humanizer.md`.
 
-### 5b. Run the Prose Metrics Check
+### 5b. Humanize the English Draft
 
-Run `python3 .claude/commands/generate-article/scripts/check_prose.py <path-to-EN-draft>` against the English draft before moving on. This checks measurable signals of AI-flavored prose — the kind that survive a read-through because no single sentence looks wrong, only the pattern across the whole piece does:
+Read `references/humanizer.md` and apply it to the English draft: mark every AI-writing pattern (staged contrasts, one-line closers, forced triads, dashes, inflated claims, bold labels, chatbot residue), rewrite those passages to state the point directly, and audit the rewrite so it neither dropped a real fact nor invented one. This comes before the metrics check, because the checker should be measuring the humanized draft.
+
+### 5c. Run the Prose Metrics Check
+
+Run `python3 .claude/commands/generate-article/scripts/check_prose.py <path-to-EN-draft>` against the English draft before moving on. This checks measurable signals of AI-flavored prose, the kind that survive a read-through because no single sentence looks wrong, only the pattern across the whole piece does:
 
 | Metric | What it catches |
 | --- | --- |
 | Sentence-length coefficient of variation | AI prose drifts toward same-length sentences; human prose mixes a 6-word sentence with a 30-word one. Flags if CV < 0.45. |
-| Em dash density | The single most reliable AI tell in English prose. Flags if more than ~3 per 1000 words. |
+| Em/en dashes | The single most reliable AI tell in English prose. Flags any dash used as a connector. |
 | Transition-word density | Overuse of however/moreover/furthermore/additionally/notably/importantly stitching every paragraph together. Flags if > 8 per 1000 words. |
-| Reversal/pivot rhetoric | "It's not just X, it's Y" — a fake contrast set up only to be knocked down. Flags every occurrence. |
+| Reversal/pivot rhetoric | "It's not just X, it's Y": a fake contrast set up only to be knocked down. Flags every occurrence. |
 | Banned phrase list | Reuses the list above. |
+| Stock AI vocabulary | pivotal, testament, tapestry, showcase, underscore and similar words that models overuse. Flags when two or more appear. |
+| Staged openers and closers | "Here's the thing", "Let that sink in", "That's the real win", "I hope this helps". Flags every occurrence. |
+| Shallow -ing riders and "serves as" | ", highlighting its importance", "serves as", "boasts". Flags when found. |
+| Bold and decorative headings | Any `**bold**` in prose, Title Case headings, emojis, arrows, horizontal rules. |
+| Curly quotes | Typographic quotes in English prose. |
 | One-sentence-paragraph ratio | Staccato single-sentence paragraphs back to back read as machine-generated rhythm. Flags if ≥ 75%. |
 | Repeated paragraph openers | Same opening word/phrase starting 3+ paragraphs. |
 
-The output is advisory, not a gate — use judgment. A flagged em dash that's genuinely the clearest way to write a sentence can stay; a cluster of 15 across one article cannot. Revise the draft, then re-run until the flags that matter are gone. Don't chase a mechanical zero at the expense of a sentence that actually reads well.
+The output is advisory, not a gate: use judgment. Revise the draft, then re-run until the flags that matter are gone. Don't chase a mechanical zero at the expense of a sentence that actually reads well, but a dash or a bold label has no good reason to survive, so remove those.
 
 ### 6. Generate the Chinese Article
 
@@ -115,14 +130,20 @@ draft: false
 - Technical terms: keep in the original (English) when that's what engineers actually say (e.g. `fetch`, `staging`, `API key`). Translate when the Chinese term is genuinely in common use.
 - No 呢、嘛、哦 at sentence ends — these are too casual. 吧 is fine occasionally.
 - Code blocks stay in English. Comments in code can be translated if they add clarity.
+- Apply the same directness rules as English: no dashes, no bold, no 不是……而是…… contrasts, no one-line closers like 这就是关键, no run-ups like 值得一提的是 or 让我们来看看.
+- Avoid marketing vocabulary (赋能, 打造, 助力, 深耕, 全方位, 无缝, 颠覆) and piles of four-character idioms used to sound weighty. Say the concrete thing.
 
-### 6b. Run the Prose Metrics Check (Chinese)
+### 6b. Humanize the Chinese Draft
 
-Run `python3 .claude/commands/generate-article/scripts/check_prose.py <path-to-ZH-draft>` against the Chinese draft. The script auto-detects Chinese input and switches metrics accordingly: sentence-length CV (measured in Han characters), a conjunction-density check (因为/所以/但是/然而/同时/此外/而且/并且/因此/不仅 — Chinese clauses should connect through word order and logic, not connective words), and the same em-dash and reversal-rhetoric checks (不是……而是……, 并非……而是……, 表面……其实…… and similar "fake contrast" constructions). Treat it the same as the English pass — advisory, revise what actually reads as mechanical, ignore the rest.
+Read the "Chinese notes" in `references/humanizer.md` and apply the pattern catalog to the Chinese draft. Rewrite from the meaning, not by translating the English fixes: the ZH article should survive being read by someone who never saw the EN one.
 
-### 6c. Run the Revision Pass
+### 6c. Run the Prose Metrics Check (Chinese)
 
-The metrics scripts catch shape, not substance. Read `references/revision.md` and apply it to both drafts: cut restated points, test whether the ending survives being deleted, and read each draft cold to check that it earns its length rather than filling it. Do this before saving — it's the last chance to catch padding or an overreaching ending without a file-edit round trip.
+Run `python3 .claude/commands/generate-article/scripts/check_prose.py <path-to-ZH-draft>` against the Chinese draft. The script auto-detects Chinese input and switches metrics accordingly: sentence-length CV (measured in Han characters), a conjunction-density check (因为/所以/但是/然而/同时/此外/而且/并且/因此/不仅; Chinese clauses should connect through word order and logic, not connective words), the dash check, stock marketing vocabulary, staged openers and closers, and the reversal-rhetoric check (不是……而是……, 并非……而是……, 表面……其实…… and similar "fake contrast" constructions). Treat it the same as the English pass: advisory, revise what actually reads as mechanical, ignore the rest.
+
+### 6d. Run the Revision Pass
+
+The metrics scripts catch shape, not substance. Read `references/revision.md` and apply it to both drafts: cut restated points, test whether the ending survives being deleted, and read each draft cold to check that it earns its length rather than filling it. This pass includes a final humanizer audit: re-scan each draft for the tells that most often survive a rewrite (contrasts, closers, triads, dashes, bold labels). Do this before saving, it's the last chance to catch padding or an overreaching ending without a file-edit round trip.
 
 ### 7. Save the Files
 

@@ -21,4 +21,8 @@ Set the checklist aside and answer these plainly, about this specific draft:
 - Is there a claim in here bigger than what the material backs up?
 - Where does the piece actually finish saying what it has to say — and is there anything written after that point?
 
+- Read it aloud. Which sentences would you never say to another engineer? Rewrite those.
+- Does any paragraph end on a line that just restates the paragraph (the "real win", "that matters", "the lesson here")? Cut it. See `references/humanizer.md` §2.
+- Did the humanizer pass add anything not in the source (a number, a quote, a personal incident)? Remove it.
+
 If any answer points at a specific paragraph, cut or rewrite it before moving on. This pass is meant to be quick — a few minutes reading the draft as a stranger would, not a second structural rewrite.

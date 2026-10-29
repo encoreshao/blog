@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Flag common AI-writing tells in a generate-article draft (EN or ZH). Warns only, does not rewrite.
 
-Metrics adapted from https://github.com/KKKKhazix/human-writing (check_prose.py), generalized
-to English and simplified for blog-length drafts.
+Metrics generalized to English and simplified for blog-length drafts. Pattern checks (staging,
+stock vocabulary, -ing riders, bold and heading decoration, chatbot residue) follow
+references/humanizer.md.
 """
 
 from __future__ import annotations
@@ -31,8 +32,58 @@ BANNED_PHRASES = (
     "this is a great opportunity", "the good news is", "the bad news is",
     "this is a complex topic", "i hope this was helpful", "delve", "unlock",
     "unleash", "transformative", "cutting-edge", "empower", "in summary",
-    "to summarize",
+    "to summarize", "deep dive", "let's dive in", "the real question", "at its core",
+    "here's the thing",
 )
+
+# Words models overuse (humanizer §12). Flagged when two or more appear.
+EN_STOCK_WORDS = (
+    "additionally", "pivotal", "tapestry", "testament", "showcase", "showcasing",
+    "underscore", "underscores", "underscoring", "intricate", "intricacies", "meticulous",
+    "meticulously", "vibrant", "enduring", "garner", "interplay", "foster", "fostering",
+    "streamline", "comprehensive", "elevate", "harness", "navigate", "crucial",
+    "landscape",
+)
+
+ZH_STOCK_WORDS = (
+    "赋能", "打造", "助力", "深耕", "全方位", "无缝", "颠覆", "极致", "生态闭环",
+    "未来可期", "开启了新篇章", "具有重要意义",
+)
+
+# Staged run-ups, one-line closers, deep-sounding sayings, chatbot residue (humanizer §2-§5, §22).
+EN_STAGING_PATTERNS = (
+    re.compile(r"\bthat'?s the real (?:win|story|point|lesson)\b", re.I),
+    re.compile(r"\b(?:read that again|let that sink in|that distinction matters)\b", re.I),
+    re.compile(r"\b(?:here'?s what you need to know|without further ado|real talk)\b", re.I),
+    re.compile(r"(?:^|[.?!]\s+)(?:honestly|look|here'?s the thing)[?,.:]", re.I),
+    re.compile(r"\b(?:great question|i hope this helps|certainly!|of course!)", re.I),
+    re.compile(r"\bthis shows the importance of\b", re.I),
+    re.compile(r"\bdon'?t get me wrong\b|\bto be clear,", re.I),
+    re.compile(r"\bthe future looks bright\b|\bexciting times (?:lie )?ahead\b", re.I),
+    re.compile(r"\b(?:this|the) (?:article|post) (?:will|covers|explores)\b", re.I),
+)
+
+ZH_STAGING_PATTERNS = (
+    re.compile(r"这(?:就是|才是)(?:真正的)?(?:关键|重点|答案)"),
+    re.compile(r"就这么简单|仅此而已|让我们来(?:看看|聊聊)|接下来我们"),
+    re.compile(r"值得一提的是|不得不说|说到底|归根结底|本质上|真正的问题是"),
+    re.compile(r"希望(?:这)?对你有(?:所)?帮助|当然可以|好的，以下是"),
+    re.compile(r"总而言之|综上所述"),
+)
+
+EN_RIDER_PATTERNS = (
+    re.compile(
+        r",\s+(?:highlighting|underscoring|emphasizing|ensuring|reflecting|symbolizing|"
+        r"fostering|cultivating|showcasing|contributing to)\b",
+        re.I,
+    ),
+    re.compile(r"\b(?:serves|stands|functions|operates) as\b|\bboasts\b", re.I),
+)
+
+BOLD_PATTERN = re.compile(r"\*\*[^*\n]+\*\*|__[^_\n]+__")
+CURLY_QUOTES = ("\u201c", "\u201d")
+HEADING_DECOR = re.compile(r"[\U0001F300-\U0001FAFF\u2190-\u21FF\u2600-\u27BF]")
+SMALL_WORDS = {"a", "an", "and", "as", "at", "but", "by", "for", "in", "of", "on", "or", "the", "to", "vs", "with"}
 
 EN_PIVOT_PATTERNS = (
     re.compile(r"\bnot\s+just\b[^.?!\n]{0,60}\b(?:it'?s|but|it is)\b", re.I),
@@ -57,6 +108,19 @@ def strip_frontmatter_and_code(text: str) -> str:
     text = re.sub(r"`[^`\n]*`", "", text)
     text = re.sub(r"\]\([^\n)]*\)", "", text)
     return text
+
+
+def heading_lines(text: str) -> list[str]:
+    return [m.group(1).strip() for m in re.finditer(r"^(#{1,6}\s+.*)$", text, re.M)]
+
+
+def is_title_case(heading: str) -> bool:
+    """True when every main word of a multi-word English heading starts with a capital."""
+    words = re.findall(r"[A-Za-z][A-Za-z'-]*", heading)
+    main = [w for w in words if w.lower() not in SMALL_WORDS and len(w) > 2]
+    if len(main) < 3:
+        return False
+    return all(w[0].isupper() for w in main)
 
 
 def han_ratio(text: str) -> float:
@@ -154,10 +218,11 @@ def main() -> int:
             "Mix short punches with longer sentences — AI prose tends toward same-length sentences."
         )
 
-    em_dashes = text.count("—") + text.count("–")
-    if em_dashes and em_dashes * 1000 / scale > (1.5 if is_zh else 3):
+    dashes = text.count("—") + text.count("–") + len(re.findall(r"\s--\s", text))
+    if dashes:
         warnings.append(
-            f"Em dash overused ({em_dashes} occurrences). Rewrite as separate sentences or commas."
+            f"Dashes used as connectors ({dashes} occurrences). Replace each with a period, comma, "
+            "colon, or parentheses. Recent posts on this blog use none."
         )
 
     if is_zh:
@@ -186,6 +251,59 @@ def main() -> int:
             f"Reversal/pivot rhetoric found ({len(pivots)}x), e.g. \"{sample}\". "
             "State the point directly instead of setting up a fake contrast to knock down."
         )
+
+    staging = find_matches(text, ZH_STAGING_PATTERNS if is_zh else EN_STAGING_PATTERNS)
+    if staging:
+        warnings.append(
+            f"Staged run-up, closer, or chatbot residue ({len(staging)}x), e.g. "
+            f"\"{'; '.join(s.strip() for s in staging[:3])}\". Cut it and make the point directly."
+        )
+
+    if is_zh:
+        stock = [w for w in ZH_STOCK_WORDS if w in text]
+        if stock:
+            warnings.append(f"Marketing vocabulary: {', '.join(stock)}. Say the concrete thing instead.")
+    else:
+        lowered = text.lower()
+        stock_counts = {
+            w: len(re.findall(r"\b" + w + r"\b", lowered)) for w in EN_STOCK_WORDS
+        }
+        stock = {w: n for w, n in stock_counts.items() if n}
+        if sum(stock.values()) >= 2:
+            listing = ", ".join(f"{w} x{n}" for w, n in stock.items())
+            warnings.append(
+                f"Stock AI vocabulary ({listing}). Replace with the plain word or the specific fact."
+            )
+        riders = find_matches(text, EN_RIDER_PATTERNS)
+        if riders:
+            warnings.append(
+                f"Shallow -ing riders or 'serves as' phrasing ({len(riders)}x), e.g. "
+                f"\"{'; '.join(r.strip() for r in riders[:3])}\". Keep the fact, drop the rider, "
+                "and use is/are/has."
+            )
+        if any(q in text for q in CURLY_QUOTES):
+            warnings.append("Curly quotation marks found. Use straight quotes in English prose.")
+
+    bold = BOLD_PATTERN.findall(text)
+    if bold:
+        warnings.append(
+            f"Bold text in prose ({len(bold)}x), e.g. {bold[0]}. Remove it; turn labeled lists into prose."
+        )
+
+    heads = heading_lines(text)
+    head_issues = []
+    for h in heads:
+        title = h.lstrip("#").strip()
+        if h.startswith("# "):
+            head_issues.append(f"top-level heading repeats the title ({title!r})")
+        elif HEADING_DECOR.search(h):
+            head_issues.append(f"emoji or arrow in heading ({title!r})")
+        elif not is_zh and is_title_case(title):
+            head_issues.append(f"Title Case heading ({title!r}); use sentence case")
+    if re.search(r"^\s*(?:---|\*\*\*|___)\s*$", text, re.M):
+        head_issues.append("horizontal rule between sections")
+    if head_issues:
+        warnings.append("Heading decoration: " + "; ".join(head_issues) + ".")
 
     banned_hits = [p for p in BANNED_PHRASES if p in text.lower()]
     if banned_hits:
