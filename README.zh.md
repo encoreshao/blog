@@ -202,7 +202,7 @@ ssh encore@blog.icmoc.com "sudo mkdir -p /var/www/blog && sudo chown encore:www-
 | 13 | encore-skills：别再重复教你的 AI | encore-skills: Stop Re-Teaching Your AI |
 | 14 | 这块白板,把我的剪辑软件炒了鱿鱼 | The Whiteboard That Fired My Video Editor |
 | 15 | 怎么把 NotebookLM 生成的水印干净地去掉 | Removing the NotebookLM Watermark Without Wrecking the Slide |
-| 16 | Loop X：用我已经付过费的 CLI，搭一个完全私有的 AI 同事 | Loop X: An AI Co-worker Built on the CLI I Already Pay For |
+| 16 | LoopX：住在我 Mac 里的安静同事，替我过一遍 issue、邮箱和简报 | LoopX: A Quiet Teammate on My Mac That Works the Queue |
 | 17 | 91 个 AI 工具，只回答一个问题：先试哪个？ | 91 AI Tools, One Question: What Should I Try First? |
 
 ---
